@@ -1,3 +1,5 @@
+# FPGA Logic Analyzer
+
 ## Project overview
 
 (Info applies to rev. 1, update for later revisions (only final rev. matters in the README))
