@@ -1,5 +1,7 @@
 # FPGA Logic Analyzer
 
+(NOTE TO SELF: THIS MUST BE UPDATED FOR THE FINAL REVISION; REV1 IS VIRTUALLY IRRELEVANT HERE, ONLY RELEVANT IN REPORT IF USED TO DISCUSS IMPORTANT DESIGN DECISIONS)
+
 ## Project overview
 
 (Info applies to rev. 1, update for later revisions (only final rev. matters in the README))
@@ -15,6 +17,7 @@ Key specs:
 | Interface | UART |
 | Programming | SPI |
 | PCB | 2-layer |
+| Revision | 1. |
 
 
 ## Architecture
