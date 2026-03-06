@@ -1,6 +1,24 @@
 -- ========================================
--- File: send_engine.vhd
+-- Module: send_engine.vhd
+-- Function: streams captured data from BRAM to host via UART
 -- Author: Jakob Kieszek Ottesen
+--
+-- Inputs:
+-- i_clk
+-- i_rst
+-- i_send_start_pulse
+-- i_tx_busy
+-- i_ram_rd_data
+--
+-- Outputs:
+-- o_ram_rd_addr
+-- o_send_tx_byte
+-- o_send_tx_start_pulse
+-- o_send_done_pulse
+--
+-- Notes:
+-- NUM_SAMPLES generic is defined as power of 2 (can implement function for any size NUM_SAMPLES)
+--
 -- Prefixes:
 -- i_ : input
 -- o_ : output
@@ -47,7 +65,7 @@ architecture RTL of send_engine is
 	constant LAST_ADDR : std_logic_vector(ADDR_LENGTH-1 downto 0) := std_logic_vector(to_unsigned(NUM_SAMPLES-1, ADDR_LENGTH));
 	
 begin
-	-- Seq procedure
+	-- Sequential process for dealing with clocking
 	seq_proc: process(i_clk) is
 	begin
 		if rising_edge(i_clk) then
@@ -69,7 +87,7 @@ begin
 	end process seq_proc;
 	
 	
-	-- FSM
+	-- Combinational process for dealing with send engine FSM
 	fsm_proc: process(all) is
 	begin
 		-- Defaults

@@ -1,6 +1,24 @@
 -- ========================================
--- File: capture_engine.vhd
+-- Module: capture_engine.vhd
+-- Function: samples logic analyzer inputs at i_clk and writes to BRAM
 -- Author: Jakob Kieszek Ottesen
+--
+-- Inputs:
+-- i_clk
+-- i_samp_tick
+-- i_rst
+-- i_capture_start_pulse
+-- i_inputs
+--
+-- Outputs:
+-- o_raw_wr_en_pulse
+-- o_raw_wr_addr
+-- o_raw_wr_data
+-- o_capture_done_pulse
+--
+-- Notes:
+-- NUM_SAMPLES generic is defined as power of 2 (can implement function for any size NUM_SAMPLES)
+--
 -- Prefixes:
 -- i_ : input
 -- o_ : output
@@ -46,7 +64,7 @@ architecture RTL of capture_engine is
 	constant LAST_ADDR : std_logic_vector(ADDR_LENGTH-1 downto 0) := std_logic_vector(to_unsigned(NUM_SAMPLES-1, ADDR_LENGTH));
 	
 begin
-	-- Process to deal with clocking
+	-- Sequential process to deal with clocking
 	seq_proc: process(i_clk) is
 	begin
 		if rising_edge(i_clk) then
@@ -68,7 +86,7 @@ begin
 	end process seq_proc;
 
 
-	-- FSM
+	-- Combinational process to deal with capture engine FSM logic
 	fsm_proc: process(all) is
 	begin
 		-- Defaults

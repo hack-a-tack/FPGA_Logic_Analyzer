@@ -1,6 +1,28 @@
 -- ========================================
--- File: analyzer_fsm.vhd
+-- Module: analyzer_fsm.vhd
+-- Function: manages the logic analyzer state machine
 -- Author: Jakob Kieszek Ottesen
+--
+-- Inputs:
+-- i_clk
+-- i_samp_tick
+-- i_rst
+-- i_cmd_error_pulse
+-- i_capture_cmd_pulse
+-- i_capture_done_pulse
+-- i_read_cmd_pulse
+-- i_send_done_pulse
+--
+-- Outputs:
+-- o_capture_start_pulse
+-- o_send_start_pulse
+-- o_fsm_tx_status_byte
+-- o_fsm_tx_start_pulse
+-- o_USER_LED
+--
+-- Notes:
+-- Watchdog process not implemented
+--
 -- Prefixes:
 -- i_ : input
 -- o_ : output
@@ -42,7 +64,7 @@ architecture RTL of analyzer_fsm is
 	signal r_USER_LED, n_USER_LED : std_logic := '0';
 begin
 
-	-- Update r_state and deal with clocking and reset logic
+	-- Sequential process to update r_state and deal with clocking and reset logic
 	seq_proc: process (i_clk) is
 	begin
 		if rising_edge(i_clk) then
@@ -65,7 +87,7 @@ begin
 	end process seq_proc;
 	
 	
-	-- Update n_state
+	-- Combinational process to update n_state and manage FSM logic
 	fsm_proc: process(all) is
 	begin
 		-- Defaults
@@ -79,7 +101,7 @@ begin
 			when IDLE =>
 				if i_capture_cmd_pulse = '1' then
 					n_state <= CAPTURE;
-					n_capture_start_pulse <= '1';  -- activate capture_engine
+					n_capture_start_pulse <= '1';
 					n_fsm_tx_status_byte <= x"55";  -- 0x55 (OK), 0b01010101
 					n_fsm_tx_start_pulse <= '1';
 				elsif i_read_cmd_pulse = '1' then
@@ -110,12 +132,12 @@ begin
 			when DONE => 
 				if i_capture_cmd_pulse = '1' then
 					n_state <= CAPTURE;
-					n_capture_start_pulse <= '1';  -- activate capture_engine
+					n_capture_start_pulse <= '1';
 					n_fsm_tx_status_byte <= x"55";  -- 0x55 (OK), 0b01010101
 					n_fsm_tx_start_pulse <= '1';
 				elsif i_read_cmd_pulse = '1' then
 					n_state <= SEND;
-					n_send_start_pulse <= '1';  -- activate send_engine
+					n_send_start_pulse <= '1';
 				elsif i_cmd_error_pulse = '1' then
 					n_fsm_tx_status_byte <= x"EE";  -- 0xEE (ERROR), 0b11101110; opcode not understood
 					n_fsm_tx_start_pulse <= '1';
@@ -124,10 +146,7 @@ begin
 			when SEND => 
 				if i_send_done_pulse = '1' then 
 					n_state <= IDLE;
-				-- no error handling in SEND (0xEE won't be sent as data is being streamed)
-				-- elsif i_capture_cmd_pulse = '1' then n_state <= SEND;
-				-- elsif i_read_cmd_pulse = '1' then n_state <= SEND;
-				-- elsif i_cmd_error_pulse = '1' then n_state <= SEND;
+				-- no error handling in state SEND (0xEE won't be sent as data is being streamed)
 				end if;
 				
 			when others =>
