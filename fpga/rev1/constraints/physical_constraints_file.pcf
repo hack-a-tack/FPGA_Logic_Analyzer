@@ -1,0 +1,26 @@
+# iCE40UP5K Logic Analyzer
+# Physical Constraints File
+
+# Sampling signals
+set_io i_LA0 48
+set_io i_LA1 47
+set_io i_LA2 46
+set_io i_LA3 45
+set_io i_LA4 43
+set_io i_LA5 42
+set_io i_LA6 38
+set_io i_LA7 36
+
+#LED signals
+set_io o_UART_TX_LED 12
+set_io o_UART_RX_LED 11
+set_io o_USER_LED 10
+
+#Config signals
+set_io i_CRESET_B 8
+set_io o_CDONE 7
+
+#UART signals
+set_io o_UART_TX 4
+set_io o_UART_RX 3
+
