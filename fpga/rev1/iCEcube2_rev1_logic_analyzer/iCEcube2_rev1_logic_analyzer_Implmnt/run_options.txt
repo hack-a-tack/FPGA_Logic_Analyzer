@@ -1,11 +1,11 @@
 #--  Synopsys, Inc.
 #--  Version L-2016.09L+ice40
 #--  Project file C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\iCEcube2_rev1_logic_analyzer\iCEcube2_rev1_logic_analyzer_Implmnt\run_options.txt
-#--  Written on Sun Mar 08 07:10:08 2026
+#--  Written on Sun Mar 08 13:45:28 2026
 
 
 #project files
-add_file -vhdl -lib work "../rtl/analyzer_fsm.vhd"
+add_file -vhdl -lib work "../rtl/uart_tx.vhd"
 
 
 

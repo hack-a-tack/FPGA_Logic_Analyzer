@@ -1,12 +1,12 @@
-@P:  Worst Slack : -1.165
-@P:  analyzer_fsm|i_clk - Estimated Frequency : 128.7 MHz
-@P:  analyzer_fsm|i_clk - Requested Frequency : 151.4 MHz
-@P:  analyzer_fsm|i_clk - Estimated Period : 7.769
-@P:  analyzer_fsm|i_clk - Requested Period : 6.604
-@P:  analyzer_fsm|i_clk - Slack : -1.165
-@P: analyzer_fsm Part : ice40hx1kvq100
-@P: analyzer_fsm I/O primitives : 20
-@P: analyzer_fsm I/O Register bits : 0
-@P: analyzer_fsm Register bits (Non I/O) : 25 (1%)
-@P: analyzer_fsm Total Luts : 98 (7%)
-@P:  CPU Time : 0h:00m:02s
+@P:  Worst Slack : -1.968
+@P:  uart_tx|i_clk - Estimated Frequency : 76.2 MHz
+@P:  uart_tx|i_clk - Requested Frequency : 89.7 MHz
+@P:  uart_tx|i_clk - Estimated Period : 13.118
+@P:  uart_tx|i_clk - Requested Period : 11.150
+@P:  uart_tx|i_clk - Slack : -1.968
+@P: uart_tx Part : ice40hx1kvq100
+@P: uart_tx I/O primitives : 14
+@P: uart_tx I/O Register bits : 0
+@P: uart_tx Register bits (Non I/O) : 78 (6%)
+@P: uart_tx Total Luts : 120 (9%)
+@P:  CPU Time : 0h:00m:01s

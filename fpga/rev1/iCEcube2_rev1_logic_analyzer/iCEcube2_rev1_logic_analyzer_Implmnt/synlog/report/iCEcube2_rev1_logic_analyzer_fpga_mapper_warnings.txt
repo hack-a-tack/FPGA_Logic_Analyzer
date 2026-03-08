@@ -1,8 +1,6 @@
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":81:2:81:3|User-specified initial value defined for instance r_status_pending_byte[7:0] is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":81:2:81:3|User-specified initial value defined for instance r_fsm_tx_status_byte[7:0] is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":81:2:81:3|User-specified initial value defined for instance r_fsm_tx_start_pulse is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":81:2:81:3|User-specified initial value defined for instance r_status_pending_valid is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":81:2:81:3|User-specified initial value defined for instance r_send_start_pulse is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":81:2:81:3|User-specified initial value defined for instance r_capture_start_pulse is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":81:2:81:3|User-specified initial value defined for instance r_USER_LED is being ignored. 
-@W: MT420 |Found inferred clock analyzer_fsm|i_clk with period 6.60ns. Please declare a user-defined clock on object "p:i_clk"
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":73:2:73:3|User-specified initial value defined for instance r_bit_counter[31:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":73:2:73:3|User-specified initial value defined for instance r_clk_counter[31:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":73:2:73:3|User-specified initial value defined for instance r_UART_TX is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":73:2:73:3|User-specified initial value defined for instance r_tx_byte[7:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":73:2:73:3|User-specified initial value defined for instance r_tx_busy is being ignored. 
+@W: MT420 |Found inferred clock uart_tx|i_clk with period 11.15ns. Please declare a user-defined clock on object "p:i_clk"

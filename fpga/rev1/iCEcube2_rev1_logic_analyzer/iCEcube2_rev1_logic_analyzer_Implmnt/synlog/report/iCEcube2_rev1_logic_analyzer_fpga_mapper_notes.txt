@@ -1,10 +1,12 @@
 @N: MF248 |Running in 64-bit mode.
 @N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
 @N: MT206 |Auto Constrain mode is enabled
-@N: MO225 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":81:2:81:3|There are no possible illegal states for state machine r_state[0:3] (in view: work.analyzer_fsm(rtl)); safe FSM implementation is not required.
-@N: FX271 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":81:2:81:3|Replicating instance r_status_pending_valid (in view: work.analyzer_fsm(rtl)) with 15 loads 2 times to improve timing.
-@N: FX1016 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":44:2:44:6|SB_GB_IO inserted on the port i_clk.
-@N: FX1016 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":46:2:46:6|SB_GB_IO inserted on the port i_rst.
+@N: MO225 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":73:2:73:3|There are no possible illegal states for state machine r_state[0:3] (in view: work.uart_tx(rtl)); safe FSM implementation is not required.
+@N: FX271 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":73:2:73:3|Replicating instance r_state[0] (in view: work.uart_tx(rtl)) with 9 loads 1 time to improve timing.
+@N: FX271 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":73:2:73:3|Replicating instance r_state[1] (in view: work.uart_tx(rtl)) with 8 loads 1 time to improve timing.
+@N: FX1016 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":42:2:42:6|SB_GB_IO inserted on the port i_clk.
+@N: FX1017 :|SB_GB inserted on the net N_289.
+@N: FX1017 :|SB_GB inserted on the net N_355.
 @N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.
 @N: BW107 |Synopsys Constraint File capacitance units using default value of 1pF 
 @N: FX1056 |Writing EDF file: C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\iCEcube2_rev1_logic_analyzer\iCEcube2_rev1_logic_analyzer_Implmnt\iCEcube2_rev1_logic_analyzer.edf

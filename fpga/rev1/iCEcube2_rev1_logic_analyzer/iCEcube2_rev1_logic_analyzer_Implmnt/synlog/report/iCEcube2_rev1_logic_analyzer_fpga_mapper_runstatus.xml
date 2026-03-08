@@ -13,13 +13,13 @@ The file contains the job information from mapper to be displayed as part of the
 </job_status>
 <job_info>
 <info name="Notes">
-<data>12</data>
+<data>14</data>
 <report_link name="more">
 <data>C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\iCEcube2_rev1_logic_analyzer\iCEcube2_rev1_logic_analyzer_Implmnt\synlog\report\iCEcube2_rev1_logic_analyzer_fpga_mapper_notes.txt</data>
 </report_link>
 </info>
 <info name="Warnings">
-<data>8</data>
+<data>6</data>
 <report_link name="more">
 <data>C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\iCEcube2_rev1_logic_analyzer\iCEcube2_rev1_logic_analyzer_Implmnt\synlog\report\iCEcube2_rev1_logic_analyzer_fpga_mapper_warnings.txt</data>
 </report_link>
@@ -34,13 +34,13 @@ The file contains the job information from mapper to be displayed as part of the
 <data>0h:00m:02s</data>
 </info>
 <info name="Real Time">
-<data>0h:00m:03s</data>
+<data>0h:00m:02s</data>
 </info>
 <info name="Peak Memory">
-<data>138MB</data>
+<data>135MB</data>
 </info>
 <info name="Date &amp; Time">
-<data type="timestamp">1772950215</data>
+<data type="timestamp">1772973932</data>
 </info>
 </job_info>
 </job_run_status>
