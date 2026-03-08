@@ -41,6 +41,7 @@ architecture sim of analyzer_fsm_tb is
 			i_capture_done_pulse	: in  std_logic;
 			i_read_cmd_pulse		: in  std_logic;
 			i_send_done_pulse		: in  std_logic;
+			i_tx_busy				: in  std_logic;
 			o_capture_start_pulse	: out std_logic;
 			o_send_start_pulse		: out std_logic;
 			o_fsm_tx_status_byte	: out std_logic_vector(7 downto 0);
@@ -62,6 +63,7 @@ architecture sim of analyzer_fsm_tb is
 	signal i_capture_done_pulse		: std_logic := '0';
 	signal i_read_cmd_pulse			: std_logic := '0';
 	signal i_send_done_pulse		: std_logic := '0';
+	signal i_tx_busy				: std_logic := '0';
 	signal o_capture_start_pulse	: std_logic := '0';
 	signal o_send_start_pulse		: std_logic := '0';
 	signal o_fsm_tx_status_byte		: std_logic_vector(7 downto 0) := (others => '0');
@@ -81,6 +83,7 @@ begin
 			i_capture_done_pulse => i_capture_done_pulse,
 			i_read_cmd_pulse => i_read_cmd_pulse,
 			i_send_done_pulse => i_send_done_pulse,
+			i_tx_busy => i_tx_busy,
 			o_capture_start_pulse => o_capture_start_pulse,
 			o_send_start_pulse => o_send_start_pulse,
 			o_fsm_tx_status_byte => o_fsm_tx_status_byte,
@@ -107,30 +110,69 @@ begin
 		i_rst <= '1';
 		wait for 5*CLK_PERIOD;
 		i_rst <= '0';
+		wait until rising_edge(i_clk);
 		
-        -- Test case 1
+        -- Test case 1: command error received from cmd_parser (should send EE to tx_mux)
         i_cmd_error_pulse <= '1';
-        wait for CLK_PERIOD;
+        wait until rising_edge(i_clk);
+		assert o_fsm_tx_start_pulse = '1'
+			report "Start pulse not sent to tx_mux"
+			severity error;
+		assert o_fsm_tx_status_byte = x"EE"
+			report "Status code not updated to EE"
+			severity error;
 		i_cmd_error_pulse <= '0';
+		wait until rising_edge(i_clk);
 
-        -- Test case 2
+        -- Test case 2: CAPTURE command from host(cmd_parser) (should prompt capture_engine to start capturing data)
         i_capture_cmd_pulse <= '1';
-        wait for CLK_PERIOD;
+        wait until rising_edge(i_clk);
+		assert o_capture_start_pulse = '1'
+			report "Start pulse not sent to capture_engine"
+			severity error;
+		assert o_fsm_tx_start_pulse = '1'
+			report "Start pulse not sent to tx_mux"
+			severity error;
+		assert o_fsm_tx_status_byte = x"55"
+			report "Status code not updated to 55"
+			severity error;
 		i_capture_cmd_pulse <= '0';
+		wait until rising_edge(i_clk);
 		
-		-- Test case 3
+		-- Test case 3: data capture complete
+		-- but status byte should not update before uart_tx is available (i_tx_busy = '0')
+		i_tx_busy <= '1';
         i_capture_done_pulse <= '1';
-        wait for CLK_PERIOD;
+        wait until rising_edge(i_clk);
+		assert o_fsm_tx_start_pulse = '0'
+			report "Start pulse prematurely sent to tx_mux (uart_tx is busy)"
+			severity error;
+		assert o_fsm_tx_status_byte /= x"77"
+			report "Status code prematurely updated to 77 (uart_tx is busy!)"
+			severity error;
+		
 		i_capture_done_pulse <= '0';
+		i_tx_busy <= '0';
+		wait until rising_edge(i_clk);
+		assert o_fsm_tx_start_pulse = '1'
+			report "Start pulse not sent to tx_mux"
+			severity error;
+		assert o_fsm_tx_status_byte = x"77"
+			report "Status code not updated to 77 (pending from when uart_tx was busy)"
+			severity error;
 		
-		-- Test case 4
+		-- Test case 4: READ command from host (should prompt data transfer) 
         i_read_cmd_pulse <= '1';
-        wait for CLK_PERIOD;
+        wait until rising_edge(i_clk);
+		assert o_send_start_pulse = '1'
+			report "Start pulse not sent to send_engine"
+			severity error;
 		i_read_cmd_pulse <= '0';
+		wait until rising_edge(i_clk);
 		
-		-- Test case 5
+		-- Test case 5: data transfer complete (FSM goes to IDLE [state is internal signal], nothing to assert)
         i_send_done_pulse <= '1';
-        wait for CLK_PERIOD;
+        wait until rising_edge(i_clk);
 		i_send_done_pulse <= '0';
 
         -- Finish simulation

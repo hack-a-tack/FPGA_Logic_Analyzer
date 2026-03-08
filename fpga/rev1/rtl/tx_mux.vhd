@@ -12,8 +12,8 @@
 -- i_send_tx_start_pulse	1 bit		<- send_engine
 --
 -- OUTPUTS					DATA		TO MODULE
--- o_mux_tx_byte			: 8 bits	-> uart_tx
--- o_mux_tx_start_pulse		: 1 bit		-> uart_tx
+-- o_mux_tx_byte			8 bits		-> uart_tx
+-- o_mux_tx_start_pulse		1 bit		-> uart_tx
 --
 -- PREFIXES					
 -- i_ : input
@@ -57,7 +57,7 @@ begin
 				r_mux_tx_byte <= (others => '0');
 				r_mux_tx_start_pulse <= '0';
 			else
-				-- Priority: analyzer_fsm > send_engine
+				-- Priority: analyzer_fsm (status code byte) > send_engine ((1 byte of) data stream)
 				if i_fsm_tx_start_pulse = '1' then
 					r_mux_tx_byte <= i_fsm_tx_status_byte;
 					r_mux_tx_start_pulse <= '1';
