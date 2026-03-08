@@ -1,0 +1,4 @@
+@E: CD214 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\tx_mux.vhd":80:1:80:6|Not a concurrent statement
+@E: CD415 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\tx_mux.vhd":83:20:83:20|Expecting keyword of
+@E: Parse errors encountered - exiting
+

@@ -1,0 +1,1 @@
+@W: MT529 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\tx_mux.vhd":57:2:57:3|Found inferred clock tx_mux|i_clk which controls 9 sequential elements including r_mux_tx_byte[7:0]. This clock has no specified timing constraint which may prevent conversion of gated or generated clocks and may adversely impact design performance. 

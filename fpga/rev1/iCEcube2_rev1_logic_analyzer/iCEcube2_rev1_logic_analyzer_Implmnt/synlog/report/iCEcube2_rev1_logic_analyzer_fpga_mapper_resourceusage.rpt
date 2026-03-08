@@ -1,0 +1,23 @@
+---------------------------------------
+Resource Usage Report for tx_mux 
+
+Mapping to part: ice40hx1kvq100
+Cell usage:
+SB_DFF          1 use
+SB_DFFESR       8 uses
+SB_LUT4         10 uses
+
+I/O ports: 29
+I/O primitives: 29
+SB_GB_IO       1 use
+SB_IO          28 uses
+
+I/O Register bits:                  0
+Register bits not including I/Os:   9 (0%)
+
+@S |Mapping Summary:
+Total  LUTs: 10 (0%)
+
+Distribution of All Consumed LUTs = LUT4 
+Distribution of All Consumed Luts 10 = 10 
+

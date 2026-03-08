@@ -1,0 +1,3 @@
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\tx_mux.vhd":57:2:57:3|User-specified initial value defined for instance r_mux_tx_byte[7:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\tx_mux.vhd":57:2:57:3|User-specified initial value defined for instance r_mux_tx_start_pulse is being ignored. 
+@W: MT420 |Found inferred clock tx_mux|i_clk with period 1000.00ns. Please declare a user-defined clock on object "p:i_clk"

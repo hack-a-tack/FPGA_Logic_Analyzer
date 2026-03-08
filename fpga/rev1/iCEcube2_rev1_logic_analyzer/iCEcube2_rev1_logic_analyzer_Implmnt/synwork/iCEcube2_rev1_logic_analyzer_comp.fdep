@@ -1,0 +1,27 @@
+#OPTIONS:"|-layerid|0|-orig_srs|C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\iCEcube2_rev1_logic_analyzer\\iCEcube2_rev1_logic_analyzer_Implmnt\\synwork\\iCEcube2_rev1_logic_analyzer_comp.srs|-autotop|-prodtype|synplify_pro|-primux|-fixsmult|-infer_seqShift|-ice|-sdff_counter|-nram|-divnmod|-nostructver|-encrypt|-pro|-lite|-ui|-fid2|-ram|-sharing|on|-ll|2000|-autosm|-vhdl2008|-ignore_undefined_lib|-lib|work|-lib|work"
+#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\bin64\\c_vhdl.exe":1739914739
+#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd2008\\location.map":1739914748
+#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd2008\\std.vhd":1739914748
+#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd\\snps_haps_pkg.vhd":1739914748
+#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd2008\\std1164.vhd":1739914748
+#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd2008\\std_textio.vhd":1739914748
+#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd2008\\numeric.vhd":1739914748
+#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd\\umr_capim.vhd":1739914748
+#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd2008\\arith.vhd":1739914748
+#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd2008\\unsigned.vhd":1739914748
+#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd\\hyperents.vhd":1739914748
+#CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\send_engine.vhd":1772780015
+#CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\tx_mux.vhd":1772879774
+0			"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\send_engine.vhd" vhdl
+1			"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\tx_mux.vhd" vhdl
+#Dependency Lists(Uses List)
+0 -1
+1 -1
+#Dependency Lists(Users Of)
+0 -1
+1 -1
+#Design Unit to File Association
+module work tx_mux 1
+arch work tx_mux rtl 1
+module work send_engine 0
+arch work send_engine rtl 0

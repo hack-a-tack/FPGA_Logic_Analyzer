@@ -1,0 +1,1 @@
+project -load iCEcube2_rev1_logic_analyzer_syn.prj

@@ -12,6 +12,7 @@
 -- i_capture_done_pulse
 -- i_read_cmd_pulse
 -- i_send_done_pulse
+-- i_tx_busy
 --
 -- Outputs:
 -- o_capture_start_pulse
@@ -44,6 +45,7 @@ entity analyzer_fsm is
 		i_capture_done_pulse	: in  std_logic;
 		i_read_cmd_pulse		: in  std_logic;
 		i_send_done_pulse		: in  std_logic;
+		i_tx_busy				: in  std_logic;
 		o_capture_start_pulse	: out std_logic;
 		o_send_start_pulse		: out std_logic;
 		o_fsm_tx_status_byte	: out std_logic_vector(7 downto 0);

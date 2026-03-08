@@ -1,0 +1,12 @@
+ble_pack i_send_tx_start_pulse_ibuf_RNIGI041_LC_0 {i_send_tx_start_pulse_ibuf_RNIGI041}
+ble_pack r_mux_tx_start_pulse_RNO_LC_9 {r_mux_tx_start_pulse_RNO}
+ble_pack r_mux_tx_byte_esr[0]_LC_1 {r_mux_tx_byte_esr[0], r_mux_tx_byte_esr_RNO[0]}
+ble_pack r_mux_tx_byte_esr[1]_LC_2 {r_mux_tx_byte_esr[1], r_mux_tx_byte_esr_RNO[1]}
+ble_pack r_mux_tx_byte_esr[2]_LC_3 {r_mux_tx_byte_esr[2], r_mux_tx_byte_esr_RNO[2]}
+ble_pack r_mux_tx_byte_esr[3]_LC_4 {r_mux_tx_byte_esr[3], r_mux_tx_byte_esr_RNO[3]}
+ble_pack r_mux_tx_byte_esr[4]_LC_5 {r_mux_tx_byte_esr[4], r_mux_tx_byte_esr_RNO[4]}
+ble_pack r_mux_tx_byte_esr[5]_LC_6 {r_mux_tx_byte_esr[5], r_mux_tx_byte_esr_RNO[5]}
+clb_pack PLB_0 {i_send_tx_start_pulse_ibuf_RNIGI041_LC_0, r_mux_tx_start_pulse_RNO_LC_9, r_mux_tx_byte_esr[0]_LC_1, r_mux_tx_byte_esr[1]_LC_2, r_mux_tx_byte_esr[2]_LC_3, r_mux_tx_byte_esr[3]_LC_4, r_mux_tx_byte_esr[4]_LC_5, r_mux_tx_byte_esr[5]_LC_6}
+ble_pack r_mux_tx_byte_esr[6]_LC_7 {r_mux_tx_byte_esr[6], r_mux_tx_byte_esr_RNO[6]}
+ble_pack r_mux_tx_byte_esr[7]_LC_8 {r_mux_tx_byte_esr[7], r_mux_tx_byte_esr_RNO[7]}
+clb_pack PLB_1 {r_mux_tx_byte_esr[6]_LC_7, r_mux_tx_byte_esr[7]_LC_8}

@@ -1,0 +1,12 @@
+@P:  Worst Slack : NA
+@P:  tx_mux|i_clk - Estimated Frequency : NA
+@P:  tx_mux|i_clk - Requested Frequency : 1.0 MHz
+@P:  tx_mux|i_clk - Estimated Period : NA
+@P:  tx_mux|i_clk - Requested Period : 1000.000
+@P:  tx_mux|i_clk - Slack : NA
+@P: tx_mux Part : ice40hx1kvq100
+@P: tx_mux I/O primitives : 29
+@P: tx_mux I/O Register bits : 0
+@P: tx_mux Register bits (Non I/O) : 9 (0%)
+@P: tx_mux Total Luts : 10 (0%)
+@P:  CPU Time : 0h:00m:00s
