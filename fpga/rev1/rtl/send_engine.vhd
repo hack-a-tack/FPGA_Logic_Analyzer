@@ -1,25 +1,22 @@
 -- ========================================
--- Module: send_engine.vhd
--- Function: streams captured data from BRAM to host via UART
--- Author: Jakob Kieszek Ottesen
+-- MODULE: send_engine.vhd
+-- FUNCTION: streams captured data from BRAM to host via UART
+-- AUTHOR: Jakob Kieszek Ottesen
 --
--- Inputs:
--- i_clk
--- i_rst
--- i_send_start_pulse
--- i_tx_busy
--- i_ram_rd_data
+-- INPUTS					DATA		FROM MODULE
+-- i_clk					1 bit		<- clocking
+-- i_rst					1 bit		<- top
+-- i_send_start_pulse		1 bit		<- analyzer_fsm
+-- i_tx_busy				1 bit		<- uart_tx
+-- i_ram_rd_data			8 bits		<- top
 --
--- Outputs:
--- o_ram_rd_addr
--- o_send_tx_byte
--- o_send_tx_start_pulse
--- o_send_done_pulse
+-- OUTPUTS					DATA		TO MODULE
+-- o_ram_rd_addr			12 bits		-> top
+-- o_send_tx_byte			8 bits		-> tx_mux
+-- o_send_tx_start_pulse	1 bit		-> tx_mux
+-- o_send_done_pulse		1 bit		-> analyzer_fsm
 --
--- Notes:
--- NUM_SAMPLES generic is defined as power of 2 (can implement function for any size NUM_SAMPLES)
---
--- Prefixes:
+-- PREFIXES
 -- i_ : input
 -- o_ : output
 -- r_ : register 			(internal signal; current; 		for sequential process)

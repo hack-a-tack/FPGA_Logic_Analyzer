@@ -1,11 +1,20 @@
 -- ========================================
--- File: send_engine_tb.vhd - TESTBENCH
--- Author: Jakob Kieszek Ottesen
--- Prefixes:
--- i_ : input
--- o_ : output
--- r_ : register 			(internal signal; current; 		for sequential process)
--- n_ : next <register> 	(internal signal; next state; 	for combinational process)
+-- MODULE: send_engine_tb.vhd
+-- FUNCTION: TESTBENCH for entity which streams captured data from BRAM to host
+-- AUTHOR: Jakob Kieszek Ottesen
+--
+-- INPUTS					DATA		FROM MODULE
+-- i_clk					1 bit		<- clocking
+-- i_rst					1 bit		<- top
+-- i_send_start_pulse		1 bit		<- analyzer_fsm
+-- i_tx_busy				1 bit		<- uart_tx
+-- i_ram_rd_data			8 bits		<- top
+--
+-- OUTPUTS					DATA		TO MODULE
+-- o_ram_rd_addr			12 bits		-> top
+-- o_send_tx_byte			8 bits		-> tx_mux
+-- o_send_tx_start_pulse	1 bit		-> tx_mux
+-- o_send_done_pulse		1 bit		-> analyzer_fsm
 -- ========================================
 
 library IEEE;

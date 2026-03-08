@@ -1,10 +1,13 @@
 @N|Running in 64-bit mode
 @N|Running in 64-bit mode
 @N: CD720 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\vhd2008\std.vhd":146:18:146:21|Setting time resolution to ps
-@N:"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\tx_mux.vhd":32:7:32:12|Top entity is set to tx_mux.
+@N:"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":39:7:39:18|Top entity is set to analyzer_fsm.
 @N: CD231 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\vhd2008\std1164.vhd":890:16:890:17|Using onehot encoding for type mvl9plus. For example, enumeration 'U' is mapped to "1000000000".
-@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\tx_mux.vhd":32:7:32:12|Synthesizing work.tx_mux.rtl.
+@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":39:7:39:18|Synthesizing work.analyzer_fsm.rtl.
+@N: CD233 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":62:25:62:26|Using sequential encoding for type runtime_state_type.
+@N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":81:2:81:3|Trying to extract state machine for register r_state.
+@N: CL159 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":45:2:45:12|Input i_samp_tick is unused.
 @N|Running in 64-bit mode
-@N: NF107 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\tx_mux.vhd":32:7:32:12|Selected library: work cell: tx_mux view rtl as top level
-@N: NF107 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\tx_mux.vhd":32:7:32:12|Selected library: work cell: tx_mux view rtl as top level
+@N: NF107 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":39:7:39:18|Selected library: work cell: analyzer_fsm view rtl as top level
+@N: NF107 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":39:7:39:18|Selected library: work cell: analyzer_fsm view rtl as top level
 

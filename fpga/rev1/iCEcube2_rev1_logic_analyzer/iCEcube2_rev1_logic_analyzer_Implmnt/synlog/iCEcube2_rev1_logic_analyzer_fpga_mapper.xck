@@ -1,1 +1,1 @@
-CKID0001:@|S:i_clk_ibuf_gb_io@|E:r_mux_tx_byte_esr[0]@|F:@syn_sample_clock_path==CKID0001@|M:ClockId0001 
+CKID0001:@|S:i_clk_ibuf_gb_io@|E:r_status_pending_byte_esr[0]@|F:@syn_sample_clock_path==CKID0001@|M:ClockId0001 

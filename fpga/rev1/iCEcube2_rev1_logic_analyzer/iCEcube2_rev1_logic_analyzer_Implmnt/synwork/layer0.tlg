@@ -1,3 +1,14 @@
 @N: CD231 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\vhd2008\std1164.vhd":890:16:890:17|Using onehot encoding for type mvl9plus. For example, enumeration 'U' is mapped to "1000000000".
-@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\tx_mux.vhd":32:7:32:12|Synthesizing work.tx_mux.rtl.
-Post processing for work.tx_mux.rtl
+@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":39:7:39:18|Synthesizing work.analyzer_fsm.rtl.
+@N: CD233 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":62:25:62:26|Using sequential encoding for type runtime_state_type.
+@W: CD434 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":231:24:231:34|Signal i_samp_tick in the sensitivity list is not used in the process. Make sure all variables in the sensitivity list are referenced in the process.
+Post processing for work.analyzer_fsm.rtl
+@N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":81:2:81:3|Trying to extract state machine for register r_state.
+Extracted state machine for register r_state
+State machine has 4 reachable states with original encodings of:
+   00
+   01
+   10
+   11
+@W: CL249 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":81:2:81:3|Initial value is not supported on state machine r_state
+@N: CL159 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":45:2:45:12|Input i_samp_tick is unused.

@@ -1,31 +1,31 @@
 -- ========================================
--- Module: analyzer_fsm.vhd
--- Function: manages the logic analyzer state machine
--- Author: Jakob Kieszek Ottesen
+-- MODULE: analyzer_fsm.vhd
+-- FUNCTION: manages the logic analyzer state machine
+-- AUTHOR: Jakob Kieszek Ottesen
 --
--- Inputs:
--- i_clk
--- i_samp_tick
--- i_rst
--- i_cmd_error_pulse
--- i_capture_cmd_pulse
--- i_capture_done_pulse
--- i_read_cmd_pulse
--- i_send_done_pulse
--- i_tx_busy
+-- INPUTS					DATA		FROM MODULE
+-- i_clk					1 bit		<- clocking
+-- i_samp_tick				1 bit		<- clocking
+-- i_rst					1 bit		<- top
+-- i_cmd_error_pulse		1 bit		<- cmd_parser
+-- i_capture_cmd_pulse		1 bit		<- cmd_parser
+-- i_capture_done_pulse		1 bit		<- capture_engine
+-- i_read_cmd_pulse			1 bit		<- cmd_parser
+-- i_send_done_pulse		1 bit		<- send_engine
+-- i_tx_busy				1 bit		<- uart_tx
 --
--- Outputs:
--- o_capture_start_pulse
--- o_send_start_pulse
--- o_fsm_tx_status_byte
--- o_fsm_tx_start_pulse
--- o_USER_LED
+-- OUTPUTS					DATA		TO MODULE
+-- o_capture_start_pulse	1 bit		-> capture_engine
+-- o_send_start_pulse		1 bit		-> send_engine
+-- o_fsm_tx_status_byte		8 bits		-> tx_mux
+-- o_fsm_tx_start_pulse		1 bit		-> tx_mux
+-- o_USER_LED				1 bit		-> top
 --
--- Notes:
+-- NOTES
 -- Pending status code is just sent if not overridden by a new, higher-priority event in the same cycle
 -- Watchdog process not implemented
 --
--- Prefixes:
+-- PREFIXES
 -- i_ : input
 -- o_ : output
 -- r_ : register 			(internal signal; current; 		for sequential process)

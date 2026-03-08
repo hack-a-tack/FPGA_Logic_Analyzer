@@ -1,24 +1,21 @@
 -- ========================================
--- Module: tx_mux.vhd
--- Function: multiplexes data signals going to uart_tx (based on priority)
--- Author: Jakob Kieszek Ottesen
+-- MODULE: tx_mux.vhd
+-- FUNCTION: multiplexes data signals going to uart_tx (based on priority)
+-- AUTHOR: Jakob Kieszek Ottesen
 --
--- INPUTS:					DATA		FROM MODULE
--- i_clk					: 1 bit		<- clocking module
--- i_rst					: 1 bit		<- top
--- i_fsm_tx_status_byte		: 8 bits 	<- analyzer_fsm
--- i_fsm_tx_start_pulse		: 1 bit		<- analyzer_fsm
--- i_send_tx_byte			: 8 bits	<- send_engine
--- i_send_tx_start_pulse	: 1 bit		<- send_engine
+-- INPUTS					DATA		FROM MODULE
+-- i_clk					1 bit		<- clocking module
+-- i_rst					1 bit		<- top
+-- i_fsm_tx_status_byte		8 bits 		<- analyzer_fsm
+-- i_fsm_tx_start_pulse		1 bit		<- analyzer_fsm
+-- i_send_tx_byte			8 bits		<- send_engine
+-- i_send_tx_start_pulse	1 bit		<- send_engine
 --
--- OUTPUTS:					DATA		TO MODULE
+-- OUTPUTS					DATA		TO MODULE
 -- o_mux_tx_byte			: 8 bits	-> uart_tx
 -- o_mux_tx_start_pulse		: 1 bit		-> uart_tx
 --
--- Notes:
--- 
---
--- Prefixes:
+-- PREFIXES					
 -- i_ : input
 -- o_ : output
 -- r_ : register 			(internal signal; current; 		for sequential process)

@@ -1,25 +1,22 @@
 -- ========================================
--- Module: capture_engine.vhd
--- Function: samples logic analyzer inputs at i_clk and writes to BRAM
--- Author: Jakob Kieszek Ottesen
+-- MODULE: capture_engine.vhd
+-- FUNCTION: samples logic analyzer inputs at i_clk and writes to BRAM
+-- AUTHOR: Jakob Kieszek Ottesen
 --
--- Inputs:
--- i_clk
--- i_samp_tick
--- i_rst
--- i_capture_start_pulse
--- i_inputs
+-- INPUTS					DATA		FROM MODULE
+-- i_clk					1 bit		<- clocking
+-- i_samp_tick				1 bit		<- clocking
+-- i_rst					1 bit		<- top
+-- i_capture_start_pulse	1 bit		<- analyzer_fsm
+-- i_inputs					1 bit		<- top
 --
--- Outputs:
--- o_raw_wr_en_pulse
--- o_raw_wr_addr
--- o_raw_wr_data
--- o_capture_done_pulse
+-- OUTPUTS					DATA		TO MODULE
+-- o_raw_wr_en_pulse		1 bit		-> top
+-- o_raw_wr_addr			12 bits		-> top
+-- o_raw_wr_data			8 bits		-> top
+-- o_capture_done_pulse		1 bit		-> analyzer_fsm
 --
--- Notes:
--- NUM_SAMPLES generic is defined as power of 2 (can implement function for any size NUM_SAMPLES)
---
--- Prefixes:
+-- PREFIXES:
 -- i_ : input
 -- o_ : output
 -- r_ : register 			(internal signal; current; 		for sequential process)

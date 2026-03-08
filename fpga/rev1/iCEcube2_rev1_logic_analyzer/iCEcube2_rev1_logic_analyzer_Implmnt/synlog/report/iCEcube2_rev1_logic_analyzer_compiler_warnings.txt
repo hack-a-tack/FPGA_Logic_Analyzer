@@ -1,2 +1,3 @@
-@W: CL249 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":71:2:71:3|Initial value is not supported on state machine r_state
+@W: CD434 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":231:24:231:34|Signal i_samp_tick in the sensitivity list is not used in the process. Make sure all variables in the sensitivity list are referenced in the process.
+@W: CL249 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":81:2:81:3|Initial value is not supported on state machine r_state
 

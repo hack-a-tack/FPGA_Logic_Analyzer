@@ -1,12 +1,112 @@
-ble_pack i_send_tx_start_pulse_ibuf_RNIGI041_LC_0 {i_send_tx_start_pulse_ibuf_RNIGI041}
-ble_pack r_mux_tx_start_pulse_RNO_LC_9 {r_mux_tx_start_pulse_RNO}
-ble_pack r_mux_tx_byte_esr[0]_LC_1 {r_mux_tx_byte_esr[0], r_mux_tx_byte_esr_RNO[0]}
-ble_pack r_mux_tx_byte_esr[1]_LC_2 {r_mux_tx_byte_esr[1], r_mux_tx_byte_esr_RNO[1]}
-ble_pack r_mux_tx_byte_esr[2]_LC_3 {r_mux_tx_byte_esr[2], r_mux_tx_byte_esr_RNO[2]}
-ble_pack r_mux_tx_byte_esr[3]_LC_4 {r_mux_tx_byte_esr[3], r_mux_tx_byte_esr_RNO[3]}
-ble_pack r_mux_tx_byte_esr[4]_LC_5 {r_mux_tx_byte_esr[4], r_mux_tx_byte_esr_RNO[4]}
-ble_pack r_mux_tx_byte_esr[5]_LC_6 {r_mux_tx_byte_esr[5], r_mux_tx_byte_esr_RNO[5]}
-clb_pack PLB_0 {i_send_tx_start_pulse_ibuf_RNIGI041_LC_0, r_mux_tx_start_pulse_RNO_LC_9, r_mux_tx_byte_esr[0]_LC_1, r_mux_tx_byte_esr[1]_LC_2, r_mux_tx_byte_esr[2]_LC_3, r_mux_tx_byte_esr[3]_LC_4, r_mux_tx_byte_esr[4]_LC_5, r_mux_tx_byte_esr[5]_LC_6}
-ble_pack r_mux_tx_byte_esr[6]_LC_7 {r_mux_tx_byte_esr[6], r_mux_tx_byte_esr_RNO[6]}
-ble_pack r_mux_tx_byte_esr[7]_LC_8 {r_mux_tx_byte_esr[7], r_mux_tx_byte_esr_RNO[7]}
-clb_pack PLB_1 {r_mux_tx_byte_esr[6]_LC_7, r_mux_tx_byte_esr[7]_LC_8}
+ble_pack i_capture_cmd_pulse_ibuf_RNIJJN22_LC_1 {i_capture_cmd_pulse_ibuf_RNIJJN22}
+ble_pack i_cmd_error_pulse_ibuf_RNIBPQO_LC_6 {i_cmd_error_pulse_ibuf_RNIBPQO}
+ble_pack i_capture_done_pulse_ibuf_RNIHS331_LC_3 {i_capture_done_pulse_ibuf_RNIHS331}
+ble_pack r_fsm_tx_status_byte[1]_LC_31 {r_fsm_tx_status_byte[1], r_fsm_tx_status_byte_RNO[1]}
+ble_pack r_fsm_tx_status_byte[5]_LC_46 {r_fsm_tx_status_byte[5], r_fsm_tx_status_byte_RNO[5]}
+ble_pack r_fsm_tx_status_byte_RNO_0[1]_LC_24 {r_fsm_tx_status_byte_RNO_0[1]}
+ble_pack r_fsm_tx_status_byte_RNO_1[1]_LC_32 {r_fsm_tx_status_byte_RNO_1[1]}
+ble_pack r_fsm_tx_status_byte_RNO_2[1]_LC_37 {r_fsm_tx_status_byte_RNO_2[1]}
+clb_pack PLB_0 {i_capture_cmd_pulse_ibuf_RNIJJN22_LC_1, i_cmd_error_pulse_ibuf_RNIBPQO_LC_6, i_capture_done_pulse_ibuf_RNIHS331_LC_3, r_fsm_tx_status_byte[1]_LC_31, r_fsm_tx_status_byte[5]_LC_46, r_fsm_tx_status_byte_RNO_0[1]_LC_24, r_fsm_tx_status_byte_RNO_1[1]_LC_32, r_fsm_tx_status_byte_RNO_2[1]_LC_37}
+ble_pack i_capture_done_pulse_ibuf_RNIQ3F81_LC_4 {i_capture_done_pulse_ibuf_RNIQ3F81}
+ble_pack r_status_pending_valid_RNII5B92_LC_90 {r_status_pending_valid_RNII5B92}
+ble_pack i_read_cmd_pulse_ibuf_RNIL9IH_LC_11 {i_read_cmd_pulse_ibuf_RNIL9IH}
+ble_pack r_status_pending_valid_LC_93 {r_status_pending_valid, r_status_pending_valid_RNO}
+ble_pack r_status_pending_valid_RNIOORJ_LC_91 {r_status_pending_valid_RNIOORJ}
+ble_pack r_status_pending_valid_fast_RNIQ9RF1_LC_95 {r_status_pending_valid_fast_RNIQ9RF1}
+ble_pack r_status_pending_valid_fast_RNI2HVR_LC_94 {r_status_pending_valid_fast_RNI2HVR}
+ble_pack r_status_pending_valid_fast_LC_96 {r_status_pending_valid_fast, r_status_pending_valid_fast_RNO}
+clb_pack PLB_1 {i_capture_done_pulse_ibuf_RNIQ3F81_LC_4, r_status_pending_valid_RNII5B92_LC_90, i_read_cmd_pulse_ibuf_RNIL9IH_LC_11, r_status_pending_valid_LC_93, r_status_pending_valid_RNIOORJ_LC_91, r_status_pending_valid_fast_RNIQ9RF1_LC_95, r_status_pending_valid_fast_RNI2HVR_LC_94, r_status_pending_valid_fast_LC_96}
+ble_pack i_capture_done_pulse_ibuf_RNIV7JL_LC_5 {i_capture_done_pulse_ibuf_RNIV7JL}
+ble_pack r_state_RNIB6U01[1]_LC_51 {r_state_RNIB6U01[1]}
+ble_pack i_capture_cmd_pulse_ibuf_RNIHT19_LC_0 {i_capture_cmd_pulse_ibuf_RNIHT19}
+ble_pack r_fsm_tx_status_byte[0]_LC_22 {r_fsm_tx_status_byte[0], r_fsm_tx_status_byte_RNO[0]}
+ble_pack r_fsm_tx_status_byte_RNO_0[0]_LC_23 {r_fsm_tx_status_byte_RNO_0[0]}
+ble_pack r_fsm_tx_status_byte[3]_LC_41 {r_fsm_tx_status_byte[3], r_fsm_tx_status_byte_RNO[3]}
+ble_pack r_fsm_tx_status_byte_RNO_0[3]_LC_26 {r_fsm_tx_status_byte_RNO_0[3]}
+ble_pack r_fsm_tx_status_byte[4]_LC_44 {r_fsm_tx_status_byte[4], r_fsm_tx_status_byte_RNO[4]}
+clb_pack PLB_2 {i_capture_done_pulse_ibuf_RNIV7JL_LC_5, r_state_RNIB6U01[1]_LC_51, i_capture_cmd_pulse_ibuf_RNIHT19_LC_0, r_fsm_tx_status_byte[0]_LC_22, r_fsm_tx_status_byte_RNO_0[0]_LC_23, r_fsm_tx_status_byte[3]_LC_41, r_fsm_tx_status_byte_RNO_0[3]_LC_26, r_fsm_tx_status_byte[4]_LC_44}
+ble_pack i_read_cmd_pulse_ibuf_RNI7Q6U_LC_10 {i_read_cmd_pulse_ibuf_RNI7Q6U}
+ble_pack r_fsm_tx_status_byte_RNO_0[7]_LC_30 {r_fsm_tx_status_byte_RNO_0[7]}
+ble_pack r_fsm_tx_status_byte[7]_LC_48 {r_fsm_tx_status_byte[7], r_fsm_tx_status_byte_RNO[7]}
+ble_pack r_fsm_tx_status_byte_RNO_0[4]_LC_27 {r_fsm_tx_status_byte_RNO_0[4]}
+ble_pack r_fsm_tx_start_pulse_RNO_1_LC_19 {r_fsm_tx_start_pulse_RNO_1}
+ble_pack r_fsm_tx_start_pulse_LC_17 {r_fsm_tx_start_pulse, r_fsm_tx_start_pulse_RNO}
+ble_pack r_fsm_tx_start_pulse_RNO_2_LC_20 {r_fsm_tx_start_pulse_RNO_2}
+ble_pack r_fsm_tx_start_pulse_RNO_0_LC_18 {r_fsm_tx_start_pulse_RNO_0}
+clb_pack PLB_3 {i_read_cmd_pulse_ibuf_RNI7Q6U_LC_10, r_fsm_tx_status_byte_RNO_0[7]_LC_30, r_fsm_tx_status_byte[7]_LC_48, r_fsm_tx_status_byte_RNO_0[4]_LC_27, r_fsm_tx_start_pulse_RNO_1_LC_19, r_fsm_tx_start_pulse_LC_17, r_fsm_tx_start_pulse_RNO_2_LC_20, r_fsm_tx_start_pulse_RNO_0_LC_18}
+ble_pack i_read_cmd_pulse_ibuf_RNIL9IH_0_LC_12 {i_read_cmd_pulse_ibuf_RNIL9IH_0}
+ble_pack i_tx_busy_ibuf_RNIAAER1_LC_14 {i_tx_busy_ibuf_RNIAAER1}
+ble_pack i_capture_done_pulse_ibuf_RNI8AQE_LC_2 {i_capture_done_pulse_ibuf_RNI8AQE}
+ble_pack i_rst_ibuf_gb_io_RNIFJ522_LC_13 {i_rst_ibuf_gb_io_RNIFJ522}
+ble_pack r_state[0]_LC_52 {r_state[0], r_state_RNO[0]}
+ble_pack r_state[1]_LC_53 {r_state[1], r_state_RNO[1]}
+ble_pack r_status_pending_byte_esr_RNO_4[0]_LC_83 {r_status_pending_byte_esr_RNO_4[0]}
+ble_pack r_status_pending_byte_esr_RNO_0[0]_LC_61 {r_status_pending_byte_esr_RNO_0[0]}
+clb_pack PLB_4 {i_read_cmd_pulse_ibuf_RNIL9IH_0_LC_12, i_tx_busy_ibuf_RNIAAER1_LC_14, i_capture_done_pulse_ibuf_RNI8AQE_LC_2, i_rst_ibuf_gb_io_RNIFJ522_LC_13, r_state[0]_LC_52, r_state[1]_LC_53, r_status_pending_byte_esr_RNO_4[0]_LC_83, r_status_pending_byte_esr_RNO_0[0]_LC_61}
+ble_pack r_fsm_tx_status_byte_RNO_0[2]_LC_25 {r_fsm_tx_status_byte_RNO_0[2]}
+ble_pack r_fsm_tx_status_byte[2]_LC_36 {r_fsm_tx_status_byte[2], r_fsm_tx_status_byte_RNO[2]}
+ble_pack r_status_pending_byte[2]_LC_58 {r_status_pending_byte[2], r_status_pending_byte_RNO[2]}
+ble_pack r_status_pending_valid_rep1_LC_97 {r_status_pending_valid_rep1, r_status_pending_valid_rep1_RNO}
+ble_pack r_fsm_tx_status_byte_RNO_1[2]_LC_33 {r_fsm_tx_status_byte_RNO_1[2]}
+ble_pack r_fsm_tx_status_byte_RNO_2[2]_LC_38 {r_fsm_tx_status_byte_RNO_2[2]}
+ble_pack r_fsm_tx_status_byte_RNO_1[6]_LC_35 {r_fsm_tx_status_byte_RNO_1[6]}
+ble_pack r_status_pending_byte[6]_LC_59 {r_status_pending_byte[6], r_status_pending_byte_RNO[6]}
+clb_pack PLB_5 {r_fsm_tx_status_byte_RNO_0[2]_LC_25, r_fsm_tx_status_byte[2]_LC_36, r_status_pending_byte[2]_LC_58, r_status_pending_valid_rep1_LC_97, r_fsm_tx_status_byte_RNO_1[2]_LC_33, r_fsm_tx_status_byte_RNO_2[2]_LC_38, r_fsm_tx_status_byte_RNO_1[6]_LC_35, r_status_pending_byte[6]_LC_59}
+ble_pack r_fsm_tx_status_byte_RNO_0[6]_LC_29 {r_fsm_tx_status_byte_RNO_0[6]}
+ble_pack r_fsm_tx_status_byte[6]_LC_47 {r_fsm_tx_status_byte[6], r_fsm_tx_status_byte_RNO[6]}
+ble_pack r_fsm_tx_status_byte_RNO_2[6]_LC_40 {r_fsm_tx_status_byte_RNO_2[6]}
+ble_pack r_fsm_tx_status_byte_RNO_3[6]_LC_43 {r_fsm_tx_status_byte_RNO_3[6]}
+ble_pack r_fsm_tx_status_byte_RNO_4[6]_LC_45 {r_fsm_tx_status_byte_RNO_4[6]}
+ble_pack r_state_ns_1_0_.m6_i_a3_LC_54 {r_state_ns_1_0_.m6_i_a3}
+ble_pack r_status_pending_byte_esr_RNO_5[0]_LC_85 {r_status_pending_byte_esr_RNO_5[0]}
+ble_pack r_USER_LED_LC_15 {r_USER_LED, r_USER_LED_RNO}
+clb_pack PLB_6 {r_fsm_tx_status_byte_RNO_0[6]_LC_29, r_fsm_tx_status_byte[6]_LC_47, r_fsm_tx_status_byte_RNO_2[6]_LC_40, r_fsm_tx_status_byte_RNO_3[6]_LC_43, r_fsm_tx_status_byte_RNO_4[6]_LC_45, r_state_ns_1_0_.m6_i_a3_LC_54, r_status_pending_byte_esr_RNO_5[0]_LC_85, r_USER_LED_LC_15}
+ble_pack r_fsm_tx_status_byte_RNO_1[5]_LC_34 {r_fsm_tx_status_byte_RNO_1[5]}
+ble_pack r_fsm_tx_status_byte_RNO_0[5]_LC_28 {r_fsm_tx_status_byte_RNO_0[5]}
+ble_pack r_fsm_tx_status_byte_RNO_2[5]_LC_39 {r_fsm_tx_status_byte_RNO_2[5]}
+ble_pack r_status_pending_byte_esr[5]_LC_84 {r_status_pending_byte_esr[5], r_status_pending_byte_esr_RNO[5]}
+ble_pack r_status_pending_byte_esr_RNO_0[5]_LC_65 {r_status_pending_byte_esr_RNO_0[5]}
+ble_pack r_status_pending_byte_esr_RNO_2[5]_LC_78 {r_status_pending_byte_esr_RNO_2[5]}
+ble_pack r_status_pending_byte_esr_RNO_1[5]_LC_72 {r_status_pending_byte_esr_RNO_1[5]}
+ble_pack r_status_pending_byte_esr_RNO_1[1]_LC_69 {r_status_pending_byte_esr_RNO_1[1]}
+clb_pack PLB_7 {r_fsm_tx_status_byte_RNO_1[5]_LC_34, r_fsm_tx_status_byte_RNO_0[5]_LC_28, r_fsm_tx_status_byte_RNO_2[5]_LC_39, r_status_pending_byte_esr[5]_LC_84, r_status_pending_byte_esr_RNO_0[5]_LC_65, r_status_pending_byte_esr_RNO_2[5]_LC_78, r_status_pending_byte_esr_RNO_1[5]_LC_72, r_status_pending_byte_esr_RNO_1[1]_LC_69}
+ble_pack r_state_ns_1_0_.m9_0_0_LC_56 {r_state_ns_1_0_.m9_0_0}
+ble_pack r_state_ns_1_0_.m6_i_a3_0_LC_55 {r_state_ns_1_0_.m6_i_a3_0}
+ble_pack r_capture_start_pulse_LC_16 {r_capture_start_pulse, r_capture_start_pulse_RNO}
+ble_pack r_send_start_pulse_RNO_0_LC_50 {r_send_start_pulse_RNO_0}
+ble_pack r_send_start_pulse_LC_49 {r_send_start_pulse, r_send_start_pulse_RNO}
+ble_pack r_status_pending_byte_esr_RNO_8[0]_LC_89 {r_status_pending_byte_esr_RNO_8[0]}
+ble_pack r_status_pending_byte_esr_RNO_3[0]_LC_81 {r_status_pending_byte_esr_RNO_3[0]}
+ble_pack r_status_pending_byte_esr_RNO_1[3]_LC_70 {r_status_pending_byte_esr_RNO_1[3]}
+clb_pack PLB_8 {r_state_ns_1_0_.m9_0_0_LC_56, r_state_ns_1_0_.m6_i_a3_0_LC_55, r_capture_start_pulse_LC_16, r_send_start_pulse_RNO_0_LC_50, r_send_start_pulse_LC_49, r_status_pending_byte_esr_RNO_8[0]_LC_89, r_status_pending_byte_esr_RNO_3[0]_LC_81, r_status_pending_byte_esr_RNO_1[3]_LC_70}
+ble_pack r_status_pending_byte_esr[0]_LC_60 {r_status_pending_byte_esr[0], r_status_pending_byte_esr_RNO[0]}
+ble_pack r_status_pending_byte_esr_RNO_2[0]_LC_74 {r_status_pending_byte_esr_RNO_2[0]}
+ble_pack r_status_pending_byte_esr_RNO_6[0]_LC_86 {r_status_pending_byte_esr_RNO_6[0]}
+ble_pack r_status_pending_byte_esr_RNO_1[0]_LC_68 {r_status_pending_byte_esr_RNO_1[0]}
+ble_pack r_status_pending_byte_esr_RNO_7[0]_LC_88 {r_status_pending_byte_esr_RNO_7[0]}
+ble_pack r_status_pending_byte_esr_RNO_0[3]_LC_63 {r_status_pending_byte_esr_RNO_0[3]}
+ble_pack r_status_pending_byte_esr[3]_LC_80 {r_status_pending_byte_esr[3], r_status_pending_byte_esr_RNO[3]}
+ble_pack r_status_pending_byte_esr_RNO_2[3]_LC_76 {r_status_pending_byte_esr_RNO_2[3]}
+clb_pack PLB_9 {r_status_pending_byte_esr[0]_LC_60, r_status_pending_byte_esr_RNO_2[0]_LC_74, r_status_pending_byte_esr_RNO_6[0]_LC_86, r_status_pending_byte_esr_RNO_1[0]_LC_68, r_status_pending_byte_esr_RNO_7[0]_LC_88, r_status_pending_byte_esr_RNO_0[3]_LC_63, r_status_pending_byte_esr[3]_LC_80, r_status_pending_byte_esr_RNO_2[3]_LC_76}
+ble_pack r_status_pending_byte_esr[1]_LC_67 {r_status_pending_byte_esr[1], r_status_pending_byte_esr_RNO[1]}
+ble_pack r_status_pending_byte_esr_RNO_0[1]_LC_62 {r_status_pending_byte_esr_RNO_0[1]}
+ble_pack r_status_pending_byte_esr_RNO_2[1]_LC_75 {r_status_pending_byte_esr_RNO_2[1]}
+ble_pack r_status_pending_byte_esr_RNO_1[4]_LC_71 {r_status_pending_byte_esr_RNO_1[4]}
+ble_pack r_status_pending_byte_esr[4]_LC_82 {r_status_pending_byte_esr[4], r_status_pending_byte_esr_RNO[4]}
+ble_pack r_status_pending_byte_esr_RNO_2[4]_LC_77 {r_status_pending_byte_esr_RNO_2[4]}
+ble_pack r_status_pending_byte_esr_RNO_0[4]_LC_64 {r_status_pending_byte_esr_RNO_0[4]}
+ble_pack i_cmd_error_pulse_ibuf_RNIIPKP_LC_9 {i_cmd_error_pulse_ibuf_RNIIPKP}
+clb_pack PLB_10 {r_status_pending_byte_esr[1]_LC_67, r_status_pending_byte_esr_RNO_0[1]_LC_62, r_status_pending_byte_esr_RNO_2[1]_LC_75, r_status_pending_byte_esr_RNO_1[4]_LC_71, r_status_pending_byte_esr[4]_LC_82, r_status_pending_byte_esr_RNO_2[4]_LC_77, r_status_pending_byte_esr_RNO_0[4]_LC_64, i_cmd_error_pulse_ibuf_RNIIPKP_LC_9}
+ble_pack r_status_pending_byte_esr_RNO_2[7]_LC_79 {r_status_pending_byte_esr_RNO_2[7]}
+ble_pack r_status_pending_byte_esr[7]_LC_87 {r_status_pending_byte_esr[7], r_status_pending_byte_esr_RNO[7]}
+ble_pack r_status_pending_byte_esr_RNO_1[7]_LC_73 {r_status_pending_byte_esr_RNO_1[7]}
+ble_pack r_status_pending_byte_esr_RNO_0[7]_LC_66 {r_status_pending_byte_esr_RNO_0[7]}
+ble_pack r_fsm_tx_start_pulse_RNO_3_LC_21 {r_fsm_tx_start_pulse_RNO_3}
+ble_pack r_state_ns_1_0_.m9_0_a2_LC_57 {r_state_ns_1_0_.m9_0_a2}
+ble_pack r_status_pending_valid_RNIPOUM_LC_92 {r_status_pending_valid_RNIPOUM}
+ble_pack i_cmd_error_pulse_ibuf_RNIEH0I_0_LC_8 {i_cmd_error_pulse_ibuf_RNIEH0I_0}
+clb_pack PLB_11 {r_status_pending_byte_esr_RNO_2[7]_LC_79, r_status_pending_byte_esr[7]_LC_87, r_status_pending_byte_esr_RNO_1[7]_LC_73, r_status_pending_byte_esr_RNO_0[7]_LC_66, r_fsm_tx_start_pulse_RNO_3_LC_21, r_state_ns_1_0_.m9_0_a2_LC_57, r_status_pending_valid_RNIPOUM_LC_92, i_cmd_error_pulse_ibuf_RNIEH0I_0_LC_8}
+ble_pack i_cmd_error_pulse_ibuf_RNIEH0I_LC_7 {i_cmd_error_pulse_ibuf_RNIEH0I}
+ble_pack r_fsm_tx_status_byte_RNO_3[2]_LC_42 {r_fsm_tx_status_byte_RNO_3[2]}
+ble_pack LC_98 {CONSTANT_ONE_LUT4}
+clb_pack PLB_12 {i_cmd_error_pulse_ibuf_RNIEH0I_LC_7, r_fsm_tx_status_byte_RNO_3[2]_LC_42, LC_98}

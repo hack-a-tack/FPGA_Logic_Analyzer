@@ -1,11 +1,20 @@
 -- ========================================
--- File: capture_engine_tb.vhd - TESTBENCH
--- Author: Jakob Kieszek Ottesen
--- Prefixes:
--- i_ : input
--- o_ : output
--- r_ : register 			(internal signal; current; 		for sequential process)
--- n_ : next <register> 	(internal signal; next state; 	for combinational process)
+-- MODULE: capture_engine_tb.vhd
+-- FUNCTION: TESTBENCH for entity that samples logic analyzer inputs and writes to BRAM
+-- AUTHOR: Jakob Kieszek Ottesen
+--
+-- INPUTS					DATA		FROM MODULE
+-- i_clk					1 bit		<- clocking
+-- i_samp_tick				1 bit		<- clocking
+-- i_rst					1 bit		<- top
+-- i_capture_start_pulse	1 bit		<- analyzer_fsm
+-- i_inputs					1 bit		<- top
+--
+-- OUTPUTS					DATA		TO MODULE
+-- o_raw_wr_en_pulse		1 bit		-> top
+-- o_raw_wr_addr			12 bits		-> top
+-- o_raw_wr_data			8 bits		-> top
+-- o_capture_done_pulse		1 bit		-> analyzer_fsm
 -- ========================================
 
 library IEEE;

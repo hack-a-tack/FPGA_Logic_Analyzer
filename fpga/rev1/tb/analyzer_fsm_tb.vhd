@@ -1,11 +1,25 @@
 -- ========================================
--- File: analyzer_fsm_tb.vhd - TESTBENCH
--- Author: Jakob Kieszek Ottesen
--- Prefixes:
--- i_ : input
--- o_ : output
--- r_ : register 			(internal signal; current; 		for sequential process)
--- n_ : next <register> 	(internal signal; next state; 	for combinational process)
+-- MODULE: analyzer_fsm_tb.vhd
+-- FUNCTION: TESTBENCH for controlling entity of logic analyzer state machine
+-- AUTHOR: Jakob Kieszek Ottesen
+--
+-- INPUTS					DATA		FROM MODULE
+-- i_clk					1 bit		<- clocking
+-- i_samp_tick				1 bit		<- clocking
+-- i_rst					1 bit		<- top
+-- i_cmd_error_pulse		1 bit		<- cmd_parser
+-- i_capture_cmd_pulse		1 bit		<- cmd_parser
+-- i_capture_done_pulse		1 bit		<- capture_engine
+-- i_read_cmd_pulse			1 bit		<- cmd_parser
+-- i_send_done_pulse		1 bit		<- send_engine
+-- i_tx_busy				1 bit		<- uart_tx
+--
+-- OUTPUTS					DATA		TO MODULE
+-- o_capture_start_pulse	1 bit		-> capture_engine
+-- o_send_start_pulse		1 bit		-> send_engine
+-- o_fsm_tx_status_byte		8 bits		-> tx_mux
+-- o_fsm_tx_start_pulse		1 bit		-> tx_mux
+-- o_USER_LED				1 bit		-> top
 -- ========================================
 
 library IEEE;
