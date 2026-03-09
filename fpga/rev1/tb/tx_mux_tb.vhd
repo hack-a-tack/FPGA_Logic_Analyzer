@@ -26,30 +26,34 @@ end entity tx_mux_tb;
 architecture sim of tx_mux_tb is
     -- Component declaration (optional in VHDL-2008)
     component tx_mux
+		generic(
+			DATA_LENGTH : integer := 8
+		);
         port(			
 			i_clk					: in  std_logic;
 			i_rst					: in  std_logic;
-			i_fsm_tx_status_byte	: in  std_logic_vector(7 downto 0);
+			i_fsm_tx_status_byte	: in  std_logic_vector(DATA_LENGTH-1 downto 0);
 			i_fsm_tx_start_pulse	: in  std_logic;
-			i_send_tx_byte			: in  std_logic_vector(7 downto 0);
+			i_send_tx_byte			: in  std_logic_vector(DATA_LENGTH-1 downto 0);
 			i_send_tx_start_pulse	: in  std_logic;
-			o_mux_tx_byte			: out std_logic_vector(7 downto 0);
+			o_mux_tx_byte			: out std_logic_vector(DATA_LENGTH-1 downto 0);
 			o_mux_tx_start_pulse	: out std_logic
         );
     end component;
 	
 	-- Constant declaration
+	constant DATA_LENGTH : integer := 8;
 	constant CLK_FREQ   : real := 48e6;
 	constant CLK_PERIOD : time := 1 sec / CLK_FREQ;
 
     -- Signals to connect to DUT	
 	signal i_clk					: std_logic := '0';
 	signal i_rst					: std_logic := '0';
-	signal i_fsm_tx_status_byte		: std_logic_vector(7 downto 0) := (others => '0');
+	signal i_fsm_tx_status_byte		: std_logic_vector(DATA_LENGTH-1 downto 0) := (others => '0');
 	signal i_fsm_tx_start_pulse		: std_logic := '0';
-	signal i_send_tx_byte			: std_logic_vector(7 downto 0) := (others => '0');
+	signal i_send_tx_byte			: std_logic_vector(DATA_LENGTH-1 downto 0) := (others => '0');
 	signal i_send_tx_start_pulse	: std_logic := '0';
-	signal o_mux_tx_byte			: std_logic_vector(7 downto 0);
+	signal o_mux_tx_byte			: std_logic_vector(DATA_LENGTH-1 downto 0);
 	signal o_mux_tx_start_pulse		: std_logic;
 
 begin

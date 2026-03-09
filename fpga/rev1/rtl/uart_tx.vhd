@@ -20,6 +20,7 @@
 -- CLKS_PER_BIT is of type integer. 48e6/921600 = 52.0833... = 52
 -- Therefore, actual baud rate = 48e6/52 = 923076, not 921600 --> +0.16% error
 -- But UART usually tolerates +- 2-3% error
+-- Each bit has to be transmitted for CLKS_PER_BIT (~52) clock cycles
 --
 -- PREFIXES					
 -- i_ : input
@@ -106,7 +107,7 @@ begin
 				n_tx_busy <= '0';
 				n_UART_TX <= '1';  -- force line high (UART is idle high)
 				if i_mux_tx_start_pulse = '1' then
-					n_tx_byte <= i_mux_tx_byte; -- latch input byte so it doesn't change during transmission
+					n_tx_byte <= i_mux_tx_byte;  -- latch input byte so it doesn't change during transmission
 					n_clk_counter <= 0;
 					n_bit_counter <= 0;
 					n_state <= TX_START_BIT;
