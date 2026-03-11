@@ -1,8 +1,6 @@
 [VIC]
-N_229_32_cascade_=ltout:in2
-N_56_cascade_=ltout:in2
-fsm_proc_n_UART_TX_2_7_i_m2_ns_1_cascade_=ltout:in2
-n_state_0_sqmuxa_31_8_cascade_=ltout:in0
-r_UART_TX_RNOZ0Z_4_cascade_=ltout:in0
-r_bit_counter_122_0_cascade_=ltout:in1
-r_state_ns_0_i_a2_0_3_6_0_cascade_=ltout:in0
+N_18_0_cascade_=ltout:in0
+N_21_cascade_=ltout:in0
+N_27_cascade_=ltout:in1
+fsm_proc_un10_r_clk_counter_THRU_CO_cascade_=ltout:in3
+fsm_proc_un6_r_clk_counter_THRU_CO_cascade_=ltout:in0

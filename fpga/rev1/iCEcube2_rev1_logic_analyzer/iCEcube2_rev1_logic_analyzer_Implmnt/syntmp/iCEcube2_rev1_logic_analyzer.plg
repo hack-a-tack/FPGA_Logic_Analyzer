@@ -1,12 +1,12 @@
-@P:  Worst Slack : -1.968
-@P:  uart_tx|i_clk - Estimated Frequency : 76.2 MHz
-@P:  uart_tx|i_clk - Requested Frequency : 89.7 MHz
-@P:  uart_tx|i_clk - Estimated Period : 13.118
-@P:  uart_tx|i_clk - Requested Period : 11.150
-@P:  uart_tx|i_clk - Slack : -1.968
-@P: uart_tx Part : ice40hx1kvq100
-@P: uart_tx I/O primitives : 14
-@P: uart_tx I/O Register bits : 0
-@P: uart_tx Register bits (Non I/O) : 78 (6%)
-@P: uart_tx Total Luts : 120 (9%)
-@P:  CPU Time : 0h:00m:01s
+@P:  Worst Slack : -1.948
+@P:  uart_rx|i_clk - Estimated Frequency : 77.0 MHz
+@P:  uart_rx|i_clk - Requested Frequency : 90.6 MHz
+@P:  uart_rx|i_clk - Estimated Period : 12.984
+@P:  uart_rx|i_clk - Requested Period : 11.037
+@P:  uart_rx|i_clk - Slack : -1.948
+@P: uart_rx Part : ice40hx1kvq100
+@P: uart_rx I/O primitives : 13
+@P: uart_rx I/O Register bits : 0
+@P: uart_rx Register bits (Non I/O) : 78 (6%)
+@P: uart_rx Total Luts : 114 (8%)
+@P:  CPU Time : 0h:00m:02s

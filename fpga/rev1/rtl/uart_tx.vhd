@@ -4,7 +4,7 @@
 -- AUTHOR: Jakob Kieszek Ottesen
 --
 -- INPUTS					DATA		FROM MODULE
--- i_clk					1 bit		<- clocking module
+-- i_clk					1 bit		<- clocking
 -- i_rst					1 bit		<- top
 -- i_mux_tx_byte			8 bits 		<- tx_mux
 -- i_mux_tx_start_pulse		1 bit		<- tx_mux
@@ -18,9 +18,9 @@
 -- 8N1 UART --> start bit, data bits 0-7 (starting with LSB), stop bit --> 10 baud
 -- 1 baud = 1 symbol (1 bit for UART)
 -- CLKS_PER_BIT is of type integer. 48e6/921600 = 52.0833... = 52
+-- --> Each bit has to be transmitted for CLKS_PER_BIT (~52) clock cycles
 -- Therefore, actual baud rate = 48e6/52 = 923076, not 921600 --> +0.16% error
 -- But UART usually tolerates +- 2-3% error
--- Each bit has to be transmitted for CLKS_PER_BIT (~52) clock cycles
 --
 -- PREFIXES					
 -- i_ : input
@@ -55,9 +55,9 @@ architecture RTL of uart_tx is
 	type UART_TX_state_type is (TX_IDLE, TX_START_BIT, TX_DATA_BITS, TX_STOP_BIT);
 	
 	-- Register signals, next-state signals
-	signal r_state, n_state : UART_TX_state_type := TX_IDLE;
-	signal r_tx_busy, n_tx_busy : std_logic := '0';
-	signal r_UART_TX, n_UART_TX : std_logic := '0';
+	signal r_state, n_state : UART_TX_state_type := TX_IDLE;									-- internal state
+	signal r_tx_busy, n_tx_busy : std_logic := '0';  											-- output
+	signal r_UART_TX, n_UART_TX : std_logic := '0';  											-- output
 	signal r_tx_byte, n_tx_byte : std_logic_vector(DATA_LENGTH-1 downto 0) := (others => '0');  -- for input latching
 	
 	-- Counter signals

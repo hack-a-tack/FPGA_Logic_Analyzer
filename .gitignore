@@ -1,2 +1,3 @@
 *.log
 fpga/rev1/current_vhdl_for_easy_review.txt
+fpga/rev1/current_vhdl.txt

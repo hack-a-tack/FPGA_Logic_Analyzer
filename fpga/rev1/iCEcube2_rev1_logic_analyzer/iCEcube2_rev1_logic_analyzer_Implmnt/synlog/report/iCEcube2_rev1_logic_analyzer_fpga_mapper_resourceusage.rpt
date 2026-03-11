@@ -1,26 +1,26 @@
 ---------------------------------------
-Resource Usage Report for uart_tx 
+Resource Usage Report for uart_rx 
 
 Mapping to part: ice40hx1kvq100
 Cell usage:
-SB_CARRY        78 uses
-SB_DFF          5 uses
-SB_DFFSR        72 uses
-SB_DFFSS        1 use
+SB_CARRY        86 uses
+SB_DFF          3 uses
+SB_DFFSR        73 uses
+SB_DFFSS        2 uses
 SB_GB           2 uses
-SB_LUT4         120 uses
+SB_LUT4         114 uses
 
-I/O ports: 14
-I/O primitives: 14
+I/O ports: 13
+I/O primitives: 13
 SB_GB_IO       1 use
-SB_IO          13 uses
+SB_IO          12 uses
 
 I/O Register bits:                  0
 Register bits not including I/Os:   78 (6%)
 
 @S |Mapping Summary:
-Total  LUTs: 120 (9%)
+Total  LUTs: 114 (8%)
 
 Distribution of All Consumed LUTs = LUT4 
-Distribution of All Consumed Luts 120 = 120 
+Distribution of All Consumed Luts 114 = 114 
 

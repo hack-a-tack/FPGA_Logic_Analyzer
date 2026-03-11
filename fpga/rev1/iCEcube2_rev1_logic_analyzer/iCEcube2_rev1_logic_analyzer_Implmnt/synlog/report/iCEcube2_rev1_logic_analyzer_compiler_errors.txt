@@ -1,4 +1,6 @@
-@E: CS187 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":68:23:68:24|Expecting ,
-@E: CD415 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":168:20:168:20|Expecting keyword of
-@E: Parse errors encountered - exiting
+@E: CL219 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":61:20:61:30|Multiple non-tristate drivers for net ff_sync_bit in uart_rx
+@E: CL229 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":61:20:61:30|Unresolved tristate drivers for net ff_sync_bit in uart_rx
+@E: MF420 |Netlist read from file C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\iCEcube2_rev1_logic_analyzer\iCEcube2_rev1_logic_analyzer_Implmnt\synwork\layer0.srs failed
+@E:Cannot find top netlist, aborting.Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+@E::Error while linking, aborting.
 

@@ -15,9 +15,9 @@ Max Top 5 critical clocks will be reported. For rest user needs to refer to Deta
 <data tcl_name="slack">Slack</data>
 </row>
 <row>
-<data>uart_tx|i_clk</data>
-<data>89.7 MHz</data>
-<data>76.2 MHz</data>
-<data>-1.968</data>
+<data>uart_rx|i_clk</data>
+<data>90.6 MHz</data>
+<data>77.0 MHz</data>
+<data>-1.948</data>
 </row>
 </report_table>

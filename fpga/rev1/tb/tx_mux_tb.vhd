@@ -4,7 +4,7 @@
 -- AUTHOR: Jakob Kieszek Ottesen
 --
 -- INPUTS					DATA		FROM MODULE
--- i_clk					1 bit		<- clocking module
+-- i_clk					1 bit		<- clocking
 -- i_rst					1 bit		<- top
 -- i_fsm_tx_status_byte		8 bits 		<- analyzer_fsm
 -- i_fsm_tx_start_pulse		1 bit		<- analyzer_fsm

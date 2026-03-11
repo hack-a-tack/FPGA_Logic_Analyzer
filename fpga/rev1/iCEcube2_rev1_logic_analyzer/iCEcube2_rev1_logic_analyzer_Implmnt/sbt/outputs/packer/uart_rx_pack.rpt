@@ -1,0 +1,92 @@
+* ******************************************************************************
+
+* iCEcube Report
+
+* Version:            2020.12.27943
+
+* Build Date:         Dec  9 2020 17:31:51
+
+* File Generated:     Mar 11 2026 06:07:23
+
+* Purpose:            General info of design implementation
+
+* Copyright (C) 2006-2010 by Lattice Semiconductor Corp. All rights reserved.
+
+* ******************************************************************************
+
+Synthesis/Placement Summary:
+----------------------------
+    Status:  Successful
+    Runtime: 0 seconds
+
+Device Info:
+------------
+    Device Family: iCE40
+    Device:        iCE40HX1K
+    Package:       VQ100
+
+Design statistics:
+------------------
+    FFs:                  78
+    LUTs:                 119
+    RAMs:                 0
+    IOBs:                 13
+    GBs:                  3
+    PLLs:                 0
+    Warm Boots:           0
+
+Logic Resource Utilization:
+---------------------------
+    Total Logic Cells: 143/1280
+        Combinational Logic Cells: 65       out of   1280      5.07813%
+        Sequential Logic Cells:    78       out of   1280      6.09375%
+        Logic Tiles:               26       out of   160       16.25%
+    Registers: 
+        Logic Registers:           78       out of   1280      6.09375%
+        IO Registers:              0        out of   560       0
+    Block RAMs:                    0        out of   16        0%
+    Warm Boots:                    0        out of   1         0%
+    Pins:
+        Input Pins:                3        out of   72        4.16667%
+        Output Pins:               10       out of   72        13.8889%
+        InOut Pins:                0        out of   72        0%
+    Global Buffers:                3        out of   8         37.5%
+    PLLs:                          0        out of   0       
+
+IO Bank Utilization:
+--------------------
+    Bank 3: 9        out of   18        50%
+    Bank 1: 0        out of   19        0%
+    Bank 0: 4        out of   19        21.0526%
+    Bank 2: 0        out of   16        0%
+
+Detailed I/O Info:
+------------------
+    Input Pins: 
+    Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function    Signal Name       
+    ----------  ---------  -----------  -------  -------  -----------    -----------       
+    13          Input      SB_LVCMOS    No       3        Simple Input   i_clk             
+    87          Input      SB_LVCMOS    No       0        Simple Input   i_rst             
+    93          Input      SB_LVCMOS    No       0        Simple Input   i_UART_RX         
+
+    Output Pins: 
+    Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function    Signal Name       
+    ----------  ---------  -----------  -------  -------  -----------    -----------       
+    2           Output     SB_LVCMOS    No       3        Simple Output  o_rx_byte[6]      
+    4           Output     SB_LVCMOS    No       3        Simple Output  o_rx_byte[5]      
+    8           Output     SB_LVCMOS    No       3        Simple Output  o_UART_RX_LED     
+    12          Output     SB_LVCMOS    No       3        Simple Output  o_rx_byte[4]      
+    16          Output     SB_LVCMOS    No       3        Simple Output  o_rx_byte[3]      
+    19          Output     SB_LVCMOS    No       3        Simple Output  o_rx_byte[2]      
+    21          Output     SB_LVCMOS    No       3        Simple Output  o_rx_byte[1]      
+    25          Output     SB_LVCMOS    No       3        Simple Output  o_rx_byte[0]      
+    96          Output     SB_LVCMOS    No       0        Simple Output  o_rx_valid_pulse  
+    100         Output     SB_LVCMOS    No       0        Simple Output  o_rx_byte[7]      
+
+Detailed Global Buffer Info:
+----------------------------
+    Buffer Number  IO Bank  Driven By  Fanout  Signal Name
+    -------------  -------  ---------  ------  -----------
+    4              3        IO         78      i_clk_c_g  
+    2              1                   32      N_209_g    
+    6              3                   32      N_144_g    

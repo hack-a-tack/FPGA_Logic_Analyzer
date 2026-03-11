@@ -1,0 +1,35 @@
+#### START OF AREA REPORT #####[
+
+Part:			ICE40HX1KVQ100 (Lattice)
+
+-----------------------------------------------------------------------
+########   Utilization report for  Top level view:   uart_rx   ########
+=======================================================================
+
+SEQUENTIAL ELEMENTS
+Name      Total elements     Utilization     Notes
+--------------------------------------------------
+FLOPS     78                 100 %                
+==================================================
+Total SEQUENTIAL ELEMENTS in the block uart_rx:	78 (26.44 % Utilization)
+
+
+COMBINATIONAL LOGIC
+Name       Total elements     Utilization     Notes
+---------------------------------------------------
+LUTS       114                100 %                
+CARRYS     86                 100 %                
+===================================================
+Total COMBINATIONAL LOGIC in the block uart_rx:	200 (67.80 % Utilization)
+
+
+IO PADS
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+PADS     15                 100 %                
+=================================================
+Total IO PADS in the block uart_rx:	15 (5.08 % Utilization)
+
+
+##### END OF AREA REPORT #####]
+

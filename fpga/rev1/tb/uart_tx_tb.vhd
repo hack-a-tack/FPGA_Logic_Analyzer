@@ -4,7 +4,7 @@
 -- AUTHOR: Jakob Kieszek Ottesen
 --
 -- INPUTS					DATA		FROM MODULE
--- i_clk					1 bit		<- clocking module
+-- i_clk					1 bit		<- clocking
 -- i_rst					1 bit		<- top
 -- i_mux_tx_byte			8 bits 		<- tx_mux
 -- i_mux_tx_start_pulse		1 bit		<- tx_mux
@@ -18,10 +18,10 @@
 -- 8N1 UART --> start bit, data bits 0-7 (starting with LSB), stop bit --> 10 baud
 -- 1 baud = 1 symbol (1 bit for UART)
 -- CLKS_PER_BIT is of type integer. 48e6/921600 = 52.0833... = 52
+-- --> Each bit has to be transmitted for CLKS_PER_BIT (~52) clock cycles ("bit period")
+-- --> In the testbench, it makes sense to sample roughly in the middle of each bit period
 -- Therefore, actual baud rate = 48e6/52 = 923076, not 921600 --> +0.16% error
 -- But UART usually tolerates +- 2-3% error
--- Each bit has to be transmitted for CLKS_PER_BIT (~52) clock cycles
--- In the testbench, it makes sense to sample roughly in the middle of each bit period
 -- ========================================
 
 library IEEE;

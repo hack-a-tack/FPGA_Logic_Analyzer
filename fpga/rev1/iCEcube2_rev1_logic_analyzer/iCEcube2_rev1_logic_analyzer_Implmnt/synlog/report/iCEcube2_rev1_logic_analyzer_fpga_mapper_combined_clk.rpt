@@ -12,7 +12,7 @@
 ============================ Non-Gated/Non-Generated Clocks ============================
 Clock Tree ID     Driving Element      Drive Element Type     Fanout     Sample Instance
 ----------------------------------------------------------------------------------------
-@K:CKID0001       i_clk_ibuf_gb_io     SB_GB_IO               78         r_UART_TX      
+@K:CKID0001       i_clk_ibuf_gb_io     SB_GB_IO               78         r_UART_RX_LED  
 ========================================================================================
 
 
