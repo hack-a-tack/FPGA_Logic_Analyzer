@@ -100,8 +100,8 @@ begin
 	begin
 		if rising_edge(i_clk) then
 			if i_rst = '1' then
-				r_rx_sync_1 <= '1';  -- IDLE high
-				r_rx_sync_2 <= '1';  -- IDLE high
+				r_rx_sync_1 <= '1';  -- IDLE HIGH
+				r_rx_sync_2 <= '1';  -- IDLE HIGH
 			else
 				r_rx_sync_1 <= i_UART_RX;
 				r_rx_sync_2 <= r_rx_sync_1;

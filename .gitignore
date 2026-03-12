@@ -1,3 +1,4 @@
 *.log
 fpga/rev1/current_vhdl_for_easy_review.txt
 fpga/rev1/current_vhdl.txt
+fpga/rev1/iCEcube2_rev1_logic_analyzer

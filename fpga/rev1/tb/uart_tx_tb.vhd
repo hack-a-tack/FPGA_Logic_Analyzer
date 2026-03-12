@@ -62,7 +62,7 @@ architecture sim of uart_tx_tb is
     -- Signals to connect to DUT	
 	signal i_clk					: std_logic := '0';
 	signal i_rst					: std_logic := '0';
-	signal i_mux_tx_byte			: std_logic_vector(7 downto 0) := (others => '0');
+	signal i_mux_tx_byte			: std_logic_vector(DATA_LENGTH-1 downto 0) := (others => '0');
 	signal i_mux_tx_start_pulse		: std_logic := '0';
 	signal o_tx_busy				: std_logic;
 	signal o_UART_TX				: std_logic;
@@ -154,7 +154,7 @@ begin
 			report "uart_tx MSB (eight LSB) is '0', when '1' was expected"
 			severity error;
 		
-		-- Test case 5: uart_tx should be in TX_STOP_BIT state
+		-- Test case 6: uart_tx should be in TX_STOP_BIT state
 		wait for BIT_PERIOD;
 		assert o_tx_busy = '1'
 			report "Busy signal not asserted high. Indicates we're still in state TX_IDLE"
@@ -163,7 +163,7 @@ begin
 			report "uart_tx not transmitting stop bit '1'"
 			severity error;
 		
-		-- Test case 6: uart_tx should return to TX_IDLE state
+		-- Test case 7: uart_tx should return to TX_IDLE state
 		wait for BIT_PERIOD/2;
 		assert o_tx_busy = '0'
 			report "Busy signal not deasserted. Indicates we're not back in TX_IDLE state"
