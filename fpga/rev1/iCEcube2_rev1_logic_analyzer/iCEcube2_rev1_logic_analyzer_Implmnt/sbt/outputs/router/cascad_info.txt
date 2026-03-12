@@ -1,6 +1,2 @@
 [VIC]
-N_18_0_cascade_=ltout:in0
-N_21_cascade_=ltout:in0
-N_27_cascade_=ltout:in1
-fsm_proc_un10_r_clk_counter_THRU_CO_cascade_=ltout:in3
-fsm_proc_un6_r_clk_counter_THRU_CO_cascade_=ltout:in0
+m4_e_4_cascade_=ltout:in3

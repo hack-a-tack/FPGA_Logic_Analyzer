@@ -1,14 +1,14 @@
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
 @N|Running in 64-bit mode
 File C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\iCEcube2_rev1_logic_analyzer\iCEcube2_rev1_logic_analyzer_Implmnt\synwork\iCEcube2_rev1_logic_analyzer_comp.srs changed - recompiling
-@N: NF107 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":37:7:37:13|Selected library: work cell: uart_rx view rtl as top level
-@N: NF107 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":37:7:37:13|Selected library: work cell: uart_rx view rtl as top level
+@N: NF107 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\cmd_parser.vhd":26:7:26:16|Selected library: work cell: cmd_parser view rtl as top level
+@N: NF107 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\cmd_parser.vhd":26:7:26:16|Selected library: work cell: cmd_parser view rtl as top level
 
 At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Wed Mar 11 06:06:46 2026
+# Thu Mar 12 08:24:53 2026
 
 ###########################################################]

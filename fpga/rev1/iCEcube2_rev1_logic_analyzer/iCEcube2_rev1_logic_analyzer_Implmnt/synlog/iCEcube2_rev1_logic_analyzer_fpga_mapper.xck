@@ -1,1 +1,1 @@
-CKID0001:@|S:i_clk_ibuf_gb_io@|E:r_UART_RX_LED@|F:@syn_sample_clock_path==CKID0001@|M:ClockId0001 
+CKID0001:@|S:i_clk_ibuf_gb_io@|E:o_read_cmd_pulse@|F:@syn_sample_clock_path==CKID0001@|M:ClockId0001 

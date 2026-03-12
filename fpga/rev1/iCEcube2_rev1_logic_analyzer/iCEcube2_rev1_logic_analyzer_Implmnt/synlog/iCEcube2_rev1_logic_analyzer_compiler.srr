@@ -7,51 +7,42 @@ Synopsys VHDL Compiler, version comp2016q3p1, Build 141R, built Dec  5 2016
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
 
 @N: CD720 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\vhd2008\std.vhd":146:18:146:21|Setting time resolution to ps
-@N:"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":37:7:37:13|Top entity is set to uart_rx.
-File C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd changed - recompiling
+@N:"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\cmd_parser.vhd":26:7:26:16|Top entity is set to cmd_parser.
+File C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\cmd_parser.vhd changed - recompiling
 VHDL syntax check successful!
-File C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd changed - recompiling
+File C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\cmd_parser.vhd changed - recompiling
 @N: CD231 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\vhd2008\std1164.vhd":890:16:890:17|Using onehot encoding for type mvl9plus. For example, enumeration 'U' is mapped to "1000000000".
-@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":37:7:37:13|Synthesizing work.uart_rx.rtl.
-@N: CD233 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":55:25:55:26|Using sequential encoding for type uart_rx_state_type.
-Post processing for work.uart_rx.rtl
-@N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":78:2:78:3|Trying to extract state machine for register r_state.
-Extracted state machine for register r_state
-State machine has 4 reachable states with original encodings of:
-   00
-   01
-   10
-   11
-@W: CL249 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":78:2:78:3|Initial value is not supported on state machine r_state
+@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\cmd_parser.vhd":26:7:26:16|Synthesizing work.cmd_parser.rtl.
+Post processing for work.cmd_parser.rtl
 
-At c_vhdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 74MB peak: 75MB)
+At c_vhdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 72MB peak: 73MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Wed Mar 11 06:06:44 2026
+# Thu Mar 12 08:24:51 2026
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
 @N|Running in 64-bit mode
-@N: NF107 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":37:7:37:13|Selected library: work cell: uart_rx view rtl as top level
-@N: NF107 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":37:7:37:13|Selected library: work cell: uart_rx view rtl as top level
+@N: NF107 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\cmd_parser.vhd":26:7:26:16|Selected library: work cell: cmd_parser view rtl as top level
+@N: NF107 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\cmd_parser.vhd":26:7:26:16|Selected library: work cell: cmd_parser view rtl as top level
 
 At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Wed Mar 11 06:06:45 2026
+# Thu Mar 12 08:24:51 2026
 
 ###########################################################]
 @END
 
-At c_hdl Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 3MB peak: 4MB)
+At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 3MB peak: 4MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Wed Mar 11 06:06:45 2026
+# Thu Mar 12 08:24:51 2026
 
 ###########################################################]

@@ -110,7 +110,7 @@ begin
 	end process sync_proc;
 	
 	
-	-- Combinational process for dealing with UART TX internal FSM
+	-- Combinational process for dealing with UART RX internal FSM
 	fsm_proc: process(all) is
 	begin
 		-- Defaults
