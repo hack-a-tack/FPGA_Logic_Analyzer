@@ -2,6 +2,7 @@
 -- MODULE: cmd_parser.vhd
 -- FUNCTION: decodes opcodes and outputs one-cycle command pulses
 -- AUTHOR: Jakob Kieszek Ottesen
+-- DATE: 2026-03-12 (YYYY-MM-DD)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
