@@ -12,7 +12,8 @@
 --
 -- NOTES
 -- SB_HFOSC instantiation --> iCE40UP5K primitive
--- The main o_clk signal will be 48MHz and then the o_samp_tick signal will be 24MHz (achieved by dividing o_clk "by 2")
+-- The main o_clk signal is 48MHz
+-- The o_samp_tick signal is a one-clock-cycle enable pulse occurring every two clock cycles, giving a 24MHz sampling rate
 --
 -- PREFIXES					
 -- i_ : input
@@ -52,7 +53,7 @@ begin
 		CLKHF	=> o_clk
 	);
 	
-	-- Process for generating pulse at 24MHz cadence (1-cycle pulse every 2 clocks)
+	-- Process for generating pulse at 24MHz sampling rate
 	samp_gen_proc: process(o_clk) is
 	begin
 		if rising_edge(o_clk) then
