@@ -1,6 +1,0 @@
-ble_pack i_rx_byte_ibuf_RNIQ90P1[1]_LC_0 {i_rx_byte_ibuf_RNIQ90P1[1]}
-ble_pack i_rx_byte_ibuf_RNIRHI01[3]_LC_1 {i_rx_byte_ibuf_RNIRHI01[3]}
-ble_pack o_cmd_error_pulse_RNO_LC_3 {o_cmd_error_pulse_RNO}
-ble_pack o_capture_cmd_pulse_RNO_LC_2 {o_capture_cmd_pulse_RNO}
-ble_pack o_read_cmd_pulse_RNO_LC_4 {o_read_cmd_pulse_RNO}
-clb_pack PLB_0 {i_rx_byte_ibuf_RNIQ90P1[1]_LC_0, i_rx_byte_ibuf_RNIRHI01[3]_LC_1, o_cmd_error_pulse_RNO_LC_3, o_capture_cmd_pulse_RNO_LC_2, o_read_cmd_pulse_RNO_LC_4}

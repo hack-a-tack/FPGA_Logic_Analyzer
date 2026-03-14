@@ -11,9 +11,9 @@
 -- i_inputs					1 bit		<- top
 --
 -- OUTPUTS					DATA		TO MODULE
--- o_raw_wr_en_pulse		1 bit		-> top
--- o_raw_wr_addr			12 bits		-> top
--- o_raw_wr_data			8 bits		-> top
+-- o_raw_wr_en_pulse		1 bit		-> trace_buffer
+-- o_raw_wr_addr			12 bits		-> trace_buffer
+-- o_raw_wr_data			8 bits		-> trace_buffer
 -- o_capture_done_pulse		1 bit		-> analyzer_fsm
 --
 -- PREFIXES:

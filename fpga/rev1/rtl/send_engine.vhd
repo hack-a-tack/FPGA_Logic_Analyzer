@@ -8,10 +8,10 @@
 -- i_rst					1 bit		<- top
 -- i_send_start_pulse		1 bit		<- analyzer_fsm
 -- i_tx_busy				1 bit		<- uart_tx
--- i_ram_rd_data			8 bits		<- top
+-- i_ram_rd_data			8 bits		<- trace_buffer
 --
 -- OUTPUTS					DATA		TO MODULE
--- o_ram_rd_addr			12 bits		-> top
+-- o_ram_rd_addr			12 bits		-> trace_buffer
 -- o_send_tx_byte			8 bits		-> tx_mux
 -- o_send_tx_start_pulse	1 bit		-> tx_mux
 -- o_send_done_pulse		1 bit		-> analyzer_fsm
