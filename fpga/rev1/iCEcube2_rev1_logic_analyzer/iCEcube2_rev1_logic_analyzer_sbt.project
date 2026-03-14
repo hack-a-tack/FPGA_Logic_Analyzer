@@ -4,7 +4,7 @@ Version=Lattice Semiconductor Corporation iCEcube - Release: 2020.12.27943 - Bui
 ProjectName=iCEcube2_rev1_logic_analyzer
 Vendor=SiliconBlue
 Synthesis=synplify
-ProjectVFiles=../rtl/clocking.vhd=work
+ProjectVFiles=../rtl/uart_tx.vhd=work
 ProjectCFiles=
 CurImplementation=iCEcube2_rev1_logic_analyzer_Implmnt
 Implementations=iCEcube2_rev1_logic_analyzer_Implmnt
@@ -19,9 +19,9 @@ DevicePower=
 NetlistFile=
 AdditionalEDIFFile=
 IPEDIFFile=
-DesignLib=iCEcube2_rev1_logic_analyzer_Implmnt/sbt/netlist/oadb-cmd_parser
+DesignLib=
 DesignView=
-DesignCell=cmd_parser
+DesignCell=
 SynthesisSDCFile=
 UserPinConstraintFile=
 UserSDCFile=

@@ -8,7 +8,7 @@
 
 
 
-add_file -vhdl -lib work "../rtl/clocking.vhd" 
+add_file -vhdl -lib work "../rtl/uart_tx.vhd" 
 #implementation: "iCEcube2_rev1_logic_analyzer_Implmnt"
 impl -add iCEcube2_rev1_logic_analyzer_Implmnt -type fpga
 

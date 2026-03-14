@@ -1,6 +1,6 @@
 -- ========================================
 -- MODULE: trace_buffer.vhd
--- FUNCTION: writes sample data to BRAM and reads captured data out to host
+-- FUNCTION: writes sample data to RAM and reads captured data out to host
 -- AUTHOR: Jakob Kieszek Ottesen
 -- DATE: 2026-03-14 (YYYY-MM-DD)
 --
@@ -9,25 +9,24 @@
 -- i_rst					1 bit		<- top
 -- i_ram_wr_en_pulse		1 bit 		<- capture_engine
 -- i_ram_wr_addr			12 bits		<- capture_engine
--- i_ram_wr_data			8 bits		<- capture_engine
+-- i_ram_wr_data [din]		8 bits		<- capture_engine
 -- i_ram_rd_addr			12 bits		<- send_engine
 --
 -- OUTPUTS					DATA		TO MODULE
--- o_ram_rd_data			8 bits		-> send_engine
+-- o_ram_rd_data [dout]		8 bits		-> send_engine
 --
 -- NOTES
--- Synchronous read --> sequential process
+-- Synchronous simple dual-port RAM (separate read/write addresses, same clock signal)
+-- Be aware: reading to and writing from the same address at the same time can be problematic.
+-- ... but should be okay in this design, as writing to RAM and reading from RAM happens in different states of the main FSM.
 --
 -- PREFIXES					
 -- i_ : input
 -- o_ : output
--- r_ : register 			(internal signal; current; 		for sequential process)
--- n_ : next <register> 	(internal signal; next state; 	for combinational process)
 -- ========================================
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity trace_buffer is
@@ -48,7 +47,7 @@ entity trace_buffer is
 end entity trace_buffer;
 
 architecture RTL of trace_buffer is	
-	-- Single-port RAM. Code to infer EBR (embedded block ram)
+	-- Infer EBRs (embedded block RAM)
 	type mem_type is array(NUM_SAMPLES-1 downto 0) of std_logic_vector(DATA_LENGTH-1 downto 0);  -- 4096 x 8
 	signal mem : mem_type;
 	
@@ -60,9 +59,9 @@ begin
 				o_ram_rd_data <= (others => '0');
 			else
 				if i_ram_wr_en_pulse = '1' then
-					mem(conv_integer(i_ram_wr_addr)) <= i_ram_wr_data;
+					mem(to_integer(unsigned(i_ram_wr_addr))) <= i_ram_wr_data;
 				end if;
-				o_ram_rd_data <= mem(conv_integer(i_ram_rd_addr));
+				o_ram_rd_data <= mem(to_integer(unsigned(i_ram_rd_addr)));
 			end if;
 		end if;
 	end process seq_proc;	
