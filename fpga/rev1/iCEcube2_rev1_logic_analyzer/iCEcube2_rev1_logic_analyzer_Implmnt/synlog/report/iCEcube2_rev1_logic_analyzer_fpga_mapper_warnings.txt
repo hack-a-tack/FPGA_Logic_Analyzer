@@ -1,1 +1,59 @@
-@W: MT420 |Found inferred clock cmd_parser|i_clk with period 1000.00ns. Please declare a user-defined clock on object "p:i_clk"
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":78:2:78:3|User-specified initial value defined for instance E2.r_bit_counter[31:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":78:2:78:3|User-specified initial value defined for instance E2.r_clk_counter[31:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":78:2:78:3|User-specified initial value defined for instance E2.r_rx_valid_pulse is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":78:2:78:3|User-specified initial value defined for instance E2.r_rx_byte[7:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":78:2:78:3|User-specified initial value defined for instance E2.r_UART_RX_LED is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":101:2:101:3|User-specified initial value defined for instance E2.r_rx_sync_2 is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":101:2:101:3|User-specified initial value defined for instance E2.r_rx_sync_1 is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":81:2:81:3|User-specified initial value defined for instance E4.r_status_pending_byte[7:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":81:2:81:3|User-specified initial value defined for instance E4.r_fsm_tx_status_byte[7:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":81:2:81:3|User-specified initial value defined for instance E4.r_fsm_tx_start_pulse is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":81:2:81:3|User-specified initial value defined for instance E4.r_status_pending_valid is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":81:2:81:3|User-specified initial value defined for instance E4.r_send_start_pulse is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":81:2:81:3|User-specified initial value defined for instance E4.r_capture_start_pulse is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":81:2:81:3|User-specified initial value defined for instance E4.r_USER_LED is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":68:2:68:3|User-specified initial value defined for instance E6.r_ram_rd_addr[11:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":68:2:68:3|User-specified initial value defined for instance E6.r_send_tx_byte[7:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":68:2:68:3|User-specified initial value defined for instance E6.r_send_tx_start_pulse is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":68:2:68:3|User-specified initial value defined for instance E6.r_send_done_pulse is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":74:2:74:3|User-specified initial value defined for instance E9.r_bit_counter[31:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":74:2:74:3|User-specified initial value defined for instance E9.r_clk_counter[31:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":74:2:74:3|User-specified initial value defined for instance E9.r_UART_TX is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":74:2:74:3|User-specified initial value defined for instance E9.r_tx_byte[7:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":74:2:74:3|User-specified initial value defined for instance E9.r_tx_busy is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\tx_mux.vhd":54:2:54:3|User-specified initial value defined for instance E8.r_mux_tx_byte[7:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\tx_mux.vhd":54:2:54:3|User-specified initial value defined for instance E8.r_mux_tx_start_pulse is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":67:2:67:3|User-specified initial value defined for instance E5.r_state[0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":67:2:67:3|User-specified initial value defined for instance E5.r_raw_wr_addr[11:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":67:2:67:3|User-specified initial value defined for instance E5.r_capture_done_pulse is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":67:2:67:3|User-specified initial value defined for instance E5.r_raw_wr_en_pulse is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":67:2:67:3|User-specified initial value defined for instance E5.r_raw_wr_data[7:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\clocking.vhd":63:2:63:3|User-specified initial value defined for instance E1.r_samp_tick is being ignored. 
+@W: FX107 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\trace_buffer.vhd":52:8:52:10|RAM E7.mem[7:0] (in view: work.top(structure)) does not have a read/write conflict check. Possible simulation mismatch. To resolve a read/write conflict, either set syn_ramstyle = rw_check, or enable the "Read Write Check on RAM" Implementation Option. For more information, search for "read/write conflict check" in Online Help.
+@W: BN132 :|Removing instance mem_0_1_sr_rst_0 because it is equivalent to instance mem_0_0_sr_rst_0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :|Removing instance mem_0_2_sr_rst_0 because it is equivalent to instance mem_0_0_sr_rst_0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :|Removing instance mem_0_3_sr_rst_0 because it is equivalent to instance mem_0_0_sr_rst_0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :|Removing instance mem_1_0_sr_rst_0 because it is equivalent to instance mem_0_0_sr_rst_0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :|Removing instance mem_1_1_sr_rst_0 because it is equivalent to instance mem_0_0_sr_rst_0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :|Removing instance mem_1_2_sr_rst_0 because it is equivalent to instance mem_0_0_sr_rst_0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :|Removing instance mem_1_3_sr_rst_0 because it is equivalent to instance mem_0_0_sr_rst_0. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :|Removing instance mem_0_1_sr_en because it is equivalent to instance mem_0_0_sr_en. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :|Removing instance mem_0_2_sr_en because it is equivalent to instance mem_0_0_sr_en. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :|Removing instance mem_0_3_sr_en because it is equivalent to instance mem_0_0_sr_en. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: FX469 :|Net mem_0_0_RAM_0[1] is undriven; adding disabled tristate to drive this net. To avoid the addition of a tristate, add a driver to the net.
+@W: FX469 :|Net mem_0_0_RAM_0[0] is undriven; adding disabled tristate to drive this net. To avoid the addition of a tristate, add a driver to the net.
+@W: FX469 :|Net mem_0_1_RAM_0[1] is undriven; adding disabled tristate to drive this net. To avoid the addition of a tristate, add a driver to the net.
+@W: FX469 :|Net mem_0_1_RAM_0[0] is undriven; adding disabled tristate to drive this net. To avoid the addition of a tristate, add a driver to the net.
+@W: FX469 :|Net mem_0_2_RAM_0[1] is undriven; adding disabled tristate to drive this net. To avoid the addition of a tristate, add a driver to the net.
+@W: FX469 :|Net mem_0_2_RAM_0[0] is undriven; adding disabled tristate to drive this net. To avoid the addition of a tristate, add a driver to the net.
+@W: FX469 :|Net mem_0_3_RAM_0[1] is undriven; adding disabled tristate to drive this net. To avoid the addition of a tristate, add a driver to the net.
+@W: FX469 :|Net mem_0_3_RAM_0[0] is undriven; adding disabled tristate to drive this net. To avoid the addition of a tristate, add a driver to the net.
+@W: FX469 :|Net mem_1_0_RAM_0[1] is undriven; adding disabled tristate to drive this net. To avoid the addition of a tristate, add a driver to the net.
+@W: FX469 :|Net mem_1_0_RAM_0[0] is undriven; adding disabled tristate to drive this net. To avoid the addition of a tristate, add a driver to the net.
+@W: FX469 :|Net mem_1_1_RAM_0[1] is undriven; adding disabled tristate to drive this net. To avoid the addition of a tristate, add a driver to the net.
+@W: FX469 :|Net mem_1_1_RAM_0[0] is undriven; adding disabled tristate to drive this net. To avoid the addition of a tristate, add a driver to the net.
+@W: FX469 :|Net mem_1_2_RAM_0[1] is undriven; adding disabled tristate to drive this net. To avoid the addition of a tristate, add a driver to the net.
+@W: FX469 :|Net mem_1_2_RAM_0[0] is undriven; adding disabled tristate to drive this net. To avoid the addition of a tristate, add a driver to the net.
+@W: FX469 :|Net mem_1_3_RAM_0[1] is undriven; adding disabled tristate to drive this net. To avoid the addition of a tristate, add a driver to the net.
+@W: FX469 :|Net mem_1_3_RAM_0[0] is undriven; adding disabled tristate to drive this net. To avoid the addition of a tristate, add a driver to the net.
+@W: MT420 |Found inferred clock clocking|o_clk_inferred_clock with period 20.83ns. Please declare a user-defined clock on object "n:E1.o_clk"

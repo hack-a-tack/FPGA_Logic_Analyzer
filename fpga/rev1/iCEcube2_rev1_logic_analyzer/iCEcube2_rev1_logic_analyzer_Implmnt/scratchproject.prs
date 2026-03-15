@@ -3,7 +3,16 @@
 #--  Project file C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\iCEcube2_rev1_logic_analyzer\iCEcube2_rev1_logic_analyzer_Implmnt\scratchproject.prs
 
 #project files
+add_file -vhdl -lib work "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/rtl/analyzer_fsm.vhd"
+add_file -vhdl -lib work "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/rtl/capture_engine.vhd"
+add_file -vhdl -lib work "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/rtl/clocking.vhd"
 add_file -vhdl -lib work "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/rtl/cmd_parser.vhd"
+add_file -vhdl -lib work "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/rtl/send_engine.vhd"
+add_file -vhdl -lib work "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/rtl/top.vhd"
+add_file -vhdl -lib work "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/rtl/trace_buffer.vhd"
+add_file -vhdl -lib work "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/rtl/tx_mux.vhd"
+add_file -vhdl -lib work "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/rtl/uart_rx.vhd"
+add_file -vhdl -lib work "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/rtl/uart_tx.vhd"
 
 
 
@@ -18,9 +27,9 @@ set_option -project_relative_includes 1
 set_option -include_path {C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/iCEcube2_rev1_logic_analyzer/}
 
 #device options
-set_option -technology SBTiCE40
-set_option -part iCE40HX1K
-set_option -package VQ100
+set_option -technology SBTiCE40UP
+set_option -part iCE40UP5K
+set_option -package SG48
 set_option -speed_grade ""
 set_option -part_companion ""
 
@@ -37,7 +46,7 @@ set_option -srs_instrumentation 1
 set_option -write_verilog 0
 set_option -write_vhdl 0
 
-# Lattice iCE40
+# Lattice iCE40UP
 set_option -maxfan 10000
 set_option -rw_check_on_ram 0
 set_option -disable_io_insertion 0

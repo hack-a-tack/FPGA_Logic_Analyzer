@@ -20,8 +20,6 @@
 -- PREFIXES					
 -- i_ : input
 -- o_ : output
--- r_ : register 			(internal signal; current; 		for sequential process)
--- n_ : next <register> 	(internal signal; next state; 	for combinational process)
 -- ========================================
 
 library IEEE;
@@ -52,37 +50,37 @@ architecture STRUCTURE of top is
 	----------------------
 	
 	-- CLOCKING
-	signal CLK 			: std_logic;
-	signal SAMP_TICK 	: std_logic;
+	signal CLK 			: std_logic;											-- driven by clocking
+	signal SAMP_TICK 	: std_logic;											-- driven by clocking
 	
 	-- RX: UART_RX --> CMD_PARSER --> ANALYZER_FSM
-	signal RX_BYTE 			: std_logic_vector(DATA_LENGTH-1 downto 0);
-	signal RX_VALID_PULSE 	: std_logic;
-	signal CAPTURE_PULSE 	: std_logic;
-	signal READ_PULSE 		: std_logic;
-	signal ERROR_PULSE 		: std_logic;
+	signal RX_BYTE 			: std_logic_vector(DATA_LENGTH-1 downto 0);			-- driven by uart_rx
+	signal RX_VALID_PULSE 	: std_logic;										-- driven by uart_rx
+	signal CAPTURE_PULSE 	: std_logic;										-- driven by cmd_parser
+	signal READ_PULSE 		: std_logic;										-- driven by cmd_parser
+	signal ERROR_PULSE 		: std_logic;										-- driven by cmd_parser
 	
 	-- DATA CAPTURE AND TRANSFER: ANALYZER_FSM <--> CAPTURE_ENGINE, SEND_ENGINE
-	signal CAPTURE_START_PULSE 	: std_logic;
-	signal CAPTURE_DONE_PULSE 	: std_logic;
-	signal SEND_START_PULSE 	: std_logic;
-	signal SEND_DONE_PULSE 		: std_logic;
+	signal CAPTURE_START_PULSE 	: std_logic;									-- driven by analyzer_fsm
+	signal CAPTURE_DONE_PULSE 	: std_logic;									-- driven by capture_engine
+	signal SEND_START_PULSE 	: std_logic;									-- driven by analyzer_fsm
+	signal SEND_DONE_PULSE 		: std_logic;									-- driven by send_engine
 	
 	-- TX: UART_TX, TX_MUX <--> ANALYZER_FSM, SEND_ENGINE
-	signal FSM_TX_STATUS_BYTE 	: std_logic_vector(DATA_LENGTH-1 downto 0);
-	signal FSM_TX_START_PULSE 	: std_logic;
-	signal SEND_TX_BYTE 		: std_logic_vector(DATA_LENGTH-1 downto 0);
-	signal SEND_TX_START_PULSE 	: std_logic;
-	signal MUX_TX_BYTE 			: std_logic_vector(DATA_LENGTH-1 downto 0);
-	signal MUX_TX_START_PULSE 	: std_logic;
-	signal TX_BUSY 				: std_logic;
+	signal FSM_TX_STATUS_BYTE 	: std_logic_vector(DATA_LENGTH-1 downto 0);		-- driven by analyzer_fsm
+	signal FSM_TX_START_PULSE 	: std_logic;									-- driven by analyzer_fsm
+	signal SEND_TX_BYTE 		: std_logic_vector(DATA_LENGTH-1 downto 0);		-- driven by send_engine
+	signal SEND_TX_START_PULSE 	: std_logic;									-- driven by send_engine
+	signal MUX_TX_BYTE 			: std_logic_vector(DATA_LENGTH-1 downto 0);		-- driven by tx_mux
+	signal MUX_TX_START_PULSE 	: std_logic;									-- driven by tx_mux
+	signal TX_BUSY 				: std_logic;									-- driven by uart_tx
 	
 	-- RAM RELATED: TRACE_BUFFER <--> CAPTURE_ENGINE, SEND_ENGINE
-	signal WR_EN_PULSE	: std_logic;
-	signal WR_ADDR 		: std_logic_vector(ADDR_LENGTH-1 downto 0);
-	signal WR_DATA 		: std_logic_vector(DATA_LENGTH-1 downto 0);
-	signal RD_DATA 		: std_logic_vector(DATA_LENGTH-1 downto 0);
-	signal RD_ADDR 		: std_logic_vector(ADDR_LENGTH-1 downto 0);
+	signal WR_EN_PULSE	: std_logic;											-- driven by capture_engine
+	signal WR_ADDR 		: std_logic_vector(ADDR_LENGTH-1 downto 0);				-- driven by capture_engine
+	signal WR_DATA 		: std_logic_vector(DATA_LENGTH-1 downto 0);				-- driven by capture_engine
+	signal RD_DATA 		: std_logic_vector(DATA_LENGTH-1 downto 0);				-- driven by trace_buffer
+	signal RD_ADDR 		: std_logic_vector(ADDR_LENGTH-1 downto 0);				-- driven by send_engine
 	
 begin
 	E1: entity WORK.clocking(RTL)

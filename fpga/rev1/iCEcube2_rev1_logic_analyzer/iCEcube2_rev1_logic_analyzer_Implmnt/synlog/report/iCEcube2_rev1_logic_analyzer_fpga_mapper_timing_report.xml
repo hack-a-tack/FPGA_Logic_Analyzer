@@ -15,9 +15,9 @@ Max Top 5 critical clocks will be reported. For rest user needs to refer to Deta
 <data tcl_name="slack">Slack</data>
 </row>
 <row>
-<data>cmd_parser|i_clk</data>
-<data>1.0 MHz</data>
-<data>NA</data>
-<data>NA</data>
+<data>clocking|o_clk_inferred_clock</data>
+<data>48.0 MHz</data>
+<data>61.0 MHz</data>
+<data>4.437</data>
 </row>
 </report_table>

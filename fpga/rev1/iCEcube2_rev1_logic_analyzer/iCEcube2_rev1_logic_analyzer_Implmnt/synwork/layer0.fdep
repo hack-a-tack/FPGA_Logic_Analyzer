@@ -1,28 +1,82 @@
 #defaultlanguage:vhdl
-#OPTIONS:"|-layerid|0|-orig_srs|C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\iCEcube2_rev1_logic_analyzer\\iCEcube2_rev1_logic_analyzer_Implmnt\\synwork\\iCEcube2_rev1_logic_analyzer_comp.srs|-autotop|-prodtype|synplify_pro|-primux|-fixsmult|-infer_seqShift|-ice|-sdff_counter|-nram|-divnmod|-nostructver|-encrypt|-pro|-lite|-ui|-fid2|-ram|-sharing|on|-ll|2000|-autosm|-vhdl2008|-ignore_undefined_lib|-lib|work"
-#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\bin64\\c_vhdl.exe":1739914739
-#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd2008\\location.map":1739914748
-#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd2008\\std.vhd":1739914748
-#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd\\snps_haps_pkg.vhd":1739914748
-#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd2008\\std1164.vhd":1739914748
-#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd2008\\std_textio.vhd":1739914748
-#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd2008\\numeric.vhd":1739914748
-#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd\\umr_capim.vhd":1739914748
-#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd2008\\arith.vhd":1739914748
-#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd2008\\unsigned.vhd":1739914748
-#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd\\hyperents.vhd":1739914748
-#CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\cmd_parser.vhd":1773300013
-0 "C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\cmd_parser.vhd" vhdl
+#OPTIONS:"|-layerid|0|-orig_srs|C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\iCEcube2_rev1_logic_analyzer\\iCEcube2_rev1_logic_analyzer_Implmnt\\synwork\\iCEcube2_rev1_logic_analyzer_comp.srs|-autotop|-prodtype|synplify_pro|-primux|-fixsmult|-infer_seqShift|-ice|-sdff_counter|-nram|-divnmod|-nostructver|-encrypt|-pro|-lite|-ui|-fid2|-ram|-sharing|on|-ll|2000|-autosm|-vhdl2008|-ignore_undefined_lib|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work"
+#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\bin64\\c_vhdl.exe":1773506663
+#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd2008\\location.map":1773506671
+#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd2008\\std.vhd":1773506671
+#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd\\snps_haps_pkg.vhd":1773506671
+#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd2008\\std1164.vhd":1773506671
+#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd2008\\std_textio.vhd":1773506671
+#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd2008\\numeric.vhd":1773506671
+#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd\\umr_capim.vhd":1773506671
+#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd2008\\arith.vhd":1773506671
+#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd2008\\unsigned.vhd":1773506671
+#CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd\\hyperents.vhd":1773506671
+#CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\analyzer_fsm.vhd":1772950516
+#CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\capture_engine.vhd":1773470579
+#CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\clocking.vhd":1773507286
+#CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\cmd_parser.vhd":1773378446
+#CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\send_engine.vhd":1773470597
+#CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\trace_buffer.vhd":1773484355
+#CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\tx_mux.vhd":1773034353
+#CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\uart_rx.vhd":1773298494
+#CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\uart_tx.vhd":1773036046
+#CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\top.vhd":1773551079
+0 "C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd" vhdl
+1 "C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd" vhdl
+2 "C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\clocking.vhd" vhdl
+3 "C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\cmd_parser.vhd" vhdl
+4 "C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\send_engine.vhd" vhdl
+5 "C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\top.vhd" vhdl
+6 "C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\trace_buffer.vhd" vhdl
+7 "C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\tx_mux.vhd" vhdl
+8 "C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd" vhdl
+9 "C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd" vhdl
 
 # Dependency Lists (Uses list)
 0 -1
+1 -1
+2 -1
+3 -1
+4 -1
+5 2 8 3 0 1 4 6 7 9 
+6 -1
+7 -1
+8 -1
+9 -1
 
 # Dependency Lists (Users Of)
-0 -1
+0 5 
+1 5 
+2 5 
+3 5 
+4 5 
+5 -1
+6 5 
+7 5 
+8 5 
+9 5 
 
 # Design Unit to File Association
-arch work cmd_parser rtl 0
-module work cmd_parser 0
+arch work analyzer_fsm rtl 0
+module work analyzer_fsm 0
+arch work capture_engine rtl 1
+module work capture_engine 1
+arch work clocking rtl 2
+module work clocking 2
+arch work cmd_parser rtl 3
+module work cmd_parser 3
+arch work send_engine rtl 4
+module work send_engine 4
+arch work top structure 5
+module work top 5
+arch work trace_buffer rtl 6
+module work trace_buffer 6
+arch work tx_mux rtl 7
+module work tx_mux 7
+arch work uart_rx rtl 8
+module work uart_rx 8
+arch work uart_tx rtl 9
+module work uart_tx 9
 
 
 # Configuration files used

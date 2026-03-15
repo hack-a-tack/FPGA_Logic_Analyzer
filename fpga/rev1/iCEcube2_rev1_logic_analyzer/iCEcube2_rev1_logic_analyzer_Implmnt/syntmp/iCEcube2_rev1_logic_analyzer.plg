@@ -1,12 +1,13 @@
-@P:  Worst Slack : NA
-@P:  cmd_parser|i_clk - Estimated Frequency : NA
-@P:  cmd_parser|i_clk - Requested Frequency : 1.0 MHz
-@P:  cmd_parser|i_clk - Estimated Period : NA
-@P:  cmd_parser|i_clk - Requested Period : 1000.000
-@P:  cmd_parser|i_clk - Slack : NA
-@P: cmd_parser Part : ice40hx1kvq100
-@P: cmd_parser I/O primitives : 14
-@P: cmd_parser I/O Register bits : 0
-@P: cmd_parser Register bits (Non I/O) : 3 (0%)
-@P: cmd_parser Total Luts : 5 (0%)
-@P:  CPU Time : 0h:00m:00s
+@P:  Worst Slack : 4.437
+@P:  clocking|o_clk_inferred_clock - Estimated Frequency : 61.0 MHz
+@P:  clocking|o_clk_inferred_clock - Requested Frequency : 48.0 MHz
+@P:  clocking|o_clk_inferred_clock - Estimated Period : 16.392
+@P:  clocking|o_clk_inferred_clock - Requested Period : 20.830
+@P:  clocking|o_clk_inferred_clock - Slack : 4.437
+@P: top Part : ice40up5ksg48
+@P: top I/O primitives : 14
+@P: top I/O Register bits : 0
+@P: top Register bits (Non I/O) : 239 (4%)
+@P: top Block Rams : 8 of 30 (26%)
+@P: top Total Luts : 361 (6%)
+@P:  CPU Time : 0h:00m:01s

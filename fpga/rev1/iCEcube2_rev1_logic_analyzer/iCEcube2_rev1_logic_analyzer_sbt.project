@@ -4,7 +4,7 @@ Version=Lattice Semiconductor Corporation iCEcube - Release: 2020.12.27943 - Bui
 ProjectName=iCEcube2_rev1_logic_analyzer
 Vendor=SiliconBlue
 Synthesis=synplify
-ProjectVFiles=../rtl/uart_tx.vhd=work
+ProjectVFiles=../rtl/analyzer_fsm.vhd,../rtl/capture_engine.vhd,../rtl/clocking.vhd,../rtl/cmd_parser.vhd,../rtl/send_engine.vhd,../rtl/top.vhd,../rtl/trace_buffer.vhd=work,../rtl/tx_mux.vhd,../rtl/uart_rx.vhd,../rtl/uart_tx.vhd
 ProjectCFiles=
 CurImplementation=iCEcube2_rev1_logic_analyzer_Implmnt
 Implementations=iCEcube2_rev1_logic_analyzer_Implmnt
@@ -12,17 +12,17 @@ StartFromSynthesis=yes
 IPGeneration=false
 
 [iCEcube2_rev1_logic_analyzer_Implmnt]
-DeviceFamily=iCE40
-Device=HX1K
-DevicePackage=VQ100
+DeviceFamily=iCE40UP
+Device=5K
+DevicePackage=SG48
 DevicePower=
-NetlistFile=
+NetlistFile=iCEcube2_rev1_logic_analyzer_Implmnt/iCEcube2_rev1_logic_analyzer.edf
 AdditionalEDIFFile=
 IPEDIFFile=
-DesignLib=
-DesignView=
-DesignCell=
-SynthesisSDCFile=
+DesignLib=iCEcube2_rev1_logic_analyzer_Implmnt/sbt/netlist/oadb-top
+DesignView=_rt
+DesignCell=top
+SynthesisSDCFile=iCEcube2_rev1_logic_analyzer_Implmnt/iCEcube2_rev1_logic_analyzer.scf
 UserPinConstraintFile=
 UserSDCFile=
 PhysicalConstraintFile=
@@ -36,7 +36,7 @@ TypicalCustomTemperature=25
 WorstCustomTemperature=85
 BestCustomTemperature=0
 IOBankVoltages=topBank,3.3 bottomBank,3.3 leftBank,3.3 rightBank,3.3
-derValue=0.701346
+derValue=1.32445
 TimingPathNumberStick=0
 
 [lse options]

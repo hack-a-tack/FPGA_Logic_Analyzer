@@ -1,2 +1,2 @@
 
-: 0 work.cmd_parser "C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\cmd_parser.vhd" 26 7 
+: 0 work.top "C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\top.vhd" 28 7 work.uart_tx work.tx_mux work.trace_buffer work.send_engine work.capture_engine work.analyzer_fsm work.cmd_parser work.uart_rx work.clocking 

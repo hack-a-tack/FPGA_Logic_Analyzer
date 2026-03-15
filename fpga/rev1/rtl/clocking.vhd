@@ -43,23 +43,28 @@ architecture RTL of clocking is
 		);
 	end component SB_HFOSC;
 	
-	-- register for o_samp_tick
+	-- registered signals
+	signal CLK : std_logic;
 	signal r_samp_tick : std_logic := '0';
+	
 begin
+	o_clk <= CLK;
+
 	-- Use primitive to generate 48MHz o_clk signal
 	OSC: SB_HFOSC port map(
 		CLKHFEN	=> '1',
 		CLKHFPU => '1',
-		CLKHF	=> o_clk
+		CLKHF	=> CLK
 	);
 	
 	-- Process for generating pulse at 24MHz sampling rate
-	samp_gen_proc: process(o_clk) is
+	samp_gen_proc: process(CLK) is
 	begin
-		if rising_edge(o_clk) then
+		if rising_edge(CLK) then
 			r_samp_tick <= not r_samp_tick;
 		end if;
 	end process samp_gen_proc;
 	
 	o_samp_tick <= r_samp_tick;
+	
 end architecture RTL;
