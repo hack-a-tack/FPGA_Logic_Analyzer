@@ -2281,3 +2281,166 @@ run -all
 quit -sim
 # End time: 13:49:27 on Mar 22,2026, Elapsed time: 0:02:07
 # Errors: 1, Warnings: 2
+# Compile of uart_rx.vhd was successful.
+# Compile of uart_rx_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim work.uart_rx_tb
+# vsim work.uart_rx_tb 
+# Start time: 18:44:54 on Mar 22,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_rx_tb(sim)
+# Loading work.uart_rx(rtl)
+add wave sim:/uart_rx_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 142501296 ps  Iteration: 0  Process: /uart_rx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd line 396
+quit -sim
+# End time: 18:46:49 on Mar 22,2026, Elapsed time: 0:01:55
+# Errors: 1, Warnings: 2
+# Compile of cmd_parser_tb.vhd was successful.
+# Compile of cmd_parser.vhd was successful with warnings.
+# 2 compiles, 0 failed with no errors.
+# Compile of uart_tx.vhd was successful.
+# Compile of uart_tx_tb.vhd failed with 3 errors.
+# 2 compiles, 1 failed with 3 errors.
+# Compile of uart_tx.vhd was successful.
+# Compile of uart_tx_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim work.uart_tx_tb
+# vsim work.uart_tx_tb 
+# Start time: 19:43:58 on Mar 22,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_tx_tb(sim)
+# Loading work.uart_tx(rtl)
+add wave sim:/uart_tx_tb/*
+run -all
+# ** Error: TX busy did not deassert
+#    Time: 21842352 ps  Iteration: 1  Instance: /uart_tx_tb
+# ** Error: Start bit not '0'
+#    Time: 22425648 ps  Iteration: 0  Instance: /uart_tx_tb
+# ** Error: TX busy did not deassert
+#    Time: 42528528 ps  Iteration: 1  Instance: /uart_tx_tb
+# ** Error: Start bit not '0'
+#    Time: 43111824 ps  Iteration: 0  Instance: /uart_tx_tb
+# ** Error: Data bit mismatch at bit 0
+#    Time: 44195088 ps  Iteration: 0  Instance: /uart_tx_tb
+# ** Error: Data bit mismatch at bit 2
+#    Time: 46361616 ps  Iteration: 0  Instance: /uart_tx_tb
+# ** Error: Data bit mismatch at bit 4
+#    Time: 48528144 ps  Iteration: 0  Instance: /uart_tx_tb
+# ** Error: Data bit mismatch at bit 6
+#    Time: 50694672 ps  Iteration: 0  Instance: /uart_tx_tb
+# ** Failure: Simulation finished
+#    Time: 53069520 ps  Iteration: 0  Process: /uart_tx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_tx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_tx_tb.vhd line 267
+do run_sim.tcl
+# End time: 19:46:20 on Mar 22,2026, Elapsed time: 0:02:22
+# Errors: 9, Warnings: 6
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work work 
+# Modifying C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/simulations/uart_rx.mpf
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 19:46:20 on Mar 22,2026
+# vcom -reportprogress 300 -2008 rtl/uart_tx.vhd 
+# ** Error: (vcom-7) Failed to open design unit file "rtl/uart_tx.vhd" in read mode.
+# No such file or directory. (errno = ENOENT)
+# End time: 19:46:20 on Mar 22,2026, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: C:/intelFPGA/20.1/modelsim_ase/win32aloem/vcom failed.
+# Error in macro ./run_sim.tcl line 7
+# C:/intelFPGA/20.1/modelsim_ase/win32aloem/vcom failed.
+#     while executing
+# "vcom -2008 rtl/uart_tx.vhd"
+do run_sim.tcl
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work work 
+# Modifying C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/simulations/uart_rx.mpf
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 19:46:24 on Mar 22,2026
+# vcom -reportprogress 300 -2008 rtl/uart_tx.vhd 
+# ** Error: (vcom-7) Failed to open design unit file "rtl/uart_tx.vhd" in read mode.
+# No such file or directory. (errno = ENOENT)
+# End time: 19:46:24 on Mar 22,2026, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: C:/intelFPGA/20.1/modelsim_ase/win32aloem/vcom failed.
+# Error in macro ./run_sim.tcl line 7
+# C:/intelFPGA/20.1/modelsim_ase/win32aloem/vcom failed.
+#     while executing
+# "vcom -2008 rtl/uart_tx.vhd"
+# Compile of uart_tx_tb.vhd was successful.
+vsim work.uart_tx_tb
+# vsim work.uart_tx_tb 
+# Start time: 19:46:45 on Mar 22,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_tx_tb(sim)
+# Loading work.uart_tx(rtl)
+add wave sim:/uart_tx_tb/*
+run -all
+# ** Error: TX busy did not deassert
+#    Time: 21842352 ps  Iteration: 1  Instance: /uart_tx_tb
+# ** Error: Start bit not '0'
+#    Time: 22425648 ps  Iteration: 0  Instance: /uart_tx_tb
+# ** Error: TX busy did not deassert
+#    Time: 42528528 ps  Iteration: 1  Instance: /uart_tx_tb
+# ** Error: Start bit not '0'
+#    Time: 43111824 ps  Iteration: 0  Instance: /uart_tx_tb
+# ** Error: Data bit mismatch at bit 0
+#    Time: 44195088 ps  Iteration: 0  Instance: /uart_tx_tb
+# ** Error: Data bit mismatch at bit 2
+#    Time: 46361616 ps  Iteration: 0  Instance: /uart_tx_tb
+# ** Error: Data bit mismatch at bit 4
+#    Time: 48528144 ps  Iteration: 0  Instance: /uart_tx_tb
+# ** Error: Data bit mismatch at bit 6
+#    Time: 50694672 ps  Iteration: 0  Instance: /uart_tx_tb
+# ** Failure: Simulation finished
+#    Time: 53069520 ps  Iteration: 0  Process: /uart_tx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_tx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_tx_tb.vhd line 271
+do run_sim.tcl
+# End time: 19:49:59 on Mar 22,2026, Elapsed time: 0:03:14
+# Errors: 9, Warnings: 3
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work work 
+# Modifying C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/simulations/uart_rx.mpf
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 19:49:59 on Mar 22,2026
+# vcom -reportprogress 300 -2008 rtl/uart_tx.vhd 
+# ** Error: (vcom-7) Failed to open design unit file "rtl/uart_tx.vhd" in read mode.
+# No such file or directory. (errno = ENOENT)
+# End time: 19:49:59 on Mar 22,2026, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: C:/intelFPGA/20.1/modelsim_ase/win32aloem/vcom failed.
+# Error in macro ./run_sim.tcl line 7
+# C:/intelFPGA/20.1/modelsim_ase/win32aloem/vcom failed.
+#     while executing
+# "vcom -2008 rtl/uart_tx.vhd"
+# Compile of uart_tx_tb.vhd was successful.
+vsim work.uart_tx_tb
+# vsim work.uart_tx_tb 
+# Start time: 19:50:17 on Mar 22,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_tx_tb(sim)
+# Loading work.uart_tx(rtl)
+add wave sim:/uart_tx_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 55215216 ps  Iteration: 0  Process: /uart_tx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_tx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_tx_tb.vhd line 273
+quit -sim
+# End time: 19:51:23 on Mar 22,2026, Elapsed time: 0:01:06
+# Errors: 1, Warnings: 2

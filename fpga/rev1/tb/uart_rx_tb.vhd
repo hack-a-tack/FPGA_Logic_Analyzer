@@ -66,7 +66,7 @@ architecture sim of uart_rx_tb is
 	constant CLK_FREQ   : real := 48.0e6;
 	constant CLK_PERIOD : time := 1 sec / CLK_FREQ;  	-- 20833 ps (truncated)
 	constant CLK_HALF : time := CLK_PERIOD / 2;			-- 10416 ps (truncated)
-	constant CLK_ACTUAL : time := CLK_HALF * 2;			-- 20832 ps --> effectively
+	constant CLK_ACTUAL : time := CLK_HALF * 2;			-- 20832 ps --> identical to 2 x CLK_HALF (used in clock generation)
 	constant CLKS_PER_BIT : integer := CLK_FREQ_HZ / BAUD_RATE;  -- integer / --> 52
 	constant BIT_PERIOD : time := CLKS_PER_BIT * CLK_ACTUAL;
 	

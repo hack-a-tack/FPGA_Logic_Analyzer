@@ -59,7 +59,7 @@ architecture sim of uart_tx_tb is
 	constant CLK_FREQ   : real := 48.0e6;
 	constant CLK_PERIOD : time := 1 sec / CLK_FREQ;  	-- 20833 ps (truncated)
 	constant CLK_HALF : time := CLK_PERIOD / 2;			-- 10416 ps (truncated)
-	constant CLK_ACTUAL : time := CLK_HALF * 2;			-- 20832 ps --> effectively
+	constant CLK_ACTUAL : time := CLK_HALF * 2;			-- 20832 ps --> identical to 2 x CLK_HALF (used in clock generation)
 	constant CLKS_PER_BIT : integer := CLK_FREQ_HZ / BAUD_RATE;  -- integer / --> 52
 	constant BIT_PERIOD : time := CLKS_PER_BIT * CLK_ACTUAL;
 
@@ -109,15 +109,52 @@ begin
     -- Stimulus process
     stim_proc: process is
 	
-		procedure process_uart_frame (
-			received_byte : in std_logic_vector(DATA_LENGTH-1 downto 0);
-			start_pulse_val : in std_logic;
-			signal tx_line : out std_logic
+		procedure send_and_check_uart_frame (
+			constant data : in std_logic_vector(DATA_LENGTH-1 downto 0)
 		) is
 		begin
-			-- TBC
+			-- drive data and pulse start for one clock cycle
+			i_mux_tx_byte <= data;
+			i_mux_tx_start_pulse <= '1';
+			wait until rising_edge(i_clk);
+			i_mux_tx_start_pulse <= '0';
+			
+			-- busy should assert soon 
+			wait until rising_edge(i_clk);
+			assert o_tx_busy = '1'
+				report "o_tx_busy not asserted. State TX_START_BIT not reached"
+				severity error;
+				
+			-- move to middle of bit and check it's 0
+			wait for BIT_PERIOD/2;
+			assert o_UART_TX = '0'  -- start bit
+				report "Start bit not '0'"
+				severity error;
+			
+			-- data bits, LSB --> MSB, sampled mid-bit
+			for i in 0 to 7 loop
+				wait for BIT_PERIOD;
+				assert o_UART_TX = data(i)
+					report "Data bit mismatch at bit " & integer'image(i)
+					severity error;
+			end loop;
+			
+			-- stop bit
+			wait for BIT_PERIOD;
+			assert o_UART_TX = '1'
+				report "Stop bit not '1'"
+				severity error;
+			wait for BIT_PERIOD/2;
+				
+			-- busy should drop after stop bit completes
+			wait until rising_edge(i_clk);
+			if o_tx_busy = '1' then
+				wait until rising_edge(i_clk);
+			end if;
+			assert o_tx_busy = '0'
+				report "TX busy did not deassert"
+				severity error;
 		end procedure;
-		
 	
     begin
         -- Reset phase
@@ -148,13 +185,7 @@ begin
 		assert o_tx_busy = '1'
 			report "TC2: Busy signal not asserted high. State TX_START_BIT not reached"
 			severity error;
-		assert o_UART_TX = '0'  -- start bit
-			report "TC2: uart_tx not transmitting start bit '0'"
-			severity error;
 		wait for BIT_PERIOD/2;  -- set up for sampling (asserting) at the centre of each bit period
-		assert o_tx_busy = '1'
-			report "TC2: Busy signal not asserted high. State TX_START_BIT not reached"
-			severity error;
 		assert o_UART_TX = '0'  -- start bit
 			report "TC2: uart_tx not transmitting start bit '0'"
 			severity error;
@@ -219,6 +250,23 @@ begin
 		assert o_UART_TX = '1'
 			report "TC7: uart_tx not outputting IDLE HIGH ('1')"
 			severity error;
+		wait until rising_edge(i_clk);
+			
+		-- "Test case 8"
+		test_id <= 8;
+		send_and_check_uart_frame(x"00");
+		
+		-- "Test case 9"
+		test_id <= 9;
+		send_and_check_uart_frame(x"FF");
+		
+		-- "Test case 10"
+		test_id <= 10;
+		send_and_check_uart_frame(x"A5");
+		
+		-- "Test case 11"
+		test_id <= 11;
+		send_and_check_uart_frame(x"AA");
 		
         -- Finish simulation
         wait for 10*CLK_ACTUAL;
