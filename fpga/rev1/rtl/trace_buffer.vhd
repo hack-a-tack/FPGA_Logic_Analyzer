@@ -18,7 +18,7 @@
 -- NOTES
 -- Synchronous simple dual-port RAM (separate read/write addresses, same clock signal)
 -- Be aware: reading to and writing from the same address at the same time can be problematic.
--- ... but should be okay in this design, as writing to RAM and reading from RAM happens in different states of the main FSM.
+-- ... but should not cause problems in this design, as writing to/reading from RAM occurs in different states of the main FSM.
 --
 -- PREFIXES					
 -- i_ : input

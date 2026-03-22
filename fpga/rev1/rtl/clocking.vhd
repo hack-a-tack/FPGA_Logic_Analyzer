@@ -34,7 +34,8 @@ architecture RTL of clocking is
 	-- Primitive instantiation: high frequency oscillator (SB_HFOSC)
 	component SB_HFOSC is
 		generic (
-			CLKHF_DIV : string := "0b00"  -- 0b00=48MHz, 0b01=24MHz, 0b10=12MHz, 0b11=6MHz
+			CLKHF_DIV : string := "0b00";  -- 0b00=48MHz, 0b01=24MHz, 0b10=12MHz, 0b11=6MHz
+			ROUTE_THROUGH_FABRIC : string := "0"
 		);
 		port (
 			CLKHFEN : in  std_logic;
@@ -43,24 +44,26 @@ architecture RTL of clocking is
 		);
 	end component SB_HFOSC;
 	
-	-- registered signals
-	signal CLK : std_logic;
+	-- registered signal
 	signal r_samp_tick : std_logic := '0';
 	
 begin
-	o_clk <= CLK;
-
 	-- Use primitive to generate 48MHz o_clk signal
-	OSC: SB_HFOSC port map(
-		CLKHFEN	=> '1',
-		CLKHFPU => '1',
-		CLKHF	=> CLK
-	);
+	HF_OSC: SB_HFOSC
+		generic map (
+			CLKHF_DIV => "0b00",
+			ROUTE_THROUGH_FABRIC => "0"
+		)
+		port map(
+			CLKHFEN	=> '1',
+			CLKHFPU => '1',
+			CLKHF	=> o_clk
+		);
 	
 	-- Process for generating pulse at 24MHz sampling rate
-	samp_gen_proc: process(CLK) is
+	samp_gen_proc: process(o_clk) is
 	begin
-		if rising_edge(CLK) then
+		if rising_edge(o_clk) then
 			r_samp_tick <= not r_samp_tick;
 		end if;
 	end process samp_gen_proc;

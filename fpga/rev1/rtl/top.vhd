@@ -5,9 +5,16 @@
 -- DATE: 2026-03-14 (YYYY-MM-DD)
 --
 -- INPUTS 					DATA		TO INTERNAL MODULE
--- i_UART_RX				1 bit		-> uart_rx
--- i_ANALYZER_INPUTS		8 bits		-> capture_engine
 -- i_RESET					1 bit		-> uart_rx | cmd_parser | analyzer_fsm | capture_engine | send_engine | tx_mux | uart_tx
+-- i_LA0					1 bit		-> capture_engine (transmitted as 8-bit ANALYZER_INPUTS)
+-- i_LA1					1 bit		-> capture_engine (transmitted as 8-bit ANALYZER_INPUTS)
+-- i_LA2					1 bit		-> capture_engine (transmitted as 8-bit ANALYZER_INPUTS)
+-- i_LA3					1 bit		-> capture_engine (transmitted as 8-bit ANALYZER_INPUTS)
+-- i_LA4					1 bit		-> capture_engine (transmitted as 8-bit ANALYZER_INPUTS)
+-- i_LA5					1 bit		-> capture_engine (transmitted as 8-bit ANALYZER_INPUTS)
+-- i_LA6					1 bit		-> capture_engine (transmitted as 8-bit ANALYZER_INPUTS)
+-- i_LA7					1 bit		-> capture_engine (transmitted as 8-bit ANALYZER_INPUTS)
+-- i_UART_RX				1 bit		-> uart_rx
 --
 -- OUTPUTS					DATA		FROM INTERNAL MODULE
 -- o_UART_TX				1 bit		<- uart_tx
@@ -16,6 +23,7 @@
 -- o_USER_LED				1 bit		<- analyzer_fsm
 --
 -- NOTES
+-- i_LA0 through i_LA7 get assembled into std_logic_vector of length 8 "ANALYZER_INPUTS" before it's sent to -> capture_engine
 --
 -- PREFIXES					
 -- i_ : input
@@ -31,12 +39,19 @@ entity top is
 		BAUD_RATE 	: integer := 921600;
 		ADDR_LENGTH : integer := 12;
 		NUM_SAMPLES : integer := 2**ADDR_LENGTH;  -- 4096
-		DATA_LENGTH : integer := 8		
+		DATA_LENGTH : integer := 8
 	);
 	port (
-		i_UART_RX 			: in  std_logic;
-		i_ANALYZER_INPUTS	: in  std_logic_vector(DATA_LENGTH-1 downto 0);
 		i_RESET  			: in  std_logic;
+		i_LA0				: in  std_logic;
+		i_LA1				: in  std_logic;
+		i_LA2				: in  std_logic;
+		i_LA3				: in  std_logic;
+		i_LA4				: in  std_logic;
+		i_LA5				: in  std_logic;
+		i_LA6				: in  std_logic;
+		i_LA7				: in  std_logic;
+		i_UART_RX 			: in  std_logic;
 		o_UART_TX			: out std_logic;
 		o_UART_TX_LED		: out std_logic;
 		o_UART_RX_LED		: out std_logic;
@@ -52,6 +67,9 @@ architecture STRUCTURE of top is
 	-- CLOCKING
 	signal CLK 			: std_logic;											-- driven by clocking
 	signal SAMP_TICK 	: std_logic;											-- driven by clocking
+	
+	-- SAMPLING
+	signal ANALYZER_INPUTS	: std_logic_vector(DATA_LENGTH-1 downto 0);			-- driven by top
 	
 	-- RX: UART_RX --> CMD_PARSER --> ANALYZER_FSM
 	signal RX_BYTE 			: std_logic_vector(DATA_LENGTH-1 downto 0);			-- driven by uart_rx
@@ -83,6 +101,8 @@ architecture STRUCTURE of top is
 	signal RD_ADDR 		: std_logic_vector(ADDR_LENGTH-1 downto 0);				-- driven by send_engine
 	
 begin
+	ANALYZER_INPUTS <= i_LA7 & i_LA6 & i_LA5 & i_LA4 & i_LA3 & i_LA2 & i_LA1 & i_LA0;
+
 	E1: entity WORK.clocking(RTL)
 		port map (
 			o_clk 		=> CLK,
@@ -150,7 +170,7 @@ begin
 			i_samp_tick 			=> SAMP_TICK,
 			i_rst 					=> i_RESET,
 			i_capture_start_pulse 	=> CAPTURE_START_PULSE,
-			i_inputs 				=> i_ANALYZER_INPUTS,
+			i_inputs 				=> ANALYZER_INPUTS,
 			o_raw_wr_en_pulse		=> WR_EN_PULSE,
 			o_raw_wr_addr			=> WR_ADDR,
 			o_raw_wr_data			=> WR_DATA,

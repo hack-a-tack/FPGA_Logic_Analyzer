@@ -228,9 +228,9 @@ begin
 
 
 	-- Watchdog process for counting expected number of samples captured (if state = CAPTURE)
-	watchdog_proc: process(i_samp_tick) is
-	begin
-	end process watchdog_proc;
+	--watchdog_proc: process(i_samp_tick) is
+	--begin
+	--end process watchdog_proc;
 	
 	
 	-- Set outputs

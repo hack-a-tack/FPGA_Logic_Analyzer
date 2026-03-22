@@ -1,6 +1,13 @@
-@E: CL219 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":61:20:61:30|Multiple non-tristate drivers for net ff_sync_bit in uart_rx
-@E: CL229 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":61:20:61:30|Unresolved tristate drivers for net ff_sync_bit in uart_rx
-@E: MF420 |Netlist read from file C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\iCEcube2_rev1_logic_analyzer\iCEcube2_rev1_logic_analyzer_Implmnt\synwork\layer0.srs failed
-@E:Cannot find top netlist, aborting.Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-@E::Error while linking, aborting.
+@E: CD416 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\clocking.vhd":27:25:27:25|Expecting <lib>.<package>.all
+@E: CD255 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\clocking.vhd":31:24:31:24|No identifier "std_logic" in scope
+@E: CD632 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\clocking.vhd":34:19:34:19|duplicate entity name clocking
+@E: CD255 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\clocking.vhd":44:26:44:26|No identifier "std_logic" in scope
+@E: CD415 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\clocking.vhd":76:20:76:20|Expecting keyword of
+@E: CD178 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\top.vhd":108:14:108:16|Can't find formal o_clk
+@E: CD415 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\top.vhd":112:16:112:16|Expecting keyword is
+@E: CD632 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\top.vhd":127:16:127:16|duplicate entity name work
+@E: CD632 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\top.vhd":141:16:141:16|duplicate entity name work
+@E: CD632 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\top.vhd":162:16:162:16|duplicate entity name work
+@E: CD632 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\top.vhd":180:16:180:16|duplicate entity name work
+@E: CD632 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\top.vhd":180:16:180:16|Too many errors - aborting.
 

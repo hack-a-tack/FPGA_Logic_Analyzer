@@ -1,7 +1,7 @@
 #--  Synopsys, Inc.
 #--  Version L-2016.09L+ice40
 #--  Project file C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\iCEcube2_rev1_logic_analyzer\iCEcube2_rev1_logic_analyzer_Implmnt\run_options.txt
-#--  Written on Sun Mar 15 06:05:08 2026
+#--  Written on Thu Mar 19 07:53:14 2026
 
 
 #project files
@@ -15,6 +15,7 @@ add_file -vhdl -lib work "../rtl/trace_buffer.vhd"
 add_file -vhdl -lib work "../rtl/tx_mux.vhd"
 add_file -vhdl -lib work "../rtl/uart_rx.vhd"
 add_file -vhdl -lib work "../rtl/uart_tx.vhd"
+add_file -constraint "../constraints/synopsys_design_constraints.sdc"
 
 
 

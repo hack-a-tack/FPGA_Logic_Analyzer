@@ -4,8 +4,8 @@ Version=Lattice Semiconductor Corporation iCEcube - Release: 2020.12.27943 - Bui
 ProjectName=iCEcube2_rev1_logic_analyzer
 Vendor=SiliconBlue
 Synthesis=synplify
-ProjectVFiles=../rtl/analyzer_fsm.vhd,../rtl/capture_engine.vhd,../rtl/clocking.vhd,../rtl/cmd_parser.vhd,../rtl/send_engine.vhd,../rtl/top.vhd,../rtl/trace_buffer.vhd=work,../rtl/tx_mux.vhd,../rtl/uart_rx.vhd,../rtl/uart_tx.vhd
-ProjectCFiles=
+ProjectVFiles=../rtl/analyzer_fsm.vhd=work,../rtl/capture_engine.vhd=work,../rtl/clocking.vhd=work,../rtl/cmd_parser.vhd=work,../rtl/send_engine.vhd=work,../rtl/top.vhd=work,../rtl/trace_buffer.vhd=work,../rtl/tx_mux.vhd=work,../rtl/uart_rx.vhd=work,../rtl/uart_tx.vhd=work
+ProjectCFiles=../constraints/synopsys_design_constraints.sdc
 CurImplementation=iCEcube2_rev1_logic_analyzer_Implmnt
 Implementations=iCEcube2_rev1_logic_analyzer_Implmnt
 StartFromSynthesis=yes
@@ -25,7 +25,7 @@ DesignCell=top
 SynthesisSDCFile=iCEcube2_rev1_logic_analyzer_Implmnt/iCEcube2_rev1_logic_analyzer.scf
 UserPinConstraintFile=
 UserSDCFile=
-PhysicalConstraintFile=
+PhysicalConstraintFile=../constraints/physical_constraints_file.pcf
 BackendImplPathName=
 Devicevoltage=1.14
 DevicevoltagePerformance=+/-5%(datasheet default)

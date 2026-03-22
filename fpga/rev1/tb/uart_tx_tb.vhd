@@ -54,7 +54,7 @@ architecture sim of uart_tx_tb is
 	constant CLK_FREQ_HZ : integer := 48_000_000;
 	constant BAUD_RATE 	: integer := 921600;
 	constant DATA_LENGTH : integer := 8;
-	constant CLK_FREQ   : real := 48e6;
+	constant CLK_FREQ   : real := 48.0e6;
 	constant CLK_PERIOD : time := 1 sec / CLK_FREQ;  -- ~20.8 ns
 	constant CLKS_PER_BIT : integer := CLK_FREQ_HZ / BAUD_RATE;  -- ~52
 	constant BIT_PERIOD : time := CLKS_PER_BIT * CLK_PERIOD;  -- 1081.6 ns

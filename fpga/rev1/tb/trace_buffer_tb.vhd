@@ -18,7 +18,7 @@
 -- NOTES
 -- Synchronous simple dual-port RAM (separate read/write addresses, same clock signal)
 -- Be aware: reading to and writing from the same address at the same time can be problematic.
--- ... but should be okay in this design, as writing to RAM and reading from RAM happens in different states of the main FSM.
+-- ... but should not cause problems in this design, as writing to/reading from RAM occurs in different states of the main FSM.
 --
 -- PREFIXES					
 -- i_ : input
@@ -55,7 +55,7 @@ architecture sim of trace_buffer_tb is
 	constant ADDR_LENGTH : integer := 12;
 	constant NUM_SAMPLES : integer := 2**ADDR_LENGTH;  -- 4096
 	constant DATA_LENGTH : integer := 8;
-	constant CLK_FREQ   : real := 48e6;
+	constant CLK_FREQ   : real := 48.0e6;
 	constant CLK_PERIOD : time := 1 sec / CLK_FREQ;  -- ~20.8 ns
 
     -- Signals to connect to DUT

@@ -43,7 +43,7 @@ architecture sim of tx_mux_tb is
 	
 	-- Constant declaration
 	constant DATA_LENGTH : integer := 8;
-	constant CLK_FREQ   : real := 48e6;
+	constant CLK_FREQ   : real := 48.0e6;
 	constant CLK_PERIOD : time := 1 sec / CLK_FREQ;
 
     -- Signals to connect to DUT	

@@ -1,0 +1,1113 @@
+# Compile of uart_rx.vhd was successful.
+# Compile of uart_rx_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -gui work.uart_rx_tb
+# vsim -gui work.uart_rx_tb 
+# Start time: 06:35:58 on Mar 20,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_rx_tb(sim)
+# Loading work.uart_rx(rtl)
+add wave sim:/uart_rx_tb/*
+run -all
+# ** Error: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 11030544 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: reconstructed byte does not match expected value x77
+#    Time: 41549424 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 41549424 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 52423728 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: reconstructed byte does not match expected value x11
+#    Time: 74151504 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 74151504 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: reconstructed byte does not match expected value x11
+#    Time: 76359696 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: reconstructed byte does not match expected value x55
+#    Time: 87234 ns  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 87234 ns  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: reconstructed byte does not match expected value xA3
+#    Time: 98108304 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 98108304 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: reconstructed byte does not match expected value x00
+#    Time: 108962296 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 108962296 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: reconstructed byte does not match expected value xFF
+#    Time: 119815768 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 119815768 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: reconstructed byte does not match expected value x19
+#    Time: 130669240 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 130669240 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: reconstructed byte does not match expected value xC7
+#    Time: 141522712 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 141522712 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Failure: Simulation finished
+#    Time: 141647189 ps  Iteration: 0  Process: /uart_rx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/simulations/uart_rx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/simulations/uart_rx_tb.vhd line 311
+# Compile of uart_rx_tb.vhd was successful.
+# Compile of uart_rx_tb.vhd was successful.
+# Compile of uart_rx.vhd was successful.
+# Compile of uart_rx_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -gui work.uart_rx_tb
+# End time: 07:43:06 on Mar 20,2026, Elapsed time: 1:07:08
+# Errors: 20, Warnings: 14
+# vsim -gui work.uart_rx_tb 
+# Start time: 07:43:06 on Mar 20,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_rx_tb(sim)
+# Loading work.uart_rx(rtl)
+add wave sim:/uart_rx_tb/*
+run -all
+# ** Error: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 10906072 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: reconstructed byte does not match expected value x55
+#    Time: 30550128 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: reconstructed byte does not match expected value x77
+#    Time: 41424432 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 41424432 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 52298736 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: reconstructed byte does not match expected value x11
+#    Time: 74026512 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 74026512 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: reconstructed byte does not match expected value x11
+#    Time: 76234704 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: reconstructed byte does not match expected value x55
+#    Time: 87109008 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 87109008 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: reconstructed byte does not match expected value xA3
+#    Time: 97983312 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 97983312 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: reconstructed byte does not match expected value x00
+#    Time: 108837304 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 108837304 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: reconstructed byte does not match expected value xFF
+#    Time: 119690776 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 119690776 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: reconstructed byte does not match expected value x19
+#    Time: 130544248 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 130544248 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: reconstructed byte does not match expected value xC7
+#    Time: 141397720 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 141397720 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Failure: Simulation finished
+#    Time: 141522197 ps  Iteration: 0  Process: /uart_rx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd line 311
+# Compile of uart_rx_tb.vhd was successful.
+vsim -gui work.uart_rx_tb
+# End time: 07:52:17 on Mar 20,2026, Elapsed time: 0:09:11
+# Errors: 21, Warnings: 2
+# vsim -gui work.uart_rx_tb 
+# Start time: 07:52:17 on Mar 20,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_rx_tb(sim)
+# Loading work.uart_rx(rtl)
+add list sim:/uart_rx_tb/*
+add wave sim:/uart_rx_tb/*
+run -all
+# ** Error: TC2: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 10906072 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC4: reconstructed byte does not match expected value x55
+#    Time: 30550128 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5a: reconstructed byte does not match expected value x77
+#    Time: 41424432 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 41424432 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 52298736 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC6: reconstructed byte does not match expected value x11
+#    Time: 74026512 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC6: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 74026512 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC6: reconstructed byte does not match expected value x11
+#    Time: 76234704 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7a: reconstructed byte does not match expected value x55
+#    Time: 87109008 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 87109008 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7b: reconstructed byte does not match expected value xA3
+#    Time: 97983312 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 97983312 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7c: reconstructed byte does not match expected value x00
+#    Time: 108837304 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7c: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 108837304 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7d: reconstructed byte does not match expected value xFF
+#    Time: 119690776 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7d: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 119690776 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7e: reconstructed byte does not match expected value x19
+#    Time: 130544248 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7e: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 130544248 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7f: reconstructed byte does not match expected value xC7
+#    Time: 141397720 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7f: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 141397720 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Failure: Simulation finished
+#    Time: 141522197 ps  Iteration: 0  Process: /uart_rx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd line 311
+# Compile of uart_rx_tb.vhd was successful.
+vsim -gui work.uart_rx_tb
+# End time: 07:53:51 on Mar 20,2026, Elapsed time: 0:01:34
+# Errors: 21, Warnings: 2
+# vsim -gui work.uart_rx_tb 
+# Start time: 07:53:51 on Mar 20,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_rx_tb(sim)
+# Loading work.uart_rx(rtl)
+add wave -r sim:/uart_rx_tb/*
+add wave sim:/uart_rx_tb/*
+run -all
+# ** Error: TC2: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 10926384 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC4: reconstructed byte does not match expected value x55
+#    Time: 30570960 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5a: reconstructed byte does not match expected value x77
+#    Time: 41445264 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 41445264 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 52319568 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC6: reconstructed byte does not match expected value x11
+#    Time: 74047344 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC6: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 74047344 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC6: reconstructed byte does not match expected value x11
+#    Time: 76255536 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7a: reconstructed byte does not match expected value x55
+#    Time: 87129840 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 87129840 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7b: reconstructed byte does not match expected value xA3
+#    Time: 98004144 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 98004144 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7c: reconstructed byte does not match expected value x00
+#    Time: 108858136 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7c: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 108858136 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7d: reconstructed byte does not match expected value xFF
+#    Time: 119711608 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7d: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 119711608 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7e: reconstructed byte does not match expected value x19
+#    Time: 130565080 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7e: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 130565080 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7f: reconstructed byte does not match expected value xC7
+#    Time: 141418552 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7f: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 141418552 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Failure: Simulation finished
+#    Time: 141543029 ps  Iteration: 0  Process: /uart_rx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd line 311
+# Compile of uart_rx.vhd was successful.
+run -all
+# ** Error: TC2: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 152479824 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC4: reconstructed byte does not match expected value x55
+#    Time: 172124400 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5a: reconstructed byte does not match expected value x77
+#    Time: 182998704 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 182998704 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 193873008 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC6: reconstructed byte does not match expected value x11
+#    Time: 215600784 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC6: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 215600784 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC6: reconstructed byte does not match expected value x11
+#    Time: 217808976 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7a: reconstructed byte does not match expected value x55
+#    Time: 228683280 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 228683280 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7b: reconstructed byte does not match expected value xA3
+#    Time: 239557584 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 239557584 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7c: reconstructed byte does not match expected value x00
+#    Time: 250411576 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7c: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 250411576 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7d: reconstructed byte does not match expected value xFF
+#    Time: 261265048 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7d: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 261265048 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7e: reconstructed byte does not match expected value x19
+#    Time: 272118520 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7e: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 272118520 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7f: reconstructed byte does not match expected value xC7
+#    Time: 282971992 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7f: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 282971992 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Failure: Simulation finished
+#    Time: 283096469 ps  Iteration: 0  Process: /uart_rx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd line 311
+add wave sim:/uart_rx_tb/*
+quit -sim
+# End time: 08:14:04 on Mar 20,2026, Elapsed time: 0:20:13
+# Errors: 42, Warnings: 2
+# Compile of uart_rx.vhd was successful.
+# Compile of uart_rx_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -gui work.uart_rx_tb
+# vsim -gui work.uart_rx_tb 
+# Start time: 08:14:20 on Mar 20,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_rx_tb(sim)
+# Loading work.uart_rx(rtl)
+add wave sim:/uart_rx_tb/*
+run -all
+# ** Error: TC2: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 10926384 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 41445264 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 52319568 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC6: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 74047344 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 87129840 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 98004144 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7c: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 108858136 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7d: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 119711608 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7e: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 130565080 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7f: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 141418552 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Failure: Simulation finished
+#    Time: 141543029 ps  Iteration: 0  Process: /uart_rx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd line 311
+quit -sim
+# End time: 07:09:30 on Mar 21,2026, Elapsed time: 22:55:10
+# Errors: 11, Warnings: 2
+# Compile of uart_rx.vhd was successful.
+# Compile of uart_rx_tb.vhd failed with 2 errors.
+# 2 compiles, 1 failed with 2 errors.
+# Compile of uart_rx.vhd was successful.
+# Compile of uart_rx_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -gui work.uart_rx_tb
+# vsim -gui work.uart_rx_tb 
+# Start time: 07:15:15 on Mar 21,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_rx_tb(sim)
+# Loading work.uart_rx(rtl)
+add wave sim:/uart_rx_tb/*
+# Load canceled
+run -all
+# ** Error: TC2: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 10884720 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 41320272 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 52152912 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC6: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 73839024 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 86879856 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 97712496 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7c: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 108524822 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7d: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 119336630 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7e: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 130148438 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7f: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 140960246 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Failure: Simulation finished
+#    Time: 141084725 ps  Iteration: 0  Process: /uart_rx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd line 311
+quit -sim
+# End time: 07:24:58 on Mar 21,2026, Elapsed time: 0:09:43
+# Errors: 11, Warnings: 3
+# Compile of uart_rx.vhd was successful.
+# Compile of uart_rx_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -gui work.uart_rx_tb
+# vsim -gui work.uart_rx_tb 
+# Start time: 07:25:17 on Mar 21,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_rx_tb(sim)
+# Loading work.uart_rx(rtl)
+add wave sim:/uart_rx_tb/*
+run -all
+# ** Error: TC2: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 10905552 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 41382768 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 52236240 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC6: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 73943184 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 87004848 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 97858320 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7c: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 108691479 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7d: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 119524119 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7e: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 130356759 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7f: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 141189399 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Failure: Simulation finished
+#    Time: 141313877 ps  Iteration: 0  Process: /uart_rx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd line 311
+# WARNING: No extended dataflow license exists
+quit -sim
+# End time: 07:31:40 on Mar 21,2026, Elapsed time: 0:06:23
+# Errors: 11, Warnings: 2
+# Compile of uart_rx_tb.vhd was successful.
+vsim -gui work.uart_rx_tb
+# vsim -gui work.uart_rx_tb 
+# Start time: 07:31:59 on Mar 21,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_rx_tb(sim)
+# Loading work.uart_rx(rtl)
+add wave sim:/uart_rx_tb/*
+run -all
+# ** Error: TC2: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 10905552 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 41382768 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 52236240 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC6: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 73943184 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 87004848 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 97858320 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7c: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 108691479 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7d: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 119524119 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7e: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 130356759 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7f: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 141189399 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Failure: Simulation finished
+#    Time: 141313877 ps  Iteration: 0  Process: /uart_rx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd line 312
+quit -sim
+# End time: 07:43:23 on Mar 21,2026, Elapsed time: 0:11:24
+# Errors: 11, Warnings: 2
+# Compile of uart_rx_tb.vhd failed with 1 errors.
+# Compile of uart_rx.vhd was successful.
+# Compile of uart_rx_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -gui work.uart_rx_tb
+# vsim -gui work.uart_rx_tb 
+# Start time: 07:44:15 on Mar 21,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_rx_tb(sim)
+# Loading work.uart_rx(rtl)
+add wave sim:/uart_rx_tb/*
+run -all
+# ** Error: TC2: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 10968048 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC2: o_rx_valid_pulse is '1', did not match expected value '0'
+#    Time: 10988880 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 41486928 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 52361232 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC6: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 74089008 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 87171504 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 98045808 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7c: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 108899800 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7d: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 119753272 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7e: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 130606744 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7f: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 141460216 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Failure: Simulation finished
+#    Time: 141584693 ps  Iteration: 0  Process: /uart_rx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd line 323
+quit -sim
+# End time: 07:48:26 on Mar 21,2026, Elapsed time: 0:04:11
+# Errors: 12, Warnings: 3
+# Compile of uart_rx_tb.vhd was successful.
+vsim -gui work.uart_rx_tb
+# vsim -gui work.uart_rx_tb 
+# Start time: 07:48:46 on Mar 21,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_rx_tb(sim)
+# Loading work.uart_rx(rtl)
+add wave sim:/uart_rx_tb/*
+run -all
+# ** Error: TC5a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 41507760 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 52382064 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC6: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 74109840 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 87192336 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 98066640 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7c: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 108920632 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7d: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 119774104 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7e: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 130627576 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7f: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 141481048 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Failure: Simulation finished
+#    Time: 141605525 ps  Iteration: 0  Process: /uart_rx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd line 324
+quit -sim
+# End time: 07:50:07 on Mar 21,2026, Elapsed time: 0:01:21
+# Errors: 10, Warnings: 2
+# Compile of uart_rx_tb.vhd was successful.
+vsim -gui work.uart_rx_tb
+# vsim -gui work.uart_rx_tb 
+# Start time: 07:50:26 on Mar 21,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_rx_tb(sim)
+# Loading work.uart_rx(rtl)
+add wave sim:/uart_rx_tb/*
+run -all
+# ** Error: TC5a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 41507760 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 52382064 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC6: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 74109840 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 87192336 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 98066640 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7c: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 108920632 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7d: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 119774104 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7e: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 130627576 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7f: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 141481048 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Failure: Simulation finished
+#    Time: 141605525 ps  Iteration: 0  Process: /uart_rx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd line 324
+quit -sim
+# End time: 08:02:56 on Mar 21,2026, Elapsed time: 0:12:30
+# Errors: 10, Warnings: 2
+# Compile of uart_rx_tb.vhd failed with 2 errors.
+# Compile of uart_rx_tb.vhd was successful.
+vsim -gui work.uart_rx_tb
+# vsim -gui work.uart_rx_tb 
+# Start time: 08:04:55 on Mar 21,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_rx_tb(sim)
+# Loading work.uart_rx(rtl)
+add wave sim:/uart_rx_tb/*
+# Load canceled
+run -all
+# ** Error: TC5a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 41507760 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 52382064 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC6: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 74109840 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 87192336 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 98066640 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7c: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 108920632 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7d: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 119774104 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7e: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 130627576 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7f: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 141481048 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Failure: Simulation finished
+#    Time: 141605525 ps  Iteration: 0  Process: /uart_rx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd line 327
+configure wave -timelineunits ns
+quit -sim
+# End time: 08:12:54 on Mar 21,2026, Elapsed time: 0:07:59
+# Errors: 10, Warnings: 3
+# Compile of uart_rx_tb.vhd was successful.
+vsim -gui work.uart_rx_tb
+# vsim -gui work.uart_rx_tb 
+# Start time: 08:13:16 on Mar 21,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_rx_tb(sim)
+# Loading work.uart_rx(rtl)
+add wave sim:/uart_rx_tb/*
+run -all
+# ** Error: TC5a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 41507760 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 52382064 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC6: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 74109840 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 87192336 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 98066640 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7c: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 108920632 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7d: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 119774104 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7e: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 130627576 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7f: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 141481048 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Failure: Simulation finished
+#    Time: 141605525 ps  Iteration: 0  Process: /uart_rx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd line 331
+configure wave -timelineunits ns
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# ** Error: TC5a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 41507760 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 52382064 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC6: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 74109840 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 87192336 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 98066640 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7c: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 108920632 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7d: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 119774104 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7e: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 130627576 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7f: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 141481048 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Failure: Simulation finished
+#    Time: 141605525 ps  Iteration: 0  Process: /uart_rx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd line 331
+quit -sim
+# End time: 08:21:02 on Mar 21,2026, Elapsed time: 0:07:46
+# Errors: 10, Warnings: 1
+vsim work.uart_rx_tb
+# vsim work.uart_rx_tb 
+# Start time: 08:21:08 on Mar 21,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_rx_tb(sim)
+# Loading work.uart_rx(rtl)
+run -all
+# ** Error: TC5a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 41507760 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 52382064 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC6: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 74109840 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 87192336 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 98066640 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7c: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 108920632 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7d: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 119774104 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7e: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 130627576 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7f: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 141481048 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Failure: Simulation finished
+#    Time: 141605525 ps  Iteration: 0  Process: /uart_rx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd line 331
+add wave sim:/uart_rx_tb/*
+run -all
+# ** Error: TC5a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 183123696 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 193998 ns  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC6: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 215725776 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 228808272 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 239682576 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7c: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 250536568 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7d: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 261390040 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7e: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 272243512 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7f: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 283096984 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Failure: Simulation finished
+#    Time: 283221461 ps  Iteration: 0  Process: /uart_rx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd line 331
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# ** Error: TC5a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 41507760 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 52382064 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC6: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 74109840 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 87192336 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 98066640 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7c: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 108920632 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7d: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 119774104 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7e: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 130627576 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7f: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 141481048 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Failure: Simulation finished
+#    Time: 141605525 ps  Iteration: 0  Process: /uart_rx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd line 331
+vsim work.uart_rx_tb
+# End time: 08:23:16 on Mar 21,2026, Elapsed time: 0:02:08
+# Errors: 10, Warnings: 1
+# vsim work.uart_rx_tb 
+# Start time: 08:23:16 on Mar 21,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_rx_tb(sim)
+# Loading work.uart_rx(rtl)
+quit -sim
+# End time: 08:23:48 on Mar 21,2026, Elapsed time: 0:00:32
+# Errors: 0, Warnings: 1
+vsim work.uart_rx_tb
+# vsim work.uart_rx_tb 
+# Start time: 08:23:52 on Mar 21,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_rx_tb(sim)
+# Loading work.uart_rx(rtl)
+quit -sim
+# End time: 08:24:05 on Mar 21,2026, Elapsed time: 0:00:13
+# Errors: 0, Warnings: 1
+# Compile of uart_rx_tb.vhd was successful.
+vsim work.uart_rx_tb
+# vsim work.uart_rx_tb 
+# Start time: 08:26:01 on Mar 21,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_rx_tb(sim)
+# Loading work.uart_rx(rtl)
+add wave sim:/uart_rx_tb/*
+run -all
+# ** Error: TC5a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 41528592 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 52402896 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC6: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 74130672 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 87213168 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 98087472 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7c: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 108941464 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7d: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 119794936 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7e: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 130648408 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7f: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 141501880 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Failure: Simulation finished
+#    Time: 141626357 ps  Iteration: 0  Process: /uart_rx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd line 331
+quit -sim
+# End time: 08:27:55 on Mar 21,2026, Elapsed time: 0:01:54
+# Errors: 10, Warnings: 2
+# Compile of uart_rx_tb.vhd was successful.
+vsim work.uart_rx_tb
+# vsim work.uart_rx_tb 
+# Start time: 08:28:09 on Mar 21,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_rx_tb(sim)
+# Loading work.uart_rx(rtl)
+add wave sim:/uart_rx_tb/*
+run -all
+# ** Error: TC5a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 41507760 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 52382064 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC6: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 74109840 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 87192336 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 98066640 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7c: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 108920632 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7d: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 119774104 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7e: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 130627576 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Error: TC7f: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 141481048 ps  Iteration: 0  Instance: /uart_rx_tb
+# ** Failure: Simulation finished
+#    Time: 141605525 ps  Iteration: 0  Process: /uart_rx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd line 330
+# WARNING: No extended dataflow license exists
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# WARNING: No extended dataflow license exists
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# WARNING: No extended dataflow license exists
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+quit -sim
+# End time: 10:48:17 on Mar 21,2026, Elapsed time: 2:20:08
+# Errors: 10, Warnings: 2
+# Compile of uart_rx.vhd was successful.
+# Compile of uart_rx_tb.vhd failed with 1 errors.
+# 2 compiles, 1 failed with 1 error.
+# Compile of uart_rx.vhd was successful.
+# Compile of uart_rx_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim work.uart_rx_tb
+# vsim work.uart_rx_tb 
+# Start time: 10:50:02 on Mar 21,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_rx_tb(sim)
+# Loading work.uart_rx(rtl)
+add wave sim:/uart_rx_tb/*
+run -all
+# ** Error: TC2: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 10988880 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC2: o_rx_valid_pulse is '1', did not match expected value '0'
+#    Time: 11009712 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 41653584 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 52569552 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5b: o_rx_valid_pulse is '1', did not match expected value '0'
+#    Time: 52590384 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC6: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 74359824 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC6: o_rx_valid_pulse is '1', did not match expected value '0'
+#    Time: 74380656 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 87483984 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7a: o_rx_valid_pulse is '1', did not match expected value '0'
+#    Time: 87504816 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 98399952 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7b: o_rx_valid_pulse is '1', did not match expected value '0'
+#    Time: 98420784 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7c: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 109315920 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7c: o_rx_valid_pulse is '1', did not match expected value '0'
+#    Time: 109336752 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7d: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 120231888 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7d: o_rx_valid_pulse is '1', did not match expected value '0'
+#    Time: 120252720 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7e: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 131147856 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7e: o_rx_valid_pulse is '1', did not match expected value '0'
+#    Time: 131168688 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7f: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 142063824 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7f: o_rx_valid_pulse is '1', did not match expected value '0'
+#    Time: 142084656 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Failure: Simulation finished
+#    Time: 142292986 ps  Iteration: 0  Process: /uart_rx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd line 379
+quit -sim
+# End time: 11:04:18 on Mar 21,2026, Elapsed time: 0:14:16
+# Errors: 20, Warnings: 3
+# Compile of uart_rx_tb.vhd was successful.
+vsim work.uart_rx_tb
+# vsim work.uart_rx_tb 
+# Start time: 11:04:44 on Mar 21,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_rx_tb(sim)
+# Loading work.uart_rx(rtl)
+add wave sim:/uart_rx_tb/*
+run -all
+# ** Error: TC5a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 41653584 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 52569552 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC5b: o_rx_valid_pulse is '1', did not match expected value '0'
+#    Time: 52590384 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC6: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 74359824 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC6: o_rx_valid_pulse is '1', did not match expected value '0'
+#    Time: 74380656 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 87483984 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7a: o_rx_valid_pulse is '1', did not match expected value '0'
+#    Time: 87504816 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7b: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 98399952 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7b: o_rx_valid_pulse is '1', did not match expected value '0'
+#    Time: 98420784 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7c: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 109315920 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7c: o_rx_valid_pulse is '1', did not match expected value '0'
+#    Time: 109336752 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7d: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 120231888 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7d: o_rx_valid_pulse is '1', did not match expected value '0'
+#    Time: 120252720 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7e: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 131147856 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7e: o_rx_valid_pulse is '1', did not match expected value '0'
+#    Time: 131168688 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7f: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 142063824 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Error: TC7f: o_rx_valid_pulse is '1', did not match expected value '0'
+#    Time: 142084656 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Failure: Simulation finished
+#    Time: 142292976 ps  Iteration: 0  Process: /uart_rx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd line 336
+quit -sim
+# End time: 11:28:43 on Mar 21,2026, Elapsed time: 0:23:59
+# Errors: 18, Warnings: 2
+# Compile of uart_rx_tb.vhd was successful.
+vsim work.uart_rx_tb
+# vsim work.uart_rx_tb 
+# Start time: 11:29:16 on Mar 21,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_rx_tb(sim)
+# Loading work.uart_rx(rtl)
+add wave sim:/uart_rx_tb/*
+run -all
+# ** Error: TC5a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 41716080 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Failure: Simulation finished
+#    Time: 142563802 ps  Iteration: 0  Process: /uart_rx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd line 377
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# ** Error: TC5a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 41716080 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Failure: Simulation finished
+#    Time: 142563802 ps  Iteration: 0  Process: /uart_rx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd line 377
+quit -sim
+# End time: 11:44:49 on Mar 21,2026, Elapsed time: 0:15:33
+# Errors: 2, Warnings: 1
+# Compile of uart_rx_tb.vhd was successful.
+vsim work.uart_rx_tb
+# vsim work.uart_rx_tb 
+# Start time: 11:45:12 on Mar 21,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_rx_tb(sim)
+# Loading work.uart_rx(rtl)
+add wave sim:/uart_rx_tb/*
+run -all
+# ** Error: TC5a: o_rx_valid_pulse is not high after full UART frame is received
+#    Time: 41716080 ps  Iteration: 1  Instance: /uart_rx_tb
+# ** Failure: Simulation finished
+#    Time: 142563802 ps  Iteration: 0  Process: /uart_rx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd line 378
+quit -sim
+# End time: 11:52:27 on Mar 21,2026, Elapsed time: 0:07:15
+# Errors: 2, Warnings: 2
+# Compile of uart_rx_tb.vhd failed with 1 errors.
+# Compile of uart_rx_tb.vhd was successful.
+vsim work.uart_rx_tb
+# vsim work.uart_rx_tb 
+# Start time: 11:53:11 on Mar 21,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_rx_tb(sim)
+# Loading work.uart_rx(rtl)
+add wave sim:/uart_rx_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 142563802 ps  Iteration: 0  Process: /uart_rx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd line 378

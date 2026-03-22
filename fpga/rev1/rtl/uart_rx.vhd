@@ -2,6 +2,7 @@
 -- MODULE: uart_rx.vhd
 -- FUNCTION: converts serial UART data from the host into data bytes
 -- AUTHOR: Jakob Kieszek Ottesen
+-- DATE: 2026-03-21 (YYYY-MM-DD)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -18,7 +19,9 @@
 -- 1 baud = 1 symbol (1 bit for UART)
 -- CLKS_PER_BIT is of type integer. 48e6/921600 = 52.0833... = 52
 -- --> Each bit is readable for CLKS_PER_BIT (~52) clock cycles
--- --> Bits should ideally be sampled near the middle of each bit period
+-- --> Bits should ideally be sampled near the middle of each bit period.
+-- --> But you cannot move on to the next bit - start/data/stop bit - until a full bit period has passed.
+-- --> ... Why? Because UART is asynchronous and relies on RX and FX communicating at the same speed; instead of with a clock (USART)
 -- --> Note that the input is synchronised (2FF) before use
 -- Therefore, actual baud rate = 48e6/52 = 923076, not 921600 --> +0.16% error
 -- But UART usually tolerates +- 2-3% error
@@ -59,17 +62,19 @@ architecture RTL of uart_rx is
 	signal r_rx_byte, n_rx_byte : std_logic_vector(DATA_LENGTH-1 downto 0) := (others => '0');  -- output
 	signal r_rx_valid_pulse, n_rx_valid_pulse : std_logic := '0';								-- output
 	signal r_UART_RX_LED, n_UART_RX_LED : std_logic := '0';										-- output	
+	signal r_valid_start, n_valid_start : std_logic := '0';										-- flag for start_bit
+	signal r_valid_stop, n_valid_stop : std_logic := '0';										-- flag for stop_bit
 	
 	-- Registered signals for 2FF synchroniser
 	signal r_rx_sync_1 : std_logic := '1';
 	signal r_rx_sync_2 : std_logic := '1';
 	
-	-- Counter signals
-	signal r_clk_counter, n_clk_counter : integer := 0;  -- counts FPGA clock cycles in one UART bit period
-	signal r_bit_counter, n_bit_counter : integer := 0;  -- tracks data bits inside one data byte
-	
 	-- Constants
 	constant CLKS_PER_BIT : integer := CLK_FREQ_HZ / BAUD_RATE;
+	
+	-- Counter signals
+	signal r_clk_counter, n_clk_counter : integer range 0 to CLKS_PER_BIT-1 := 0;  -- counts FPGA clock cycles in one UART bit period
+	signal r_bit_counter, n_bit_counter : integer range 0 to DATA_LENGTH-1  := 0;  -- tracks data bits inside one data byte
 	
 begin
 	-- Sequential process for dealing with clocking
@@ -81,6 +86,8 @@ begin
 				r_rx_byte 		 <= (others => '0');
 				r_rx_valid_pulse <= '0';
 				r_UART_RX_LED 	 <= '0';
+				r_valid_start	 <= '0';
+				r_valid_stop     <= '0';
 				r_clk_counter 	 <= 0;
 				r_bit_counter 	 <= 0;
 			else
@@ -88,6 +95,8 @@ begin
 				r_rx_byte 		 <= n_rx_byte;
 				r_rx_valid_pulse <= n_rx_valid_pulse;
 				r_UART_RX_LED 	 <= n_UART_RX_LED;
+				r_valid_start	 <= n_valid_start;
+				r_valid_stop     <= n_valid_stop;
 				r_clk_counter 	 <= n_clk_counter;
 				r_bit_counter 	 <= n_bit_counter;
 			end if;
@@ -118,6 +127,8 @@ begin
 		n_rx_byte 		 	<= r_rx_byte;
 		n_rx_valid_pulse 	<= '0';
 		n_UART_RX_LED 	 	<= r_UART_RX_LED;
+		n_valid_start		<= r_valid_start;
+		n_valid_stop		<= r_valid_stop;
 		n_clk_counter  	 	<= r_clk_counter;
 		n_bit_counter  	 	<= r_bit_counter;
 	
@@ -131,17 +142,17 @@ begin
 				if r_clk_counter = CLKS_PER_BIT/2 then
 					-- wait half a bit period and sample again to verify start bit '0' present
 					if r_rx_sync_2 = '0' then
-						-- start bit confirmed
+						-- start bit confirmed, toggle flag so state can be properly updated at the end of bit period
+						n_valid_start <= '1';
 					else
-						n_clk_counter <= 0;
-						n_bit_counter <= 0;
-						n_state <= RX_IDLE;
+						n_valid_start <= '0';  -- remains unchanged
 					end if;
 					n_clk_counter <= r_clk_counter + 1;
 				elsif r_clk_counter = CLKS_PER_BIT-1 then
 					n_clk_counter <= 0;
 					n_bit_counter <= 0;
-					if r_rx_sync_2 = '0' then
+					if r_valid_start = '1' then
+						n_valid_start <= '0';
 						n_state <= RX_DATA_BITS;
 					else
 						n_state <= RX_IDLE;
@@ -166,18 +177,18 @@ begin
 					n_clk_counter <= r_clk_counter + 1;
 				end if;
 			
-			when RX_STOP_BIT =>  -- '1' for CLKS_PER_BIT
+			when RX_STOP_BIT =>  -- '1' for CLKS_PER_BIT				
 				if r_clk_counter = CLKS_PER_BIT/2 then
 					if r_rx_sync_2 = '1' then
-						-- stop bit detected
+						-- stop bit detected, toggle flag so state can be properly updated at the end of bit period
+						n_valid_stop <= '1';
 					else
-						n_clk_counter <= 0;
-						n_bit_counter <= 0;
-						n_state <= RX_IDLE;
+						n_valid_stop <= '0';  -- remainas unchanged
 					end if;
 					n_clk_counter <= r_clk_counter + 1;
 				elsif r_clk_counter = CLKS_PER_BIT-1 then
-					if r_rx_sync_2 = '1' then  -- stop bit must be detected for valid pulse and LED toggle
+					if r_valid_stop = '1' then  -- valid pulse and LED toggle only happens if stop bit was detected
+						n_valid_stop <= '0';
 						n_rx_valid_pulse <= '1';
 						n_UART_RX_LED <= not r_UART_RX_LED;
 					end if;

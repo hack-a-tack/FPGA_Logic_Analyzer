@@ -42,7 +42,7 @@ entity uart_tx is
 	port (
 		i_clk					: in  std_logic;
 		i_rst					: in  std_logic;
-		i_mux_tx_byte			: in  std_logic_vector(7 downto 0);
+		i_mux_tx_byte			: in  std_logic_vector(DATA_LENGTH-1 downto 0);
 		i_mux_tx_start_pulse	: in  std_logic;
 		o_tx_busy				: out std_logic;
 		o_UART_TX				: out std_logic;
@@ -60,12 +60,12 @@ architecture RTL of uart_tx is
 	signal r_UART_TX, n_UART_TX : std_logic := '0';  											-- output
 	signal r_tx_byte, n_tx_byte : std_logic_vector(DATA_LENGTH-1 downto 0) := (others => '0');  -- for input latching
 	
-	-- Counter signals
-	signal r_clk_counter, n_clk_counter : integer := 0;  -- counts FPGA clock cycles in one UART bit period
-	signal r_bit_counter, n_bit_counter : integer := 0;  -- tracks data bits inside one data byte
-	
 	-- Constants
 	constant CLKS_PER_BIT : integer := CLK_FREQ_HZ / BAUD_RATE;
+	
+	-- Counter signals
+	signal r_clk_counter, n_clk_counter : integer range 0 to CLKS_PER_BIT-1 := 0;  -- counts FPGA clock cycles in one UART bit period
+	signal r_bit_counter, n_bit_counter : integer range 0 to DATA_LENGTH-1  := 0;  -- tracks data bits inside one data byte
 	
 begin
 	-- Sequential process for dealing with clocking

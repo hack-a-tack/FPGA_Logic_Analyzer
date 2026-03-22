@@ -18,6 +18,7 @@ add_file -vhdl -lib work "../rtl/trace_buffer.vhd"
 add_file -vhdl -lib work "../rtl/tx_mux.vhd" 
 add_file -vhdl -lib work "../rtl/uart_rx.vhd" 
 add_file -vhdl -lib work "../rtl/uart_tx.vhd" 
+add_file -constraint -lib work "../constraints/synopsys_design_constraints.sdc"
 #implementation: "iCEcube2_rev1_logic_analyzer_Implmnt"
 impl -add iCEcube2_rev1_logic_analyzer_Implmnt -type fpga
 
