@@ -2,7 +2,7 @@
 -- MODULE: uart_rx_tb.vhd
 -- FUNCTION: TESTBENCH for entity which converts serial UART data into data bytes
 -- AUTHOR: Jakob Kieszek Ottesen
--- DATE: 2026-03-21 (YYYY-MM-DD)
+-- DATE: 2026-03-22 (YYYY-MM-DD)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -85,7 +85,7 @@ architecture sim of uart_rx_tb is
 begin
 
     -- DUT Instantiation
-    uut: uart_rx
+    dut: uart_rx
 		generic map (
 			CLK_FREQ_HZ => CLK_FREQ_HZ,
 			BAUD_RATE => BAUD_RATE,
@@ -134,9 +134,9 @@ begin
 		
     begin
         -- Reset phase
-        wait for CLK_ACTUAL;
+		wait until rising_edge(i_clk);
 		i_rst <= '1';
-		wait for CLK_ACTUAL;
+		wait until rising_edge(i_clk);
 		i_rst <= '0';
 		wait until rising_edge(i_clk);
 		

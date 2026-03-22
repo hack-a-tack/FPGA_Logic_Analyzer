@@ -2,7 +2,7 @@
 -- MODULE: uart_rx.vhd
 -- FUNCTION: converts serial UART data from the host into data bytes
 -- AUTHOR: Jakob Kieszek Ottesen
--- DATE: 2026-03-21 (YYYY-MM-DD)
+-- DATE: 2026-03-22 (YYYY-MM-DD)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -198,9 +198,6 @@ begin
 				else
 					n_clk_counter <= r_clk_counter + 1;
 				end if;
-			
-			when others =>
-				null;
 		end case;
 	end process fsm_proc;
 	
