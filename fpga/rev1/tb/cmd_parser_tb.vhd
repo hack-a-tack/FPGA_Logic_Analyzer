@@ -104,13 +104,12 @@ begin
 		wait until rising_edge(i_clk);
 		
 		-- Test case 1a: CAPTURE command in, expecting corresponding pulse out
-		wait until rising_edge(i_clk);
+		test_id <= 1;
 		i_rx_byte <= x"A0";
 		i_rx_valid_pulse <= '1';
 		wait until rising_edge(i_clk);
 		i_rx_valid_pulse <= '0';
-		-- wait for 0 ps;
-		-- wait until rising_edge(i_clk); might have to wait till next rising edge for pulse to update
+		wait until rising_edge(i_clk);
 		assert o_capture_cmd_pulse = '1'
 			report "TC1a: expected capture pulse on output | not observed"
 			severity error;
@@ -123,7 +122,7 @@ begin
 		command_processed <= not command_processed;
 			
 		-- Test case 1b: check pulse-width is 1 cycle (output returns low after 1 clock cycle)
-		wait until rising_edge(i_clk);  -- TODO: genuine question: better to wait until rising edge or just wait 1 CLK_PERIOD? I don't want to risk "catching an edge"
+		wait until rising_edge(i_clk);
 		assert o_capture_cmd_pulse = '0'
 			report "TC1b: expected NO capture pulse on output, but this was observed"
 			severity error;
@@ -133,15 +132,15 @@ begin
 		assert o_cmd_error_pulse = '0'
 			report "TC1b: expected NO error pulse on output, but this was observed"
 			severity error;
+		wait until rising_edge(i_clk);
 			
         -- Test case 2a: READ command in, expecting corresponding pulse out
-		wait until rising_edge(i_clk);
+		test_id <= 2;
 		i_rx_byte <= x"A1";
 		i_rx_valid_pulse <= '1';
 		wait until rising_edge(i_clk);
 		i_rx_valid_pulse <= '0';
-		-- wait for 0 ps;
-		-- wait until rising_edge(i_clk); might have to wait till next rising edge for pulse to update
+		wait until rising_edge(i_clk);
 		assert o_capture_cmd_pulse = '0'
 			report "TC2a: expected NO capture pulse on output, but this was observed"
 			severity error;
@@ -164,15 +163,15 @@ begin
 		assert o_cmd_error_pulse = '0'
 			report "TC2b: expected NO error pulse on output, but this was observed"
 			severity error;
+		wait until rising_edge(i_clk);
 				
 		-- Test case 3a: invalid/unknown command in, expecting error pulse out
-		wait until rising_edge(i_clk);
+		test_id <= 3;
 		i_rx_byte <= x"55";
 		i_rx_valid_pulse <= '1';
 		wait until rising_edge(i_clk);
 		i_rx_valid_pulse <= '0';
-		-- wait for 0 ps;
-		-- wait until rising_edge(i_clk); might have to wait till next rising edge for pulse to update
+		wait until rising_edge(i_clk);
 		assert o_capture_cmd_pulse = '0'
 			report "TC3a: expected NO capture pulse on output, but this was observed"
 			severity error;
@@ -195,14 +194,14 @@ begin
 		assert o_cmd_error_pulse = '0'
 			report "TC3b: expected NO error pulse on output, but this was observed"
 			severity error;
+		wait until rising_edge(i_clk);
 		
 		-- Test case 4: valid byte in but rx_valid = '0'; expecting no pulse
-		wait until rising_edge(i_clk);
+		test_id <= 4;
 		i_rx_byte <= x"A0";
 		i_rx_valid_pulse <= '0';
 		wait until rising_edge(i_clk);
-		-- wait for 0 ps;
-		-- wait until rising_edge(i_clk); might have to wait till next rising edge for pulse to update
+		wait until rising_edge(i_clk);
 		assert o_capture_cmd_pulse = '0'
 			report "TC4: expected NO capture pulse on output, but this was observed"
 			severity error;
@@ -213,14 +212,16 @@ begin
 			report "TC4: expected NO error pulse on output, but this was observed"
 			severity error;
 		-- command_processed <= not command_processed; --> NOT PROCESSED BECAUSE NO VALID PULSE
+		wait until rising_edge(i_clk);
 		
 		-- Test case 5: back-to-back commands (noise bytes between commands), expecting pulses every clock
 		-- Command stream: 99 A0 55(no valid pulse) A1 EE A0
-		wait until rising_edge(i_clk);
+		test_id <= 5;
 		i_rx_byte <= x"99";
 		i_rx_valid_pulse <= '1';
 		wait until rising_edge(i_clk);
-		-- wait until rising_edge(i_clk); might have to wait till next rising edge for pulse to update
+		i_rx_valid_pulse <= '0';
+		wait until rising_edge(i_clk);
 		assert o_capture_cmd_pulse = '0'
 			report "TC5a: expected NO capture pulse on output, but this was observed"
 			severity error;
@@ -231,12 +232,12 @@ begin
 			report "TC5a: expected error pulse on output | not observed"
 			severity error;
 		command_processed <= not command_processed;
-		-- delay?
 		
 		i_rx_byte <= x"A0";
 		i_rx_valid_pulse <= '1';
 		wait until rising_edge(i_clk);
-		-- wait until rising_edge(i_clk); might have to wait till next rising edge for pulse to update
+		i_rx_valid_pulse <= '0';
+		wait until rising_edge(i_clk);
 		assert o_capture_cmd_pulse = '1'
 			report "TC5b: expected capture pulse on output | not observed"
 			severity error;
@@ -247,12 +248,11 @@ begin
 			report "TC5b: expected NO error pulse on output, but this was observed"
 			severity error;
 		command_processed <= not command_processed;
-		-- delay?
 			
 		i_rx_byte <= x"55";
 		i_rx_valid_pulse <= '0';
 		wait until rising_edge(i_clk);
-		-- wait until rising_edge(i_clk); might have to wait till next rising edge for pulse to update
+		wait until rising_edge(i_clk);
 		assert o_capture_cmd_pulse = '0'
 			report "TC5c: expected NO capture pulse on output, but this was observed"
 			severity error;
@@ -263,12 +263,12 @@ begin
 			report "TC5c: expected NO error pulse on output, but this was observed"
 			severity error;
 		-- command_processed <= not command_processed; --> NOT PROCESSED BECAUSE NO VALID PULSE
-		-- delay?
 		
 		i_rx_byte <= x"A1";
 		i_rx_valid_pulse <= '1';
 		wait until rising_edge(i_clk);
-		-- wait until rising_edge(i_clk); might have to wait till next rising edge for pulse to update
+		i_rx_valid_pulse <= '0';
+		wait until rising_edge(i_clk);
 		assert o_capture_cmd_pulse = '0'
 			report "TC5d: expected NO capture pulse on output, but this was observed"
 			severity error;
@@ -279,12 +279,12 @@ begin
 			report "TC5d: expected NO error pulse on output, but this was observed"
 			severity error;
 		command_processed <= not command_processed;
-		-- delay?
 			
 		i_rx_byte <= x"EE";
 		i_rx_valid_pulse <= '1';
 		wait until rising_edge(i_clk);
-		-- wait until rising_edge(i_clk); might have to wait till next rising edge for pulse to update
+		i_rx_valid_pulse <= '0';
+		wait until rising_edge(i_clk);
 		assert o_capture_cmd_pulse = '0'
 			report "TC5e: expected NO capture pulse on output, but this was observed"
 			severity error;
@@ -295,12 +295,12 @@ begin
 			report "TC5e: expected error pulse on output | not observed"
 			severity error;
 		command_processed <= not command_processed;
-		-- delay?
 		
 		i_rx_byte <= x"A0";
 		i_rx_valid_pulse <= '1';
 		wait until rising_edge(i_clk);
-		-- wait until rising_edge(i_clk); might have to wait till next rising edge for pulse to update
+		i_rx_valid_pulse <= '0';
+		wait until rising_edge(i_clk);
 		assert o_capture_cmd_pulse = '1'
 			report "TC5f: expected capture pulse on output | not observed"
 			severity error;
@@ -311,15 +311,16 @@ begin
 			report "TC5f: expected NO error pulse on output, but this was observed"
 			severity error;
 		command_processed <= not command_processed;
-		-- delay?
+		wait until rising_edge(i_clk);
 		
 		-- Test case 6: back-to-back commands (multiple identical commands in a row), expecting pulses every clock
 		-- Command stream: A0 A0 A0(no valid pulse) A0
-		wait until rising_edge(i_clk);
+		test_id <= 6;
 		i_rx_byte <= x"A0";
 		i_rx_valid_pulse <= '1';
 		wait until rising_edge(i_clk);
-		-- wait until rising_edge(i_clk); might have to wait till next rising edge for pulse to update
+		i_rx_valid_pulse <= '0';
+		wait until rising_edge(i_clk);
 		assert o_capture_cmd_pulse = '1'
 			report "TC6a: expected capture pulse on output | not observed"
 			severity error;
@@ -330,12 +331,12 @@ begin
 			report "TC6a: expected NO error pulse on output, but this was observed"
 			severity error;
 		command_processed <= not command_processed;
-		-- delay?
 			
 		i_rx_byte <= x"A0";
 		i_rx_valid_pulse <= '1';
 		wait until rising_edge(i_clk);
-		-- wait until rising_edge(i_clk); might have to wait till next rising edge for pulse to update
+		i_rx_valid_pulse <= '0';
+		wait until rising_edge(i_clk);
 		assert o_capture_cmd_pulse = '1'
 			report "TC6b: expected capture pulse on output | not observed"
 			severity error;
@@ -346,12 +347,12 @@ begin
 			report "TC6b: expected NO error pulse on output, but this was observed"
 			severity error;
 		command_processed <= not command_processed;
-		-- delay?
 		
 		i_rx_byte <= x"A0";
 		i_rx_valid_pulse <= '0';  -- no valid pulse for this one
 		wait until rising_edge(i_clk);
-		-- wait until rising_edge(i_clk); might have to wait till next rising edge for pulse to update
+		i_rx_valid_pulse <= '0';
+		wait until rising_edge(i_clk);
 		assert o_capture_cmd_pulse = '0'
 			report "TC6c: expected NO capture pulse on output, but this was observed"
 			severity error;
@@ -362,12 +363,12 @@ begin
 			report "TC6c: expected NO error pulse on output, but this was observed"
 			severity error;
 		-- command_processed <= not command_processed; --> NOT PROCESSED BECAUSE NO VALID PULSE
-		-- delay?
 		
 		i_rx_byte <= x"A0";
 		i_rx_valid_pulse <= '1';
 		wait until rising_edge(i_clk);
-		-- wait until rising_edge(i_clk); might have to wait till next rising edge for pulse to update
+		i_rx_valid_pulse <= '0';
+		wait until rising_edge(i_clk);
 		assert o_capture_cmd_pulse = '1'
 			report "TC6d: expected capture pulse on output | not observed"
 			severity error;
@@ -378,7 +379,6 @@ begin
 			report "TC6d: expected NO error pulse on output, but this was observed"
 			severity error;
 		command_processed <= not command_processed;
-		-- delay?
 		
         -- Finish simulation
         wait for 10*CLK_ACTUAL;

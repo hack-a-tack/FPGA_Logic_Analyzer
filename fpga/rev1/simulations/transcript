@@ -2444,3 +2444,158 @@ run -all
 quit -sim
 # End time: 19:51:23 on Mar 22,2026, Elapsed time: 0:01:06
 # Errors: 1, Warnings: 2
+# Compile of cmd_parser.vhd was successful with warnings.
+vsim work.cmd_parser_tb
+# vsim work.cmd_parser_tb 
+# Start time: 19:54:02 on Mar 22,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.cmd_parser_tb(sim)
+# Loading work.cmd_parser(rtl)
+add wave sim:/cmd_parser_tb/*
+run -all
+# ** Error: TC1a: expected capture pulse on output | not observed
+#    Time: 93744 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC1b: expected NO capture pulse on output, but this was observed
+#    Time: 114576 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC2a: expected read pulse on output | not observed
+#    Time: 156240 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC2b: expected NO read pulse on output, but this was observed
+#    Time: 177072 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC3a: expected error pulse on output | not observed
+#    Time: 218736 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC3b: expected NO error pulse on output, but this was observed
+#    Time: 239568 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC5a: expected error pulse on output | not observed
+#    Time: 322896 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC5b: expected capture pulse on output | not observed
+#    Time: 343728 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC5b: expected NO error pulse on output, but this was observed
+#    Time: 343728 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC5c: expected NO capture pulse on output, but this was observed
+#    Time: 364560 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC5d: expected read pulse on output | not observed
+#    Time: 385392 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC5e: expected NO read pulse on output, but this was observed
+#    Time: 406224 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC5e: expected error pulse on output | not observed
+#    Time: 406224 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC5f: expected capture pulse on output | not observed
+#    Time: 427056 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC5f: expected NO error pulse on output, but this was observed
+#    Time: 427056 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC6c: expected NO capture pulse on output, but this was observed
+#    Time: 510384 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC6d: expected capture pulse on output | not observed
+#    Time: 531216 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Failure: Simulation finished
+#    Time: 739536 ps  Iteration: 0  Process: /cmd_parser_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/cmd_parser_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/cmd_parser_tb.vhd line 385
+quit -sim
+# End time: 20:03:30 on Mar 22,2026, Elapsed time: 0:09:28
+# Errors: 18, Warnings: 2
+# Compile of cmd_parser.vhd was successful with warnings.
+# Compile of cmd_parser_tb.vhd was successful.
+vsim work.cmd_parser_tb
+# vsim work.cmd_parser_tb 
+# Start time: 20:04:29 on Mar 22,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.cmd_parser_tb(sim)
+# Loading work.cmd_parser(rtl)
+add wave sim:/cmd_parser_tb/*
+run -all
+# ** Error: TC2a: expected read pulse on output | not observed
+#    Time: 177072 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC2b: expected NO read pulse on output, but this was observed
+#    Time: 197904 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC3a: expected error pulse on output | not observed
+#    Time: 239568 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC3b: expected NO error pulse on output, but this was observed
+#    Time: 260400 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC5a: expected error pulse on output | not observed
+#    Time: 343728 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC5b: expected capture pulse on output | not observed
+#    Time: 364560 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC5b: expected NO error pulse on output, but this was observed
+#    Time: 364560 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC5c: expected NO capture pulse on output, but this was observed
+#    Time: 385392 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC5d: expected read pulse on output | not observed
+#    Time: 406224 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC5e: expected NO read pulse on output, but this was observed
+#    Time: 427056 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC5e: expected error pulse on output | not observed
+#    Time: 427056 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC5f: expected capture pulse on output | not observed
+#    Time: 447888 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC5f: expected NO error pulse on output, but this was observed
+#    Time: 447888 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC6c: expected NO capture pulse on output, but this was observed
+#    Time: 531216 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Error: TC6d: expected capture pulse on output | not observed
+#    Time: 552048 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Failure: Simulation finished
+#    Time: 760368 ps  Iteration: 0  Process: /cmd_parser_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/cmd_parser_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/cmd_parser_tb.vhd line 391
+quit -sim
+# End time: 20:09:58 on Mar 22,2026, Elapsed time: 0:05:29
+# Errors: 16, Warnings: 3
+# Compile of cmd_parser_tb.vhd was successful.
+vsim work.cmd_parser_tb
+# vsim work.cmd_parser_tb 
+# Start time: 20:10:17 on Mar 22,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.cmd_parser_tb(sim)
+# Loading work.cmd_parser(rtl)
+add wave sim:/cmd_parser_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 1031184 ps  Iteration: 0  Process: /cmd_parser_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/cmd_parser_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/cmd_parser_tb.vhd line 397
+quit -sim
+# End time: 20:21:46 on Mar 22,2026, Elapsed time: 0:11:29
+# Errors: 1, Warnings: 2
+# Compile of cmd_parser_tb.vhd was successful.
+vsim work.cmd_parser_tb
+# vsim work.cmd_parser_tb 
+# Start time: 20:22:03 on Mar 22,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.cmd_parser_tb(sim)
+# Loading work.cmd_parser(rtl)
+add wave sim:/cmd_parser_tb/*
+run -all
+# ** Error: TC1b: expected NO capture pulse on output, but this was observed
+#    Time: 114576 ps  Iteration: 1  Instance: /cmd_parser_tb
+# ** Failure: Simulation finished
+#    Time: 1114512 ps  Iteration: 0  Process: /cmd_parser_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/cmd_parser_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/cmd_parser_tb.vhd line 392
+quit -sim
+# End time: 20:32:04 on Mar 22,2026, Elapsed time: 0:10:01
+# Errors: 2, Warnings: 2
+# Compile of cmd_parser_tb.vhd was successful.
+vsim work.cmd_parser_tb
+# vsim work.cmd_parser_tb 
+# Start time: 20:32:22 on Mar 22,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.cmd_parser_tb(sim)
+# Loading work.cmd_parser(rtl)
+add wave sim:/cmd_parser_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 1010352 ps  Iteration: 0  Process: /cmd_parser_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/cmd_parser_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/cmd_parser_tb.vhd line 385
+quit -sim
