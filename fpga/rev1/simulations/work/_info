@@ -14,84 +14,84 @@ Z0 w1774086575
 Z1 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
 Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z3 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
-!i122 39
+!i122 59
 Z4 dC:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/simulations
 Z5 8C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/rtl/uart_rx.vhd
 Z6 FC:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/rtl/uart_rx.vhd
 l0
-L40 1
+Z7 L40 1
 Vg4G@b^Rcmg1L=iV4db<0n2
 !s100 Z==<Lz0ha2R:_aXSRE=881
-Z7 OV;C;2020.1;71
+Z8 OV;C;2020.1;71
 33
-Z8 !s110 1774086591
+Z9 !s110 1774160118
 !i10b 1
-Z9 !s108 1774086591.000000
-Z10 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/rtl/uart_rx.vhd|
-Z11 !s107 C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/rtl/uart_rx.vhd|
+Z10 !s108 1774160118.000000
+Z11 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/rtl/uart_rx.vhd|
+Z12 !s107 C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/rtl/uart_rx.vhd|
 !i113 1
-Z12 o-work work -2008 -explicit
-Z13 tExplicit 1 NoCoverage 1 CvgOpt 0
+Z13 o-work work -2008 -explicit
+Z14 tExplicit 1 NoCoverage 1 CvgOpt 0
 Artl
 R1
 R2
 R3
 DEx4 work 7 uart_rx 0 22 g4G@b^Rcmg1L=iV4db<0n2
-!i122 39
+!i122 59
 l79
 L56 158
 VTk39:W9zlho:_jK9[<Q7?2
 !s100 nYakeFFS@oFB^mVIL_hIb0
-R7
-33
 R8
-!i10b 1
+33
 R9
+!i10b 1
 R10
 R11
-!i113 1
 R12
+!i113 1
 R13
+R14
 Euart_rx_tb
-Z14 w1774090375
+Z15 w1774160095
 R1
 R2
 R3
-!i122 45
+!i122 60
 R4
-Z15 8C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
-Z16 FC:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
+Z16 8C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
+Z17 FC:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd
 l0
-L32 1
-Vc4JiVliP?PUiIY]_25n9M1
-!s100 KkYz_<h9C?o_MGSkhiD_10
 R7
+V_4TGV]SYN>1bL:]2SXGUQ3
+!s100 NCQHVJUZ4<;l=YF[i02c62
+R8
 33
-Z17 !s110 1774090382
+R9
 !i10b 1
-Z18 !s108 1774090381.000000
-Z19 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd|
-Z20 !s107 C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd|
+R10
+Z18 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd|
+Z19 !s107 C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_rx_tb.vhd|
 !i113 1
-R12
 R13
+R14
 Asim
 R1
 R2
 R3
-Z21 DEx4 work 10 uart_rx_tb 0 22 c4JiVliP?PUiIY]_25n9M1
-!i122 45
-l79
-Z22 L35 347
-V^3KRfP3dLHi<RfKgQL>>@2
-!s100 j<n^G3T]Jf=Sjm:i?eYM43
-R7
+DEx4 work 10 uart_rx_tb 0 22 _4TGV]SYN>1bL:]2SXGUQ3
+!i122 60
+l85
+L43 357
+Va1l=]X@gWKL0gzRS`zcK[1
+!s100 JYWLHYPAC^A5J=P?>F=c[1
+R8
 33
-R17
+R9
 !i10b 1
+R10
 R18
 R19
-R20
 !i113 1
-R12
 R13
+R14

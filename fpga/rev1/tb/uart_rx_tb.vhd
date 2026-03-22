@@ -24,10 +24,13 @@
 -- Therefore, actual baud rate = 48e6/52 = 923076, not 921600 --> +0.16% error
 -- But UART usually tolerates +- 2-3% error
 --
--- Waveform shows o_rx_valid_pulse rise 3 cycles after uart_frame_status toggles.
+-- Waveform shows o_rx_valid_pulse rising 3 cycles after uart_frame_status toggles.
 -- Still correct with 4 wait statements, just note that the waveform is measuring from a later reference point
--- ... than "the moment the last bit was driven"
--- lag #3 (FSM state register / counter) has been absorbed into the stop bit period itself — it's not visible after uart_frame_status.
+-- ... than "the moment the last bit was driven".
+-- ... Lag #3 (FSM state register / counter) has been absorbed into the stop bit period itself.
+-- ... It's not visible after uart_frame_status.
+-- ... The DUT has already been processing that stop bit during the final BIT_PERIOD clocks (of the procedure).
+-- Using "wait for 0 ps" to add delta cycle and get past coincident edge of DUT, given 0 drift in clock periods.
 -- ========================================
 
 library IEEE;
@@ -62,13 +65,11 @@ architecture sim of uart_rx_tb is
 	
 	constant CLK_FREQ   : real := 48.0e6;
 	constant CLK_PERIOD : time := 1 sec / CLK_FREQ;  	-- 20833 ps (truncated)
-	--constant CLK_HALF : time := CLK_PERIOD / 2;			-- 10416 ps (truncated)
-	--constant CLK_ACTUAL : time := CLK_HALF * 2;			-- 20832 ps
+	constant CLK_HALF : time := CLK_PERIOD / 2;			-- 10416 ps (truncated)
+	constant CLK_ACTUAL : time := CLK_HALF * 2;			-- 20832 ps --> effectively
 	constant CLKS_PER_BIT : integer := CLK_FREQ_HZ / BAUD_RATE;  -- integer / --> 52
-	--constant BIT_PERIOD : time := CLKS_PER_BIT * CLK_ACTUAL;
+	constant BIT_PERIOD : time := CLKS_PER_BIT * CLK_ACTUAL;
 	
-	constant BIT_PERIOD : time := CLKS_PER_BIT * CLK_PERIOD;  -- time for each baud (symbol=bit): 1081.6 ns
-
     -- Signals to connect to DUT	
 	signal i_clk					: std_logic := '0';
 	signal i_rst					: std_logic := '0';
@@ -77,7 +78,7 @@ architecture sim of uart_rx_tb is
 	signal o_rx_valid_pulse			: std_logic;
 	signal o_UART_RX_LED			: std_logic;
 	
-	-- Signal for easier troubleshooting
+	-- Signals for easier troubleshooting
 	signal test_id : integer := 0;  				-- increments with each test case
 	signal uart_frame_status : std_logic := '0';	-- toggles with each full uart frame
 
@@ -104,9 +105,9 @@ begin
     begin
         while true loop
             i_clk <= '0';
-            wait for CLK_PERIOD/2;
+            wait for CLK_HALF;
             i_clk <= '1';
-            wait for CLK_PERIOD/2;
+            wait for CLK_HALF;
         end loop;
     end process;
 
@@ -133,14 +134,14 @@ begin
 		
     begin
         -- Reset phase
-        wait for CLK_PERIOD;
+        wait for CLK_ACTUAL;
 		i_rst <= '1';
-		wait for CLK_PERIOD;
+		wait for CLK_ACTUAL;
 		i_rst <= '0';
 		wait until rising_edge(i_clk);
 		
 		-- Test case 1: UART should be idle high in state RX_IDLE
-		test_id <= 1;
+		test_id <= 1; wait for 0 ps;
 		assert i_UART_RX = '1'
 			report "TC1: uart_rx module reading '0' from host when '1' is expected (RX_IDLE)"
 			severity error;
@@ -151,9 +152,10 @@ begin
 			
         -- Test case 2: uart_rx should output reconstructed byte and valid pulse when 1 full UART frame is received
 		-- Start bit '0'; data bits "1010 1010" (0xAA); stop bit '1'
-		test_id <= 2;
+		test_id <= 2; 
 		wait until rising_edge(i_clk);  -- alignment wait
 		send_uart_frame(data => x"AA", stop_bit => '1', rx_line => i_UART_RX);
+		wait for 0 ps;  				-- add delta cycle to prevent reprocessing coincident clock edges
 		wait until rising_edge(i_clk);  -- accounts for 1st stage in 2FF
 		wait until rising_edge(i_clk);  -- accounts for 2nd stage in 2FF
 		wait until rising_edge(i_clk);  -- accounts for state register delay (IDLE --> START_BIT, then CLKS_PER_BIT cycles per state)
@@ -174,10 +176,11 @@ begin
 		test_id <= 3;
 		wait until rising_edge(i_clk);
 		i_UART_RX <= '0';
-		wait for 2*CLK_PERIOD;
+		wait for 2*CLK_ACTUAL;
 		i_UART_RX <= '1';
 		wait for 8*BIT_PERIOD;
-		wait until rising_edge(i_clk);
+		wait for 0 ps;
+		--wait until rising_edge(i_clk);
 		assert o_rx_valid_pulse = '0'
 			report "TC3: valid pulse went high despite start bit only being low for 2 clock cycles"
 			severity error;
@@ -191,6 +194,7 @@ begin
 		test_id <= 4;
 		wait until rising_edge(i_clk);
 		send_uart_frame(data => x"55", stop_bit => '0', rx_line => i_UART_RX);
+		wait for 0 ps;  				-- add delta cycle to prevent reprocessing coincident clock edges
 		wait until rising_edge(i_clk);  -- accounts for 1st stage in 2FF
 		wait until rising_edge(i_clk);  -- accounts for 2nd stage in 2FF
 		wait until rising_edge(i_clk);  -- accounts for state register delay (once, then each state lasts CLKS_PER_BIT cycles)
@@ -208,6 +212,7 @@ begin
 		test_id <= 5;
 		wait until rising_edge(i_clk);
 		send_uart_frame(data => x"77", stop_bit => '1', rx_line => i_UART_RX);
+		wait for 0 ps;  				-- add delta cycle to prevent reprocessing coincident clock edges
 		wait until rising_edge(i_clk);  -- accounts for 1st stage in 2FF
 		wait until rising_edge(i_clk);  -- accounts for 2nd stage in 2FF
 		wait until rising_edge(i_clk);  -- accounts for state register delay (once, then each state lasts CLKS_PER_BIT cycles)
@@ -226,6 +231,7 @@ begin
 		-- Test case 5b: back-to-back frames, frame 2
 		-- Start bit '0'; data bits "1000 1000" (0x88); stop bit '1'
 		send_uart_frame(data => x"88", stop_bit => '1', rx_line => i_UART_RX);
+		wait for 0 ps;  				-- add delta cycle to prevent reprocessing coincident clock edges
 		wait until rising_edge(i_clk);  -- accounts for 1st stage in 2FF
 		wait until rising_edge(i_clk);  -- accounts for 2nd stage in 2FF
 		wait until rising_edge(i_clk);  -- accounts for state register delay (once, then each state lasts CLKS_PER_BIT cycles)
@@ -257,6 +263,7 @@ begin
 		
 		-- Start bit '0'; data bits "0001 0001" (0x11); stop bit '1'
 		send_uart_frame(data => x"11", stop_bit => '1', rx_line => i_UART_RX);
+		wait for 0 ps;  				-- add delta cycle to prevent reprocessing coincident clock edges
 		wait until rising_edge(i_clk);  -- accounts for 1st stage in 2FF
 		wait until rising_edge(i_clk);  -- accounts for 2nd stage in 2FF
 		wait until rising_edge(i_clk);  -- accounts for state register delay (once, then each state lasts CLKS_PER_BIT cycles)
@@ -283,6 +290,7 @@ begin
 		wait until rising_edge(i_clk);
 		
 		send_uart_frame(data => x"55", stop_bit => '1', rx_line => i_UART_RX);  -- "0101 0101" (0x55)
+		wait for 0 ps;  				-- add delta cycle to prevent reprocessing coincident clock edges
 		wait until rising_edge(i_clk);  -- accounts for 1st stage in 2FF
 		wait until rising_edge(i_clk);  -- accounts for 2nd stage in 2FF
 		wait until rising_edge(i_clk);  -- accounts for state register delay (once, then each state lasts CLKS_PER_BIT cycles)
@@ -299,6 +307,7 @@ begin
 			severity error;
 			
 		send_uart_frame(data => x"A3", stop_bit => '1', rx_line => i_UART_RX);  -- "1010 0011" (0xA3)
+		wait for 0 ps;  				-- add delta cycle to prevent reprocessing coincident clock edges
 		wait until rising_edge(i_clk);  -- accounts for 1st stage in 2FF
 		wait until rising_edge(i_clk);  -- accounts for 2nd stage in 2FF
 		wait until rising_edge(i_clk);  -- accounts for state register delay (once, then each state lasts CLKS_PER_BIT cycles)
@@ -315,6 +324,7 @@ begin
 			severity error;
 			
 		send_uart_frame(data => x"00", stop_bit => '1', rx_line => i_UART_RX);  -- "0000 0000" (0x00)
+		wait for 0 ps;  				-- add delta cycle to prevent reprocessing coincident clock edges
 		wait until rising_edge(i_clk);  -- accounts for 1st stage in 2FF
 		wait until rising_edge(i_clk);  -- accounts for 2nd stage in 2FF
 		wait until rising_edge(i_clk);  -- accounts for state register delay (once, then each state lasts CLKS_PER_BIT cycles)
@@ -331,6 +341,7 @@ begin
 			severity error;
 			
 		send_uart_frame(data => x"FF", stop_bit => '1', rx_line => i_UART_RX);  -- "1111 1111" (0xFF)
+		wait for 0 ps;  				-- add delta cycle to prevent reprocessing coincident clock edges
 		wait until rising_edge(i_clk);  -- accounts for 1st stage in 2FF
 		wait until rising_edge(i_clk);  -- accounts for 2nd stage in 2FF
 		wait until rising_edge(i_clk);  -- accounts for state register delay (once, then each state lasts CLKS_PER_BIT cycles)
@@ -347,6 +358,7 @@ begin
 			severity error;
 			
 		send_uart_frame(data => x"19", stop_bit => '1', rx_line => i_UART_RX);  -- "0001 1001" (0x19)
+		wait for 0 ps;  				-- add delta cycle to prevent reprocessing coincident clock edges
 		wait until rising_edge(i_clk);  -- accounts for 1st stage in 2FF
 		wait until rising_edge(i_clk);  -- accounts for 2nd stage in 2FF
 		wait until rising_edge(i_clk);  -- accounts for state register delay (once, then each state lasts CLKS_PER_BIT cycles)
@@ -363,6 +375,7 @@ begin
 			severity error;
 			
 		send_uart_frame(data => x"C7", stop_bit => '1', rx_line => i_UART_RX);  -- "1100 0111" (0xC7)
+		wait for 0 ps;  				-- add delta cycle to prevent reprocessing coincident clock edges
 		wait until rising_edge(i_clk);  -- accounts for 1st stage in 2FF
 		wait until rising_edge(i_clk);  -- accounts for 2nd stage in 2FF
 		wait until rising_edge(i_clk);  -- accounts for state register delay (once, then each state lasts CLKS_PER_BIT cycles)
@@ -379,7 +392,7 @@ begin
 			severity error;
 		
         -- Finish simulation
-        wait for 10*CLK_PERIOD;
+        wait for 10*CLK_ACTUAL;
         assert false report "Simulation finished" severity failure;
     end process;
 
