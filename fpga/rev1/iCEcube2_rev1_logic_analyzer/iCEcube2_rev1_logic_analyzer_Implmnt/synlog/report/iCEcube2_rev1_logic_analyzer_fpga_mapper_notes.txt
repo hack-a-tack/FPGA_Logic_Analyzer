@@ -3,10 +3,10 @@
 @N: MT204 |Auto Constrain mode is disabled because clocks are defined in the SDC file
 @N: BN362 :|Removing sequential instance mem_0_0_sr_rst_0 (in view: VhdlGenLib.top_RAMN_R_W_4096_8_TFFF_block_ram_ns_sbt(netlist)) because it does not drive other instances.
 @N: MF794 |RAM E7.mem[7:0] required 1 registers during mapping 
-@N: MO225 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":78:2:78:3|There are no possible illegal states for state machine r_state[0:3] (in view: work.uart_rx(rtl)); safe FSM implementation is not required.
-@N: MO225 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":81:2:81:3|There are no possible illegal states for state machine r_state[0:3] (in view: work.analyzer_fsm(rtl)); safe FSM implementation is not required.
+@N: MO225 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":83:2:83:3|There are no possible illegal states for state machine r_state[0:3] (in view: work.uart_rx(rtl)); safe FSM implementation is not required.
+@N: MO225 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":85:2:85:3|There are no possible illegal states for state machine r_state[0:3] (in view: work.analyzer_fsm(rtl)); safe FSM implementation is not required.
 @N: MO225 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":68:2:68:3|There are no possible illegal states for state machine r_state[0:3] (in view: work.send_engine(rtl)); safe FSM implementation is not required.
-@N: MO225 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":74:2:74:3|There are no possible illegal states for state machine r_state[0:3] (in view: work.uart_tx(rtl)); safe FSM implementation is not required.
+@N: MO225 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":76:2:76:3|There are no possible illegal states for state machine r_state[0:3] (in view: work.uart_tx(rtl)); safe FSM implementation is not required.
 @N: MF794 |RAM E7.mem[7:0] required 1 registers during mapping 
 @N: BN362 :|Removing sequential instance mem_0_0_sr_en (in view: VhdlGenLib.top_RAMN_R_W_4096_8_TFFF_block_ram_ns_sbt(netlist)) because it does not drive other instances.
 @N: BN362 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\trace_buffer.vhd":52:8:52:10|Removing sequential instance E7.mem_mem_1_3_OLD[0] (in view: work.top(structure)) because it does not drive other instances.
@@ -45,7 +45,7 @@
 @N: BN362 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\trace_buffer.vhd":52:8:52:10|Removing sequential instance E7.mem_mem_1_3_OLD_0[0] (in view: work.top(structure)) because it does not drive other instances.
 @N: MF794 |RAM E7.mem[7:0] required 2 registers during mapping 
 @N: FX1017 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\top.vhd":45:2:45:8|SB_GB inserted on the net i_RESET_c.
-@N: FX1017 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":78:2:78:3|SB_GB inserted on the net E2.N_189.
+@N: FX1017 :|SB_GB inserted on the net E4.n_wd_count_1_sqmuxa_i.
 @N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.
 @N: BW107 |Synopsys Constraint File capacitance units using default value of 1pF 
 @N: FX1056 |Writing EDF file: C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\iCEcube2_rev1_logic_analyzer\iCEcube2_rev1_logic_analyzer_Implmnt\iCEcube2_rev1_logic_analyzer.edf

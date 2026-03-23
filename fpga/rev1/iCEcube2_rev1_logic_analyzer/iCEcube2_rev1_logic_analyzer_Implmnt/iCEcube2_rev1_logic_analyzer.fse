@@ -1,27 +1,27 @@
 
-fsm_encoding {16782781} sequential
+fsm_encoding {16832831} sequential
 
-fsm_state_encoding {16782781} rx_idle {00}
+fsm_state_encoding {16832831} rx_idle {00}
 
-fsm_state_encoding {16782781} rx_start_bit {01}
+fsm_state_encoding {16832831} rx_start_bit {01}
 
-fsm_state_encoding {16782781} rx_data_bits {10}
+fsm_state_encoding {16832831} rx_data_bits {10}
 
-fsm_state_encoding {16782781} rx_stop_bit {11}
+fsm_state_encoding {16832831} rx_stop_bit {11}
 
-fsm_registers {16782781} {r_state[1]}  {r_state[0]} 
+fsm_registers {16832831} {r_state[1]}  {r_state[0]} 
 
-fsm_encoding {9812812} sequential
+fsm_encoding {9852852} sequential
 
-fsm_state_encoding {9812812} idle {00}
+fsm_state_encoding {9852852} idle {00}
 
-fsm_state_encoding {9812812} capture {01}
+fsm_state_encoding {9852852} capture {01}
 
-fsm_state_encoding {9812812} done {10}
+fsm_state_encoding {9852852} done {10}
 
-fsm_state_encoding {9812812} send {11}
+fsm_state_encoding {9852852} send {11}
 
-fsm_registers {9812812} {r_state[1]}  {r_state[0]} 
+fsm_registers {9852852} {r_state[1]}  {r_state[0]} 
 
 fsm_encoding {13682683} sequential
 
@@ -35,14 +35,14 @@ fsm_state_encoding {13682683} send_data {11}
 
 fsm_registers {13682683} {r_state[1]}  {r_state[0]} 
 
-fsm_encoding {17742744} sequential
+fsm_encoding {17762764} sequential
 
-fsm_state_encoding {17742744} tx_idle {00}
+fsm_state_encoding {17762764} tx_idle {00}
 
-fsm_state_encoding {17742744} tx_start_bit {01}
+fsm_state_encoding {17762764} tx_start_bit {01}
 
-fsm_state_encoding {17742744} tx_data_bits {10}
+fsm_state_encoding {17762764} tx_data_bits {10}
 
-fsm_state_encoding {17742744} tx_stop_bit {11}
+fsm_state_encoding {17762764} tx_stop_bit {11}
 
-fsm_registers {17742744} {r_state[1]}  {r_state[0]} 
+fsm_registers {17762764} {r_state[1]}  {r_state[0]} 

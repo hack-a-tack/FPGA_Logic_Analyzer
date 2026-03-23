@@ -2599,3 +2599,38 @@ run -all
 #    Time: 1010352 ps  Iteration: 0  Process: /cmd_parser_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/cmd_parser_tb.vhd
 # Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/cmd_parser_tb.vhd line 385
 quit -sim
+# End time: 20:33:19 on Mar 22,2026, Elapsed time: 0:00:57
+# Errors: 1, Warnings: 2
+# Compile of analyzer_fsm.vhd was successful.
+# Compile of analyzer_fsm_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim work.analyzer_fsm_tb
+# vsim work.analyzer_fsm_tb 
+# Start time: 20:24:22 on Mar 23,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.analyzer_fsm_tb(sim)
+# Loading work.analyzer_fsm(rtl)
+add wave sim:/analyzer_fsm_tb/*
+run -all
+# ** Error: TC1: Start pulse not sent to tx_mux
+#    Time: 72912 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC1: Status code not updated to 0xEE
+#    Time: 72912 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC2: Start pulse not sent to capture_engine
+#    Time: 114576 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC2: Start pulse not sent to tx_mux
+#    Time: 114576 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC2: Status code not updated to 0x55
+#    Time: 114576 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC3: Start pulse not sent to tx_mux
+#    Time: 177072 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC3: Status code not updated to 0x77 (pending from when uart_tx was busy)
+#    Time: 177072 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC4: Start pulse not sent to send_engine
+#    Time: 197904 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Failure: Simulation finished
+#    Time: 468720 ps  Iteration: 0  Process: /analyzer_fsm_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/analyzer_fsm_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/analyzer_fsm_tb.vhd line 200

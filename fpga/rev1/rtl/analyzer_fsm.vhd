@@ -2,6 +2,7 @@
 -- MODULE: analyzer_fsm.vhd
 -- FUNCTION: manages the logic analyzer state machine
 -- AUTHOR: Jakob Kieszek Ottesen
+-- DATE: 2026-03-23 (YYYY-MM-DD)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -23,7 +24,6 @@
 --
 -- NOTES
 -- Pending status code is just sent if not overridden by a new, higher-priority event in the same cycle
--- Watchdog process not implemented
 --
 -- PREFIXES
 -- i_ : input
@@ -62,16 +62,20 @@ architecture RTL of analyzer_fsm is
 	type runtime_state_type is (IDLE, CAPTURE, DONE, SEND);
 	signal r_state, n_state : runtime_state_type := IDLE;
 	
-	-- Registers for output signals
-	signal r_fsm_tx_status_byte, n_fsm_tx_status_byte : std_logic_vector(DATA_LENGTH-1 downto 0) := (others => '0');
-	signal r_fsm_tx_start_pulse, n_fsm_tx_start_pulse : std_logic := '0';
-	signal r_capture_start_pulse, n_capture_start_pulse : std_logic := '0';
-	signal r_send_start_pulse, n_send_start_pulse : std_logic := '0';
-	signal r_USER_LED, n_USER_LED : std_logic := '0';
+	-- Register signals, next-state signals
+	signal r_fsm_tx_status_byte, n_fsm_tx_status_byte : std_logic_vector(DATA_LENGTH-1 downto 0) := (others => '0');	-- output
+	signal r_fsm_tx_start_pulse, n_fsm_tx_start_pulse : std_logic := '0';												-- output
+	signal r_capture_start_pulse, n_capture_start_pulse : std_logic := '0';												-- output
+	signal r_send_start_pulse, n_send_start_pulse : std_logic := '0';													-- output
+	signal r_USER_LED, n_USER_LED : std_logic := '0';																	-- output
+	signal r_status_pending_valid, n_status_pending_valid : std_logic := '0';											-- internal
+	signal r_status_pending_byte, n_status_pending_byte : std_logic_vector(DATA_LENGTH-1 downto 0) := (others => '0');	-- internal
+	signal r_wd_count, n_wd_count : unsigned(23 downto 0) := (others => '0');											-- Watchdog
+	signal wd_timeout : std_logic := '0'; 																				-- Watchdog
 	
-	-- Internal signals for pending status byte
-	signal r_status_pending_valid, n_status_pending_valid : std_logic := '0';
-	signal r_status_pending_byte, n_status_pending_byte : std_logic_vector(DATA_LENGTH-1 downto 0) := (others => '0');
+	-- Watchdog limits
+	constant WD_LIMIT_CAPTURE 	: unsigned(23 downto 0) := 100_000;
+	constant WD_LIMIT_SEND		: unsigned(23 downto 0) := 4_800_000;
 	
 begin
 
@@ -88,6 +92,7 @@ begin
 				r_USER_LED <= '0';
 				r_status_pending_valid <= '0';
 				r_status_pending_byte <= (others => '0');
+				r_wd_count <= (others => '0');
 			else
 				r_state <= n_state;
 				r_fsm_tx_status_byte <= n_fsm_tx_status_byte;
@@ -97,6 +102,7 @@ begin
 				r_USER_LED <= n_USER_LED;
 				r_status_pending_valid <= n_status_pending_valid;
 				r_status_pending_byte <= n_status_pending_byte;
+				r_wd_count <= n_wd_count;
 			end if;
 		end if;
 	end process seq_proc;
@@ -114,6 +120,7 @@ begin
 		n_USER_LED <= r_USER_LED;
 		n_status_pending_valid <= r_status_pending_valid;
 		n_status_pending_byte <= r_status_pending_byte;
+		n_wd_count <= r_wd_count;
 		
 		-- Send pending status code if (exists and) uart_tx is no longer busy
 		if r_status_pending_valid = '1' and i_tx_busy = '0' then
@@ -220,17 +227,46 @@ begin
 					n_state <= IDLE;
 					-- no error handling in state SEND (0xEE won't be sent as data is being streamed)
 				end if;
-				
-			when others =>
-				null;
 		end case;
+		
+		-- Watchdog logic: prevents getting stuck in CAPTURE or SEND
+		if n_state = CAPTURE and r_state = IDLE then
+			n_wd_count <= 0;
+		elsif n_state = SEND and r_state = IDLE then
+			n_wd_count <= 0;
+		elsif (n_state = CAPTURE and r_state = CAPTURE) then
+			if r_wd_count >= WD_LIMIT_CAPTURE then
+				n_wd_count <= 0;
+			else
+				n_wd_count <= r_wd_count + 1;
+			end if;
+		elsif (n_state = SEND and r_state = SEND) then
+			if r_wd_count >= WD_LIMIT_SEND then
+				n_wd_count <= 0;
+			else
+				n_wd_count <= r_wd_count + 1;
+			end if;
+		else  -- for states IDLE and DONE, reset Watchdog counter
+			n_wd_count <= 0;
+		end if;
+		
+		if wd_timeout = '1' then
+			n_state <= IDLE;
+			if i_tx_busy = '0' then
+				n_fsm_tx_status_byte <= x"DD";  -- 0xDD (WATCHDOG ERROR), 0b11011101; watchdog triggered
+				n_fsm_tx_start_pulse <= '1';
+			else
+				n_status_pending_valid <= '1';
+				n_status_pending_byte <= x"DD";
+			end if;
+		end if;
 	end process fsm_proc;
-
-
-	-- Watchdog process for counting expected number of samples captured (if state = CAPTURE)
-	--watchdog_proc: process(i_samp_tick) is
-	--begin
-	--end process watchdog_proc;
+	
+	
+	-- Watchdog timeout
+	wd_timeout <= '1' when 	(r_state = CAPTURE and r_wd_count >= WD_LIMIT_CAPTURE) or 
+							(r_state = SEND and r_wd_count >= WD_LIMIT_SEND)
+							else '0';
 	
 	
 	-- Set outputs
