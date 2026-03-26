@@ -2,7 +2,7 @@
 -- MODULE: top.vhd
 -- FUNCTION: ties all underlying modules together
 -- AUTHOR: Jakob Kieszek Ottesen
--- DATE: 2026-03-14 (YYYY-MM-DD)
+-- DATE: 2026-03-24 (YYYY-MM-DD)
 --
 -- INPUTS 					DATA		TO INTERNAL MODULE
 -- i_RESET					1 bit		-> uart_rx | cmd_parser | analyzer_fsm | capture_engine | send_engine | tx_mux | uart_tx
@@ -144,14 +144,12 @@ begin
 		)
 		port map (
 			i_clk 					=> CLK,
-			i_samp_tick 			=> SAMP_TICK,
 			i_rst 					=> i_RESET,
 			i_cmd_error_pulse 		=> ERROR_PULSE,
 			i_capture_cmd_pulse 	=> CAPTURE_PULSE,
 			i_capture_done_pulse 	=> CAPTURE_DONE_PULSE,
 			i_read_cmd_pulse 		=> READ_PULSE,
 			i_send_done_pulse 		=> SEND_DONE_PULSE,
-			i_tx_busy 				=> TX_BUSY,
 			o_capture_start_pulse 	=> CAPTURE_START_PULSE,
 			o_send_start_pulse 		=> SEND_START_PULSE,
 			o_fsm_tx_status_byte 	=> FSM_TX_STATUS_BYTE,

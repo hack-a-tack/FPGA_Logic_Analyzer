@@ -11,12 +11,12 @@
 #CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd2008\\arith.vhd":1773506671
 #CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd2008\\unsigned.vhd":1773506671
 #CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd\\hyperents.vhd":1773506671
-#CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\analyzer_fsm.vhd":1774296877
+#CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\analyzer_fsm.vhd":1774424409
 #CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\capture_engine.vhd":1773470579
 #CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\clocking.vhd":1773731158
 #CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\cmd_parser.vhd":1773378446
 #CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\send_engine.vhd":1773470597
-#CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\top.vhd":1773813532
+#CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\top.vhd":1774424593
 #CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\trace_buffer.vhd":1773562720
 #CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\tx_mux.vhd":1773034353
 #CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\uart_rx.vhd":1774162364

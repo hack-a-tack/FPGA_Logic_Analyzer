@@ -8,7 +8,7 @@
 --
 -- OUTPUTS					DATA		TO MODULE
 -- o_clk					1 bit		-> uart_rx | cmd_parser | analyzer_fsm | capture_engine | send_engine | tx_mux | uart_tx
--- o_samp_tick				1 bit		-> capture_engine | analyzer_fsm
+-- o_samp_tick				1 bit		-> capture_engine
 --
 -- NOTES
 -- SB_HFOSC instantiation --> iCE40UP5K primitive

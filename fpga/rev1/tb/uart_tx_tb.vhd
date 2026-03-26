@@ -11,7 +11,7 @@
 -- i_mux_tx_start_pulse		1 bit		<- tx_mux
 --
 -- OUTPUTS					DATA		TO MODULE
--- o_tx_busy				1 bit		-> analyzer_fsm ; send_engine
+-- o_tx_busy				1 bit		-> send_engine
 -- o_UART_TX				1 bit		-> top
 -- o_UART_TX_LED			1 bit		-> top
 --

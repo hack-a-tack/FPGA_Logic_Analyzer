@@ -1,4 +1,4 @@
-# Mon Mar 23 21:14:46 2026
+# Wed Mar 25 08:43:41 2026
 
 Synopsys Lattice Technology Mapper, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -41,14 +41,13 @@ Available hyper_sources - for debug and ip models
 @W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":83:2:83:3|User-specified initial value defined for instance E2.r_UART_RX_LED is being ignored. 
 @W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":110:2:110:3|User-specified initial value defined for instance E2.r_rx_sync_2 is being ignored. 
 @W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":110:2:110:3|User-specified initial value defined for instance E2.r_rx_sync_1 is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":85:2:85:3|User-specified initial value defined for instance E4.r_status_pending_byte[7:0] is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":85:2:85:3|User-specified initial value defined for instance E4.r_fsm_tx_status_byte[7:0] is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":85:2:85:3|User-specified initial value defined for instance E4.r_wd_count[22:0] is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":85:2:85:3|User-specified initial value defined for instance E4.r_status_pending_valid is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":85:2:85:3|User-specified initial value defined for instance E4.r_fsm_tx_start_pulse is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":85:2:85:3|User-specified initial value defined for instance E4.r_send_start_pulse is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":85:2:85:3|User-specified initial value defined for instance E4.r_capture_start_pulse is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":85:2:85:3|User-specified initial value defined for instance E4.r_USER_LED is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":79:2:79:3|User-specified initial value defined for instance E4.r_fsm_tx_status_byte[5:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":79:2:79:3|User-specified initial value defined for instance E4.r_fsm_tx_start_pulse is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":79:2:79:3|User-specified initial value defined for instance E4.r_fsm_tx_status_byte[7] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":79:2:79:3|User-specified initial value defined for instance E4.r_wd_count[22:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":79:2:79:3|User-specified initial value defined for instance E4.r_capture_start_pulse is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":79:2:79:3|User-specified initial value defined for instance E4.r_send_start_pulse is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":79:2:79:3|User-specified initial value defined for instance E4.r_USER_LED is being ignored. 
 @W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":68:2:68:3|User-specified initial value defined for instance E6.r_ram_rd_addr[11:0] is being ignored. 
 @W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":68:2:68:3|User-specified initial value defined for instance E6.r_send_tx_byte[7:0] is being ignored. 
 @W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":68:2:68:3|User-specified initial value defined for instance E6.r_send_tx_start_pulse is being ignored. 
@@ -96,7 +95,7 @@ original code -> new code
    01 -> 01
    10 -> 10
    11 -> 11
-@N: MO225 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":85:2:85:3|There are no possible illegal states for state machine r_state[0:3] (in view: work.analyzer_fsm(rtl)); safe FSM implementation is not required.
+@N: MO225 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":79:2:79:3|There are no possible illegal states for state machine r_state[0:3] (in view: work.analyzer_fsm(rtl)); safe FSM implementation is not required.
 Encoding state machine r_state[0:3] (in view: work.send_engine(rtl))
 original code -> new code
    00 -> 00
@@ -129,11 +128,11 @@ original code -> new code
 @W: FX469 :|Net mem_1_3_RAM_0[0] is undriven; adding disabled tristate to drive this net. To avoid the addition of a tristate, add a driver to the net.
 @N: MF794 |RAM E7.mem[7:0] required 1 registers during mapping 
 
-Starting factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 134MB peak: 135MB)
+Starting factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 134MB)
 
 @N: BN362 :|Removing sequential instance mem_0_0_sr_en (in view: VhdlGenLib.top_RAMN_R_W_4096_8_TFFF_block_ram_ns_sbt(netlist)) because it does not drive other instances.
 
-Finished factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 137MB)
+Finished factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 135MB peak: 135MB)
 
 @N: BN362 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\trace_buffer.vhd":52:8:52:10|Removing sequential instance E7.mem_mem_1_3_OLD[0] (in view: work.top(structure)) because it does not drive other instances.
 @N: BN362 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\trace_buffer.vhd":52:8:52:10|Removing sequential instance E7.mem_mem_1_3_OLD[1] (in view: work.top(structure)) because it does not drive other instances.
@@ -152,19 +151,19 @@ Finished factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; M
 @N: BN362 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\trace_buffer.vhd":52:8:52:10|Removing sequential instance E7.mem_mem_0_0_OLD[0] (in view: work.top(structure)) because it does not drive other instances.
 @N: BN362 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\trace_buffer.vhd":52:8:52:10|Removing sequential instance E7.mem_mem_0_0_OLD[1] (in view: work.top(structure)) because it does not drive other instances.
 
-Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 135MB peak: 137MB)
+Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 134MB peak: 135MB)
 
 
-Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 137MB)
+Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 136MB)
 
 
-Starting Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 137MB peak: 137MB)
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 137MB)
 
 
-Finished Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 137MB peak: 138MB)
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 137MB)
 
 
-Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 137MB peak: 138MB)
+Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 137MB)
 
 @N: BN362 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\trace_buffer.vhd":52:8:52:10|Removing sequential instance E7.mem_mem_0_0_OLD_0[1] (in view: work.top(structure)) because it does not drive other instances.
 @N: BN362 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\trace_buffer.vhd":52:8:52:10|Removing sequential instance E7.mem_mem_0_0_OLD_0[0] (in view: work.top(structure)) because it does not drive other instances.
@@ -186,14 +185,14 @@ Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:00s; CP
 @N: BN362 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\trace_buffer.vhd":52:8:52:10|Removing sequential instance E7.mem_mem_1_3_OLD_0[0] (in view: work.top(structure)) because it does not drive other instances.
 @N: MF794 |RAM E7.mem[7:0] required 2 registers during mapping 
 
-Finished preparing to map (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 137MB peak: 138MB)
+Finished preparing to map (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 137MB)
 
 
-Finished technology mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 148MB peak: 150MB)
+Finished technology mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 137MB peak: 139MB)
 
 Pass		 CPU time		Worst Slack		Luts / Registers
 ------------------------------------------------------------
-   1		0h:00m:00s		     6.07ns		 310 /       155
+   1		0h:00m:00s		     7.47ns		 230 /       142
 @A: BN291 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":67:2:67:3|Boundary register E5.r_raw_wr_data[0] (in view: work.top(structure)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
 @A: BN291 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":67:2:67:3|Boundary register E5.r_raw_wr_data[1] (in view: work.top(structure)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
 @A: BN291 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":67:2:67:3|Boundary register E5.r_raw_wr_data[2] (in view: work.top(structure)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
@@ -205,10 +204,10 @@ Pass		 CPU time		Worst Slack		Luts / Registers
 @N: FX1017 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\top.vhd":45:2:45:8|SB_GB inserted on the net i_RESET_c.
 @N: FX1017 :|SB_GB inserted on the net E4.n_wd_count_1_sqmuxa_i.
 
-Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 148MB peak: 150MB)
+Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 137MB peak: 139MB)
 
 
-Finished restoring hierarchy (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 148MB peak: 150MB)
+Finished restoring hierarchy (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 137MB peak: 139MB)
 
 
 
@@ -217,14 +216,14 @@ Finished restoring hierarchy (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:
 
 #### START OF CLOCK OPTIMIZATION REPORT #####[
 
-2 non-gated/non-generated clock tree(s) driving 171 clock pin(s) of sequential element(s)
+2 non-gated/non-generated clock tree(s) driving 158 clock pin(s) of sequential element(s)
 0 gated/generated clock tree(s) driving 0 clock pin(s) of sequential element(s)
 0 instances converted, 0 sequential instances remain driven by gated/generated clocks
 
 =================================== Non-Gated/Non-Generated Clocks ===================================
 Clock Tree ID     Driving Element     Drive Element Type                Fanout     Sample Instance    
 ------------------------------------------------------------------------------------------------------
-@K:CKID0001       E1                  clock definition on hierarchy     170        E9.r_clk_counter[0]
+@K:CKID0001       E1                  clock definition on hierarchy     157        E9.r_clk_counter[0]
 @K:CKID0002       E1.o_clk_keep       clock definition on keepbuf       1          E1.r_samp_tick     
 ======================================================================================================
 
@@ -232,11 +231,11 @@ Clock Tree ID     Driving Element     Drive Element Type                Fanout  
 ##### END OF CLOCK OPTIMIZATION REPORT ######]
 
 
-Start Writing Netlists (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 122MB peak: 150MB)
+Start Writing Netlists (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 111MB peak: 139MB)
 
 Writing Analyst data base C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\iCEcube2_rev1_logic_analyzer\iCEcube2_rev1_logic_analyzer_Implmnt\synwork\iCEcube2_rev1_logic_analyzer_m.srm
 
-Finished Writing Netlist Databases (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 147MB peak: 150MB)
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 137MB peak: 139MB)
 
 Writing EDIF Netlist and constraint files
 @N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.
@@ -244,16 +243,16 @@ Writing EDIF Netlist and constraint files
 @N: FX1056 |Writing EDF file: C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\iCEcube2_rev1_logic_analyzer\iCEcube2_rev1_logic_analyzer_Implmnt\iCEcube2_rev1_logic_analyzer.edf
 L-2016.09L+ice40
 
-Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 148MB peak: 150MB)
+Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 138MB peak: 140MB)
 
 
-Start final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 147MB peak: 150MB)
+Start final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 137MB peak: 140MB)
 
 @N: MT615 |Found clock clk52 with period 18.94ns 
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Mon Mar 23 21:14:48 2026
+# Timing Report written on Wed Mar 25 08:43:43 2026
 #
 
 
@@ -273,13 +272,13 @@ Performance Summary
 *******************
 
 
-Worst slack in design: -0.902
+Worst slack in design: 0.593
 
-                   Requested     Estimated     Requested     Estimated                Clock        Clock           
-Starting Clock     Frequency     Frequency     Period        Period        Slack      Type         Group           
--------------------------------------------------------------------------------------------------------------------
-clk52              52.8 MHz      50.4 MHz      18.939        19.842        -0.902     declared     default_clkgroup
-===================================================================================================================
+                   Requested     Estimated     Requested     Estimated               Clock        Clock           
+Starting Clock     Frequency     Frequency     Period        Period        Slack     Type         Group           
+------------------------------------------------------------------------------------------------------------------
+clk52              52.8 MHz      54.5 MHz      18.939        18.346        0.593     declared     default_clkgroup
+==================================================================================================================
 
 
 
@@ -288,12 +287,12 @@ clk52              52.8 MHz      50.4 MHz      18.939        19.842        -0.90
 Clock Relationships
 *******************
 
-Clocks            |    rise  to  rise    |    fall  to  fall   |    rise  to  fall   |    fall  to  rise 
----------------------------------------------------------------------------------------------------------
-Starting  Ending  |  constraint  slack   |  constraint  slack  |  constraint  slack  |  constraint  slack
----------------------------------------------------------------------------------------------------------
-clk52     clk52   |  18.939      -0.903  |  No paths    -      |  No paths    -      |  No paths    -    
-=========================================================================================================
+Clocks            |    rise  to  rise   |    fall  to  fall   |    rise  to  fall   |    fall  to  rise 
+--------------------------------------------------------------------------------------------------------
+Starting  Ending  |  constraint  slack  |  constraint  slack  |  constraint  slack  |  constraint  slack
+--------------------------------------------------------------------------------------------------------
+clk52     clk52   |  18.939      0.593  |  No paths    -      |  No paths    -      |  No paths    -    
+========================================================================================================
  Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
        'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
 
@@ -315,41 +314,41 @@ Detailed Report for Clock: clk52
 Starting Points with Worst Slack
 ********************************
 
-                      Starting                                              Arrival           
-Instance              Reference     Type         Pin     Net                Time        Slack 
-                      Clock                                                                   
-----------------------------------------------------------------------------------------------
-E4.r_wd_count[5]      clk52         SB_DFFSR     Q       r_wd_count[5]      0.796       -0.902
-E4.r_wd_count[6]      clk52         SB_DFFSR     Q       r_wd_count[6]      0.796       -0.892
-E4.r_wd_count[7]      clk52         SB_DFFSR     Q       r_wd_count[7]      0.796       -0.851
-E4.r_wd_count[9]      clk52         SB_DFFSR     Q       r_wd_count[9]      0.796       0.768 
-E4.r_wd_count[10]     clk52         SB_DFFSR     Q       r_wd_count[10]     0.796       0.841 
-E4.r_wd_count[11]     clk52         SB_DFFSR     Q       r_wd_count[11]     0.796       0.872 
-E4.r_wd_count[13]     clk52         SB_DFFSR     Q       r_wd_count[13]     0.796       0.965 
-E4.r_wd_count[12]     clk52         SB_DFFSR     Q       r_wd_count[12]     0.796       0.996 
-E4.r_wd_count[8]      clk52         SB_DFFSR     Q       r_wd_count[8]      0.796       1.109 
-E4.r_wd_count[14]     clk52         SB_DFFSR     Q       r_wd_count[14]     0.796       1.130 
-==============================================================================================
+                      Starting                                              Arrival          
+Instance              Reference     Type         Pin     Net                Time        Slack
+                      Clock                                                                  
+---------------------------------------------------------------------------------------------
+E4.r_wd_count[5]      clk52         SB_DFFSR     Q       r_wd_count[5]      0.796       0.593
+E4.r_wd_count[6]      clk52         SB_DFFSR     Q       r_wd_count[6]      0.796       0.665
+E4.r_wd_count[9]      clk52         SB_DFFSR     Q       r_wd_count[9]      0.796       0.789
+E4.r_wd_count[10]     clk52         SB_DFFSR     Q       r_wd_count[10]     0.796       0.861
+E4.r_wd_count[11]     clk52         SB_DFFSR     Q       r_wd_count[11]     0.796       2.532
+E4.r_wd_count[12]     clk52         SB_DFFSR     Q       r_wd_count[12]     0.796       2.604
+E4.r_wd_count[13]     clk52         SB_DFFSR     Q       r_wd_count[13]     0.796       2.636
+E4.r_wd_count[7]      clk52         SB_DFFSR     Q       r_wd_count[7]      0.796       2.697
+E4.r_wd_count[8]      clk52         SB_DFFSR     Q       r_wd_count[8]      0.796       2.729
+E4.r_wd_count[14]     clk52         SB_DFFSR     Q       r_wd_count[14]     0.796       2.729
+=============================================================================================
 
 
 Ending Points with Worst Slack
 ******************************
 
-                                    Starting                                                                 Required           
-Instance                            Reference     Type          Pin     Net                                  Time         Slack 
-                                    Clock                                                                                       
---------------------------------------------------------------------------------------------------------------------------------
-E4.r_status_pending_byte[3]         clk52         SB_DFFSR      D       r_status_pending_byte                18.784       -0.902
-E4.r_status_pending_byte_esr[7]     clk52         SB_DFFESR     D       r_status_pending_byte_2[7]           18.784       0.768 
-E4.r_status_pending_valid           clk52         SB_DFFSR      D       r_status_pending_valid_0             18.784       0.768 
-E4.r_fsm_tx_status_byte[1]          clk52         SB_DFFSR      D       N_129_i                              18.784       0.830 
-E4.r_fsm_tx_status_byte[5]          clk52         SB_DFFSR      D       N_127_i                              18.784       0.830 
-E4.r_status_pending_byte[2]         clk52         SB_DFFSR      D       r_status_pending_byte_en_0[2]        18.784       0.903 
-E4.r_status_pending_byte[6]         clk52         SB_DFFSR      D       r_status_pending_byte_en[6]          18.784       0.903 
-E4.r_status_pending_byte_esr[4]     clk52         SB_DFFESR     D       r_status_pending_byte_esr_RNO[4]     18.784       1.006 
-E4.r_fsm_tx_status_byte[7]          clk52         SB_DFFSR      D       r_fsm_tx_status_byte_RNO[7]          18.784       1.006 
-E4.r_fsm_tx_status_byte[3]          clk52         SB_DFFSR      D       r_fsm_tx_status_byte_RNO[3]          18.784       1.016 
-================================================================================================================================
+                               Starting                                                       Required          
+Instance                       Reference     Type         Pin     Net                         Time         Slack
+                               Clock                                                                            
+----------------------------------------------------------------------------------------------------------------
+E4.r_fsm_tx_status_byte[0]     clk52         SB_DFF       D       r_fsm_tx_status_byte        18.784       0.593
+E4.r_fsm_tx_status_byte[1]     clk52         SB_DFF       D       r_fsm_tx_status_byte_0      18.784       0.593
+E4.r_fsm_tx_status_byte[2]     clk52         SB_DFF       D       r_fsm_tx_status_byte_1      18.784       0.593
+E4.r_fsm_tx_status_byte[3]     clk52         SB_DFF       D       r_fsm_tx_status_byte_2      18.784       0.593
+E4.r_state[0]                  clk52         SB_DFFSR     D       N_6                         18.784       1.151
+E4.r_state[1]                  clk52         SB_DFFSR     D       r_state_RNO[1]              18.784       2.697
+E4.r_fsm_tx_start_pulse        clk52         SB_DFFSR     D       r_fsm_tx_start_pulsec_i     18.784       2.760
+E4.r_wd_count[0]               clk52         SB_DFFSR     R       n_wd_count_1_sqmuxa_i_g     18.784       3.915
+E4.r_wd_count[1]               clk52         SB_DFFSR     R       n_wd_count_1_sqmuxa_i_g     18.784       3.915
+E4.r_wd_count[2]               clk52         SB_DFFSR     R       n_wd_count_1_sqmuxa_i_g     18.784       3.915
+================================================================================================================
 
 
 
@@ -363,261 +362,48 @@ Path information for path number 1:
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         18.784
 
-    - Propagation time:                      19.686
+    - Propagation time:                      18.191
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (critical) :                     -0.902
-
-    Number of logic level(s):                9
-    Starting point:                          E4.r_wd_count[5] / Q
-    Ending point:                            E4.r_status_pending_byte[3] / D
-    The start point is clocked by            clk52 [rising] on pin C
-    The end   point is clocked by            clk52 [rising] on pin C
-
-Instance / Net                                       Pin      Pin               Arrival     No. of    
-Name                                    Type         Name     Dir     Delay     Time        Fan Out(s)
-------------------------------------------------------------------------------------------------------
-E4.r_wd_count[5]                        SB_DFFSR     Q        Out     0.796     0.796       -         
-r_wd_count[5]                           Net          -        -       1.599     -           3         
-E4.r_wd_count_RNIRA79[5]                SB_LUT4      I0       In      -         2.395       -         
-E4.r_wd_count_RNIRA79[5]                SB_LUT4      O        Out     0.569     2.963       -         
-un36_n_statelt8_0                       Net          -        -       1.371     -           1         
-E4.r_wd_count_RNI6EMK[8]                SB_LUT4      I0       In      -         4.334       -         
-E4.r_wd_count_RNI6EMK[8]                SB_LUT4      O        Out     0.661     4.996       -         
-N_347                                   Net          -        -       1.371     -           1         
-E4.r_wd_count_RNIJDJK1[15]              SB_LUT4      I3       In      -         6.367       -         
-E4.r_wd_count_RNIJDJK1[15]              SB_LUT4      O        Out     0.424     6.791       -         
-N_329                                   Net          -        -       1.371     -           2         
-E4.r_wd_count_RNI9PJK2[19]              SB_LUT4      I3       In      -         8.162       -         
-E4.r_wd_count_RNI9PJK2[19]              SB_LUT4      O        Out     0.465     8.627       -         
-N_459                                   Net          -        -       1.371     -           4         
-E4.r_state_RNIBU2U3[0]                  SB_LUT4      I3       In      -         9.998       -         
-E4.r_state_RNIBU2U3[0]                  SB_LUT4      O        Out     0.465     10.463      -         
-N_414                                   Net          -        -       1.371     -           2         
-E4.r_state_RNI1J7M5[0]                  SB_LUT4      I3       In      -         11.834      -         
-E4.r_state_RNI1J7M5[0]                  SB_LUT4      O        Out     0.465     12.299      -         
-r_status_pending_byte_2_0_i_o2_1[3]     Net          -        -       1.371     -           1         
-E4.r_state_RNI74GN8[0]                  SB_LUT4      I0       In      -         13.670      -         
-E4.r_state_RNI74GN8[0]                  SB_LUT4      O        Out     0.661     14.332      -         
-N_346                                   Net          -        -       1.371     -           3         
-E4.r_status_pending_byte_RNO_1[3]       SB_LUT4      I1       In      -         15.703      -         
-E4.r_status_pending_byte_RNO_1[3]       SB_LUT4      O        Out     0.589     16.292      -         
-r_status_pending_byte_RNO_1[3]          Net          -        -       1.371     -           1         
-E4.r_status_pending_byte_RNO[3]         SB_LUT4      I2       In      -         17.663      -         
-E4.r_status_pending_byte_RNO[3]         SB_LUT4      O        Out     0.517     18.180      -         
-r_status_pending_byte                   Net          -        -       1.507     -           1         
-E4.r_status_pending_byte[3]             SB_DFFSR     D        In      -         19.686      -         
-======================================================================================================
-Total path delay (propagation time + setup) of 19.842 is 5.768(29.1%) logic and 14.074(70.9%) route.
-Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
-
-
-Path information for path number 2: 
-      Requested Period:                      18.939
-    - Setup time:                            0.155
-    + Clock delay at ending point:           0.000 (ideal)
-    = Required time:                         18.784
-
-    - Propagation time:                      19.676
-    - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -0.892
-
-    Number of logic level(s):                9
-    Starting point:                          E4.r_wd_count[6] / Q
-    Ending point:                            E4.r_status_pending_byte[3] / D
-    The start point is clocked by            clk52 [rising] on pin C
-    The end   point is clocked by            clk52 [rising] on pin C
-
-Instance / Net                                       Pin      Pin               Arrival     No. of    
-Name                                    Type         Name     Dir     Delay     Time        Fan Out(s)
-------------------------------------------------------------------------------------------------------
-E4.r_wd_count[6]                        SB_DFFSR     Q        Out     0.796     0.796       -         
-r_wd_count[6]                           Net          -        -       1.599     -           3         
-E4.r_wd_count_RNIRA79[5]                SB_LUT4      I1       In      -         2.395       -         
-E4.r_wd_count_RNIRA79[5]                SB_LUT4      O        Out     0.558     2.953       -         
-un36_n_statelt8_0                       Net          -        -       1.371     -           1         
-E4.r_wd_count_RNI6EMK[8]                SB_LUT4      I0       In      -         4.324       -         
-E4.r_wd_count_RNI6EMK[8]                SB_LUT4      O        Out     0.661     4.986       -         
-N_347                                   Net          -        -       1.371     -           1         
-E4.r_wd_count_RNIJDJK1[15]              SB_LUT4      I3       In      -         6.356       -         
-E4.r_wd_count_RNIJDJK1[15]              SB_LUT4      O        Out     0.424     6.780       -         
-N_329                                   Net          -        -       1.371     -           2         
-E4.r_wd_count_RNI9PJK2[19]              SB_LUT4      I3       In      -         8.151       -         
-E4.r_wd_count_RNI9PJK2[19]              SB_LUT4      O        Out     0.465     8.616       -         
-N_459                                   Net          -        -       1.371     -           4         
-E4.r_state_RNIBU2U3[0]                  SB_LUT4      I3       In      -         9.987       -         
-E4.r_state_RNIBU2U3[0]                  SB_LUT4      O        Out     0.465     10.453      -         
-N_414                                   Net          -        -       1.371     -           2         
-E4.r_state_RNI1J7M5[0]                  SB_LUT4      I3       In      -         11.823      -         
-E4.r_state_RNI1J7M5[0]                  SB_LUT4      O        Out     0.465     12.289      -         
-r_status_pending_byte_2_0_i_o2_1[3]     Net          -        -       1.371     -           1         
-E4.r_state_RNI74GN8[0]                  SB_LUT4      I0       In      -         13.660      -         
-E4.r_state_RNI74GN8[0]                  SB_LUT4      O        Out     0.661     14.321      -         
-N_346                                   Net          -        -       1.371     -           3         
-E4.r_status_pending_byte_RNO_1[3]       SB_LUT4      I1       In      -         15.692      -         
-E4.r_status_pending_byte_RNO_1[3]       SB_LUT4      O        Out     0.589     16.281      -         
-r_status_pending_byte_RNO_1[3]          Net          -        -       1.371     -           1         
-E4.r_status_pending_byte_RNO[3]         SB_LUT4      I2       In      -         17.652      -         
-E4.r_status_pending_byte_RNO[3]         SB_LUT4      O        Out     0.517     18.169      -         
-r_status_pending_byte                   Net          -        -       1.507     -           1         
-E4.r_status_pending_byte[3]             SB_DFFSR     D        In      -         19.676      -         
-======================================================================================================
-Total path delay (propagation time + setup) of 19.831 is 5.757(29.0%) logic and 14.074(71.0%) route.
-Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
-
-
-Path information for path number 3: 
-      Requested Period:                      18.939
-    - Setup time:                            0.155
-    + Clock delay at ending point:           0.000 (ideal)
-    = Required time:                         18.784
-
-    - Propagation time:                      19.635
-    - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -0.851
-
-    Number of logic level(s):                9
-    Starting point:                          E4.r_wd_count[7] / Q
-    Ending point:                            E4.r_status_pending_byte[3] / D
-    The start point is clocked by            clk52 [rising] on pin C
-    The end   point is clocked by            clk52 [rising] on pin C
-
-Instance / Net                                       Pin      Pin               Arrival     No. of    
-Name                                    Type         Name     Dir     Delay     Time        Fan Out(s)
-------------------------------------------------------------------------------------------------------
-E4.r_wd_count[7]                        SB_DFFSR     Q        Out     0.796     0.796       -         
-r_wd_count[7]                           Net          -        -       1.599     -           3         
-E4.r_wd_count_RNIRA79[5]                SB_LUT4      I2       In      -         2.395       -         
-E4.r_wd_count_RNIRA79[5]                SB_LUT4      O        Out     0.517     2.912       -         
-un36_n_statelt8_0                       Net          -        -       1.371     -           1         
-E4.r_wd_count_RNI6EMK[8]                SB_LUT4      I0       In      -         4.283       -         
-E4.r_wd_count_RNI6EMK[8]                SB_LUT4      O        Out     0.661     4.944       -         
-N_347                                   Net          -        -       1.371     -           1         
-E4.r_wd_count_RNIJDJK1[15]              SB_LUT4      I3       In      -         6.315       -         
-E4.r_wd_count_RNIJDJK1[15]              SB_LUT4      O        Out     0.424     6.739       -         
-N_329                                   Net          -        -       1.371     -           2         
-E4.r_wd_count_RNI9PJK2[19]              SB_LUT4      I3       In      -         8.110       -         
-E4.r_wd_count_RNI9PJK2[19]              SB_LUT4      O        Out     0.465     8.575       -         
-N_459                                   Net          -        -       1.371     -           4         
-E4.r_state_RNIBU2U3[0]                  SB_LUT4      I3       In      -         9.946       -         
-E4.r_state_RNIBU2U3[0]                  SB_LUT4      O        Out     0.465     10.411      -         
-N_414                                   Net          -        -       1.371     -           2         
-E4.r_state_RNI1J7M5[0]                  SB_LUT4      I3       In      -         11.782      -         
-E4.r_state_RNI1J7M5[0]                  SB_LUT4      O        Out     0.465     12.247      -         
-r_status_pending_byte_2_0_i_o2_1[3]     Net          -        -       1.371     -           1         
-E4.r_state_RNI74GN8[0]                  SB_LUT4      I0       In      -         13.618      -         
-E4.r_state_RNI74GN8[0]                  SB_LUT4      O        Out     0.661     14.280      -         
-N_346                                   Net          -        -       1.371     -           3         
-E4.r_status_pending_byte_RNO_1[3]       SB_LUT4      I1       In      -         15.651      -         
-E4.r_status_pending_byte_RNO_1[3]       SB_LUT4      O        Out     0.589     16.240      -         
-r_status_pending_byte_RNO_1[3]          Net          -        -       1.371     -           1         
-E4.r_status_pending_byte_RNO[3]         SB_LUT4      I2       In      -         17.611      -         
-E4.r_status_pending_byte_RNO[3]         SB_LUT4      O        Out     0.517     18.128      -         
-r_status_pending_byte                   Net          -        -       1.507     -           1         
-E4.r_status_pending_byte[3]             SB_DFFSR     D        In      -         19.635      -         
-======================================================================================================
-Total path delay (propagation time + setup) of 19.790 is 5.716(28.9%) logic and 14.074(71.1%) route.
-Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
-
-
-Path information for path number 4: 
-      Requested Period:                      18.939
-    - Setup time:                            0.155
-    + Clock delay at ending point:           0.000 (ideal)
-    = Required time:                         18.784
-
-    - Propagation time:                      18.016
-    - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 0.768
-
-    Number of logic level(s):                8
-    Starting point:                          E4.r_wd_count[9] / Q
-    Ending point:                            E4.r_status_pending_byte_esr[7] / D
-    The start point is clocked by            clk52 [rising] on pin C
-    The end   point is clocked by            clk52 [rising] on pin C
-
-Instance / Net                                          Pin      Pin               Arrival     No. of    
-Name                                      Type          Name     Dir     Delay     Time        Fan Out(s)
----------------------------------------------------------------------------------------------------------
-E4.r_wd_count[9]                          SB_DFFSR      Q        Out     0.796     0.796       -         
-r_wd_count[9]                             Net           -        -       1.599     -           4         
-E4.r_wd_count_RNICQ0J[9]                  SB_LUT4       I0       In      -         2.395       -         
-E4.r_wd_count_RNICQ0J[9]                  SB_LUT4       O        Out     0.661     3.056       -         
-r_fsm_tx_status_byte_3_i_0_o2_3_1[2]      Net           -        -       1.371     -           1         
-E4.r_wd_count_RNIJAV21[12]                SB_LUT4       I3       In      -         4.427       -         
-E4.r_wd_count_RNIJAV21[12]                SB_LUT4       O        Out     0.424     4.851       -         
-N_366                                     Net           -        -       1.371     -           2         
-E4.r_wd_count_RNI1G8O1[16]                SB_LUT4       I3       In      -         6.222       -         
-E4.r_wd_count_RNI1G8O1[16]                SB_LUT4       O        Out     0.465     6.687       -         
-N_356                                     Net           -        -       1.371     -           2         
-E4.r_wd_count_RNI47PK2[22]                SB_LUT4       I3       In      -         8.058       -         
-E4.r_wd_count_RNI47PK2[22]                SB_LUT4       O        Out     0.465     8.523       -         
-N_450                                     Net           -        -       1.371     -           1         
-E4.r_state_RNILHFR3[1]                    SB_LUT4       I1       In      -         9.894       -         
-E4.r_state_RNILHFR3[1]                    SB_LUT4       O        Out     0.589     10.484      -         
-N_467                                     Net           -        -       1.371     -           3         
-E4.r_state_RNIT9ON4[0]                    SB_LUT4       I0       In      -         11.855      -         
-E4.r_state_RNIT9ON4[0]                    SB_LUT4       O        Out     0.661     12.516      -         
-N_371                                     Net           -        -       1.371     -           3         
-E4.r_status_pending_byte_esr_RNO_0[7]     SB_LUT4       I0       In      -         13.887      -         
-E4.r_status_pending_byte_esr_RNO_0[7]     SB_LUT4       O        Out     0.661     14.549      -         
-N_337                                     Net           -        -       1.371     -           1         
-E4.r_status_pending_byte_esr_RNO[7]       SB_LUT4       I1       In      -         15.920      -         
-E4.r_status_pending_byte_esr_RNO[7]       SB_LUT4       O        Out     0.589     16.509      -         
-r_status_pending_byte_2[7]                Net           -        -       1.507     -           1         
-E4.r_status_pending_byte_esr[7]           SB_DFFESR     D        In      -         18.016      -         
-=========================================================================================================
-Total path delay (propagation time + setup) of 18.171 is 5.468(30.1%) logic and 12.703(69.9%) route.
-Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
-
-
-Path information for path number 5: 
-      Requested Period:                      18.939
-    - Setup time:                            0.155
-    + Clock delay at ending point:           0.000 (ideal)
-    = Required time:                         18.784
-
-    - Propagation time:                      18.016
-    - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 0.768
+    = Slack (critical) :                     0.593
 
     Number of logic level(s):                8
     Starting point:                          E4.r_wd_count[5] / Q
-    Ending point:                            E4.r_status_pending_valid / D
+    Ending point:                            E4.r_fsm_tx_status_byte[0] / D
     The start point is clocked by            clk52 [rising] on pin C
     The end   point is clocked by            clk52 [rising] on pin C
 
-Instance / Net                                           Pin      Pin               Arrival     No. of    
-Name                                        Type         Name     Dir     Delay     Time        Fan Out(s)
-----------------------------------------------------------------------------------------------------------
-E4.r_wd_count[5]                            SB_DFFSR     Q        Out     0.796     0.796       -         
-r_wd_count[5]                               Net          -        -       1.599     -           3         
-E4.r_wd_count_RNIRA79[5]                    SB_LUT4      I0       In      -         2.395       -         
-E4.r_wd_count_RNIRA79[5]                    SB_LUT4      O        Out     0.569     2.963       -         
-un36_n_statelt8_0                           Net          -        -       1.371     -           1         
-E4.r_wd_count_RNI6EMK[8]                    SB_LUT4      I0       In      -         4.334       -         
-E4.r_wd_count_RNI6EMK[8]                    SB_LUT4      O        Out     0.661     4.996       -         
-N_347                                       Net          -        -       1.371     -           1         
-E4.r_wd_count_RNIJDJK1[15]                  SB_LUT4      I3       In      -         6.367       -         
-E4.r_wd_count_RNIJDJK1[15]                  SB_LUT4      O        Out     0.424     6.791       -         
-N_329                                       Net          -        -       1.371     -           2         
-E4.r_wd_count_RNI9PJK2[19]                  SB_LUT4      I3       In      -         8.162       -         
-E4.r_wd_count_RNI9PJK2[19]                  SB_LUT4      O        Out     0.465     8.627       -         
-N_459                                       Net          -        -       1.371     -           4         
-E4.r_wd_count_RNI36Q13[19]                  SB_LUT4      I1       In      -         9.998       -         
-E4.r_wd_count_RNI36Q13[19]                  SB_LUT4      O        Out     0.589     10.587      -         
-N_468                                       Net          -        -       1.371     -           5         
-E4.r_wd_count_RNIALJH3[19]                  SB_LUT4      I1       In      -         11.958      -         
-E4.r_wd_count_RNIALJH3[19]                  SB_LUT4      O        Out     0.589     12.547      -         
-N_477                                       Net          -        -       1.371     -           2         
-E4.r_status_pending_valid_RNO_0             SB_LUT4      I2       In      -         13.918      -         
-E4.r_status_pending_valid_RNO_0             SB_LUT4      O        Out     0.558     14.476      -         
-n_status_pending_valid_2_sqmuxa_i_0_i_1     Net          -        -       1.371     -           1         
-E4.r_status_pending_valid_RNO               SB_LUT4      I0       In      -         15.847      -         
-E4.r_status_pending_valid_RNO               SB_LUT4      O        Out     0.661     16.509      -         
-r_status_pending_valid_0                    Net          -        -       1.507     -           1         
-E4.r_status_pending_valid                   SB_DFFSR     D        In      -         18.016      -         
-==========================================================================================================
-Total path delay (propagation time + setup) of 18.171 is 5.468(30.1%) logic and 12.703(69.9%) route.
+Instance / Net                                  Pin      Pin               Arrival     No. of    
+Name                               Type         Name     Dir     Delay     Time        Fan Out(s)
+-------------------------------------------------------------------------------------------------
+E4.r_wd_count[5]                   SB_DFFSR     Q        Out     0.796     0.796       -         
+r_wd_count[5]                      Net          -        -       1.599     -           3         
+E4.r_wd_count_RNIHR46[5]           SB_LUT4      I0       In      -         2.395       -         
+E4.r_wd_count_RNIHR46[5]           SB_LUT4      O        Out     0.661     3.056       -         
+un30_n_statelt7                    Net          -        -       1.371     -           1         
+E4.r_wd_count_RNI6EMK[7]           SB_LUT4      I0       In      -         4.427       -         
+E4.r_wd_count_RNI6EMK[7]           SB_LUT4      O        Out     0.661     5.089       -         
+N_106                              Net          -        -       1.371     -           1         
+E4.r_wd_count_RNIJDJK1[15]         SB_LUT4      I3       In      -         6.460       -         
+E4.r_wd_count_RNIJDJK1[15]         SB_LUT4      O        Out     0.465     6.925       -         
+N_107                              Net          -        -       1.371     -           1         
+E4.r_wd_count_RNI9PJK2[20]         SB_LUT4      I3       In      -         8.296       -         
+E4.r_wd_count_RNI9PJK2[20]         SB_LUT4      O        Out     0.465     8.761       -         
+N_71                               Net          -        -       1.371     -           3         
+E4.r_wd_count_RNIALJH3[20]         SB_LUT4      I2       In      -         10.132      -         
+E4.r_wd_count_RNIALJH3[20]         SB_LUT4      O        Out     0.558     10.690      -         
+N_73                               Net          -        -       1.371     -           1         
+E4.r_state_RNIV09T4[1]             SB_LUT4      I0       In      -         12.061      -         
+E4.r_state_RNIV09T4[1]             SB_LUT4      O        Out     0.661     12.723      -         
+r_fsm_tx_start_pulsec_0            Net          -        -       1.371     -           2         
+E4.r_state_RNI5IHU7[0]             SB_LUT4      I0       In      -         14.094      -         
+E4.r_state_RNI5IHU7[0]             SB_LUT4      O        Out     0.661     14.755      -         
+N_115                              Net          -        -       1.371     -           4         
+E4.r_fsm_tx_status_byte_RNO[0]     SB_LUT4      I2       In      -         16.126      -         
+E4.r_fsm_tx_status_byte_RNO[0]     SB_LUT4      O        Out     0.558     16.684      -         
+r_fsm_tx_status_byte               Net          -        -       1.507     -           1         
+E4.r_fsm_tx_status_byte[0]         SB_DFF       D        In      -         18.191      -         
+=================================================================================================
+Total path delay (propagation time + setup) of 18.346 is 5.643(30.8%) logic and 12.703(69.2%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -627,10 +413,10 @@ Path delay compensated for clock skew. Clock skew is added to clock-to-out value
 Timing exceptions that could not be applied
 None
 
-Finished final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 148MB peak: 150MB)
+Finished final timing analysis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 137MB peak: 140MB)
 
 
-Finished timing report (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 148MB peak: 150MB)
+Finished timing report (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 137MB peak: 140MB)
 
 ---------------------------------------
 Resource Usage Report for top 
@@ -639,40 +425,40 @@ Mapping to part: ice40up5ksg48
 Cell usage:
 GND             9 uses
 SB_CARRY        53 uses
-SB_DFF          19 uses
-SB_DFFESR       37 uses
-SB_DFFSR        96 uses
+SB_DFF          21 uses
+SB_DFFESR       32 uses
+SB_DFFSR        86 uses
 SB_DFFSS        3 uses
 SB_GB           2 uses
 SB_HFOSC        1 use
 SB_RAM2048x2    8 uses
 VCC             9 uses
-SB_LUT4         297 uses
+SB_LUT4         219 uses
 
 I/O ports: 14
 I/O primitives: 14
 SB_IO          14 uses
 
 I/O Register bits:                  0
-Register bits not including I/Os:   155 (2%)
+Register bits not including I/Os:   142 (2%)
 
 RAM/ROM usage summary
 Block Rams : 8 of 30 (26%)
 
 Total load per clock:
-   clk52: 171
+   clk52: 158
 
 @S |Mapping Summary:
-Total  LUTs: 297 (5%)
+Total  LUTs: 219 (4%)
 
 Distribution of All Consumed LUTs = LUT4 
-Distribution of All Consumed Luts 297 = 297 
+Distribution of All Consumed Luts 219 = 219 
 
 Mapper successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 29MB peak: 150MB)
+At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 28MB peak: 140MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Mon Mar 23 21:14:48 2026
+# Wed Mar 25 08:43:43 2026
 
 ###########################################################]

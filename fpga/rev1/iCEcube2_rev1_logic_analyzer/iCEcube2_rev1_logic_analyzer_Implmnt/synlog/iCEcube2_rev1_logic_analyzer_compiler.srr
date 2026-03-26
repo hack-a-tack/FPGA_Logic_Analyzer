@@ -15,6 +15,8 @@ File C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart
 File C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd changed - recompiling
 File C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\top.vhd changed - recompiling
 VHDL syntax check successful!
+File C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd changed - recompiling
+File C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\top.vhd changed - recompiling
 @N: CD231 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\vhd2008\std1164.vhd":890:16:890:17|Using onehot encoding for type mvl9plus. For example, enumeration 'U' is mapped to "1000000000".
 @N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\top.vhd":36:7:36:9|Synthesizing work.top.structure.
 @N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":37:7:37:13|Synthesizing work.uart_tx.rtl.
@@ -31,8 +33,8 @@ Post processing for work.send_engine.rtl
 @N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":30:7:30:20|Synthesizing work.capture_engine.rtl.
 @N: CD233 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":51:32:51:33|Using sequential encoding for type capture_engine_state_type.
 Post processing for work.capture_engine.rtl
-@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":39:7:39:18|Synthesizing work.analyzer_fsm.rtl.
-@N: CD233 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":62:25:62:26|Using sequential encoding for type runtime_state_type.
+@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":38:7:38:18|Synthesizing work.analyzer_fsm.rtl.
+@N: CD233 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":59:25:59:26|Using sequential encoding for type runtime_state_type.
 Post processing for work.analyzer_fsm.rtl
 @N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\cmd_parser.vhd":27:7:27:16|Synthesizing work.cmd_parser.rtl.
 Post processing for work.cmd_parser.rtl
@@ -53,17 +55,17 @@ State machine has 4 reachable states with original encodings of:
    10
    11
 @W: CL249 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":83:2:83:3|Initial value is not supported on state machine r_state
-@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":85:2:85:3|Register bit r_wd_count(23) is always 0.
-@W: CL260 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":85:2:85:3|Pruning register bit 23 of r_wd_count(23 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
-@N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":85:2:85:3|Trying to extract state machine for register r_state.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":79:2:79:3|Register bit r_wd_count(23) is always 0.
+@W: CL260 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":79:2:79:3|Pruning register bit 23 of r_wd_count(23 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
+@N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":79:2:79:3|Trying to extract state machine for register r_state.
 Extracted state machine for register r_state
 State machine has 4 reachable states with original encodings of:
    00
    01
    10
    11
-@W: CL249 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":85:2:85:3|Initial value is not supported on state machine r_state
-@N: CL159 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":45:2:45:12|Input i_samp_tick is unused.
+@W: CL249 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":79:2:79:3|Initial value is not supported on state machine r_state
+@W: CL260 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":79:2:79:3|Pruning register bit 6 of r_fsm_tx_status_byte(7 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
 @N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":68:2:68:3|Trying to extract state machine for register r_state.
 Extracted state machine for register r_state
 State machine has 4 reachable states with original encodings of:
@@ -86,7 +88,7 @@ At c_vhdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memor
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Mon Mar 23 21:14:43 2026
+# Wed Mar 25 08:43:39 2026
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
@@ -99,7 +101,7 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Mon Mar 23 21:14:44 2026
+# Wed Mar 25 08:43:40 2026
 
 ###########################################################]
 @END
@@ -109,6 +111,6 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Mon Mar 23 21:14:44 2026
+# Wed Mar 25 08:43:40 2026
 
 ###########################################################]

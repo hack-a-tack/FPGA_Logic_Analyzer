@@ -13,17 +13,16 @@
 @N: CD233 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":51:29:51:30|Using sequential encoding for type send_engine_state_type.
 @N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":30:7:30:20|Synthesizing work.capture_engine.rtl.
 @N: CD233 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":51:32:51:33|Using sequential encoding for type capture_engine_state_type.
-@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":39:7:39:18|Synthesizing work.analyzer_fsm.rtl.
-@N: CD233 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":62:25:62:26|Using sequential encoding for type runtime_state_type.
+@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":38:7:38:18|Synthesizing work.analyzer_fsm.rtl.
+@N: CD233 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":59:25:59:26|Using sequential encoding for type runtime_state_type.
 @N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\cmd_parser.vhd":27:7:27:16|Synthesizing work.cmd_parser.rtl.
 @N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":40:7:40:13|Synthesizing work.uart_rx.rtl.
 @N: CD233 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":58:25:58:26|Using sequential encoding for type uart_rx_state_type.
 @N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\clocking.vhd":26:7:26:14|Synthesizing work.clocking.rtl.
 @N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\clocking.vhd":35:11:35:18|Synthesizing work.sb_hfosc.syn_black_box.
 @N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":83:2:83:3|Trying to extract state machine for register r_state.
-@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":85:2:85:3|Register bit r_wd_count(23) is always 0.
-@N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":85:2:85:3|Trying to extract state machine for register r_state.
-@N: CL159 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":45:2:45:12|Input i_samp_tick is unused.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":79:2:79:3|Register bit r_wd_count(23) is always 0.
+@N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":79:2:79:3|Trying to extract state machine for register r_state.
 @N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":68:2:68:3|Trying to extract state machine for register r_state.
 @N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":76:2:76:3|Trying to extract state machine for register r_state.
 @N|Running in 64-bit mode

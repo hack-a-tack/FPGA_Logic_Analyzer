@@ -2634,3 +2634,254 @@ run -all
 # ** Failure: Simulation finished
 #    Time: 468720 ps  Iteration: 0  Process: /analyzer_fsm_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/analyzer_fsm_tb.vhd
 # Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/analyzer_fsm_tb.vhd line 200
+quit -sim
+# End time: 07:42:04 on Mar 25,2026, Elapsed time: 35:17:42
+# Errors: 9, Warnings: 4
+# Compile of analyzer_fsm.vhd was successful.
+# Compile of analyzer_fsm_tb.vhd failed with 4 errors.
+# 2 compiles, 1 failed with 4 errors.
+# Compile of analyzer_fsm.vhd was successful.
+# Compile of analyzer_fsm_tb.vhd failed with 6 errors.
+# 2 compiles, 1 failed with 6 errors.
+# Compile of analyzer_fsm_tb.vhd failed with 2 errors.
+# Compile of analyzer_fsm_tb.vhd was successful.
+vsim work.analyzer_fsm_tb
+# vsim work.analyzer_fsm_tb 
+# Start time: 07:46:40 on Mar 25,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.analyzer_fsm_tb(sim)
+# Loading work.analyzer_fsm(rtl)
+add wave sim:/analyzer_fsm_tb/*
+# Load canceled
+run -all
+# ** Error: TC1: Start pulse not sent to tx_mux
+#    Time: 72912 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC1: Status code not updated to 0xEE
+#    Time: 72912 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC2: Start pulse not sent to capture_engine
+#    Time: 114576 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC2: Start pulse not sent to tx_mux
+#    Time: 114576 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC2: Status code not updated to 0x55
+#    Time: 114576 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC3: Start pulse not sent to tx_mux
+#    Time: 177072 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC3: Status code not updated to 0x77 (pending from when uart_tx was busy)
+#    Time: 177072 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC4: Start pulse not sent to send_engine
+#    Time: 197904 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC6: Start pulse not sent to capture_engine
+#    Time: 2083731216 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC6: Start pulse not sent to tx_mux
+#    Time: 2083731216 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC6: Status code not updated to 0x55
+#    Time: 2083731216 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Failure: Simulation finished
+#    Time: 2083960368 ps  Iteration: 0  Process: /analyzer_fsm_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/analyzer_fsm_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/analyzer_fsm_tb.vhd line 228
+quit -sim
+# End time: 07:53:08 on Mar 25,2026, Elapsed time: 0:06:28
+# Errors: 12, Warnings: 5
+# Compile of analyzer_fsm_tb.vhd was successful.
+vsim work.analyzer_fsm_tb
+# vsim work.analyzer_fsm_tb 
+# Start time: 07:55:17 on Mar 25,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.analyzer_fsm_tb(sim)
+# Loading work.analyzer_fsm(rtl)
+add wave sim:/analyzer_fsm_tb/*
+run -all
+# ** Error: TC1: Start pulse not sent to tx_mux
+#    Time: 72912 ps  Iteration: 2  Instance: /analyzer_fsm_tb
+# ** Error: TC1: Status code not updated to 0xEE
+#    Time: 72912 ps  Iteration: 2  Instance: /analyzer_fsm_tb
+# ** Error: TC2: Start pulse not sent to capture_engine
+#    Time: 114576 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC2: Start pulse not sent to tx_mux
+#    Time: 114576 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC2: Status code not updated to 0x55
+#    Time: 114576 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC3: Start pulse not sent to tx_mux
+#    Time: 177072 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC3: Status code not updated to 0x77 (pending from when uart_tx was busy)
+#    Time: 177072 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC4: Start pulse not sent to send_engine
+#    Time: 197904 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC6: Start pulse not sent to capture_engine
+#    Time: 2083731216 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC6: Start pulse not sent to tx_mux
+#    Time: 2083731216 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC6: Status code not updated to 0x55
+#    Time: 2083731216 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Failure: Simulation finished
+#    Time: 2083960368 ps  Iteration: 0  Process: /analyzer_fsm_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/analyzer_fsm_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/analyzer_fsm_tb.vhd line 229
+quit -sim
+# End time: 07:56:27 on Mar 25,2026, Elapsed time: 0:01:10
+# Errors: 12, Warnings: 2
+# Compile of analyzer_fsm_tb.vhd was successful.
+vsim work.analyzer_fsm_tb
+# vsim work.analyzer_fsm_tb 
+# Start time: 07:56:42 on Mar 25,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.analyzer_fsm_tb(sim)
+# Loading work.analyzer_fsm(rtl)
+add wave sim:/analyzer_fsm_tb/*
+add wave sim:/analyzer_fsm_tb/*
+run -all
+# ** Error: TC2: Start pulse not sent to capture_engine
+#    Time: 135408 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC2: Start pulse not sent to tx_mux
+#    Time: 135408 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC2: Status code not updated to 0x55
+#    Time: 135408 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC3: Start pulse not sent to tx_mux
+#    Time: 197904 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC3: Status code not updated to 0x77 (pending from when uart_tx was busy)
+#    Time: 197904 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC4: Start pulse not sent to send_engine
+#    Time: 218736 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC6: Start pulse not sent to capture_engine
+#    Time: 2083752048 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC6: Start pulse not sent to tx_mux
+#    Time: 2083752048 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC6: Status code not updated to 0x55
+#    Time: 2083752048 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Failure: Simulation finished
+#    Time: 2083981200 ps  Iteration: 0  Process: /analyzer_fsm_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/analyzer_fsm_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/analyzer_fsm_tb.vhd line 229
+quit -sim
+# End time: 07:59:19 on Mar 25,2026, Elapsed time: 0:02:37
+# Errors: 10, Warnings: 2
+# Compile of analyzer_fsm_tb.vhd was successful.
+vsim work.analyzer_fsm_tb
+# vsim work.analyzer_fsm_tb 
+# Start time: 07:59:35 on Mar 25,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.analyzer_fsm_tb(sim)
+# Loading work.analyzer_fsm(rtl)
+add wave sim:/analyzer_fsm_tb/*
+run -all
+# ** Error: TC3: Start pulse not sent to tx_mux
+#    Time: 239568 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC3: Status code not updated to 0x77 (pending from when uart_tx was busy)
+#    Time: 239568 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Failure: Simulation finished
+#    Time: 2084064528 ps  Iteration: 0  Process: /analyzer_fsm_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/analyzer_fsm_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/analyzer_fsm_tb.vhd line 233
+quit -sim
+# End time: 08:03:29 on Mar 25,2026, Elapsed time: 0:03:54
+# Errors: 3, Warnings: 2
+# Compile of analyzer_fsm_tb.vhd was successful.
+vsim work.analyzer_fsm_tb
+# vsim work.analyzer_fsm_tb 
+# Start time: 08:03:54 on Mar 25,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.analyzer_fsm_tb(sim)
+# Loading work.analyzer_fsm(rtl)
+add wave sim:/analyzer_fsm_tb/*
+run -all
+# ** Error: TC3: Start pulse not sent to tx_mux
+#    Time: 260400 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Error: TC3: Status code not updated to 0x77 (pending from when uart_tx was busy)
+#    Time: 260400 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Failure: Simulation finished
+#    Time: 2084106192 ps  Iteration: 0  Process: /analyzer_fsm_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/analyzer_fsm_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/analyzer_fsm_tb.vhd line 235
+quit -sim
+# End time: 08:06:57 on Mar 25,2026, Elapsed time: 0:03:03
+# Errors: 3, Warnings: 2
+# Compile of analyzer_fsm_tb.vhd was successful.
+vsim work.analyzer_fsm_tb
+# vsim work.analyzer_fsm_tb 
+# Start time: 08:07:15 on Mar 25,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.analyzer_fsm_tb(sim)
+# Loading work.analyzer_fsm(rtl)
+add wave sim:/analyzer_fsm_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 2084127024 ps  Iteration: 0  Process: /analyzer_fsm_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/analyzer_fsm_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/analyzer_fsm_tb.vhd line 236
+quit -sim
+# End time: 06:31:29 on Mar 26,2026, Elapsed time: 22:24:14
+# Errors: 1, Warnings: 2
+# Compile of analyzer_fsm.vhd was successful.
+# Compile of analyzer_fsm_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim work.analyzer_fsm_tb
+# vsim work.analyzer_fsm_tb 
+# Start time: 06:32:04 on Mar 26,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.analyzer_fsm_tb(sim)
+# Loading work.analyzer_fsm(rtl)
+add wave sim:/analyzer_fsm_tb/*
+run -all
+# ** Error: TC6: Watchdog pulse asserted but status byte != 0xDD (Watchdog error)
+#    Time: 385392 ps  Iteration: 1  Instance: /analyzer_fsm_tb
+# ** Failure: Simulation finished
+#    Time: 2084064528 ps  Iteration: 0  Process: /analyzer_fsm_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/analyzer_fsm_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/analyzer_fsm_tb.vhd line 232
+quit -sim
+# End time: 06:46:11 on Mar 26,2026, Elapsed time: 0:14:07
+# Errors: 2, Warnings: 2
+# Compile of analyzer_fsm_tb.vhd was successful.
+vsim work.analyzer_fsm_tb
+# vsim work.analyzer_fsm_tb 
+# Start time: 06:47:58 on Mar 26,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.analyzer_fsm_tb(sim)
+# Loading work.analyzer_fsm(rtl)
+add wave sim:/analyzer_fsm_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 2084085360 ps  Iteration: 0  Process: /analyzer_fsm_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/analyzer_fsm_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/analyzer_fsm_tb.vhd line 234
+quit -sim
+# End time: 06:54:11 on Mar 26,2026, Elapsed time: 0:06:13
+# Errors: 1, Warnings: 2
+# Compile of analyzer_fsm_tb.vhd was successful.
+vsim work.analyzer_fsm_tb
+# vsim work.analyzer_fsm_tb 
+# Start time: 06:54:25 on Mar 26,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.analyzer_fsm_tb(sim)
+# Loading work.analyzer_fsm(rtl)
+add wave sim:/analyzer_fsm_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 4167514512 ps  Iteration: 0  Process: /analyzer_fsm_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/analyzer_fsm_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/analyzer_fsm_tb.vhd line 251
+# WARNING: No extended dataflow license exists
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
