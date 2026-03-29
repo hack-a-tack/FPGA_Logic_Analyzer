@@ -72,6 +72,7 @@ architecture sim of capture_engine_tb is
 	signal r_prev_tick : std_logic := '0';			-- samp tick must cause wr_en_pulse (i.e. r_prev_tick and wr_en_pulse coincide)
 	signal capture_start_pulse_seen : std_logic := '0';
 	signal seen_done_pulse : boolean := false;		-- verify occurence of done pulse
+	signal tick_enable : std_logic := '1';
 	
 begin
     -- DUT Instantiation
@@ -112,10 +113,15 @@ begin
 		wait until rising_edge(i_clk);  -- align start
 	
 		while true loop
-			i_samp_tick <= '1';
-			wait until rising_edge(i_clk);  -- stays high for one full 48MHz cycle
-			i_samp_tick <= '0';
-			wait until rising_edge(i_clk);  -- stays low for one full 48MHz cycle
+			if tick_enable = '1' then
+				i_samp_tick <= '1';
+				wait until rising_edge(i_clk);  -- stays high for one full 48MHz cycle
+				i_samp_tick <= '0';
+				wait until rising_edge(i_clk);  -- stays low for one full 48MHz cycle
+			else
+				i_samp_tick <= '0';
+				wait until rising_edge(i_clk);
+			end if;
 		end loop;
 	end process;
 	
@@ -126,6 +132,7 @@ begin
 		if rising_edge(i_clk) then
 			if i_rst = '1' then
 				tick_count <= 0;
+				r_prev_tick <= '0';
 			else
 				-- update r_prev_tick
 				r_prev_tick <= i_samp_tick;
@@ -155,6 +162,7 @@ begin
 
     -- Stimulus process
     stim_proc: process is
+		variable addr0 : std_logic_vector(ADDR_LENGTH-1 downto 0) := (others => '0');
     begin
         -- Reset
         wait until rising_edge(i_clk);
@@ -184,6 +192,7 @@ begin
 	
 		-- Test case 2: State CAPTURE_RUN. First few samples. addr and wr_data should only change when i_samp_tick is high
 		test_id <= 2;
+		-- second sample should also be A1 (unchanged from first sample in test case 1)
 		wait until rising_edge(i_clk) and i_samp_tick = '1';
 		wait until rising_edge(i_clk) and i_samp_tick = '0';
 		assert o_raw_wr_en_pulse = '1'
@@ -199,7 +208,7 @@ begin
 			report "TC2(Sample " & integer'image(tick_count) & "): Capture done pulse registered despite early in state RUN"
 			severity error;
 		
-		-- this section coincides with rising edge and high i_samp_tick (change expected)
+		-- third sample should be A9
 		i_inputs <= x"A9";
 		wait until rising_edge(i_clk) and i_samp_tick = '1';  -- output signals are registered and so are not updated until next rising i_clk
 		wait until rising_edge(i_clk) and i_samp_tick = '0';  -- now output signals are updated
@@ -216,37 +225,61 @@ begin
 			report "TC2(Sample " & integer'image(tick_count) & "): Capture done pulse registered despite early in state RUN"
 			severity error;
 			
-		-- TODO/CHATGPT: is there a smooth way to check that the address actually increments? and that the i_inputs change?
-		
-		-- Test case 3: stop condition. Done pulse after NUM_SAMPLES
+		-- Test case 3: no tick = no progress (pause ticks mid-capture)
 		test_id <= 3;
-		for i in 0 to NUM_SAMPLES+10 loop  -- NUM_ADDRESSES addresses to fill up + some margin
+		i_inputs <= x"B8";  -- 1011 1000
+		-- wait a few more clocks
+		wait until rising_edge(i_clk);
+		wait until rising_edge(i_clk);
+		wait until rising_edge(i_clk);
+		wait until rising_edge(i_clk);
+		wait until rising_edge(i_clk);
+		
+		-- pause ticks, run 50 clock cycles to test no tick = no progress, re-enable sample ticks
+		tick_enable <= '0';
+		wait until rising_edge(i_clk);
+		addr0 := o_raw_wr_addr;
+		for k in 1 to 50 loop
+			wait until rising_edge(i_clk);
+			assert o_raw_wr_en_pulse = '0'
+				report "TC3(Sample " & integer'image(tick_count) & "): Write enable pulse asserted high while samp_tick = 0"
+				severity error;
+			assert o_raw_wr_data = x"B8"
+				report "TC3(Sample " & integer'image(tick_count) & "): Data updated from previous value (A9) while samp_tick = 0"
+				severity error;
+			assert o_raw_wr_addr = addr0
+				report "TC3(Sample " & integer'image(tick_count) & "): Address change while samp_tick = 0"
+				severity error;
+			assert o_capture_done_pulse	= '0'
+				report "TC3(Sample " & integer'image(tick_count) & "): Capture done pulsed while samp_tick = 0"
+				severity error;
+		end loop;
+		tick_enable <= '1';
+		
+		-- Test case 4: stop condition. Done pulse after NUM_SAMPLES
+		test_id <= 4;
+		for i in 0 to NUM_SAMPLES+10 loop  -- NUM_SAMPLES addresses to fill up + some margin
 			wait until rising_edge(i_clk) and i_samp_tick = '0';
 			
 			if o_raw_wr_addr = std_logic_vector(to_unsigned(NUM_SAMPLES-1, ADDR_LENGTH)) then
 				wait until rising_edge(i_clk) and i_samp_tick = '0';  -- outputs have been set
 				assert o_capture_done_pulse = '1'
-					report "TC3(Sample " & integer'image(tick_count) & "): Capture done pulse not asserting after sample with index 4095"
+					report "TC4(Sample " & integer'image(tick_count) & "): Capture done pulse not asserting after sample with index 4095"
 					severity error;
 				if o_capture_done_pulse = '1' then
 					seen_done_pulse <= true;
 				end if;
 			elsif o_raw_wr_addr = std_logic_vector(to_unsigned(0, ADDR_LENGTH)) then  -- back to IDLE
 				assert o_capture_done_pulse = '0'
-					report "TC3(Sample " & integer'image(tick_count) & "): Capture done pulse does not deassert after 1 clock cycle"
+					report "TC4(Sample " & integer'image(tick_count) & "): Capture done pulse does not deassert after 1 clock cycle"
 					severity error;
 			end if;
 		end loop;
 			
 		assert seen_done_pulse = true  -- existence check
-			report "TC3(Sample " & integer'image(tick_count) & "): Capture done pulse not seen within timeout window"
+			report "TC4(Sample " & integer'image(tick_count) & "): Capture done pulse not seen within timeout window"
 			severity error;
-			
-		-- Test case 4: no sample tick = no progress
-		-- test_id <= 4;
 		
-		-- Test case 5: restart behaviour
-		-- test_id <= 5;
 		
         -- Finish simulation
         wait for 10*CLK_ACTUAL;

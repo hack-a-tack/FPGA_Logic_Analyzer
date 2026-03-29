@@ -139,11 +139,11 @@ R28
 R12
 R13
 Ecapture_engine_tb
-Z29 w1774791197
+Z29 w1774799689
 R1
 R2
 R3
-!i122 138
+!i122 151
 R4
 Z30 8C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/capture_engine_tb.vhd
 Z31 FC:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/capture_engine_tb.vhd
@@ -153,9 +153,9 @@ VOnooME[_B5K9VBDe@2zVK2
 !s100 53c6_R9`a]eXWaGc22CGL2
 R7
 33
-Z32 !s110 1774791216
+Z32 !s110 1774799749
 !i10b 1
-Z33 !s108 1774791216.000000
+Z33 !s108 1774799749.000000
 Z34 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/capture_engine_tb.vhd|
 Z35 !s107 C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/capture_engine_tb.vhd|
 !i113 1
@@ -166,11 +166,11 @@ R1
 R2
 R3
 Z36 DEx4 work 17 capture_engine_tb 0 22 OnooME[_B5K9VBDe@2zVK2
-!i122 138
-l76
-Z37 L28 229
-VDL0LEHMWzOii:A[nC?1El1
-!s100 7L2B8Q4]`ANSSJe7KG2DM1
+!i122 151
+l77
+Z37 L28 262
+V5e@4@lkb4EWk<7cIS5YZ62
+!s100 ^Ldj4VPznD@hW^YLScDc21
 R7
 33
 R32
