@@ -2,6 +2,7 @@
 -- MODULE: capture_engine.vhd
 -- FUNCTION: samples logic analyzer inputs at i_clk and writes to BRAM
 -- AUTHOR: Jakob Kieszek Ottesen
+-- DATE: 2026-03-26 (YYYY-MM-DD)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -96,17 +97,21 @@ begin
 		case r_state is
 			when CAPTURE_IDLE =>
 				if i_capture_start_pulse = '1' then
+					-- write first sample to address 0
 					n_raw_wr_addr <= (others => '0');
-					n_state <= CAPTURE_RUN;
+					n_raw_wr_data <= i_inputs;
+					n_raw_wr_en_pulse <= '1';
+					
+					n_state <= CAPTURE_RUN;					
 				end if;
 			
 			when CAPTURE_RUN =>
 				if i_samp_tick = '1' then
-					n_raw_wr_en_pulse <= '1';
 					n_raw_wr_data <= i_inputs;
+					n_raw_wr_en_pulse <= '1';
 					
 					if r_raw_wr_addr = LAST_ADDR then
-						-- Sample nr 4096 (index 4095) just captured
+						-- Sample nr 4096 (index 4095) just captured in last cycle
 						n_capture_done_pulse <= '1';
 						n_raw_wr_addr <= (others => '0');
 						n_state <= CAPTURE_IDLE;
@@ -114,9 +119,6 @@ begin
 						n_raw_wr_addr <= std_logic_vector(unsigned(r_raw_wr_addr)+1);
 					end if;
 				end if;
-			
-			when others =>
-				null;
 		end case;
 	end process fsm_proc;
 

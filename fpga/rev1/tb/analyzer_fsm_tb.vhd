@@ -78,7 +78,7 @@ architecture sim of analyzer_fsm_tb is
 	
 	-- Signals for easier troubleshooting
 	signal test_id : integer := 0;  				-- increments with each test case
-	signal seen_dd_pulse : boolean := false;
+	signal seen_dd_pulse : boolean := false;		-- goes 'true' if Watchdog triggers
 	
 	-- Watchdog limits
 	constant WD_LIMIT_CAPTURE 	: unsigned(23 downto 0) := to_unsigned(100_000, 24);		-- CAPTURE timeout after 100k samples
