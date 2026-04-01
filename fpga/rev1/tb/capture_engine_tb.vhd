@@ -2,7 +2,7 @@
 -- MODULE: capture_engine_tb.vhd
 -- FUNCTION: TESTBENCH for entity that samples logic analyzer inputs and writes to BRAM
 -- AUTHOR: Jakob Kieszek Ottesen
--- DATE: 2026-03-26 (YYYY-MM-DD)
+-- DATE: 2026-03-31 (YYYY-MM-DD)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -10,6 +10,9 @@
 -- i_rst					1 bit		<- top
 -- i_capture_start_pulse	1 bit		<- analyzer_fsm
 -- i_inputs					1 bit		<- top
+--
+-- NOTES
+-- First sample is written to RAM address 0 during state CAPTURE_IDLE. The rest is sent in CAPTURE_RUN.
 --
 -- OUTPUTS					DATA		TO MODULE
 -- o_raw_wr_en_pulse		1 bit		-> top
@@ -149,9 +152,9 @@ begin
 						severity error;
 				end if;
 
-				-- When done fires, check we wrote exactly NUM_SAMPLES
+				-- When done fires, check we wrote exactly NUM_SAMPLES (+1 because capture_start_pulse also increments tick_count)
 				if o_capture_done_pulse = '1' then
-					assert tick_count = NUM_SAMPLES+1  -- +1 because check is conducted for "index 4096" / after the 4096th sample
+					assert tick_count = NUM_SAMPLES+1
 						report "Expected NUM_SAMPLES (4097) writes, got " & integer'image(tick_count)
 						severity error;
 				end if;

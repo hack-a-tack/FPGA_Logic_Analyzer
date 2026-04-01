@@ -37861,3 +37861,346 @@ run -all
 # ** Failure: Simulation finished
 #    Time: 172686864 ps  Iteration: 0  Process: /capture_engine_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/capture_engine_tb.vhd
 # Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/capture_engine_tb.vhd line 286
+quit -sim
+# End time: 10:55:55 on Mar 31,2026, Elapsed time: 40:59:57
+# Errors: 1, Warnings: 2
+# Compile of send_engine.vhd was successful.
+# Compile of send_engine_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -gui work.send_engine_tb
+# vsim -gui work.send_engine_tb 
+# Start time: 10:57:09 on Mar 31,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.send_engine_tb(sim)
+# Loading work.send_engine(rtl)
+add wave sim:/send_engine_tb/*
+run -all
+# ** Error: TC3(Sample 1): Contents of RAM address 0 not equal to CC
+#    Time: 156240 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC3(Sample 2): Ram address not updated to 2 after 2nd clock cycle in SEND_DATA state
+#    Time: 177072 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC3(Sample 2): Contents of RAM address 1 not equal to AA
+#    Time: 177072 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC3(Sample 2): Start pulse not high when sending 2nd data byte in state SEND_DATA...
+#    Time: 177072 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC4(Sample 2055): send_done_pulse not seen within timeout window
+#    Time: 85734096 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Failure: Simulation finished
+#    Time: 85942416 ps  Iteration: 0  Process: /send_engine_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd line 236
+quit -sim
+# End time: 11:38:06 on Mar 31,2026, Elapsed time: 0:40:57
+# Errors: 6, Warnings: 4
+# Compile of send_engine.vhd failed with 1 errors.
+# Compile of send_engine_tb.vhd was successful.
+# 2 compiles, 1 failed with 1 error.
+# Compile of send_engine.vhd was successful.
+vsim -gui work.send_engine_tb
+# vsim -gui work.send_engine_tb 
+# Start time: 11:39:21 on Mar 31,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.send_engine_tb(sim)
+# Loading work.send_engine(rtl)
+add wave sim:/send_engine_tb/*
+run -all
+# ** Error: TC3(Sample 2): Ram address not updated to 2 after 2nd clock cycle in SEND_DATA state
+#    Time: 177072 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC3(Sample 2): Contents of RAM address 1 not equal to AA
+#    Time: 177072 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC3(Sample 2): Start pulse not high when sending 2nd data byte in state SEND_DATA...
+#    Time: 177072 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC4(Sample 2055): send_done_pulse not seen within timeout window
+#    Time: 85734096 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Failure: Simulation finished
+#    Time: 85942416 ps  Iteration: 0  Process: /send_engine_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd line 236
+quit -sim
+# End time: 12:46:19 on Mar 31,2026, Elapsed time: 1:06:58
+# Errors: 5, Warnings: 3
+# Compile of send_engine.vhd was successful.
+# Compile of send_engine_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -gui work.send_engine_tb
+# vsim -gui work.send_engine_tb 
+# Start time: 12:46:34 on Mar 31,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.send_engine_tb(sim)
+# Loading work.send_engine(rtl)
+add wave sim:/send_engine_tb/*
+run -all
+# ** Error: TC4(Sample 4096): send_done_pulse not asserting after sample with index 4095
+#    Time: 170749488 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: Expected NUM_SAMPLES (4097) writes, got 4096
+#    Time: 170770320 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC4(Sample 4096): send_done_pulse does not deassert after 1 clock cycle
+#    Time: 170770320 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC4(Sample 4097): send_done_pulse not seen within timeout window
+#    Time: 171103632 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Failure: Simulation finished
+#    Time: 171311952 ps  Iteration: 0  Process: /send_engine_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd line 250
+quit -sim
+# End time: 13:09:51 on Mar 31,2026, Elapsed time: 0:23:17
+# Errors: 5, Warnings: 2
+# Compile of send_engine.vhd was successful.
+# Compile of send_engine_tb.vhd failed with 1 errors.
+# 2 compiles, 1 failed with 1 error.
+# Compile of send_engine_tb.vhd was successful.
+vsim -gui work.send_engine_tb
+# vsim -gui work.send_engine_tb 
+# Start time: 13:11:16 on Mar 31,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.send_engine_tb(sim)
+# Loading work.send_engine(rtl)
+add wave sim:/send_engine_tb/*
+run -all
+# ** Error: TC4(Sample 4096): send_done_pulse not asserting after sample with index 4095
+#    Time: 170749488 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: Expected NUM_SAMPLES (4097) writes, got 4096
+#    Time: 170770320 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC4(Sample 4097): send_done_pulse not seen within timeout window
+#    Time: 171457776 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Failure: Simulation finished
+#    Time: 171666096 ps  Iteration: 0  Process: /send_engine_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd line 252
+quit -sim
+# End time: 13:23:05 on Mar 31,2026, Elapsed time: 0:11:49
+# Errors: 4, Warnings: 3
+# Compile of send_engine.vhd was successful.
+# Compile of send_engine_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -gui work.send_engine_tb
+# vsim -gui work.send_engine_tb 
+# Start time: 13:23:21 on Mar 31,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.send_engine_tb(sim)
+# Loading work.send_engine(rtl)
+add wave sim:/send_engine_tb/*
+run -all
+# ** Error: TC4(Sample 4096): send_done_pulse not asserting after sample with index 4095
+#    Time: 170749488 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: Expected NUM_SAMPLES (4097) writes, got 4096
+#    Time: 170770320 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC4(Sample 4097): send_done_pulse not seen within timeout window
+#    Time: 171457776 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Failure: Simulation finished
+#    Time: 171666096 ps  Iteration: 0  Process: /send_engine_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd line 258
+quit -sim
+# End time: 13:29:18 on Mar 31,2026, Elapsed time: 0:05:57
+# Errors: 4, Warnings: 2
+# Compile of send_engine.vhd was successful.
+# Compile of send_engine_tb.vhd failed with 1 errors.
+# 2 compiles, 1 failed with 1 error.
+# Compile of send_engine.vhd was successful.
+# Compile of send_engine_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -gui work.send_engine_tb
+# vsim -gui work.send_engine_tb 
+# Start time: 13:29:56 on Mar 31,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.send_engine_tb(sim)
+# Loading work.send_engine(rtl)
+add wave sim:/send_engine_tb/*
+run -all
+# ** Error: TC4(Sample 4096): send_done_pulse not asserting after sample with index 4095
+#    Time: 170749488 ps  Iteration: 2  Instance: /send_engine_tb
+# ** Error: Expected NUM_SAMPLES (4097) writes, got 4096
+#    Time: 170770320 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC4(Sample 4096): send_done_pulse does not deassert after 1 clock cycle
+#    Time: 170770320 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC4(Sample 4097): send_done_pulse not seen within timeout window
+#    Time: 171124464 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Failure: Simulation finished
+#    Time: 171332784 ps  Iteration: 0  Process: /send_engine_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd line 261
+quit -sim
+# End time: 16:19:02 on Mar 31,2026, Elapsed time: 2:49:06
+# Errors: 5, Warnings: 3
+# Compile of send_engine_tb.vhd was successful.
+vsim -gui work.send_engine_tb
+# vsim -gui work.send_engine_tb 
+# Start time: 16:19:36 on Mar 31,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.send_engine_tb(sim)
+# Loading work.send_engine(rtl)
+add wave sim:/send_engine_tb/*
+run -all
+# ** Error: TC4(Sample 4096): send_done_pulse not asserting after sample with index 4095
+#    Time: 170749488 ps  Iteration: 2  Instance: /send_engine_tb
+# ** Error: TC4(Sample 4096): send_done_pulse does not deassert after 1 clock cycle
+#    Time: 170770320 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC4(Sample 4097): send_done_pulse not seen within timeout window
+#    Time: 171124464 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Failure: Simulation finished
+#    Time: 171332784 ps  Iteration: 0  Process: /send_engine_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd line 261
+quit -sim
+# End time: 15:43:26 on Apr 01,2026, Elapsed time: 23:23:50
+# Errors: 4, Warnings: 2
+# Compile of send_engine_tb.vhd was successful.
+vsim -gui work.send_engine_tb
+# vsim -gui work.send_engine_tb 
+# Start time: 15:44:02 on Apr 01,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.send_engine_tb(sim)
+# Loading work.send_engine(rtl)
+vsim -gui work.send_engine_tb
+# End time: 15:44:35 on Apr 01,2026, Elapsed time: 0:00:33
+# Errors: 0, Warnings: 2
+# vsim -gui work.send_engine_tb 
+# Start time: 15:44:36 on Apr 01,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.send_engine_tb(sim)
+# Loading work.send_engine(rtl)
+add wave sim:/send_engine_tb/*
+run -all
+# ** Error: TC4(Sample 4096): read address not equal to 0xFFF when send_done_pulse is asserted
+#    Time: 170770320 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 4097): Header byte not sent despite tx_busy being low
+#    Time: 171291120 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 4097): tx_start_pulse not asserted high despite tx busy being low
+#    Time: 171291120 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 4097): tx_start_pulse not asserted high despite tx busy being low
+#    Time: 171311952 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 4098): Ram address not updated to 1 after 1 clock cycle in SEND_DATA state
+#    Time: 171332784 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 4098): Data not equal to 33
+#    Time: 171332784 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 4098): Start pulse not high when sending 1st data byte in state SEND_DATA...
+#    Time: 171332784 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 4098): Start pulse asserted high while in SEND_SET_ADDR
+#    Time: 171353616 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 4099): Ram address not updated to 2 after 2nd clock cycle in SEND_DATA state
+#    Time: 171374448 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 4099): Ram data not updated to AA
+#    Time: 171374448 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 4099): Start pulse not asserted high while in SEND_DATA
+#    Time: 171374448 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC5c(Sample 4099): Start pulse asserted high while in SEND_SET_ADDR
+#    Time: 171395280 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Failure: Simulation finished
+#    Time: 171624432 ps  Iteration: 1  Process: /send_engine_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd line 387
+quit -sim
+# End time: 15:53:32 on Apr 01,2026, Elapsed time: 0:08:56
+# Errors: 13, Warnings: 1
+# Compile of send_engine_tb.vhd was successful.
+vsim -gui work.send_engine_tb
+# vsim -gui work.send_engine_tb 
+# Start time: 15:53:45 on Apr 01,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.send_engine_tb(sim)
+# Loading work.send_engine(rtl)
+add wave sim:/send_engine_tb/*
+run -all
+# ** Error: TC5b(Sample 4097): Header byte not sent despite tx_busy being low
+#    Time: 171291120 ps  Iteration: 2  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 4097): tx_start_pulse not asserted high despite tx busy being low
+#    Time: 171291120 ps  Iteration: 2  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 4098): tx_start_pulse not asserted high despite tx busy being low
+#    Time: 171311952 ps  Iteration: 2  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 4098): Ram address not updated to 1 after 1 clock cycle in SEND_DATA state
+#    Time: 171332784 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 4098): Data not equal to 33
+#    Time: 171332784 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 4098): Start pulse not high when sending 1st data byte in state SEND_DATA...
+#    Time: 171332784 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 4098): Start pulse asserted high while in SEND_SET_ADDR
+#    Time: 171353616 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 4099): Ram address not updated to 2 after 2nd clock cycle in SEND_DATA state
+#    Time: 171374448 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 4099): Ram data not updated to AA
+#    Time: 171374448 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 4099): Start pulse not asserted high while in SEND_DATA
+#    Time: 171374448 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC5c(Sample 4099): Start pulse asserted high while in SEND_SET_ADDR
+#    Time: 171395280 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Failure: Simulation finished
+#    Time: 171624432 ps  Iteration: 1  Process: /send_engine_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd line 385
+quit -sim
+# End time: 15:55:51 on Apr 01,2026, Elapsed time: 0:02:06
+# Errors: 12, Warnings: 2
+# Compile of send_engine_tb.vhd was successful.
+vsim -gui work.send_engine_tb
+# vsim -gui work.send_engine_tb 
+# Start time: 15:56:32 on Apr 01,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.send_engine_tb(sim)
+# Loading work.send_engine(rtl)
+add wave sim:/send_engine_tb/*
+add wave sim:/send_engine_tb/*
+run -all
+# ** Error: TC5b(Sample 4098): tx_start_pulse not asserted high despite tx busy being low
+#    Time: 171311952 ps  Iteration: 2  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 4098): Ram address not updated to 1 after 1 clock cycle in SEND_DATA state
+#    Time: 171332784 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 4098): Data not equal to 33
+#    Time: 171332784 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 4098): Start pulse not high when sending 1st data byte in state SEND_DATA...
+#    Time: 171332784 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 4098): Start pulse asserted high while in SEND_SET_ADDR
+#    Time: 171353616 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 4099): Ram address not updated to 2 after 2nd clock cycle in SEND_DATA state
+#    Time: 171374448 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 4099): Ram data not updated to AA
+#    Time: 171374448 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 4099): Start pulse not asserted high while in SEND_DATA
+#    Time: 171374448 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC5c(Sample 4099): Start pulse asserted high while in SEND_SET_ADDR
+#    Time: 171395280 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Failure: Simulation finished
+#    Time: 171624432 ps  Iteration: 1  Process: /send_engine_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd line 385
+quit -sim
+# End time: 16:05:05 on Apr 01,2026, Elapsed time: 0:08:33
+# Errors: 10, Warnings: 2
+# Compile of send_engine_tb.vhd was successful.
+vsim -gui work.send_engine_tb
+# vsim -gui work.send_engine_tb 
+# Start time: 16:05:18 on Apr 01,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.send_engine_tb(sim)
+# Loading work.send_engine(rtl)
+add wave sim:/send_engine_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 171646264 ps  Iteration: 0  Process: /send_engine_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd line 390

@@ -2,6 +2,7 @@
 -- MODULE: send_engine.vhd
 -- FUNCTION: streams captured data from BRAM to host via UART
 -- AUTHOR: Jakob Kieszek Ottesen
+-- DATE: 2026-03-31 (YYYY-MM-DD)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -15,6 +16,12 @@
 -- o_send_tx_byte			8 bits		-> tx_mux
 -- o_send_tx_start_pulse	1 bit		-> tx_mux
 -- o_send_done_pulse		1 bit		-> analyzer_fsm
+--
+-- NOTES
+-- o_ram_rd_addr (going to trace_buffer) is set at the same time as the tx_byte and tx_start_pulse (going to tx_mux).
+-- BUT!: note that the ram_rd_addr is 1 cycle ahead and in the waveform will show address 1 when sample 0 was just sent to tx_mux
+-- this is because the rd_addr is passed to trace_buffer slightly ahead of time so the associated data arrives at send_engine in time
+-- ... for it to be sent to tx_mux
 --
 -- PREFIXES
 -- i_ : input
@@ -57,7 +64,7 @@ architecture RTL of send_engine is
 	signal r_send_tx_byte, n_send_tx_byte : std_logic_vector(DATA_LENGTH-1 downto 0) := (others => '0');
 	signal r_send_tx_start_pulse, n_send_tx_start_pulse : std_logic := '0';
 	signal r_send_done_pulse, n_send_done_pulse : std_logic := '0';
-	
+		
 	-- Define constants
 	constant LAST_ADDR : std_logic_vector(ADDR_LENGTH-1 downto 0) := std_logic_vector(to_unsigned(NUM_SAMPLES-1, ADDR_LENGTH));
 	
@@ -103,7 +110,7 @@ begin
 			
 			when SEND_HEADER =>
 				if i_tx_busy = '0' then
-					n_send_tx_byte <= x"99";  -- send 0x99 (0b10011001) status code (header)
+					n_send_tx_byte <= x"99";  -- send 0x99 (1001 1001) status code (header)
 					n_send_tx_start_pulse <= '1';
 					n_state <= SEND_SET_ADDR;
 				end if;
@@ -116,7 +123,7 @@ begin
 				if i_tx_busy = '0' then
 					n_send_tx_byte <= i_ram_rd_data;
 					n_send_tx_start_pulse <= '1';
-				
+					
 					if r_ram_rd_addr = LAST_ADDR then
 						-- Sample nr 4096 (index 4095) just captured
 						n_send_done_pulse <= '1';
@@ -127,9 +134,6 @@ begin
 						n_state <= SEND_SET_ADDR;
 					end if;
 				end if;
-			
-			when others =>
-				null;
 		end case;
 	end process fsm_proc;
 	

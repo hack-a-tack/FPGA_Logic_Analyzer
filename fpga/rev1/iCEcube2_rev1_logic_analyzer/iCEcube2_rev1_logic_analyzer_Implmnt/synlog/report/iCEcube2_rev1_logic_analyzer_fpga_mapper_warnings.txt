@@ -14,10 +14,16 @@
 @W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":79:2:79:3|User-specified initial value defined for instance E4.r_capture_start_pulse is being ignored. 
 @W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":79:2:79:3|User-specified initial value defined for instance E4.r_send_start_pulse is being ignored. 
 @W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":79:2:79:3|User-specified initial value defined for instance E4.r_USER_LED is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":68:2:68:3|User-specified initial value defined for instance E6.r_ram_rd_addr[11:0] is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":68:2:68:3|User-specified initial value defined for instance E6.r_send_tx_byte[7:0] is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":68:2:68:3|User-specified initial value defined for instance E6.r_send_tx_start_pulse is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":68:2:68:3|User-specified initial value defined for instance E6.r_send_done_pulse is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":71:2:71:3|User-specified initial value defined for instance E5.r_state[0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":71:2:71:3|User-specified initial value defined for instance E5.r_raw_wr_addr[11:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":71:2:71:3|User-specified initial value defined for instance E5.r_capture_done_pulse is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":71:2:71:3|User-specified initial value defined for instance E5.r_raw_wr_en_pulse is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":71:2:71:3|User-specified initial value defined for instance E5.r_raw_wr_data[7:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":72:2:72:3|User-specified initial value defined for instance E6.r_ram_rd_addr[11:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":72:2:72:3|User-specified initial value defined for instance E6.r_send_tx_byte[7:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":72:2:72:3|User-specified initial value defined for instance E6.r_send_tx_start_pulse is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":72:2:72:3|User-specified initial value defined for instance E6.r_send_done_pulse is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":101:2:101:5|User-specified initial value defined for instance E6.first_data_sample is being ignored. 
 @W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":76:2:76:3|User-specified initial value defined for instance E9.r_bit_counter[2:0] is being ignored. 
 @W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":76:2:76:3|User-specified initial value defined for instance E9.r_clk_counter[5:0] is being ignored. 
 @W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":76:2:76:3|User-specified initial value defined for instance E9.r_UART_TX is being ignored. 
@@ -26,11 +32,6 @@
 @W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":76:2:76:3|User-specified initial value defined for instance E9.r_tx_byte[7:0] is being ignored. 
 @W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\tx_mux.vhd":54:2:54:3|User-specified initial value defined for instance E8.r_mux_tx_byte[7:0] is being ignored. 
 @W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\tx_mux.vhd":54:2:54:3|User-specified initial value defined for instance E8.r_mux_tx_start_pulse is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":67:2:67:3|User-specified initial value defined for instance E5.r_state[0] is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":67:2:67:3|User-specified initial value defined for instance E5.r_raw_wr_addr[11:0] is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":67:2:67:3|User-specified initial value defined for instance E5.r_capture_done_pulse is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":67:2:67:3|User-specified initial value defined for instance E5.r_raw_wr_en_pulse is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":67:2:67:3|User-specified initial value defined for instance E5.r_raw_wr_data[7:0] is being ignored. 
 @W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\clocking.vhd":66:2:66:3|User-specified initial value defined for instance E1.r_samp_tick is being ignored. 
 @W: FX107 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\trace_buffer.vhd":52:8:52:10|RAM E7.mem[7:0] (in view: work.top(structure)) does not have a read/write conflict check. Possible simulation mismatch. To resolve a read/write conflict, either set syn_ramstyle = rw_check, or enable the "Read Write Check on RAM" Implementation Option. For more information, search for "read/write conflict check" in Online Help.
 @W: BN132 :|Removing instance mem_0_1_sr_rst_0 because it is equivalent to instance mem_0_0_sr_rst_0. To keep the instance, apply constraint syn_preserve=1 on the instance.
@@ -59,3 +60,5 @@
 @W: FX469 :|Net mem_1_2_RAM_0[0] is undriven; adding disabled tristate to drive this net. To avoid the addition of a tristate, add a driver to the net.
 @W: FX469 :|Net mem_1_3_RAM_0[1] is undriven; adding disabled tristate to drive this net. To avoid the addition of a tristate, add a driver to the net.
 @W: FX469 :|Net mem_1_3_RAM_0[0] is undriven; adding disabled tristate to drive this net. To avoid the addition of a tristate, add a driver to the net.
+@W: BN137 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":101:2:101:5|Found combinational loop during mapping at net E6.first_data_sample
+@W: BN137 :|Found combinational loop during mapping at net E6.n_send_done_pulse_0_sqmuxa

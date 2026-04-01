@@ -5,7 +5,7 @@
 @N: MF794 |RAM E7.mem[7:0] required 1 registers during mapping 
 @N: MO225 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":83:2:83:3|There are no possible illegal states for state machine r_state[0:3] (in view: work.uart_rx(rtl)); safe FSM implementation is not required.
 @N: MO225 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":79:2:79:3|There are no possible illegal states for state machine r_state[0:3] (in view: work.analyzer_fsm(rtl)); safe FSM implementation is not required.
-@N: MO225 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":68:2:68:3|There are no possible illegal states for state machine r_state[0:3] (in view: work.send_engine(rtl)); safe FSM implementation is not required.
+@N: MO225 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":72:2:72:3|There are no possible illegal states for state machine r_state[0:3] (in view: work.send_engine(rtl)); safe FSM implementation is not required.
 @N: MO225 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":76:2:76:3|There are no possible illegal states for state machine r_state[0:3] (in view: work.uart_tx(rtl)); safe FSM implementation is not required.
 @N: MF794 |RAM E7.mem[7:0] required 1 registers during mapping 
 @N: BN362 :|Removing sequential instance mem_0_0_sr_en (in view: VhdlGenLib.top_RAMN_R_W_4096_8_TFFF_block_ram_ns_sbt(netlist)) because it does not drive other instances.
@@ -25,6 +25,9 @@
 @N: BN362 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\trace_buffer.vhd":52:8:52:10|Removing sequential instance E7.mem_mem_0_1_OLD[1] (in view: work.top(structure)) because it does not drive other instances.
 @N: BN362 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\trace_buffer.vhd":52:8:52:10|Removing sequential instance E7.mem_mem_0_0_OLD[0] (in view: work.top(structure)) because it does not drive other instances.
 @N: BN362 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\trace_buffer.vhd":52:8:52:10|Removing sequential instance E7.mem_mem_0_0_OLD[1] (in view: work.top(structure)) because it does not drive other instances.
+@N: BN362 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":79:2:79:3|Removing sequential instance E4.r_send_start_pulse (in view: work.top(structure)) because it does not drive other instances.
+@N: BN362 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":72:2:72:3|Removing sequential instance E6.r_state[1] (in view: work.top(structure)) because it does not drive other instances.
+@N: BN362 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":72:2:72:3|Removing sequential instance E6.r_state[0] (in view: work.top(structure)) because it does not drive other instances.
 @N: BN362 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\trace_buffer.vhd":52:8:52:10|Removing sequential instance E7.mem_mem_0_0_OLD_0[1] (in view: work.top(structure)) because it does not drive other instances.
 @N: BN362 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\trace_buffer.vhd":52:8:52:10|Removing sequential instance E7.mem_mem_0_0_OLD_0[0] (in view: work.top(structure)) because it does not drive other instances.
 @N: BN362 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\trace_buffer.vhd":52:8:52:10|Removing sequential instance E7.mem_mem_0_0_sr_en_0 (in view: work.top(structure)) because it does not drive other instances.

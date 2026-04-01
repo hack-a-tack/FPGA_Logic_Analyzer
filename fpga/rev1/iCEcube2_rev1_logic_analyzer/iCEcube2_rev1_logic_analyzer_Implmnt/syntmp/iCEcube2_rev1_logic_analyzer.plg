@@ -1,13 +1,13 @@
-@P:  Worst Slack : 0.593
-@P:  clk52 - Estimated Frequency : 54.5 MHz
+@P:  Worst Slack : 0.986
+@P:  clk52 - Estimated Frequency : 55.7 MHz
 @P:  clk52 - Requested Frequency : 52.8 MHz
-@P:  clk52 - Estimated Period : 18.346
+@P:  clk52 - Estimated Period : 17.953
 @P:  clk52 - Requested Period : 18.939
-@P:  clk52 - Slack : 0.593
+@P:  clk52 - Slack : 0.986
 @P: top Part : ice40up5ksg48
 @P: top I/O primitives : 14
 @P: top I/O Register bits : 0
-@P: top Register bits (Non I/O) : 142 (2%)
+@P: top Register bits (Non I/O) : 146 (2%)
 @P: top Block Rams : 8 of 30 (26%)
-@P: top Total Luts : 219 (4%)
-@P:  CPU Time : 0h:00m:01s
+@P: top Total Luts : 227 (4%)
+@P:  CPU Time : 0h:00m:02s

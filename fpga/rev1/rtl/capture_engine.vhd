@@ -2,7 +2,7 @@
 -- MODULE: capture_engine.vhd
 -- FUNCTION: samples logic analyzer inputs at i_clk and writes to BRAM
 -- AUTHOR: Jakob Kieszek Ottesen
--- DATE: 2026-03-26 (YYYY-MM-DD)
+-- DATE: 2026-03-31 (YYYY-MM-DD)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -16,6 +16,9 @@
 -- o_raw_wr_addr			12 bits		-> trace_buffer
 -- o_raw_wr_data			8 bits		-> trace_buffer
 -- o_capture_done_pulse		1 bit		-> analyzer_fsm
+--
+-- NOTES
+-- First sample is written to RAM address 0 during state CAPTURE_IDLE. The rest is sent in CAPTURE_RUN.
 --
 -- PREFIXES:
 -- i_ : input
