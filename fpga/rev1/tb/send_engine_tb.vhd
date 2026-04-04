@@ -2,7 +2,7 @@
 -- MODULE: send_engine_tb.vhd
 -- FUNCTION: TESTBENCH for entity which streams captured data from BRAM to host
 -- AUTHOR: Jakob Kieszek Ottesen
--- DATE: 2026-03-31 (YYYY-MM-DD)
+-- DATE: 2026-04-01 (YYYY-MM-DD)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking

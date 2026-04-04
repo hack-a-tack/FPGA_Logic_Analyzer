@@ -38204,3 +38204,75 @@ run -all
 # ** Failure: Simulation finished
 #    Time: 171646264 ps  Iteration: 0  Process: /send_engine_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd
 # Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd line 390
+quit -sim
+# End time: 10:27:59 on Apr 04,2026, Elapsed time: 66:22:41
+# Errors: 1, Warnings: 2
+# Compile of trace_buffer.vhd was successful.
+# Compile of trace_buffer_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -gui work.trace_buffer_tb
+# vsim -gui work.trace_buffer_tb 
+# Start time: 10:28:59 on Apr 04,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.trace_buffer_tb(sim)
+# Loading work.trace_buffer(rtl)
+add wave sim:/trace_buffer_tb/*
+run -all
+# ** Error: TC1: expected data byte xBE | not observed
+#    Time: 114576 ps  Iteration: 1  Instance: /trace_buffer_tb
+# ** Error: TC3: expected data byte x00 after reset | not observed
+#    Time: 218736 ps  Iteration: 1  Instance: /trace_buffer_tb
+# ** Error: TC4: expected data byte x11 | not observed
+#    Time: 406224 ps  Iteration: 1  Instance: /trace_buffer_tb
+# ** Error: TC4: expected data byte x22 | not observed
+#    Time: 427056 ps  Iteration: 1  Instance: /trace_buffer_tb
+# ** Error: TC4: expected data byte x33 | not observed
+#    Time: 447888 ps  Iteration: 1  Instance: /trace_buffer_tb
+# ** Error: TC4: expected data byte x44 | not observed
+#    Time: 468720 ps  Iteration: 1  Instance: /trace_buffer_tb
+# ** Error: TC5: expected data byte x99 after overwrite | not observed
+#    Time: 531216 ps  Iteration: 1  Instance: /trace_buffer_tb
+# ** Error: TC7: expected data byte x77 after same-cycle rd/wr | not observed
+#    Time: 635376 ps  Iteration: 1  Instance: /trace_buffer_tb
+# ** Failure: Simulation finished
+#    Time: 843696 ps  Iteration: 0  Process: /trace_buffer_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/trace_buffer_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/trace_buffer_tb.vhd line 246
+quit -sim
+# End time: 10:43:09 on Apr 04,2026, Elapsed time: 0:14:10
+# Errors: 9, Warnings: 4
+# Compile of trace_buffer_tb.vhd was successful.
+vsim -gui work.trace_buffer_tb
+# vsim -gui work.trace_buffer_tb 
+# Start time: 10:43:22 on Apr 04,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.trace_buffer_tb(sim)
+# Loading work.trace_buffer(rtl)
+add wave sim:/trace_buffer_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 948856 ps  Iteration: 0  Process: /trace_buffer_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/trace_buffer_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/trace_buffer_tb.vhd line 264
+quit -sim
+# End time: 10:54:30 on Apr 04,2026, Elapsed time: 0:11:08
+# Errors: 1, Warnings: 2
+# Compile of trace_buffer_tb.vhd was successful.
+vsim -gui work.trace_buffer_tb
+# vsim -gui work.trace_buffer_tb 
+# Start time: 10:54:48 on Apr 04,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.trace_buffer_tb(sim)
+# Loading work.trace_buffer(rtl)
+add wave sim:/trace_buffer_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 947856 ps  Iteration: 0  Process: /trace_buffer_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/trace_buffer_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/trace_buffer_tb.vhd line 263

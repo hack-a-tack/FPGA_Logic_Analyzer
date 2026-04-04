@@ -16,6 +16,15 @@ Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 
 -- Compiling entity analyzer_fsm
 -- Compiling architecture RTL of analyzer_fsm
 
+} {} {}} C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/rtl/trace_buffer.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/rtl/trace_buffer.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity trace_buffer
+-- Compiling architecture RTL of trace_buffer
+
 } {} {}} C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/rtl/cmd_parser.vhd {2 {vcom -work work -2008 -explicit -stats=none C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/rtl/cmd_parser.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 -- Loading package STANDARD

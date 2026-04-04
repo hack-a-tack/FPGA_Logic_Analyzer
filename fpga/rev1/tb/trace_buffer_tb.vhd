@@ -2,7 +2,7 @@
 -- MODULE: trace_buffer.vhd
 -- FUNCTION: writes sample data to RAM and reads captured data out to host
 -- AUTHOR: Jakob Kieszek Ottesen
--- DATE: 2026-03-14 (YYYY-MM-DD)
+-- DATE: 2026-04-04 (YYYY-MM-DD)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -53,10 +53,12 @@ architecture sim of trace_buffer_tb is
 	
 	-- Constant declaration
 	constant ADDR_LENGTH : integer := 12;
-	constant NUM_SAMPLES : integer := 2**ADDR_LENGTH;  -- 4096
+	constant NUM_SAMPLES : integer := 2**ADDR_LENGTH;
 	constant DATA_LENGTH : integer := 8;
 	constant CLK_FREQ   : real := 48.0e6;
-	constant CLK_PERIOD : time := 1 sec / CLK_FREQ;  -- ~20.8 ns
+	constant CLK_PERIOD : time := 1 sec / CLK_FREQ;  	-- 20833 ps (truncated)
+	constant CLK_HALF : time := CLK_PERIOD / 2;			-- 10416 ps (truncated)
+	constant CLK_ACTUAL : time := CLK_HALF * 2;			-- 20832 ps --> identical to 2 x CLK_HALF (used in clock generation)
 
     -- Signals to connect to DUT
 	signal i_clk					: std_logic := '0';
@@ -66,11 +68,19 @@ architecture sim of trace_buffer_tb is
 	signal i_ram_wr_data			: std_logic_vector(DATA_LENGTH-1 downto 0) := (others => '0');
 	signal i_ram_rd_addr			: std_logic_vector(ADDR_LENGTH-1 downto 0) := (others => '0');
 	signal o_ram_rd_data			: std_logic_vector(DATA_LENGTH-1 downto 0);  -- don't set default value on output signal
+	
+	-- Other signals
+	signal test_id : integer := 0;  -- keep track of test cases
 
 begin
 
     -- DUT Instantiation
-    uut: trace_buffer
+    dut: trace_buffer
+		generic map (
+			ADDR_LENGTH => ADDR_LENGTH,
+			NUM_SAMPLES => NUM_SAMPLES,
+			DATA_LENGTH => DATA_LENGTH
+		)
         port map (			
 			i_clk => i_clk,
 			i_rst => i_rst,
@@ -86,9 +96,9 @@ begin
     begin
         while true loop
             i_clk <= '0';
-            wait for CLK_PERIOD / 2;
+            wait for CLK_HALF;
             i_clk <= '1';
-            wait for CLK_PERIOD / 2;
+            wait for CLK_HALF;
         end loop;
     end process;
 
@@ -96,12 +106,14 @@ begin
     stim_proc: process is		
     begin
         -- Reset phase
-        wait for 2*CLK_PERIOD;
+        wait until rising_edge(i_clk);
 		i_rst <= '1';
-		wait for 5*CLK_PERIOD;
+		wait until rising_edge(i_clk);
 		i_rst <= '0';
+		wait until rising_edge(i_clk);
 		
 		-- Test case 1: write to one address, read it back | write enable, valid data, same read/write address
+		test_id <= 1;
 		wait until rising_edge(i_clk);
 		i_ram_wr_en_pulse <= '1';
 		i_ram_wr_data <= x"BE";
@@ -110,11 +122,14 @@ begin
 		i_ram_wr_en_pulse <= '0';
 		i_ram_rd_addr <= x"111";		-- i_ram_rd_addr updates before next edge
 		wait until rising_edge(i_clk);	-- DUT samples at edge, registered output (o_ram_rd_data) updates after edge
+		wait for 0 ns;  -- give o_ram_rd_data time to set (1 delta cycle) (could do 1 ns for easier inspection of waveforms)
 		assert o_ram_rd_data = x"BE"
-			report "expected data byte xBE | not observed"
+			report "TC1: expected data byte xBE | not observed"
 			severity error;
 		
 		-- Test case 2: NO write enable pulse, valid write data, the same write address and read address
+		wait until rising_edge(i_clk);
+		test_id <= 2;
 		wait until rising_edge(i_clk);
 		i_ram_wr_en_pulse <= '0';
 		i_ram_wr_data <= x"AA";
@@ -123,21 +138,27 @@ begin
 		i_ram_wr_en_pulse <= '0';
 		i_ram_rd_addr <= x"111";
 		wait until rising_edge(i_clk);
+		wait for 0 ns;
 		assert o_ram_rd_data = x"BE"
-			report "expected data byte xBE as it should not have been updated"
+			report "TC2: expected data byte xBE as it should not have been updated"
 			severity error;
 		
 		-- Test case 3: reset clears output
 		wait until rising_edge(i_clk);
+		test_id <= 3;
+		wait until rising_edge(i_clk);
 		i_rst <= '1';
 		wait until rising_edge(i_clk);
 		i_rst <= '0';
+		wait for 0 ns;
 		assert o_ram_rd_data = x"00"
-			report "expected data byte x00 after reset | not observed"
+			report "TC3: expected data byte x00 after reset | not observed"
 			severity error;
 		
 		-- Test case 4: write to multiple addresses, read each back
 		-- WRITE
+		wait until rising_edge(i_clk);
+		test_id <= 4;
 		wait until rising_edge(i_clk);
 		i_ram_wr_en_pulse <= '1';
 		i_ram_wr_data <= x"11";
@@ -169,29 +190,35 @@ begin
 		-- READ
 		i_ram_rd_addr <= x"001";
 		wait until rising_edge(i_clk);
+		wait for 0 ns;
 		assert o_ram_rd_data = x"11"
-			report "expected data byte x11 | not observed"
+			report "TC4: expected data byte x11 | not observed"
 			severity error;
 			
 		i_ram_rd_addr <= x"002";
 		wait until rising_edge(i_clk);
+		wait for 0 ns;
 		assert o_ram_rd_data = x"22"
-			report "expected data byte x22 | not observed"
+			report "TC4: expected data byte x22 | not observed"
 			severity error;
 			
 		i_ram_rd_addr <= x"003";
 		wait until rising_edge(i_clk);
+		wait for 0 ns;
 		assert o_ram_rd_data = x"33"
-			report "expected data byte x33 | not observed"
+			report "TC4: expected data byte x33 | not observed"
 			severity error;
 		
 		i_ram_rd_addr <= x"004";
 		wait until rising_edge(i_clk);
+		wait for 0 ns;
 		assert o_ram_rd_data = x"44"
-			report "expected data byte x44 | not observed"
+			report "TC4: expected data byte x44 | not observed"
 			severity error;
 		
 		-- Test case 5: overwrite an address, confirm new value
+		wait until rising_edge(i_clk);
+		test_id <= 5;
 		wait until rising_edge(i_clk);
 		i_ram_wr_en_pulse <= '1';
 		i_ram_wr_data <= x"99";
@@ -200,17 +227,24 @@ begin
 		i_ram_wr_en_pulse <= '0';
 		i_ram_rd_addr <= x"001";
 		wait until rising_edge(i_clk);
+		wait for 0 ns;
 		assert o_ram_rd_data = x"99"
-			report "expected data byte x99 after overwrite | not observed"
+			report "TC5: expected data byte x99 after overwrite | not observed"
 			severity error;
 			
 		-- Test case 6: read an unwritten address - documentation-only observation
 		wait until rising_edge(i_clk);
+		test_id <= 6;
+		wait until rising_edge(i_clk);
 		i_ram_rd_addr <= x"999";
 		wait until rising_edge(i_clk);
-		-- output (data at given address) is undefined until initialised/written
+		wait for 0 ns;
+		assert o_ram_rd_data = "UUUUUUUU"
+			report "TC5: expected U's for uninitialised/undefined data at unwritten address | U's not observed"
+			severity error;
 		
 		-- Test case 7: same-cycle read/write edge case
+		test_id <= 7;
 		wait until rising_edge(i_clk);
 		i_ram_wr_en_pulse <= '1';
 		i_ram_wr_data <= x"77";
@@ -219,12 +253,13 @@ begin
 		wait until rising_edge(i_clk);
 		i_ram_wr_en_pulse <= '0';
 		wait until rising_edge(i_clk);
+		wait for 0 ns;
 		assert o_ram_rd_data = x"77"
-			report "expected data byte x77 after same-cycle rd/wr | not observed"
+			report "TC7: expected data byte x77 after same-cycle rd/wr | not observed"
 			severity error;
 		
         -- Finish simulation
-        wait for 5*CLK_PERIOD;
+        wait for 10*CLK_ACTUAL;
         assert false report "Simulation finished" severity failure;
     end process;
 
