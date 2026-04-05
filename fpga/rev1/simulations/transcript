@@ -38276,3 +38276,358 @@ run -all
 # ** Failure: Simulation finished
 #    Time: 947856 ps  Iteration: 0  Process: /trace_buffer_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/trace_buffer_tb.vhd
 # Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/trace_buffer_tb.vhd line 263
+quit -sim
+# End time: 11:10:22 on Apr 04,2026, Elapsed time: 0:15:34
+# Errors: 1, Warnings: 2
+# Compile of tx_mux.vhd was successful.
+# Compile of tx_mux_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -gui work.tx_mux_tb
+# vsim -gui work.tx_mux_tb 
+# Start time: 11:11:11 on Apr 04,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tx_mux_tb(sim)
+# Loading work.tx_mux(rtl)
+add wave sim:/tx_mux_tb/*
+run -all
+# ** Error: TC1: Status byte (55) from fsm not sent to uart_tx
+#    Time: 72912 ps  Iteration: 1  Instance: /tx_mux_tb
+# ** Error: TC1: Start pulse (o_mux_tx_start_pulse) not asserted
+#    Time: 72912 ps  Iteration: 1  Instance: /tx_mux_tb
+# ** Error: TC1: Start pulse (o_mux_tx_start_pulse) not deasserted after 1 cycle
+#    Time: 93744 ps  Iteration: 1  Instance: /tx_mux_tb
+# ** Error: TC2: Data byte (A5) from send_engine not sent to uart_tx
+#    Time: 135408 ps  Iteration: 1  Instance: /tx_mux_tb
+# ** Error: TC2: Start pulse (o_mux_tx_start_pulse) not asserted
+#    Time: 135408 ps  Iteration: 1  Instance: /tx_mux_tb
+# ** Error: TC2: Start pulse (o_mux_tx_start_pulse) not deasserted after 1 cycle
+#    Time: 156240 ps  Iteration: 1  Instance: /tx_mux_tb
+# ** Error: TC4: Status byte (77) from fsm not sent to uart_tx
+#    Time: 239568 ps  Iteration: 1  Instance: /tx_mux_tb
+# ** Error: TC4: Start pulse (o_mux_tx_start_pulse) not asserted
+#    Time: 239568 ps  Iteration: 1  Instance: /tx_mux_tb
+# ** Error: TC4: Start pulse (o_mux_tx_start_pulse) not deasserted after 1 cycle
+#    Time: 260400 ps  Iteration: 1  Instance: /tx_mux_tb
+# ** Failure: Simulation finished
+#    Time: 468720 ps  Iteration: 0  Process: /tx_mux_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd line 178
+quit -sim
+# End time: 09:19:52 on Apr 05,2026, Elapsed time: 22:08:41
+# Errors: 10, Warnings: 4
+# Compile of tx_mux_tb.vhd was successful.
+vsim -gui work.tx_mux_tb
+# vsim -gui work.tx_mux_tb 
+# Start time: 09:20:11 on Apr 05,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tx_mux_tb(sim)
+# Loading work.tx_mux(rtl)
+add wave sim:/tx_mux_tb/*
+run -all
+# ** Error: TC1: Status byte (55) from fsm not sent to uart_tx
+#    Time: 72912 ps  Iteration: 2  Instance: /tx_mux_tb
+# ** Error: TC1: Start pulse (o_mux_tx_start_pulse) not asserted
+#    Time: 72912 ps  Iteration: 2  Instance: /tx_mux_tb
+# ** Error: TC1: Start pulse (o_mux_tx_start_pulse) not deasserted after 1 cycle
+#    Time: 93744 ps  Iteration: 2  Instance: /tx_mux_tb
+# ** Error: TC2: Data byte (A5) from send_engine not sent to uart_tx
+#    Time: 135408 ps  Iteration: 2  Instance: /tx_mux_tb
+# ** Error: TC2: Start pulse (o_mux_tx_start_pulse) not asserted
+#    Time: 135408 ps  Iteration: 2  Instance: /tx_mux_tb
+# ** Error: TC2: Start pulse (o_mux_tx_start_pulse) not deasserted after 1 cycle
+#    Time: 156240 ps  Iteration: 2  Instance: /tx_mux_tb
+# ** Error: TC4: Status byte (77) from fsm not sent to uart_tx
+#    Time: 239568 ps  Iteration: 2  Instance: /tx_mux_tb
+# ** Error: TC4: Start pulse (o_mux_tx_start_pulse) not asserted
+#    Time: 239568 ps  Iteration: 2  Instance: /tx_mux_tb
+# ** Error: TC4: Start pulse (o_mux_tx_start_pulse) not deasserted after 1 cycle
+#    Time: 260400 ps  Iteration: 2  Instance: /tx_mux_tb
+# ** Failure: Simulation finished
+#    Time: 468720 ps  Iteration: 0  Process: /tx_mux_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd line 182
+# Error opening C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/simulations/Status byte 
+# Path name 'C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/simulations/Status byte ' doesn't exist.
+quit -sim
+# End time: 09:23:22 on Apr 05,2026, Elapsed time: 0:03:11
+# Errors: 10, Warnings: 2
+# Compile of tx_mux_tb.vhd was successful.
+vsim -gui work.tx_mux_tb
+# vsim -gui work.tx_mux_tb 
+# Start time: 09:23:40 on Apr 05,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tx_mux_tb(sim)
+# Loading work.tx_mux(rtl)
+add wave sim:/tx_mux_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 531216 ps  Iteration: 0  Process: /tx_mux_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd line 185
+quit -sim
+# End time: 09:27:15 on Apr 05,2026, Elapsed time: 0:03:35
+# Errors: 1, Warnings: 2
+# Compile of tx_mux_tb.vhd was successful.
+vsim -gui work.tx_mux_tb
+# vsim -gui work.tx_mux_tb 
+# Start time: 09:27:37 on Apr 05,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tx_mux_tb(sim)
+# Loading work.tx_mux(rtl)
+add wave sim:/tx_mux_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 531216 ps  Iteration: 0  Process: /tx_mux_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd line 188
+quit -sim
+# End time: 09:31:45 on Apr 05,2026, Elapsed time: 0:04:08
+# Errors: 1, Warnings: 2
+# Compile of tx_mux_tb.vhd was successful.
+vsim -gui work.tx_mux_tb
+# vsim -gui work.tx_mux_tb 
+# Start time: 09:32:08 on Apr 05,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tx_mux_tb(sim)
+# Loading work.tx_mux(rtl)
+add wave sim:/tx_mux_tb/*
+run -all
+# ** Error: TC1: Start pulse (o_mux_tx_start_pulse) not deasserted after 1 cycle
+#    Time: 93744 ps  Iteration: 2  Instance: /tx_mux_tb
+# ** Failure: Simulation finished
+#    Time: 510384 ps  Iteration: 0  Process: /tx_mux_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd line 189
+quit -sim
+# End time: 09:34:24 on Apr 05,2026, Elapsed time: 0:02:16
+# Errors: 2, Warnings: 2
+# Compile of tx_mux_tb.vhd was successful.
+vsim -gui work.tx_mux_tb
+# vsim -gui work.tx_mux_tb 
+# Start time: 09:34:43 on Apr 05,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tx_mux_tb(sim)
+# Loading work.tx_mux(rtl)
+add wave sim:/tx_mux_tb/*
+run -all
+# ** Error: TC1: Status byte (55) from fsm not sent to uart_tx
+#    Time: 72912 ps  Iteration: 2  Instance: /tx_mux_tb
+# ** Error: TC1: Start pulse (o_mux_tx_start_pulse) not asserted
+#    Time: 72912 ps  Iteration: 2  Instance: /tx_mux_tb
+# ** Error: TC1: Start pulse (o_mux_tx_start_pulse) not deasserted after 1 cycle
+#    Time: 93744 ps  Iteration: 2  Instance: /tx_mux_tb
+# ** Failure: Simulation finished
+#    Time: 510384 ps  Iteration: 0  Process: /tx_mux_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd line 189
+quit -sim
+# End time: 09:38:32 on Apr 05,2026, Elapsed time: 0:03:49
+# Errors: 4, Warnings: 2
+# Compile of tx_mux_tb.vhd was successful.
+vsim -gui work.tx_mux_tb
+# vsim -gui work.tx_mux_tb 
+# Start time: 09:38:48 on Apr 05,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tx_mux_tb(sim)
+# Loading work.tx_mux(rtl)
+add wave sim:/tx_mux_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 531216 ps  Iteration: 0  Process: /tx_mux_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd line 188
+quit -sim
+# End time: 09:40:58 on Apr 05,2026, Elapsed time: 0:02:10
+# Errors: 1, Warnings: 2
+# Compile of tx_mux_tb.vhd was successful.
+vsim -gui work.tx_mux_tb
+# vsim -gui work.tx_mux_tb 
+# Start time: 09:41:14 on Apr 05,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tx_mux_tb(sim)
+# Loading work.tx_mux(rtl)
+add wave sim:/tx_mux_tb/*
+run -all
+# ** Error: TC1: Status byte (55) from fsm not sent to uart_tx
+#    Time: 72912 ps  Iteration: 2  Instance: /tx_mux_tb
+# ** Error: TC1: Start pulse (o_mux_tx_start_pulse) not asserted
+#    Time: 72912 ps  Iteration: 2  Instance: /tx_mux_tb
+# ** Error: TC1: Start pulse (o_mux_tx_start_pulse) not deasserted after 1 cycle
+#    Time: 93744 ps  Iteration: 2  Instance: /tx_mux_tb
+# ** Failure: Simulation finished
+#    Time: 510384 ps  Iteration: 0  Process: /tx_mux_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd line 187
+quit -sim
+# End time: 09:43:50 on Apr 05,2026, Elapsed time: 0:02:36
+# Errors: 4, Warnings: 2
+# Compile of tx_mux_tb.vhd was successful.
+vsim -gui work.tx_mux_tb
+# vsim -gui work.tx_mux_tb 
+# Start time: 09:44:05 on Apr 05,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tx_mux_tb(sim)
+# Loading work.tx_mux(rtl)
+add wave sim:/tx_mux_tb/*
+run -all
+# ** Error: TC1: Start pulse (o_mux_tx_start_pulse) not deasserted after 1 cycle
+#    Time: 93744 ps  Iteration: 2  Instance: /tx_mux_tb
+# ** Error: TC2: Start pulse (o_mux_tx_start_pulse) not deasserted after 1 cycle
+#    Time: 156240 ps  Iteration: 2  Instance: /tx_mux_tb
+# ** Error: TC4: Start pulse (o_mux_tx_start_pulse) not deasserted after 1 cycle
+#    Time: 239568 ps  Iteration: 2  Instance: /tx_mux_tb
+# ** Failure: Simulation finished
+#    Time: 447888 ps  Iteration: 0  Process: /tx_mux_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd line 181
+quit -sim
+# End time: 09:45:52 on Apr 05,2026, Elapsed time: 0:01:47
+# Errors: 4, Warnings: 2
+# Compile of tx_mux_tb.vhd was successful.
+vsim -gui work.tx_mux_tb
+# vsim -gui work.tx_mux_tb 
+# Start time: 09:46:14 on Apr 05,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tx_mux_tb(sim)
+# Loading work.tx_mux(rtl)
+add wave sim:/tx_mux_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 448888 ps  Iteration: 0  Process: /tx_mux_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd line 181
+quit -sim
+# End time: 10:01:29 on Apr 05,2026, Elapsed time: 0:15:15
+# Errors: 1, Warnings: 2
+# Compile of tx_mux_tb.vhd was successful.
+vsim -gui work.tx_mux_tb
+# vsim -gui work.tx_mux_tb 
+# Start time: 10:02:04 on Apr 05,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tx_mux_tb(sim)
+# Loading work.tx_mux(rtl)
+add wave sim:/tx_mux_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 448888 ps  Iteration: 0  Process: /tx_mux_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd line 183
+quit -sim
+# End time: 10:07:05 on Apr 05,2026, Elapsed time: 0:05:01
+# Errors: 1, Warnings: 2
+# Compile of tx_mux_tb.vhd was successful.
+# Load canceled
+run_sim.tcl
+# couldn't execute ".\run_sim.tcl": no such file or directory
+./run_sim.tcl
+# couldn't execute ".\run_sim.tcl": no such file or directory
+pwd
+# C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/simulations
+../run_sim.tcl
+# invalid command name "../run_sim.tcl"
+./run_sim.tcl
+# couldn't execute ".\run_sim.tcl": no such file or directory
+.\run_sim.tcl
+# invalid command name ".un_sim.tcl"
+vsim -gui work.tx_mux_tb
+# vsim -gui work.tx_mux_tb 
+# Start time: 10:10:09 on Apr 05,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tx_mux_tb(sim)
+# Loading work.tx_mux(rtl)
+add wave sim:/tx_mux_tb/*
+run -all
+# ** Error: TC1: Status byte (55) from fsm not sent to uart_tx
+#    Time: 72912 ps  Iteration: 2  Instance: /tx_mux_tb
+# ** Error: TC1: Start pulse (o_mux_tx_start_pulse) not asserted
+#    Time: 72912 ps  Iteration: 2  Instance: /tx_mux_tb
+# ** Failure: Simulation finished
+#    Time: 448888 ps  Iteration: 0  Process: /tx_mux_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd line 182
+quit -sim
+# End time: 10:11:52 on Apr 05,2026, Elapsed time: 0:01:43
+# Errors: 3, Warnings: 2
+# Compile of tx_mux.vhd was successful.
+vsim -gui work.tx_mux_tb
+# vsim -gui work.tx_mux_tb 
+# Start time: 10:12:54 on Apr 05,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tx_mux_tb(sim)
+# Loading work.tx_mux(rtl)
+add wave sim:/tx_mux_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 448888 ps  Iteration: 0  Process: /tx_mux_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd line 182
+quit -sim
+# End time: 10:26:14 on Apr 05,2026, Elapsed time: 0:13:20
+# Errors: 1, Warnings: 2
+# Compile of tx_mux.vhd was successful.
+# Compile of tx_mux_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -gui work.tx_mux_tb
+# vsim -gui work.tx_mux_tb 
+# Start time: 10:26:28 on Apr 05,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tx_mux_tb(sim)
+# Loading work.tx_mux(rtl)
+add wave sim:/tx_mux_tb/*
+run -all
+# ** Error: TC1: Start pulse (o_mux_tx_start_pulse) not deasserted after 1 cycle
+#    Time: 93744 ps  Iteration: 2  Instance: /tx_mux_tb
+# ** Error: TC2: Start pulse (o_mux_tx_start_pulse) not deasserted after 1 cycle
+#    Time: 156240 ps  Iteration: 2  Instance: /tx_mux_tb
+# ** Error: TC4: Start pulse (o_mux_tx_start_pulse) not deasserted after 1 cycle
+#    Time: 260400 ps  Iteration: 2  Instance: /tx_mux_tb
+# ** Failure: Simulation finished
+#    Time: 468720 ps  Iteration: 0  Process: /tx_mux_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd line 185
+quit -sim
+# End time: 10:29:59 on Apr 05,2026, Elapsed time: 0:03:31
+# Errors: 4, Warnings: 2
+# Compile of tx_mux_tb.vhd was successful.
+vsim -gui work.tx_mux_tb
+# vsim -gui work.tx_mux_tb 
+# Start time: 10:30:13 on Apr 05,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tx_mux_tb(sim)
+# Loading work.tx_mux(rtl)
+add wave sim:/tx_mux_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 468720 ps  Iteration: 0  Process: /tx_mux_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd line 188

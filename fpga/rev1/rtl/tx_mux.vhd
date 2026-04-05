@@ -2,6 +2,7 @@
 -- MODULE: tx_mux.vhd
 -- FUNCTION: multiplexes data signals going to uart_tx (based on priority)
 -- AUTHOR: Jakob Kieszek Ottesen
+-- DATE: 2026-03-26 (YYYY-MM-DD)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking

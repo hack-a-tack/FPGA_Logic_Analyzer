@@ -1,13 +1,10 @@
 # quit previous sim
-quit -sim
+#quit -sim
 
-vlib work
-vmap work work
-
-vcom -2008 rtl/uart_tx.vhd
-vcom -2008 rtl/uart_tx_tb.vhd
+#vlib work
+#vmap work work
 
 # simulate
-vsim work.uart_tx_tb
-#add wave sim:/uart_tx_tb/*
+vsim -gui work.tx_mux_tb
+add wave sim:/tx_mux_tb/*
 run -all
