@@ -2,7 +2,7 @@
 -- MODULE: clocking.vhd
 -- FUNCTION: generates clock and sampling signal
 -- AUTHOR: Jakob Kieszek Ottesen
--- DATE: 2026-03-13 (YYYY-MM-DD)
+-- DATE: 2026-04-05 (YYYY-MM-DD)
 --
 -- INPUTS (no inputs, data is generated and given to other modules)
 --
@@ -45,10 +45,11 @@ architecture RTL of clocking is
 	end component SB_HFOSC;
 	
 	-- registered signal
+	signal r_clk : std_logic;
 	signal r_samp_tick : std_logic := '0';
 	
 begin
-	-- Use primitive to generate 48MHz o_clk signal
+	-- Use primitive to generate 48MHz clk signal
 	HF_OSC: SB_HFOSC
 		generic map (
 			CLKHF_DIV => "0b00",
@@ -57,17 +58,21 @@ begin
 		port map(
 			CLKHFEN	=> '1',
 			CLKHFPU => '1',
-			CLKHF	=> o_clk
+			CLKHF	=> r_clk
 		);
+		
+	-- 48MHz r_clk (for simulation purposes only)
+	--r_clk <= not r_clk after 10.416 ns;
 	
 	-- Process for generating pulse at 24MHz sampling rate
-	samp_gen_proc: process(o_clk) is
+	samp_gen_proc: process(r_clk) is
 	begin
-		if rising_edge(o_clk) then
+		if rising_edge(r_clk) then
 			r_samp_tick <= not r_samp_tick;
 		end if;
 	end process samp_gen_proc;
 	
+	o_clk <= r_clk;
 	o_samp_tick <= r_samp_tick;
 	
 end architecture RTL;

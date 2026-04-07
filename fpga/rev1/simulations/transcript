@@ -38631,3 +38631,99 @@ run -all
 # ** Failure: Simulation finished
 #    Time: 468720 ps  Iteration: 0  Process: /tx_mux_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd
 # Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/tx_mux_tb.vhd line 188
+quit -sim
+# End time: 10:48:20 on Apr 05,2026, Elapsed time: 0:18:07
+# Errors: 1, Warnings: 2
+# Compile of clocking.vhd was successful.
+# Compile of clocking_tb.vhd failed with 3 errors.
+# 2 compiles, 1 failed with 3 errors.
+# Compile of clocking_tb.vhd was successful.
+vsim -gui work.clocking_tb
+# vsim -gui work.clocking_tb 
+# Start time: 10:50:03 on Apr 05,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.clocking_tb(sim)
+# Loading work.clocking(rtl)
+# ** Warning: (vsim-3473) Component instance "HF_OSC : SB_HFOSC" is not bound.
+#    Time: 0 ps  Iteration: 0  Instance: /clocking_tb/dut File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/rtl/clocking.vhd
+# ** Warning: (vsim-8683) Uninitialized out port /clocking_tb/dut/o_clk has no driver.
+# This port will contribute value (U) to the signal network.
+add wave sim:/clocking_tb/*
+run -all
+run -all
+quit -sim
+# End time: 11:03:38 on Apr 05,2026, Elapsed time: 0:13:35
+# Errors: 0, Warnings: 7
+# Compile of clocking.vhd was successful.
+# Compile of clocking_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -gui work.clocking_tb
+# vsim -gui work.clocking_tb 
+# Start time: 11:03:54 on Apr 05,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.clocking_tb(sim)
+# Loading work.clocking(rtl)
+# ** Warning: (vsim-3473) Component instance "HF_OSC : SB_HFOSC" is not bound.
+#    Time: 0 ps  Iteration: 0  Instance: /clocking_tb/dut File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/rtl/clocking.vhd
+add wave sim:/clocking_tb/*
+run -all
+quit -sim
+# End time: 06:04:17 on Apr 07,2026, Elapsed time: 43:00:23
+# Errors: 0, Warnings: 3
+# Compile of clocking.vhd was successful.
+# Compile of SB_HFOSC.vhd failed with 1 errors.
+# Compile of SB_HFOSC.vhd was successful.
+vsim -gui work.clocking_tb
+# vsim -gui work.clocking_tb 
+# Start time: 06:05:56 on Apr 07,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.clocking_tb(sim)
+# Loading work.clocking(rtl)
+# Loading work.sb_hfosc(sim)
+add wave sim:/clocking_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 218736 ps  Iteration: 0  Process: /clocking_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/clocking_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/clocking_tb.vhd line 85
+quit -sim
+# End time: 06:10:01 on Apr 07,2026, Elapsed time: 0:04:05
+# Errors: 1, Warnings: 5
+# Compile of clocking_tb.vhd was successful.
+vsim -gui work.clocking_tb
+# vsim -gui work.clocking_tb 
+# Start time: 06:10:15 on Apr 07,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.clocking_tb(sim)
+# Loading work.clocking(rtl)
+# Loading work.sb_hfosc(sim)
+add wave sim:/clocking_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 218736 ps  Iteration: 0  Process: /clocking_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/clocking_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/clocking_tb.vhd line 86
+quit -sim
+# End time: 06:12:16 on Apr 07,2026, Elapsed time: 0:02:01
+# Errors: 1, Warnings: 2
+# Compile of clocking_tb.vhd was successful.
+vsim -gui work.clocking_tb
+# vsim -gui work.clocking_tb 
+# Start time: 06:12:29 on Apr 07,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.clocking_tb(sim)
+# Loading work.clocking(rtl)
+# Loading work.sb_hfosc(sim)
+add wave sim:/clocking_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 677040 ps  Iteration: 0  Process: /clocking_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/clocking_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/clocking_tb.vhd line 84

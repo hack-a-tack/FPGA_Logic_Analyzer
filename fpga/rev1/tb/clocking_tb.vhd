@@ -2,7 +2,7 @@
 -- MODULE: clocking_tb.vhd
 -- FUNCTION: TESTBENCH for entity which generates clock and sampling signal
 -- AUTHOR: Jakob Kieszek Ottesen
--- DATE: 2026-03-14 (YYYY-MM-DD)
+-- DATE: 2026-04-07 (YYYY-MM-DD)
 --
 -- INPUTS (no inputs, data is generated and given to other modules)
 --
@@ -39,16 +39,21 @@ architecture sim of clocking_tb is
 	
 	-- Constant declaration
 	constant CLK_FREQ   : real := 48.0e6;
-	constant CLK_PERIOD : time := 1 sec / CLK_FREQ;  -- ~20.8 ns
+	constant CLK_PERIOD : time := 1 sec / CLK_FREQ;  	-- 20833 ps (truncated)
+	constant CLK_HALF : time := CLK_PERIOD / 2;			-- 10416 ps (truncated)
+	constant CLK_ACTUAL : time := CLK_HALF * 2;			-- 20832 ps --> identical to 2 x CLK_HALF (used in clock generation)
 
     -- Signals to connect to DUT
 	signal o_clk		: std_logic;
 	signal o_samp_tick	: std_logic;
+	
+	-- Other signals
+	signal test_id : integer := 0;  -- keep track of test cases
 
 begin
 
     -- DUT Instantiation
-    uut: clocking
+    dut: clocking
         port map (
 			o_clk => o_clk,
 			o_samp_tick => o_samp_tick
@@ -58,24 +63,24 @@ begin
     stim_proc: process is		
     begin		
 		-- Test case 1: o_samp_tick has 24MHz from 48MHz o_clk signal
-		if o_samp_tick = '0' then
-			for i in range 0 to 20 loop
-				wait until rising_edge(o_clk);
-				wait until rising_edge(o_clk);
-				assert o_samp_tick = '1'
-					report "expected rising edge and high signal on o_samp_tick | not observed"
-					severity error;
-				wait until rising_edge(o_clk);
-				wait until rising_edge(o_clk);
-				assert o_samp_tick = '0'
-					report "expected falling edge and low signal on o_samp_tick | not observed"
-					severity error;
-			end loop;
-		end if;
-		wait until rising_edge(o_clk);
+		test_id <= 1;
+		wait until o_samp_tick = '1';
+		for i in 0 to 10 loop
+			wait until rising_edge(o_clk);
+			wait for 0 ns;
+			assert o_samp_tick = '0'
+				report "TC1a: expected falling edge and low signal on o_samp_tick | not observed"
+				severity error;
+			wait until rising_edge(o_clk);
+			wait for 0 ns;
+			assert o_samp_tick = '1'
+				report "TC1b: expected rising edge and high signal on o_samp_tick | not observed"
+				severity error;
+		end loop;
 		
+		test_id <= 2;
         -- Finish simulation
-        wait for 5*CLK_PERIOD;
+        wait for 10*CLK_ACTUAL;
         assert false report "Simulation finished" severity failure;
     end process;
 
