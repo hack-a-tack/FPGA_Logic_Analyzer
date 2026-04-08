@@ -6,6 +6,24 @@ Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 
 -- Compiling entity clocking
 -- Compiling architecture RTL of clocking
 
+} {} {}} C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/rtl/top.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/rtl/top.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity top
+-- Compiling architecture STRUCTURE of top
+-- Loading entity clocking
+-- Loading package NUMERIC_STD
+-- Loading entity uart_rx
+-- Loading entity cmd_parser
+-- Loading entity analyzer_fsm
+-- Loading entity capture_engine
+-- Loading entity send_engine
+-- Loading entity trace_buffer
+-- Loading entity tx_mux
+-- Loading entity uart_tx
+
 } {} {}} C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/rtl/SB_HFOSC.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/rtl/SB_HFOSC.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 -- Loading package STANDARD

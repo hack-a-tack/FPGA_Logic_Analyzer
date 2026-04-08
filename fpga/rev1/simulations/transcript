@@ -38727,3 +38727,176 @@ run -all
 # ** Failure: Simulation finished
 #    Time: 677040 ps  Iteration: 0  Process: /clocking_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/clocking_tb.vhd
 # Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/clocking_tb.vhd line 84
+quit -sim
+# End time: 06:55:39 on Apr 08,2026, Elapsed time: 24:43:10
+# Errors: 1, Warnings: 2
+# Load canceled
+# Compile of top.vhd was successful.
+# Compile of top_tb.vhd failed with 24 errors.
+# 2 compiles, 1 failed with 24 errors.
+# Compile of top_tb.vhd failed with 13 errors.
+# Compile of top_tb.vhd failed with 12 errors.
+# Compile of top_tb.vhd was successful.
+vsim -gui work.top_tb
+# vsim -gui work.top_tb 
+# Start time: 07:00:08 on Apr 08,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.top_tb(sim)
+# Loading ieee.numeric_std(body)
+# Loading work.top(structure)
+# Loading work.clocking(rtl)
+# Loading work.sb_hfosc(sim)
+# Loading work.uart_rx(rtl)
+# Loading work.cmd_parser(rtl)
+# Loading work.analyzer_fsm(rtl)
+# Loading work.capture_engine(rtl)
+# Loading work.send_engine(rtl)
+# Loading work.trace_buffer(rtl)
+# Loading work.tx_mux(rtl)
+# Loading work.uart_tx(rtl)
+add wave sim:/top_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 259070409 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 336
+configure wave -timelineunits ns
+quit -sim
+# End time: 07:30:58 on Apr 08,2026, Elapsed time: 0:30:50
+# Errors: 1, Warnings: 7
+# Compile of top_tb.vhd failed with 1 errors.
+# Compile of top_tb.vhd was successful.
+vsim -gui work.top_tb
+# vsim -gui work.top_tb 
+# Start time: 07:31:40 on Apr 08,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.top_tb(sim)
+# Loading ieee.numeric_std(body)
+# Loading work.top(structure)
+# Loading work.clocking(rtl)
+# Loading work.sb_hfosc(sim)
+# Loading work.uart_rx(rtl)
+# Loading work.cmd_parser(rtl)
+# Loading work.analyzer_fsm(rtl)
+# Loading work.capture_engine(rtl)
+# Loading work.send_engine(rtl)
+# Loading work.trace_buffer(rtl)
+# Loading work.tx_mux(rtl)
+# Loading work.uart_tx(rtl)
+add wave sim:/top_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 259282705 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 304
+quit -sim
+# End time: 08:13:23 on Apr 08,2026, Elapsed time: 0:41:43
+# Errors: 1, Warnings: 3
+# Compile of top_tb.vhd was successful.
+vsim -gui work.top_tb
+# vsim -gui work.top_tb 
+# Start time: 08:13:44 on Apr 08,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.top_tb(sim)
+# Loading ieee.numeric_std(body)
+# Loading work.top(structure)
+# Loading work.clocking(rtl)
+# Loading work.sb_hfosc(sim)
+# Loading work.uart_rx(rtl)
+# Loading work.cmd_parser(rtl)
+# Loading work.analyzer_fsm(rtl)
+# Loading work.capture_engine(rtl)
+# Loading work.send_engine(rtl)
+# Loading work.trace_buffer(rtl)
+# Loading work.tx_mux(rtl)
+# Loading work.uart_tx(rtl)
+add wave sim:/top_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 259282705 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 298
+configure wave -timelineunits ns
+# WARNING: No extended dataflow license exists
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+quit -sim
+# End time: 08:33:38 on Apr 08,2026, Elapsed time: 0:19:54
+# Errors: 1, Warnings: 2
+# Compile of top_tb.vhd was successful.
+vsim -gui work.top_tb
+# vsim -gui work.top_tb 
+# Start time: 08:34:12 on Apr 08,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.top_tb(sim)
+# Loading ieee.numeric_std(body)
+# Loading work.top(structure)
+# Loading work.clocking(rtl)
+# Loading work.sb_hfosc(sim)
+# Loading work.uart_rx(rtl)
+# Loading work.cmd_parser(rtl)
+# Loading work.analyzer_fsm(rtl)
+# Loading work.capture_engine(rtl)
+# Loading work.send_engine(rtl)
+# Loading work.trace_buffer(rtl)
+# Loading work.tx_mux(rtl)
+# Loading work.uart_tx(rtl)
+add wave sim:/top_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 261157585 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 298
+quit -sim
+# End time: 08:43:19 on Apr 08,2026, Elapsed time: 0:09:07
+# Errors: 1, Warnings: 2
+# Compile of top_tb.vhd was successful.
+vsim -gui work.top_tb
+# vsim -gui work.top_tb 
+# Start time: 08:43:38 on Apr 08,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.top_tb(sim)
+# Loading ieee.numeric_std(body)
+# Loading work.top(structure)
+# Loading work.clocking(rtl)
+# Loading work.sb_hfosc(sim)
+# Loading work.uart_rx(rtl)
+# Loading work.cmd_parser(rtl)
+# Loading work.analyzer_fsm(rtl)
+# Loading work.capture_engine(rtl)
+# Loading work.send_engine(rtl)
+# Loading work.trace_buffer(rtl)
+# Loading work.tx_mux(rtl)
+# Loading work.uart_tx(rtl)
+add wave sim:/top_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 263636593 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 301
