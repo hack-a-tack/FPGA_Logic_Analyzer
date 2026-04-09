@@ -528,10 +528,10 @@ R100
 R12
 R13
 Etop_tb
-Z105 w1775630567
+Z105 w1775715918
 R2
 R3
-!i122 212
+!i122 229
 R4
 Z106 8C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
 Z107 FC:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
@@ -541,9 +541,9 @@ VazS5_d2Cdz3DgR0=0eSV53
 !s100 Xln_l=:8nc9h0I5SzGJ_n0
 R7
 33
-Z108 !s110 1775630606
+Z108 !s110 1775715929
 !i10b 1
-Z109 !s108 1775630606.000000
+Z109 !s108 1775715929.000000
 Z110 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd|
 Z111 !s107 C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd|
 !i113 1
@@ -553,11 +553,11 @@ Asim
 R2
 R3
 Z112 DEx4 work 6 top_tb 0 22 azS5_d2Cdz3DgR0=0eSV53
-!i122 212
-l102
-L39 266
-VBoYTA5i3S_zLAN6=?k6G`3
-!s100 ;Z;gcfBoXZA^a83a4DAXX3
+!i122 229
+l106
+L39 449
+VcDn2=Wb?30[:mGcn_:Fil2
+!s100 Q>MVQANVHW_Bm=U1YX]6X0
 R7
 33
 R108

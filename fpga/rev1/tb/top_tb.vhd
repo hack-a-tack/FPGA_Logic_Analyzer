@@ -2,7 +2,7 @@
 -- MODULE: top_tb.vhd
 -- FUNCTION: TESTBENCH for top level entity which ties all underlying modules together
 -- AUTHOR: Jakob Kieszek Ottesen
--- DATE: 2026-04-08 (YYYY-MM-DD)
+-- DATE: 2026-04-09 (YYYY-MM-DD)
 --
 -- INPUTS 					DATA		TO INTERNAL MODULE
 -- i_RESET					1 bit		-> uart_rx | cmd_parser | analyzer_fsm | capture_engine | send_engine | tx_mux | uart_tx
@@ -98,6 +98,10 @@ architecture sim of top_tb is
 	
 	-- Other signals
 	signal test_id : integer := 0;  -- keep track of test cases
+	signal tx_count : integer := 0;  -- keep track of reconstructed bytes on o_UART_TX line
+
+	type log_type is array(20 downto 0) of std_logic_vector(DATA_LENGTH-1 downto 0);  -- 20 x 8
+	signal tx_log : log_type;  -- store reconstructed bytes on o_UART_TX line
 
 begin
     -- DUT Instantiation
@@ -125,17 +129,58 @@ begin
 			o_UART_RX_LED => o_UART_RX_LED,
 			o_USER_LED => o_USER_LED
         );
+	
+
+	-- Monitor process to keep track of o_UART_TX status/error/data bytes concurrently with incoming i_UART_RX data
+	monitor_proc : process is
+		variable reconstr_byte : std_logic_vector(DATA_LENGTH-1 downto 0) := (others => '0');
+	begin
+		while true loop
+			wait until o_UART_TX = '0' for 5 ms;  -- start bit (with 5ms timeout so no potential failure can cause sim to hang)
+			assert o_UART_TX = '0'
+				report "MONITOR PROCESS: timeout waiting for start bit"
+				severity error;
+			
+			-- reconstruct 1 byte
+			-- start bit
+			wait for HALF_BIT_P;  -- read bit value roughly at midpoint
+			assert o_UART_TX = '0'
+				report "MONITOR PROCESS: start bit not '0'"
+				severity error;
+			
+			-- data bits
+			for i in 0 to 7 loop
+				wait for BIT_PERIOD;
+				reconstr_byte(i) := o_UART_TX;
+			end loop;
+			
+			-- store into tx_log if valid stop bit
+			wait for BIT_PERIOD;
+			assert o_UART_TX = '1'  -- stop bit
+				report "MONITOR PROCESS: stop bit not '1'"
+				severity error;
+			
+			wait for HALF_BIT_P;  -- wait with updating the log until end of bit period (in line with o_UART_TX_LED)
+			tx_log(tx_count) <= reconstr_byte;
+			tx_count <= tx_count + 1;
+		end loop;
+	
+	end process;
+	
 
     -- Stimulus process
     stim_proc: process is
 
 		procedure uart_send_byte(  -- drives i_UART_RX
 			signal rx_line : out std_logic;  -- for reusability. we will output to i_UART_RX for all test cases
-			byte : std_logic_vector(DATA_LENGTH-1 downto 0)
+			byte : std_logic_vector(DATA_LENGTH-1 downto 0);
+			idle_bits_before_start : boolean
 		) is
 		begin
-			rx_line <= '1';  -- idle high
-			wait for 2*BIT_PERIOD;  -- keep high for 2 bit periods before start bit (reduce flaky edge cases)
+			if idle_bits_before_start = true then
+				rx_line <= '1';  -- idle high
+				wait for 2*BIT_PERIOD;  -- keep high for 2 bit periods before start bit (reduce flaky edge cases)
+			end if;
 			
 			rx_line <= '0';  -- start bit
 			wait for BIT_PERIOD;
@@ -201,20 +246,13 @@ begin
 		-- Test case 1: verify UART_TX idles high post-reset
 		--------------------------------------------------------
 		test_id <= 1;
-		for i in 0 to 10 loop  -- sample every bit period for 10 bits
-			wait for BIT_PERIOD;
+		-- if UART_TX goes low for start bit, it will stay low for ~1 bit, so half-bit sampling will catch it
+		for i in 0 to 20 loop  -- sample every half bit period for 10 bits.
+			wait for HALF_BIT_P;
 			assert o_UART_TX = '1'
 				report "TC1: expected idle high UART_TX after reset | not observed"
 				severity error;
 		end loop;
-		--CHATGPT: how will we catch potential issues like o_UART_TX briefly going to '0' if we sample every full bit period?
-		
-		--for i in 0 to 260 loop  -- 52 clocks is 1 bit, so 5 bits = 260 clock periods
-		--	wait for CLK_ACTUAL;
-		--	assert o_UART_TX = '1'
-		--		report "TC1: expected idle high UART_TX after reset | not observed"
-		--		severity error;
-		--end loop;
 		
 		
 		--------------------------------------------------------
@@ -222,7 +260,7 @@ begin
 		--------------------------------------------------------
 		wait for CLK_ACTUAL;
 		test_id <= 2;
-		uart_send_byte(i_UART_RX, "10100000");  -- send CAPTURE opcode x"A0" = b"1010 0000" to UART_RX line
+		uart_send_byte(i_UART_RX, "10100000", true);  -- send CAPTURE opcode x"A0" = b"1010 0000" to UART_RX line
 		
 		-- set inputs to be sampled (4096 samples @ 24MHz should take roughly 170 us + overhead)
 		i_LA0 <= '1';
@@ -241,11 +279,11 @@ begin
 		
 		-- Should see status code x"55" = b"0101 0101" (OK) from UART_TX line
 		-- (note that UART byte time is ~10.85 us. 10 bits * 1.085us bit period)
-		uart_expect_byte(o_UART_TX, test_id, 1, "01010101");
+		uart_expect_byte(o_UART_TX, test_id, 0, "01010101");
 		
 		-- data capture --> lasts (CLK_ACTUAL*2) * 4096 --> 170.7us --> 169.85us (+10.85 for completed UART frame)
 		-- Should see status code x"77" = b"0111 0111" (DONE) from UART_TX line
-		uart_expect_byte(o_UART_TX, test_id, 2, "01110111");
+		uart_expect_byte(o_UART_TX, test_id, 1, "01110111");
 		
 		
 		--------------------------------------------------------
@@ -253,45 +291,190 @@ begin
 		--------------------------------------------------------
 		wait for CLK_ACTUAL;
 		test_id <= 3;
-		-- send READ opcode x"A1" = b"1010 0001" to UART_RX line		
-		uart_send_byte(i_UART_RX, "10100001");
+		uart_send_byte(i_UART_RX, "10100001", true);  -- send READ opcode x"A1" = b"1010 0001" to UART_RX line
 		
 		-- Should see status code x"99" = b"1001 1001" (HEADER for data payload) from UART_TX line
-		uart_expect_byte(o_UART_TX, test_id, 3, "10011001");
+		uart_expect_byte(o_UART_TX, test_id, 2, "10011001");
 		
-		-- Then, 4096 data bytes should be sent (all of which should be "0000 1111" (LSB to MSB)), check first few
+		-- Then, 4096 data bytes should be sent (all of which should be "0000 1111"), check first few
 		-- 1st data byte
-		uart_expect_byte(o_UART_TX, test_id, 4, "00001111");
+		uart_expect_byte(o_UART_TX, test_id, 3, "00001111");
 		
 		-- 2nd data byte
-		uart_expect_byte(o_UART_TX, test_id, 5, "00001111");
+		uart_expect_byte(o_UART_TX, test_id, 4, "00001111");
 		
 		-- 3rd data byte
-		uart_expect_byte(o_UART_TX, test_id, 6, "00001111");
+		uart_expect_byte(o_UART_TX, test_id, 5, "00001111");
 		
 		
 		--------------------------------------------------------
 		-- Test case 4: back-to-back commands with no idle gaps
 		--------------------------------------------------------
-		--wait for CLK_ACTUAL;
-		--test_id <= 4;
-		-- ...
+		-- reset before TC4 to avoid waiting ~45 ms of sim time
+		wait for CLK_ACTUAL;
+		i_RESET <= '1';
+		wait for CLK_ACTUAL;
+		i_RESET <= '0';
+		wait for CLK_ACTUAL;
+		test_id <= 4;
+		
+		-- set inputs to be sampled (4096 samples @ 24MHz should take roughly 170 us + overhead)
+		i_LA0 <= '1';  -- LSB
+		i_LA1 <= '1';
+		i_LA2 <= '0';
+		i_LA3 <= '0';
+		i_LA4 <= '1';
+		i_LA5 <= '1';
+		i_LA6 <= '0';
+		i_LA7 <= '0';  -- MSB
+		
+		--------------------------------------------------------
+		-- 4a: back-to-back commands from state IDLE (analyzer_fsm)
+		-- IDLE |--> READ --> UNKOWN COMMAND
+		--------------------------------------------------------
+		uart_send_byte(i_UART_RX, "10100001", true);  	-- xA1 READ frame. Expect xEE response (data not ready)
+		uart_send_byte(i_UART_RX, "10100010", false);  	-- xA2 UNKOWN COMMAND frame. Expect xEE response (opcode not recognized)
+		
+		wait until tx_count = 8;
+		assert tx_log(6) = "11101110"		-- xEE error code (data not ready)
+			report "TC4a: 1st response after back-to-backs (from IDLE) is not xEE"
+			severity error;
+		assert tx_log(7) = "11101110"		-- xEE error code (opcode not recognized)
+			report "TC4a: 2nd response after back-to-backs (from IDLE) is not xEE"
+			severity error;
+		
+		--------------------------------------------------------
+		-- 4b: back-to-back commands from state CAPTURE (analyzer_fsm)
+		-- IDLE --> CAPTURE |--> READ --> CAPTURE --> UNKOWN COMMAND
+		--------------------------------------------------------
+		uart_send_byte(i_UART_RX, "10100000", false);  	-- send CAPTURE frame. Expect x55 OK, then after 160us more, expect x77 DONE (comes last). 
+		uart_send_byte(i_UART_RX, "10100001", false);  	-- send READ frame immediately after. Expect xEE (data not ready)
+		uart_send_byte(i_UART_RX, "10100000", false);  	-- send CAPTURE frame immediately after. Expect xEE (already capturing)
+		uart_send_byte(i_UART_RX, "10100010", false);  	-- send UNKOWN COMMAND frame immediately after. Expect xEE (opcode not recognized)
+		
+		wait until tx_count = 13;
+		assert tx_log(8) = "01010101"		-- x55 status code
+			report "TC4b: 1st response after back-to-backs (from CAPTURE) is not status code x55"
+			severity error;
+		assert tx_log(9) = "11101110"		-- xEE error code (data not ready @ READ command)
+			report "TC4b: 2nd response after back-to-backs (from CAPTURE) is not error code xEE"
+			severity error;
+		assert tx_log(10) = "11101110"		-- xEE error code (already capturing data)
+			report "TC4b: 3rd response after back-to-backs (from CAPTURE) is not error code xEE"
+			severity error;
+		assert tx_log(11) = "11101110"		-- xEE error code (opcode not recognized)
+			report "TC4b: 4th response after back-to-backs (from CAPTURE) is not error code xEE"
+			severity error;
+		assert tx_log(12) = "01110111"		-- x77 status code (capture complete)
+			report "TC4b: 5th response after back-to-backs (from CAPTURE) is not status code x77"
+			severity error;
+		
+		--------------------------------------------------------
+		-- 4c: back-to-back commands from state DONE (analyzer_fsm)
+		-- DONE |--> UNKOWN COMMAND --> CAPTURE (brings us back to DONE again) then |--> READ
+		--------------------------------------------------------
+		uart_send_byte(i_UART_RX, "10100010", false);  	-- send UNKOWN COMMAND frame immediately. Expect xEE (opcode not recognized)
+		uart_send_byte(i_UART_RX, "10100000", false);  	-- send CAPTURE frame. Expect x55, then ~170us later: x77 and back to DONE.
+		
+		wait until tx_count = 16;
+		assert tx_log(13) = "11101110"		-- xEE error code (opcode not recognized)
+			report "TC4c: 1st response after back-to-backs (from DONE) is not error code xEE"
+			severity error;
+		assert tx_log(14) = "01010101"		-- x55 status code
+			report "TC4c: 2nd response after back-to-backs (from DONE) is not status code x55"
+			severity error;
+		assert tx_log(15) = "01110111"		-- x77 status code (capture complete)
+			report "TC4c: 3rd response after back-to-backs (from DONE) is not status code x77"
+			severity error;
+			
+		uart_send_byte(i_UART_RX, "10100001", false);  	-- send READ frame immediately. Expect x99, then x33 data bytes
+		
+		wait until tx_count = 20;
+		assert tx_log(16) = "10011001"		-- x99 status code
+			report "TC4c: 4th response after back-to-backs (from DONE) is not status code x99"
+			severity error;
+		assert tx_log(17) = "00110011"		-- 1st data byte (x33)
+			report "TC4c: 5th response after back-to-backs (from DONE) is not data byte x33"
+			severity error;
+		assert tx_log(18) = "00110011"		-- 2nd data byte (x33)
+			report "TC4c: 6th response after back-to-backs (from DONE) is not data byte x33"
+			severity error;
+		assert tx_log(19) = "00110011"		-- 3rd data byte (x33)
+			report "TC4c: 7th response after back-to-backs (from DONE) is not data byte x33"
+			severity error;
 		
 		
 		--------------------------------------------------------
-		-- Test case 5: busy stress (uart_tx busy behaviour)
+		-- Test case 5: bad UART frame resilience
 		--------------------------------------------------------
-		--wait for CLK_ACTUAL;
-		--test_id <= 5;
-		-- ...
+		-- reset before TC5 to avoid waiting ~45 ms of sim time
+		wait for CLK_ACTUAL;
+		i_RESET <= '1';
+		wait for CLK_ACTUAL;
+		i_RESET <= '0';
+		wait for CLK_ACTUAL;
+		test_id <= 5;
 		
+		i_UART_RX <= '1';  -- idle high
+		wait for 2*BIT_PERIOD;  -- keep high for 2 bit periods before start bit (reduce flaky edge cases)
 		
-		--------------------------------------------------------
-		-- Test case 6: bad UART frame resilience
-		--------------------------------------------------------
-		--wait for CLK_ACTUAL;
-		--test_id <= 6;
-		-- ...
+		-- Drive start + data bits for opcode (CAPTURE = A0), but stop bit invalid (0)
+		i_UART_RX <= '0';  -- start bit
+		wait for BIT_PERIOD;
+		i_UART_RX <= '0';  -- data bit 0, LSB
+		wait for BIT_PERIOD;
+		i_UART_RX <= '0';  -- data bit 1, LSB --> MSB
+		wait for BIT_PERIOD;
+		i_UART_RX <= '0';  -- data bit 2, LSB --> MSB
+		wait for BIT_PERIOD;
+		i_UART_RX <= '0';  -- data bit 3, LSB --> MSB
+		wait for BIT_PERIOD;
+		i_UART_RX <= '0';  -- data bit 4, LSB --> MSB
+		wait for BIT_PERIOD;
+		i_UART_RX <= '1';  -- data bit 5, LSB --> MSB
+		wait for BIT_PERIOD;
+		i_UART_RX <= '0';  -- data bit 6, LSB --> MSB
+		wait for BIT_PERIOD;
+		i_UART_RX <= '1';  -- data bit 7, MSB
+		wait for BIT_PERIOD;
+		i_UART_RX <= '0';  -- INVALID stop bit
+		wait for BIT_PERIOD;
+		
+		-- uart_rx module should be in state RX_IDLE, RX_LED should not toggle, TX should not send 0x55 status byte
+		i_UART_RX <= '1';  -- idle high
+		wait for HALF_BIT_P;
+		assert o_UART_TX = '1'  -- UART_TX should remain idle high
+			report "TC5: o_UART_TX went low (start bit) after invalid stop bit"
+			severity error;
+		
+		wait for 10*BIT_PERIOD;  -- keep high for 10 bit periods before start bit (observe that o_UART_TX stays idle high)
+		
+		-- Drive start + data bits for opcode (CAPTURE), and valid stop bit (1)
+		i_UART_RX <= '0';  -- start bit
+		wait for BIT_PERIOD;
+		i_UART_RX <= '0';  -- data bit 0, LSB
+		wait for BIT_PERIOD;
+		i_UART_RX <= '0';  -- data bit 1, LSB --> MSB
+		wait for BIT_PERIOD;
+		i_UART_RX <= '0';  -- data bit 2, LSB --> MSB
+		wait for BIT_PERIOD;
+		i_UART_RX <= '0';  -- data bit 3, LSB --> MSB
+		wait for BIT_PERIOD;
+		i_UART_RX <= '0';  -- data bit 4, LSB --> MSB
+		wait for BIT_PERIOD;
+		i_UART_RX <= '1';  -- data bit 5, LSB --> MSB
+		wait for BIT_PERIOD;
+		i_UART_RX <= '0';  -- data bit 6, LSB --> MSB
+		wait for BIT_PERIOD;
+		i_UART_RX <= '1';  -- data bit 7, MSB
+		wait for BIT_PERIOD;
+		i_UART_RX <= '1';  -- VALID stop bit
+		wait for BIT_PERIOD;
+		
+		wait until tx_count = 21;
+		assert tx_log(20) = "01010101"
+			report "TC5: x55 NOT received after valid CAPTURE frame"
+			severity error;
 		
 		
 		--------------------------------------------------------

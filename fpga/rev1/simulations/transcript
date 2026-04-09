@@ -38900,3 +38900,994 @@ run -all
 # ** Failure: Simulation finished
 #    Time: 263636593 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
 # Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 301
+quit -sim
+# End time: 19:59:30 on Apr 08,2026, Elapsed time: 11:15:52
+# Errors: 1, Warnings: 2
+# Compile of top_tb.vhd failed with 2 errors.
+# Compile of top_tb.vhd was successful.
+vsim -gui work.top_tb
+# vsim -gui work.top_tb 
+# Start time: 20:00:46 on Apr 08,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.top_tb(sim)
+# Loading ieee.numeric_std(body)
+# Loading work.top(structure)
+# Loading work.clocking(rtl)
+# Loading work.sb_hfosc(sim)
+# Loading work.uart_rx(rtl)
+# Loading work.cmd_parser(rtl)
+# Loading work.analyzer_fsm(rtl)
+# Loading work.capture_engine(rtl)
+# Loading work.send_engine(rtl)
+# Loading work.trace_buffer(rtl)
+# Loading work.tx_mux(rtl)
+# Loading work.uart_tx(rtl)
+add wave sim:/top_tb/*
+run -all
+# ** Error: TC4/Run#7: data bit 1 not as expected
+#    Time: 287434032 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#7: data bit 2 not as expected
+#    Time: 288519101 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#7: data bit 4 not as expected
+#    Time: 290689239 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#7: data bit 7 not as expected
+#    Time: 293944446 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#8: data bit 2 not as expected
+#    Time: 299414237 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#8: data bit 3 not as expected
+#    Time: 300499306 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#8: data bit 4 not as expected
+#    Time: 301584375 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#8: data bit 5 not as expected
+#    Time: 302669444 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#9: data bit 2 not as expected
+#    Time: 310309373 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#9: data bit 3 not as expected
+#    Time: 311394442 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#9: data bit 4 not as expected
+#    Time: 312479511 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#9: data bit 5 not as expected
+#    Time: 313564580 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#10: data bit 2 not as expected
+#    Time: 321204509 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#10: data bit 3 not as expected
+#    Time: 322289578 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#10: data bit 4 not as expected
+#    Time: 323374647 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#10: data bit 5 not as expected
+#    Time: 324459716 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC5/Run#1: data bit 0 not as expected
+#    Time: 357156931 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC5/Run#1: data bit 2 not as expected
+#    Time: 359327069 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC5/Run#1: data bit 3 not as expected
+#    Time: 360412138 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC5/Run#1: data bit 4 not as expected
+#    Time: 361497207 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC5/Run#1: data bit 5 not as expected
+#    Time: 362582276 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC5/Run#1: data bit 7 not as expected
+#    Time: 364752414 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC5: o_UART_TX went low (start bit) after invalid stop bit
+#    Time: 366922551 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC5/Run#5: data bit 1 not as expected
+#    Time: 385490256 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC5/Run#5: data bit 3 not as expected
+#    Time: 387660394 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC5/Run#5: data bit 4 not as expected
+#    Time: 388745463 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC5/Run#5: data bit 6 not as expected
+#    Time: 390915601 ps  Iteration: 0  Instance: /top_tb
+# ** Failure: Simulation finished
+#    Time: 393836593 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 369
+quit -sim
+# End time: 20:04:15 on Apr 08,2026, Elapsed time: 0:03:29
+# Errors: 28, Warnings: 3
+# Compile of top_tb.vhd was successful.
+vsim -gui work.top_tb
+# vsim -gui work.top_tb 
+# Start time: 20:04:26 on Apr 08,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.top_tb(sim)
+# Loading ieee.numeric_std(body)
+# Loading work.top(structure)
+# Loading work.clocking(rtl)
+# Loading work.sb_hfosc(sim)
+# Loading work.uart_rx(rtl)
+# Loading work.cmd_parser(rtl)
+# Loading work.analyzer_fsm(rtl)
+# Loading work.capture_engine(rtl)
+# Loading work.send_engine(rtl)
+# Loading work.trace_buffer(rtl)
+# Loading work.tx_mux(rtl)
+# Loading work.uart_tx(rtl)
+add wave sim:/top_tb/*
+run -all
+# ** Error: TC4/Run#7: data bit 0 not as expected
+#    Time: 44730775171 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#7: data bit 1 not as expected
+#    Time: 44731860240 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#7: data bit 2 not as expected
+#    Time: 44732945309 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#7: data bit 4 not as expected
+#    Time: 44735115447 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#7: data bit 5 not as expected
+#    Time: 44736200516 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#7: data bit 6 not as expected
+#    Time: 44737285585 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#8: data bit 2 not as expected
+#    Time: 44892768413 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#8: data bit 6 not as expected
+#    Time: 44897108689 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#9: timeout waiting for start bit
+#    Time: 49900363895 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#9: data bit 2 not as expected
+#    Time: 49903619102 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#9: data bit 3 not as expected
+#    Time: 49904704171 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#9: data bit 6 not as expected
+#    Time: 49907959378 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#9: data bit 7 not as expected
+#    Time: 49909044447 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#10: timeout waiting for start bit
+#    Time: 54911214584 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#10: data bit 2 not as expected
+#    Time: 54914469791 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#10: data bit 3 not as expected
+#    Time: 54915554860 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#10: data bit 6 not as expected
+#    Time: 54918810067 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#10: data bit 7 not as expected
+#    Time: 54919895136 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC5/Run#1: data bit 1 not as expected
+#    Time: 55110237648 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC5/Run#1: data bit 5 not as expected
+#    Time: 55114577924 ps  Iteration: 0  Instance: /top_tb
+# ** Failure: Simulation finished
+#    Time: 55143269905 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 372
+quit -sim
+# End time: 20:09:17 on Apr 08,2026, Elapsed time: 0:04:51
+# Errors: 21, Warnings: 2
+# Compile of top_tb.vhd was successful.
+vsim -gui work.top_tb
+# vsim -gui work.top_tb 
+# Start time: 20:11:44 on Apr 08,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.top_tb(sim)
+# Loading ieee.numeric_std(body)
+# Loading work.top(structure)
+# Loading work.clocking(rtl)
+# Loading work.sb_hfosc(sim)
+# Loading work.uart_rx(rtl)
+# Loading work.cmd_parser(rtl)
+# Loading work.analyzer_fsm(rtl)
+# Loading work.capture_engine(rtl)
+# Loading work.send_engine(rtl)
+# Loading work.trace_buffer(rtl)
+# Loading work.tx_mux(rtl)
+# Loading work.uart_tx(rtl)
+add wave sim:/top_tb/*
+run -all
+# ** Error: TC4/Run#7: data bit 0 not as expected
+#    Time: 286390627 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#7: data bit 1 not as expected
+#    Time: 287475696 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#7: data bit 2 not as expected
+#    Time: 288560765 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#7: data bit 4 not as expected
+#    Time: 290730903 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#7: data bit 5 not as expected
+#    Time: 291815972 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#7: data bit 6 not as expected
+#    Time: 292901041 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#8: data bit 2 not as expected
+#    Time: 448404701 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#8: data bit 6 not as expected
+#    Time: 452744977 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#9: timeout waiting for start bit
+#    Time: 5456000183 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#9: data bit 2 not as expected
+#    Time: 5459255390 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#9: data bit 3 not as expected
+#    Time: 5460340459 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#9: data bit 6 not as expected
+#    Time: 5463595666 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#9: data bit 7 not as expected
+#    Time: 5464680735 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#10: timeout waiting for start bit
+#    Time: 10466850872 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#10: data bit 2 not as expected
+#    Time: 10470106079 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#10: data bit 3 not as expected
+#    Time: 10471191148 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#10: data bit 6 not as expected
+#    Time: 10474446355 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#10: data bit 7 not as expected
+#    Time: 10475531424 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC5/Run#5: data bit 0 not as expected
+#    Time: 10518569059 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC5/Run#5: data bit 1 not as expected
+#    Time: 10519654128 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC5/Run#5: data bit 3 not as expected
+#    Time: 10521824266 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC5/Run#5: data bit 4 not as expected
+#    Time: 10522909335 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC5/Run#5: data bit 5 not as expected
+#    Time: 10523994404 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC5/Run#5: data bit 7 not as expected
+#    Time: 10526164542 ps  Iteration: 0  Instance: /top_tb
+# ** Failure: Simulation finished
+#    Time: 10528000465 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 373
+configure wave -timelineunits ms
+quit -sim
+# End time: 22:07:35 on Apr 08,2026, Elapsed time: 1:55:51
+# Errors: 25, Warnings: 2
+# Compile of top_tb.vhd was successful.
+vsim -gui work.top_tb
+# vsim -gui work.top_tb 
+# Start time: 22:08:00 on Apr 08,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.top_tb(sim)
+# Loading ieee.numeric_std(body)
+# Loading work.top(structure)
+# Loading work.clocking(rtl)
+# Loading work.sb_hfosc(sim)
+# Loading work.uart_rx(rtl)
+# Loading work.cmd_parser(rtl)
+# Loading work.analyzer_fsm(rtl)
+# Loading work.capture_engine(rtl)
+# Loading work.send_engine(rtl)
+# Loading work.trace_buffer(rtl)
+# Loading work.tx_mux(rtl)
+# Loading work.uart_tx(rtl)
+add wave sim:/top_tb/*
+run -all
+# ** Error: TC4/Run#7: data bit 0 not as expected
+#    Time: 286390627 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#7: data bit 3 not as expected
+#    Time: 289645834 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#7: data bit 4 not as expected
+#    Time: 290730903 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#7: data bit 7 not as expected
+#    Time: 293986110 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#8: data bit 1 not as expected
+#    Time: 447319632 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#8: data bit 2 not as expected
+#    Time: 448404701 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#8: data bit 3 not as expected
+#    Time: 449489770 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#8: data bit 5 not as expected
+#    Time: 451659908 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#8: data bit 6 not as expected
+#    Time: 452744977 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#8: data bit 7 not as expected
+#    Time: 453830046 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#9: timeout waiting for start bit
+#    Time: 5456000183 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#9: data bit 2 not as expected
+#    Time: 5459255390 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#9: data bit 3 not as expected
+#    Time: 5460340459 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#9: data bit 6 not as expected
+#    Time: 5463595666 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#9: data bit 7 not as expected
+#    Time: 5464680735 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#10: timeout waiting for start bit
+#    Time: 10466850872 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#10: data bit 2 not as expected
+#    Time: 10470106079 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#10: data bit 3 not as expected
+#    Time: 10471191148 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#10: data bit 6 not as expected
+#    Time: 10474446355 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#10: data bit 7 not as expected
+#    Time: 10475531424 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#11: timeout waiting for start bit
+#    Time: 15477701561 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#11: data bit 2 not as expected
+#    Time: 15480956768 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#11: data bit 3 not as expected
+#    Time: 15482041837 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#11: data bit 6 not as expected
+#    Time: 15485297044 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#11: data bit 7 not as expected
+#    Time: 15486382113 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC5/Run#12: data bit 0 not as expected
+#    Time: 15529415011 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC5/Run#12: data bit 1 not as expected
+#    Time: 15530500080 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC5/Run#12: data bit 3 not as expected
+#    Time: 15532670218 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC5/Run#12: data bit 4 not as expected
+#    Time: 15533755287 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC5/Run#12: data bit 5 not as expected
+#    Time: 15534840356 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC5/Run#12: data bit 7 not as expected
+#    Time: 15537010494 ps  Iteration: 0  Instance: /top_tb
+# ** Failure: Simulation finished
+#    Time: 15538846417 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 375
+quit -sim
+# End time: 22:23:37 on Apr 08,2026, Elapsed time: 0:15:37
+# Errors: 32, Warnings: 2
+# Compile of top_tb.vhd was successful.
+vsim -gui work.top_tb
+# vsim -gui work.top_tb 
+# Start time: 22:23:52 on Apr 08,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.top_tb(sim)
+# Loading ieee.numeric_std(body)
+# Loading work.top(structure)
+# Loading work.clocking(rtl)
+# Loading work.sb_hfosc(sim)
+# Loading work.uart_rx(rtl)
+# Loading work.cmd_parser(rtl)
+# Loading work.analyzer_fsm(rtl)
+# Loading work.capture_engine(rtl)
+# Loading work.send_engine(rtl)
+# Loading work.trace_buffer(rtl)
+# Loading work.tx_mux(rtl)
+# Loading work.uart_tx(rtl)
+add wave sim:/top_tb/*
+run -all
+# ** Error: TC4/Run#7: data bit 0 not as expected
+#    Time: 288577987 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#7: data bit 1 not as expected
+#    Time: 289663056 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#7: data bit 3 not as expected
+#    Time: 291833194 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#7: data bit 4 not as expected
+#    Time: 292918263 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#7: data bit 5 not as expected
+#    Time: 294003332 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#7: data bit 7 not as expected
+#    Time: 296173470 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#9: timeout waiting for start bit
+#    Time: 5458166711 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#9: data bit 1 not as expected
+#    Time: 5460336849 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#9: data bit 2 not as expected
+#    Time: 5461421918 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#9: data bit 5 not as expected
+#    Time: 5464677125 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#9: data bit 6 not as expected
+#    Time: 5465762194 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#10: timeout waiting for start bit
+#    Time: 10469017400 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#10: data bit 2 not as expected
+#    Time: 10472272607 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#10: data bit 3 not as expected
+#    Time: 10473357676 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#10: data bit 6 not as expected
+#    Time: 10476612883 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#10: data bit 7 not as expected
+#    Time: 10477697952 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#11: timeout waiting for start bit
+#    Time: 15479868089 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#11: data bit 2 not as expected
+#    Time: 15483123296 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#11: data bit 3 not as expected
+#    Time: 15484208365 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#11: data bit 6 not as expected
+#    Time: 15487463572 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#11: data bit 7 not as expected
+#    Time: 15488548641 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#12: timeout waiting for start bit
+#    Time: 20490718778 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#12: data bit 2 not as expected
+#    Time: 20493973985 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#12: data bit 3 not as expected
+#    Time: 20495059054 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#12: data bit 6 not as expected
+#    Time: 20498314261 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4/Run#12: data bit 7 not as expected
+#    Time: 20499399330 ps  Iteration: 0  Instance: /top_tb
+# ** Failure: Simulation finished
+#    Time: 20538859729 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 375
+quit -sim
+# End time: 06:07:01 on Apr 09,2026, Elapsed time: 7:43:09
+# Errors: 27, Warnings: 2
+# Compile of top_tb.vhd failed with 1 errors.
+# Compile of top_tb.vhd was successful.
+vsim -gui work.top_tb
+# vsim -gui work.top_tb 
+# Start time: 06:15:04 on Apr 09,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.top_tb(sim)
+# Loading ieee.numeric_std(body)
+# Loading work.top(structure)
+# Loading work.clocking(rtl)
+# Loading work.sb_hfosc(sim)
+# Loading work.uart_rx(rtl)
+# Loading work.cmd_parser(rtl)
+# Loading work.analyzer_fsm(rtl)
+# Loading work.capture_engine(rtl)
+# Loading work.send_engine(rtl)
+# Loading work.trace_buffer(rtl)
+# Loading work.tx_mux(rtl)
+# Loading work.uart_tx(rtl)
+add wave sim:/top_tb/*
+run -all
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 5458166711 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 10469017400 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4: 2nd response after back-to-back is not status code x77
+#    Time: 10479325555 ps  Iteration: 1  Instance: /top_tb
+# ** Error: TC4: 3rd response after back-to-back is not status code x99
+#    Time: 10479325555 ps  Iteration: 1  Instance: /top_tb
+# ** Error: TC4: 4th response after back-to-back is not data byte x33
+#    Time: 10479325555 ps  Iteration: 1  Instance: /top_tb
+# ** Error: TC4: 5th response after back-to-back is not data byte x33
+#    Time: 10479325555 ps  Iteration: 1  Instance: /top_tb
+# ** Error: TC4: 6th response after back-to-back is not data byte x33
+#    Time: 10479325555 ps  Iteration: 1  Instance: /top_tb
+# ** Error: TC5/Run#13: data bit 1 not as expected
+#    Time: 10511529648 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC5/Run#13: data bit 3 not as expected
+#    Time: 10513699786 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC5/Run#13: data bit 4 not as expected
+#    Time: 10514784855 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC5/Run#13: data bit 6 not as expected
+#    Time: 10516954993 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC5/Run#13: data bit 7 not as expected
+#    Time: 10518040062 ps  Iteration: 0  Instance: /top_tb
+# ** Failure: Simulation finished
+#    Time: 10519875985 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 429
+# WARNING: No extended dataflow license exists
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# WARNING: No extended dataflow license exists
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+configure wave -timelineunits ns
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+configure wave -timelineunits us
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# WARNING: No extended dataflow license exists
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+quit -sim
+# End time: 06:51:24 on Apr 09,2026, Elapsed time: 0:36:20
+# Errors: 13, Warnings: 3
+# Compile of top_tb.vhd was successful.
+vsim -gui work.top_tb
+# vsim -gui work.top_tb 
+# Start time: 06:51:40 on Apr 09,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.top_tb(sim)
+# Loading ieee.numeric_std(body)
+# Loading work.top(structure)
+# Loading work.clocking(rtl)
+# Loading work.sb_hfosc(sim)
+# Loading work.uart_rx(rtl)
+# Loading work.cmd_parser(rtl)
+# Loading work.analyzer_fsm(rtl)
+# Loading work.capture_engine(rtl)
+# Loading work.send_engine(rtl)
+# Loading work.trace_buffer(rtl)
+# Loading work.tx_mux(rtl)
+# Loading work.uart_tx(rtl)
+add wave sim:/top_tb/*
+run -all
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 5458166711 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 10458709245 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 15459251779 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 20459794313 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 25460336847 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 30460879381 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 35461421915 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 40461964449 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 45462506983 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 50463049517 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 55463592051 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 60464134585 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 65464677119 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 70465219653 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 75465762187 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 80466304721 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 85466847255 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 90467389789 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 95467932323 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 100468474857 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 105469017391 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 110469559925 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 115470102459 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 120470644993 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 125471187527 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 130471730061 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 135472272595 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 140472815129 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 145473357663 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 150473900197 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 155474442731 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 160474985265 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 165475527799 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 170476070333 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 175476612867 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 180477155401 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 185477697935 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 190478240469 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 195478783003 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 200479325537 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 205479868071 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 210480410605 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 215480953139 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 220481495673 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 225482038207 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 230482580741 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 235483123275 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 240483665809 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 245484208343 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 250484750877 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 255485293411 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 260485835945 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 265486378479 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 270486921013 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 275487463547 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 280488006081 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 285488548615 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 290489091149 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 295489633683 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 300490176217 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 305490718751 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 310491261285 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 315491803819 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 320492346353 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 325492888887 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 330493431421 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 335493973955 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 340494516489 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 345495059023 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 350495601557 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 355496144091 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 360496686625 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 365497229159 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 370497771693 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 375498314227 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 380498856761 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 385499399295 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 390499941829 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 395500484363 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 400501026897 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 405501569431 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 410502111965 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 415502654499 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 420503197033 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 425503739567 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 430504282101 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 435504824635 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 440505367169 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 445505909703 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 450506452237 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 455506994771 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 460507537305 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 465508079839 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 470508622373 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 475509164907 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 480509707441 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 485510249975 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 490510792509 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 495511335043 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 500511877577 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 505512420111 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 510512962645 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 515513505179 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 520514047713 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 525514590247 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 530515132781 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 535515675315 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 540516217849 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 545516760383 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 550517302917 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 555517845451 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 560518387985 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 565518930519 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 570519473053 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 575520015587 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 580520558121 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 585521100655 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 590521643189 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 595522185723 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 600522728257 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 605523270791 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 610523813325 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 615524355859 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 620524898393 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 625525440927 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 630525983461 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 635526525995 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 640527068529 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 645527611063 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 650528153597 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 655528696131 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 660529238665 ps  Iteration: 0  Instance: /top_tb
+# Break key hit
+# Break in Process seq_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/rtl/uart_tx.vhd line 74
+quit -sim
+# End time: 07:01:14 on Apr 09,2026, Elapsed time: 0:09:34
+# Errors: 132, Warnings: 2
+# Compile of top_tb.vhd was successful.
+vsim -gui work.top_tb
+# vsim -gui work.top_tb 
+# Start time: 07:01:31 on Apr 09,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.top_tb(sim)
+# Loading ieee.numeric_std(body)
+# Loading work.top(structure)
+# Loading work.clocking(rtl)
+# Loading work.sb_hfosc(sim)
+# Loading work.uart_rx(rtl)
+# Loading work.cmd_parser(rtl)
+# Loading work.analyzer_fsm(rtl)
+# Loading work.capture_engine(rtl)
+# Loading work.send_engine(rtl)
+# Loading work.trace_buffer(rtl)
+# Loading work.tx_mux(rtl)
+# Loading work.uart_tx(rtl)
+add wave sim:/top_tb/*
+run -all
+# ** Error: TC4: 2nd response after back-to-back is not status code x77
+#    Time: 297801073 ps  Iteration: 1  Instance: /top_tb
+# ** Error: TC4: 3rd response after back-to-back is not status code x99
+#    Time: 297801073 ps  Iteration: 1  Instance: /top_tb
+# ** Error: TC4: 4th response after back-to-back is not data byte x33
+#    Time: 297801073 ps  Iteration: 1  Instance: /top_tb
+# ** Error: TC4: 5th response after back-to-back is not data byte x33
+#    Time: 297801073 ps  Iteration: 1  Instance: /top_tb
+# ** Error: TC4: 6th response after back-to-back is not data byte x33
+#    Time: 297801073 ps  Iteration: 1  Instance: /top_tb
+# ** Failure: Simulation finished
+#    Time: 345381361 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 434
+quit -sim
+# End time: 07:48:13 on Apr 09,2026, Elapsed time: 0:46:42
+# Errors: 6, Warnings: 2
+# Compile of top_tb.vhd failed with 1 errors.
+# Compile of top_tb.vhd was successful.
+vsim -gui work.top_tb
+# vsim -gui work.top_tb 
+# Start time: 07:49:12 on Apr 09,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.top_tb(sim)
+# Loading ieee.numeric_std(body)
+# Loading work.top(structure)
+# Loading work.clocking(rtl)
+# Loading work.sb_hfosc(sim)
+# Loading work.uart_rx(rtl)
+# Loading work.cmd_parser(rtl)
+# Loading work.analyzer_fsm(rtl)
+# Loading work.capture_engine(rtl)
+# Loading work.send_engine(rtl)
+# Loading work.trace_buffer(rtl)
+# Loading work.tx_mux(rtl)
+# Loading work.uart_tx(rtl)
+add wave sim:/top_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 794685937 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 481
+quit -sim
+# End time: 08:11:32 on Apr 09,2026, Elapsed time: 0:22:20
+# Errors: 1, Warnings: 3
+# Compile of top_tb.vhd was successful.
+vsim -gui work.top_tb
+# vsim -gui work.top_tb 
+# Start time: 08:11:44 on Apr 09,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.top_tb(sim)
+# Loading ieee.numeric_std(body)
+# Loading work.top(structure)
+# Loading work.clocking(rtl)
+# Loading work.sb_hfosc(sim)
+# Loading work.uart_rx(rtl)
+# Loading work.cmd_parser(rtl)
+# Loading work.analyzer_fsm(rtl)
+# Loading work.capture_engine(rtl)
+# Loading work.send_engine(rtl)
+# Loading work.trace_buffer(rtl)
+# Loading work.tx_mux(rtl)
+# Loading work.uart_tx(rtl)
+add wave sim:/top_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 791976875 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 486
+quit -sim
+# End time: 08:16:31 on Apr 09,2026, Elapsed time: 0:04:47
+# Errors: 1, Warnings: 2
+# Compile of top_tb.vhd failed with 1 errors.
+# Compile of top_tb.vhd was successful.
+vsim -gui work.top_tb
+# vsim -gui work.top_tb 
+# Start time: 08:17:38 on Apr 09,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.top_tb(sim)
+# Loading ieee.numeric_std(body)
+# Loading work.top(structure)
+# Loading work.clocking(rtl)
+# Loading work.sb_hfosc(sim)
+# Loading work.uart_rx(rtl)
+# Loading work.cmd_parser(rtl)
+# Loading work.analyzer_fsm(rtl)
+# Loading work.capture_engine(rtl)
+# Loading work.send_engine(rtl)
+# Loading work.trace_buffer(rtl)
+# Loading work.tx_mux(rtl)
+# Loading work.uart_tx(rtl)
+add wave sim:/top_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 794685937 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 485
+quit -sim
+# End time: 08:22:48 on Apr 09,2026, Elapsed time: 0:05:10
+# Errors: 1, Warnings: 3
+# Compile of top_tb.vhd was successful.
+vsim -gui work.top_tb
+# vsim -gui work.top_tb 
+# Start time: 08:23:27 on Apr 09,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.top_tb(sim)
+# Loading ieee.numeric_std(body)
+# Loading work.top(structure)
+# Loading work.clocking(rtl)
+# Loading work.sb_hfosc(sim)
+# Loading work.uart_rx(rtl)
+# Loading work.cmd_parser(rtl)
+# Loading work.analyzer_fsm(rtl)
+# Loading work.capture_engine(rtl)
+# Loading work.send_engine(rtl)
+# Loading work.trace_buffer(rtl)
+# Loading work.tx_mux(rtl)
+# Loading work.uart_tx(rtl)
+add wave sim:/top_tb/*
+# Load canceled
+run -all
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 5303446545 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: start bit not '0'
+#    Time: 5303989079 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4a: 1st response after back-to-backs (from IDLE) is not xEE
+#    Time: 5314297234 ps  Iteration: 1  Instance: /top_tb
+# ** Error: TC4a: 2nd response after back-to-backs (from IDLE) is not xEE
+#    Time: 5314297234 ps  Iteration: 1  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 10507009329 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: start bit not '0'
+#    Time: 10507551863 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4b: 2nd response after back-to-backs (from CAPTURE) is not error code xEE
+#    Time: 10517860018 ps  Iteration: 1  Instance: /top_tb
+# ** Error: TC4b: 4th response after back-to-backs (from CAPTURE) is not error code xEE
+#    Time: 10517860018 ps  Iteration: 1  Instance: /top_tb
+# ** Error: TC4b: 5th response after back-to-backs (from CAPTURE) is not status code x77
+#    Time: 10517860018 ps  Iteration: 1  Instance: /top_tb
+# ** Error: TC4c: 2nd response after back-to-backs (from DONE) is not status code x55
+#    Time: 10721217265 ps  Iteration: 1  Instance: /top_tb
+# ** Error: TC4c: 5th response after back-to-backs (from DONE) is not data byte x33
+#    Time: 10786650577 ps  Iteration: 1  Instance: /top_tb
+# ** Error: TC4c: 6th response after back-to-backs (from DONE) is not data byte x33
+#    Time: 10786650577 ps  Iteration: 1  Instance: /top_tb
+# ** Failure: Simulation finished
+#    Time: 10833147601 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 487
+quit -sim
+# End time: 08:25:26 on Apr 09,2026, Elapsed time: 0:01:59
+# Errors: 13, Warnings: 2
+# Compile of top_tb.vhd was successful.
+vsim -gui work.top_tb
+# vsim -gui work.top_tb 
+# Start time: 08:25:40 on Apr 09,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.top_tb(sim)
+# Loading ieee.numeric_std(body)
+# Loading work.top(structure)
+# Loading work.clocking(rtl)
+# Loading work.sb_hfosc(sim)
+# Loading work.uart_rx(rtl)
+# Loading work.cmd_parser(rtl)
+# Loading work.analyzer_fsm(rtl)
+# Loading work.capture_engine(rtl)
+# Loading work.send_engine(rtl)
+# Loading work.trace_buffer(rtl)
+# Loading work.tx_mux(rtl)
+# Loading work.uart_tx(rtl)
+add wave sim:/top_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 794685937 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 484
