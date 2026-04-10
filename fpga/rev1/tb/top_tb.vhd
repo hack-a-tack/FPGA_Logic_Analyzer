@@ -285,6 +285,11 @@ begin
 		-- Should see status code x"77" = b"0111 0111" (DONE) from UART_TX line
 		uart_expect_byte(o_UART_TX, test_id, 1, "01110111");
 		
+		-- could replace uart_expect_byte statements with :
+		-- wait until tx_count = 2;
+		-- assert tx_log(0) = "01010101" report "TC2: status code x55 not received" severity error;
+		-- assert tx_log(1) = "01110111" report "TC2: status code x77 not received" severity error;
+		
 		
 		--------------------------------------------------------
 		-- Test case 3: READ command end-to-end

@@ -1,1 +1,0 @@
-@W: MT531 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":101:2:101:5|Found signal identified as System clock which controls 1 sequential elements including E6.first_data_sample.  Using this clock, which has no specified timing constraint, can prevent conversion of gated or generated clocks and can adversely impact design performance. 
