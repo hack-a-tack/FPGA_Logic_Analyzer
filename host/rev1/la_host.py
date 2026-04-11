@@ -2,7 +2,13 @@
 MODULE: la_host.py
 FUNCTION: Python script for capturing, receiving and converting logic analyzer data into a csv file.
 DATE: 2026-04-11 (YYYY-MM-DD)
+
+NOTES
+- HostConfig is a data container only.
+- All functions are top-level functions.
+- VCD export available.
 """
+
 
 import argparse
 import csv
@@ -11,7 +17,6 @@ import time
 from dataclasses import dataclass
 
 import serial
-
 
 # Protocol constants
 CAPTURE = 0xA0
@@ -23,6 +28,7 @@ HEADER  = 0x99
 ERROR   = 0xEE
 
 DEFAULT_NUM_SAMPLES = 4096
+DEFAULT_SAMPLE_RATE_HZ = 24_000_000
 
 
 @dataclass
@@ -31,6 +37,7 @@ class HostConfig:
     baud: int
     timeout_s: float
     num_samples: int
+    sample_rate_hz: int
 
 
 def read_exact(ser: serial.Serial, n: int, timeout_s: float) -> bytes:
@@ -42,7 +49,6 @@ def read_exact(ser: serial.Serial, n: int, timeout_s: float) -> bytes:
         if chunk:
             out.extend(chunk)
         else:
-            # tiny sleep avoids busy loop on some drivers
             time.sleep(0.001)
     if len(out) != n:
         raise TimeoutError(f"Timeout reading {n} bytes (got {len(out)})")
@@ -68,15 +74,12 @@ def send_cmd(ser: serial.Serial, opcode: int) -> None:
 def do_capture(ser: serial.Serial, cfg: HostConfig) -> None:
     send_cmd(ser, CAPTURE)
     expect_byte(ser, OK, cfg.timeout_s, "CAPTURE/OK")
-
-    # Capture is ~170us, but give margin (USB + firmware latency)
     expect_byte(ser, DONE, cfg.timeout_s, "CAPTURE/DONE")
 
 
 def do_read(ser: serial.Serial, cfg: HostConfig) -> bytes:
     send_cmd(ser, READ)
 
-    # Either HEADER, or ERROR if not ready
     first = read_one(ser, cfg.timeout_s)
     if first == ERROR:
         raise RuntimeError("READ: device returned ERROR (0xEE) - data not ready?")
@@ -95,6 +98,64 @@ def write_csv(path: str, data: bytes) -> None:
             w.writerow([i, b])
 
 
+def write_vcd(path: str, data: bytes, sample_rate_hz: int) -> None:
+    """Writes an 8-channel VCD (LA0(LSB) ... LA7(MSB)) from byte samples."""
+    if sample_rate_hz <= 0:
+        raise ValueError("sample_rate_hz must be > 0")
+
+    # Use 1ns timescale. We'll round timestamps to integer ns.
+    # At 24 MHz, period ~41.666... ns -> rounding introduces jitter of <=0.5ns, which is fine for viewing.
+    sample_period_ns = 1e9 / float(sample_rate_hz)
+
+    # VCD identifiers must be short unique tokens. We'll use ASCII chars.
+    ids = {
+        0: "a",
+        1: "b",
+        2: "c",
+        3: "d",
+        4: "e",
+        5: "f",
+        6: "g",
+        7: "h",
+    }
+
+    def bit(sample: int, i: int) -> int:
+        return (sample >> i) & 0x1
+
+    with open(path, "w", newline="") as f:
+        # Header
+        f.write("$date\n")
+        f.write(f"  {time.strftime('%Y-%m-%d %H:%M:%S')}\n")
+        f.write("$end\n")
+        f.write("$version\n  la_host.py VCD export\n$end\n")
+        f.write("$timescale 1ns $end\n")
+        f.write("$scope module logic_analyzer $end\n")
+        for i in range(8):
+            f.write(f"$var wire 1 {ids[i]} LA{i} $end\n")
+        f.write("$upscope $end\n")
+        f.write("$enddefinitions $end\n")
+
+        # Initial values at t=0
+        f.write("#0\n")
+        first = data[0] if data else 0
+        for i in range(8):
+            f.write(f"{bit(first, i)}{ids[i]}\n")
+
+        # Emit only changes (compact VCD)
+        prev = first
+        for n in range(1, len(data)):
+            cur = data[n]
+            if cur == prev:
+                continue
+            t_ns = int(round(n * sample_period_ns))
+            f.write(f"#{t_ns}\n")
+            diff = cur ^ prev
+            for i in range(8):
+                if (diff >> i) & 1:
+                    f.write(f"{bit(cur, i)}{ids[i]}\n")
+            prev = cur
+
+
 def open_serial(cfg: HostConfig) -> serial.Serial:
     ser = serial.Serial(
         port=cfg.port,
@@ -102,17 +163,16 @@ def open_serial(cfg: HostConfig) -> serial.Serial:
         bytesize=serial.EIGHTBITS,
         parity=serial.PARITY_NONE,
         stopbits=serial.STOPBITS_ONE,
-        timeout=0.01,  # non-blocking-ish; we do our own deadline
+        timeout=0.01,           # non-blocking-ish; we do deadlines ourselves
         write_timeout=cfg.timeout_s,
     )
-    # Clear stale bytes
     ser.reset_input_buffer()
     ser.reset_output_buffer()
     return ser
 
 
 def main(argv: list[str]) -> int:
-    p = argparse.ArgumentParser(description="FPGA Logic Analyzer Host (CSV dump)")
+    p = argparse.ArgumentParser(description="FPGA Logic Analyzer Host (CSV + optional VCD)")
     p.add_argument("--port", default="COM3", help="Serial port (e.g., COM3)")
     p.add_argument("--baud", type=int, default=921600, help="Baud rate")
     p.add_argument("--timeout", type=float, default=1.0,
@@ -120,10 +180,20 @@ def main(argv: list[str]) -> int:
     p.add_argument("--samples", type=int, default=DEFAULT_NUM_SAMPLES,
                    help="Number of bytes to read after HEADER")
     p.add_argument("--out", default="capture.csv", help="Output CSV path")
+    p.add_argument("--vcd", default=None,
+                   help="Optional VCD output path (e.g., capture.vcd). If set, writes VCD too.")
+    p.add_argument("--samplerate", type=int, default=DEFAULT_SAMPLE_RATE_HZ,
+                   help="Sample rate in Hz for VCD timestamps (default 24e6)")
     p.add_argument("mode", choices=["capture", "read", "capture-read"], help="Operation mode")
-
     args = p.parse_args(argv)
-    cfg = HostConfig(port=args.port, baud=args.baud, timeout_s=args.timeout, num_samples=args.samples)
+
+    cfg = HostConfig(
+        port=args.port,
+        baud=args.baud,
+        timeout_s=args.timeout,
+        num_samples=args.samples,
+        sample_rate_hz=args.samplerate
+    )
 
     try:
         with open_serial(cfg) as ser:
@@ -133,14 +203,18 @@ def main(argv: list[str]) -> int:
             elif args.mode == "read":
                 data = do_read(ser, cfg)
                 write_csv(args.out, data)
-                print(f"Read: wrote {len(data)} bytes to {args.out}")
-            else:
+                if args.vcd:
+                    write_vcd(args.vcd, data, cfg.sample_rate_hz)
+                print(f"Read: wrote {len(data)} bytes to {args.out}" + (f" and {args.vcd}" if args.vcd else ""))
+            else:  # capture-read
                 do_capture(ser, cfg)
                 data = do_read(ser, cfg)
                 write_csv(args.out, data)
-                print(f"Capture+Read: wrote {len(data)} bytes to {args.out}")
+                if args.vcd:
+                    write_vcd(args.vcd, data, cfg.sample_rate_hz)
+                print(f"Capture+Read: wrote {len(data)} bytes to {args.out}" + (f" and {args.vcd}" if args.vcd else ""))
         return 0
-    except (serial.SerialException, TimeoutError, RuntimeError) as e:
+    except (serial.SerialException, TimeoutError, RuntimeError, ValueError) as e:
         print(f"ERROR: {e}", file=sys.stderr)
         return 1
 
