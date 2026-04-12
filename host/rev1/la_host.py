@@ -1,12 +1,12 @@
 """
 MODULE: la_host.py
 FUNCTION: Python script for capturing, receiving and converting logic analyzer data into a csv file.
-DATE: 2026-04-11 (YYYY-MM-DD)
+DATE: 2026-04-12 (YYYY-MM-DD)
 
 NOTES
 - HostConfig is a data container only.
 - All functions are top-level functions.
-- VCD export available.
+- VCD export available for waveform illustration.
 """
 
 
@@ -17,6 +17,7 @@ import time
 from dataclasses import dataclass
 
 import serial
+from serial.tools import list_ports
 
 # Protocol constants
 CAPTURE = 0xA0
@@ -87,7 +88,27 @@ def do_read(ser: serial.Serial, cfg: HostConfig) -> bytes:
         raise RuntimeError(f"READ: expected HEADER 0x{HEADER:02X}, got 0x{first:02X}")
 
     data = read_exact(ser, cfg.num_samples, cfg.timeout_s)
+    
     return data
+    
+
+def print_read_summary(data: bytes, n: int = 16) -> None:
+    if not data:
+        print("Read 0 bytes")
+        return
+    
+    head = data[:n]
+    print(f"Read {len(data)} bytes")
+    print("First bytes:", head.hex(" "))
+    uniques = set(data)
+    print(f"Unique byte values: {len(uniques)}")
+    print(f"Min/Max byte: 0x{min(data):02X} / 0x{max(data):02X}")
+
+    # quick frequency peek (top 5)
+    from collections import Counter
+    c = Counter(data)
+    top = c.most_common(5)
+    print("Top values:", ", ".join([f"0x{b:02X}({cnt})" for b, cnt in top]))
 
 
 def write_csv(path: str, data: bytes) -> None:
@@ -171,6 +192,16 @@ def open_serial(cfg: HostConfig) -> serial.Serial:
     return ser
 
 
+def list_serial_ports() -> None:
+    ports = list_ports.comports()
+    if not ports:
+        print("No serial ports found.")
+        return
+    for p in ports:
+        # p.device like "COM7", p.description like "USB-SERIAL CH340"
+        print(f"{p.device}\t{p.description}")
+
+
 def main(argv: list[str]) -> int:
     p = argparse.ArgumentParser(description="FPGA Logic Analyzer Host (CSV + optional VCD)")
     p.add_argument("--port", default="COM3", help="Serial port (e.g., COM3)")
@@ -184,8 +215,13 @@ def main(argv: list[str]) -> int:
                    help="Optional VCD output path (e.g., capture.vcd). If set, writes VCD too.")
     p.add_argument("--samplerate", type=int, default=DEFAULT_SAMPLE_RATE_HZ,
                    help="Sample rate in Hz for VCD timestamps (default 24e6)")
+    p.add_argument("--list-ports", action="store_true", help="Lists serial ports and exit")
     p.add_argument("mode", choices=["capture", "read", "capture-read"], help="Operation mode")
     args = p.parse_args(argv)
+    
+    if args.list_ports:
+        list_serial_ports()
+        return 0
 
     cfg = HostConfig(
         port=args.port,
@@ -196,12 +232,13 @@ def main(argv: list[str]) -> int:
     )
 
     try:
-        with open_serial(cfg) as ser:
+        with open_serial(cfg) as ser:        
             if args.mode == "capture":
                 do_capture(ser, cfg)
                 print("Capture: OK + DONE received.")
             elif args.mode == "read":
                 data = do_read(ser, cfg)
+                print_read_summary(data)
                 write_csv(args.out, data)
                 if args.vcd:
                     write_vcd(args.vcd, data, cfg.sample_rate_hz)
@@ -209,6 +246,7 @@ def main(argv: list[str]) -> int:
             else:  # capture-read
                 do_capture(ser, cfg)
                 data = do_read(ser, cfg)
+                print_read_summary(data)
                 write_csv(args.out, data)
                 if args.vcd:
                     write_vcd(args.vcd, data, cfg.sample_rate_hz)

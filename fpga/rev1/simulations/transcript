@@ -39891,3 +39891,24 @@ run -all
 # ** Failure: Simulation finished
 #    Time: 794685937 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
 # Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 484
+quit -sim
+# End time: 11:09:18 on Apr 12,2026, Elapsed time: 74:43:38
+# Errors: 1, Warnings: 2
+# Compile of analyzer_fsm.vhd failed with 3 errors.
+# Compile of analyzer_fsm_tb.vhd was successful.
+# 2 compiles, 1 failed with 3 errors.
+# Compile of analyzer_fsm.vhd was successful.
+vsim -gui work.analyzer_fsm_tb
+# vsim -gui work.analyzer_fsm_tb 
+# Start time: 11:14:25 on Apr 12,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.analyzer_fsm_tb(sim)
+# Loading work.analyzer_fsm(rtl)
+add wave sim:/analyzer_fsm_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 4167514512 ps  Iteration: 0  Process: /analyzer_fsm_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/analyzer_fsm_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/analyzer_fsm_tb.vhd line 251

@@ -21,8 +21,7 @@
 @N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\clocking.vhd":26:7:26:14|Synthesizing work.clocking.rtl.
 @N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\clocking.vhd":35:11:35:18|Synthesizing work.sb_hfosc.syn_black_box.
 @N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":83:2:83:3|Trying to extract state machine for register r_state.
-@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":79:2:79:3|Register bit r_wd_count(23) is always 0.
-@N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":79:2:79:3|Trying to extract state machine for register r_state.
+@N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":81:2:81:3|Trying to extract state machine for register r_state.
 @N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":75:2:75:3|Trying to extract state machine for register r_state.
 @N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":76:2:76:3|Trying to extract state machine for register r_state.
 @N|Running in 64-bit mode

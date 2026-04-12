@@ -2,7 +2,7 @@
 -- MODULE: analyzer_fsm_tb.vhd
 -- FUNCTION: TESTBENCH for controlling entity of logic analyzer state machine
 -- AUTHOR: Jakob Kieszek Ottesen
--- DATE: 2026-03-26 (YYYY-MM-DD)
+-- DATE: 2026-04-12 (YYYY-MM-DD)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -81,8 +81,8 @@ architecture sim of analyzer_fsm_tb is
 	signal seen_dd_pulse : boolean := false;		-- goes 'true' if Watchdog triggers
 	
 	-- Watchdog limits
-	constant WD_LIMIT_CAPTURE 	: unsigned(23 downto 0) := to_unsigned(100_000, 24);		-- CAPTURE timeout after 100k samples
-	constant WD_LIMIT_SEND		: unsigned(23 downto 0) := to_unsigned(4_800_000, 24);  	-- SEND timeout after 4.8M samples
+	constant WD_LIMIT_CAPTURE 	: unsigned(21 downto 0) := to_unsigned(100_000, 22);		-- CAPTURE timeout after 100k samples
+	constant WD_LIMIT_SEND		: unsigned(21 downto 0) := to_unsigned(4_000_000, 22);  	-- SEND timeout after 4M samples
 
 begin
 

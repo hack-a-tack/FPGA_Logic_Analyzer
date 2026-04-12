@@ -2,7 +2,7 @@
 -- MODULE: analyzer_fsm.vhd
 -- FUNCTION: manages the logic analyzer state machine
 -- AUTHOR: Jakob Kieszek Ottesen
--- DATE: 2026-03-25 (YYYY-MM-DD)
+-- DATE: 2026-04-12 (YYYY-MM-DD)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -65,12 +65,14 @@ architecture RTL of analyzer_fsm is
 	signal r_capture_start_pulse, n_capture_start_pulse : std_logic := '0';												-- output
 	signal r_send_start_pulse, n_send_start_pulse : std_logic := '0';													-- output
 	signal r_USER_LED, n_USER_LED : std_logic := '0';																	-- output
-	signal r_wd_count, n_wd_count : unsigned(23 downto 0) := (others => '0');											-- Watchdog
-	signal wd_timeout : std_logic := '0'; 																				-- Watchdog
+	signal r_wd_count, n_wd_count : unsigned(21 downto 0) := (others => '0');											-- Watchdog
+	signal r_wd_timeout, n_wd_timeout : std_logic := '0'; 																-- Watchdog
 	
 	-- Watchdog limits
-	constant WD_LIMIT_CAPTURE 	: unsigned(23 downto 0) := to_unsigned(100_000, r_wd_count'length);		-- CAPTURE timeout after 100k samples
-	constant WD_LIMIT_SEND		: unsigned(23 downto 0) := to_unsigned(4_800_000, r_wd_count'length);  	-- SEND timeout after 4.8M samples
+	-- WD LIMIT for CAPTURE: capture takes 8192 clock cycles. Set limit to 100k to have plenty of margin to avoid false WD trip, and stay within 22 bit width
+	constant WD_LIMIT_CAPTURE 	: unsigned(21 downto 0) := to_unsigned(100_000, r_wd_count'length);		-- CAPTURE timeout after 100k clock cycles
+	-- WD LIMIT for SEND: send takes 2_129_920 clock cycles. Set limit to 4M to avoid false WD trip and stay within 2^22 to keep 22 bit counter width
+	constant WD_LIMIT_SEND		: unsigned(21 downto 0) := to_unsigned(4_000_000, r_wd_count'length);  	-- SEND timeout after 4M clock cycles
 	
 begin
 	-- Sequential process to update r_state and deal with clocking and reset logic
@@ -85,6 +87,7 @@ begin
 				r_send_start_pulse <= '0';
 				r_USER_LED <= '0';
 				r_wd_count <= (others => '0');
+				r_wd_timeout <= '0';
 			else
 				r_state <= n_state;
 				r_fsm_tx_status_byte <= n_fsm_tx_status_byte;
@@ -93,6 +96,13 @@ begin
 				r_send_start_pulse <= n_send_start_pulse;
 				r_USER_LED <= n_USER_LED;
 				r_wd_count <= n_wd_count;
+				r_wd_timeout <= n_wd_timeout;
+			end if;
+			
+			if r_wd_timeout = '1' then
+				r_state <= IDLE;
+				r_fsm_tx_status_byte <= x"DD";  -- 0xDD (WATCHDOG ERROR), 0b11011101; watchdog triggered
+				r_fsm_tx_start_pulse <= '1';
 			end if;
 		end if;
 	end process seq_proc;
@@ -109,6 +119,7 @@ begin
 		n_send_start_pulse <= '0';
 		n_USER_LED <= r_USER_LED;
 		n_wd_count <= r_wd_count;
+		n_wd_timeout <= r_wd_timeout;
 		
 		case r_state is
 			when IDLE =>
@@ -184,18 +195,11 @@ begin
 			n_wd_count <= (others => '0');
 		end if;
 		
-		if wd_timeout = '1' then
-			n_state <= IDLE;
-			n_fsm_tx_status_byte <= x"DD";  -- 0xDD (WATCHDOG ERROR), 0b11011101; watchdog triggered
-			n_fsm_tx_start_pulse <= '1';
-		end if;
+		-- Watchdog timeout
+		n_wd_timeout <= '1' when 	(r_state = CAPTURE and r_wd_count >= WD_LIMIT_CAPTURE) or 
+									(r_state = SEND and r_wd_count >= WD_LIMIT_SEND)
+									else '0';
 	end process fsm_proc;
-	
-	
-	-- Watchdog timeout
-	wd_timeout <= '1' when 	(r_state = CAPTURE and r_wd_count >= WD_LIMIT_CAPTURE) or 
-							(r_state = SEND and r_wd_count >= WD_LIMIT_SEND)
-							else '0';
 	
 	
 	-- Set outputs

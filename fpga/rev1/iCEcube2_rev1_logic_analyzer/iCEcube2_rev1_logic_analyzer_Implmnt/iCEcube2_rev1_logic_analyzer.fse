@@ -11,17 +11,17 @@ fsm_state_encoding {16832831} rx_stop_bit {11}
 
 fsm_registers {16832831} {r_state[1]}  {r_state[0]} 
 
-fsm_encoding {9792792} sequential
+fsm_encoding {9812812} sequential
 
-fsm_state_encoding {9792792} idle {00}
+fsm_state_encoding {9812812} idle {00}
 
-fsm_state_encoding {9792792} capture {01}
+fsm_state_encoding {9812812} capture {01}
 
-fsm_state_encoding {9792792} done {10}
+fsm_state_encoding {9812812} done {10}
 
-fsm_state_encoding {9792792} send {11}
+fsm_state_encoding {9812812} send {11}
 
-fsm_registers {9792792} {r_state[1]}  {r_state[0]} 
+fsm_registers {9812812} {r_state[1]}  {r_state[0]} 
 
 fsm_encoding {13752753} sequential
 
