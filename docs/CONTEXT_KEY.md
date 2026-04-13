@@ -3,6 +3,9 @@ Status (as of 2026-04-12)
 Rev1 FPGA RTL implemented, compiles, synthesizes, bitstream generated.
 All modules have individual testbenches; all pass simulation (ModelSim).
 Top-level integration TB created; verifies reset/idle, capture, read, back-to-back commands, and bad UART frame resilience; passes.
+All module TBs pass + top-level TB passes:
+reset/idle, capture, read (partial), back-to-back command response logic, bad UART stop-bit resilience
+note: back-to-back READ during CAPTURE returns ERROR by design; READ must be resent after DONE.
 PC host tool (host/la_host.py) implemented: capture/read + CSV output, optional VCD export; --list-ports added; awaiting hardware for validation.
 Hardware assembly pending (tools/instruments not yet arrived).
 
@@ -50,7 +53,7 @@ tx_mux.vhd: registered arbiter: FSM status has priority over send stream.
 uart_tx.vhd: LSB-first, CLKS_PER_BIT = 52 (48 MHz / 921600), busy deassert cleaned up.
 
 #Timing / STA Metrics (Rev1)
-After watchdog counter width reduction to 22 bits and registered watchdog timeout:
+After watchdog counter width reduction to 22 bits and watchdog timeout was made registered:
 WNS = +2.997 ns
 Fmax ≈ 55.72 MHz
 Previously failing path was watchdog compare logic; reduced counter width fixed closure for 48 MHz target.
@@ -68,14 +71,17 @@ HFOSC: 1
 Location: host/la_host.py
 
 Uses pyserial.
-Modes: capture / read / capture-read (and planned self-test).
+Modes: capture / read / capture-read / self-test.
+flags: --list-ports, --vcd, --samplerate, --out, --samples
 Outputs:
 CSV: columns index,value (0..4095, 0..255)
 Optional VCD: LA0..LA7 signals, timestamps based on --samplerate (default 24e6)
 --list-ports lists available serial ports with descriptions.
 Default port placeholder: COM3 (update once hardware enumerates).
 
-#Next Steps (Bring-up)
+#Bring-up
+docs/bringup.md created.
+Includes:
 Hardware assembly + power rail validation (5V, 3.3V, 1.2V).
 Confirm COM port enumerates; run host tool:
 CAPTURE → expect 0x55 then 0x77
@@ -85,3 +91,6 @@ all low → expect 0x00
 all high → expect 0xFF
 single toggling input → corresponding bit toggles
 Import VCD into PulseView/GTKWave for waveform inspection.
+
+#Next Steps (Bring-up)
+(1) waiting for PCBA tools, (2) first bring-up steps (Phase 0→3), (3) first known-input tests (all-low/all-high/single-bit).
