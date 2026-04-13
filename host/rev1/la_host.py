@@ -1,12 +1,19 @@
 """
 MODULE: la_host.py
-FUNCTION: Python script for capturing, receiving and converting logic analyzer data into a csv file.
-DATE: 2026-04-12 (YYYY-MM-DD)
+FUNCTION: Python script for capturing, receiving and converting logic analyzer data into a csv/vcd file.
+DATE: 2026-04-13 (YYYY-MM-DD)
 
 NOTES
 - HostConfig is a data container only.
 - All functions are top-level functions.
 - VCD export available for waveform illustration.
+- Modes
+-- capture: capture data
+-- read: transfer data to host (csv/vcd)
+-- capture-read: normal mode (full operation + produce files)
+---- csv file written by default; optional vcd file
+-- self-test: bring-up/diagnostics mode (prove the whole chain works and make failures obvious)
+---- csv file and vcd files only written if explicit flags added when running the script in self-test mode
 """
 
 
@@ -30,6 +37,9 @@ ERROR   = 0xEE
 
 DEFAULT_NUM_SAMPLES = 4096
 DEFAULT_SAMPLE_RATE_HZ = 24_000_000
+
+DEFAULT_TIMEOUT_S = 1.0
+DEFAULT_SELFTEST_TIMEOUT_S = 5.0
 
 
 @dataclass
@@ -88,7 +98,6 @@ def do_read(ser: serial.Serial, cfg: HostConfig) -> bytes:
         raise RuntimeError(f"READ: expected HEADER 0x{HEADER:02X}, got 0x{first:02X}")
 
     data = read_exact(ser, cfg.num_samples, cfg.timeout_s)
-    
     return data
     
 
@@ -192,6 +201,45 @@ def open_serial(cfg: HostConfig) -> serial.Serial:
     return ser
 
 
+def do_self_test(ser: serial.Serial, cfg: HostConfig, out_csv: Optional[str], out_vcd: Optional[str]) -> None:
+    """
+    Self-test = capture-read + verbose step-by-step prints.
+    By default: does not write files unless out_csv/out_vcd are provided.
+    """
+    print(f"[self-test] Port={cfg.port} Baud={cfg.baud} Timeout={cfg.timeout_s}s Samples={cfg.num_samples}")
+
+    print("[self-test] Sending CAPTURE (0xA0)...")
+    send_cmd(ser, CAPTURE)
+    print("[self-test] Waiting for OK (0x55)...")
+    expect_byte(ser, OK, cfg.timeout_s, "SELFTEST/CAPTURE/OK")
+    print("[self-test] OK received.")
+
+    print("[self-test] Waiting DONE (0x77)...")
+    expect_byte(ser, DONE, cfg.timeout_s, "SELFTEST/CAPTURE/DONE")
+    print("[self-test] DONE received.")
+
+    print("[self-test] Sending READ (0xA1)...")
+    send_cmd(ser, READ)
+
+    first = read_one(ser, cfg.timeout_s)
+    if first == ERROR:
+        raise RuntimeError("[self-test] READ returned ERROR (0xEE) - data not ready?")
+    if first != HEADER:
+        raise RuntimeError(f"[self-test] READ expected HEADER 0x{HEADER:02X}, got 0x{first:02X}")
+    print("[self-test] HEADER received.")
+
+    data = read_exact(ser, cfg.num_samples, cfg.timeout_s)
+    print_read_summary(data)
+
+    # Optional outputs
+    if out_csv:
+        write_csv(out_csv, data)
+        print(f"[self-test] Wrote CSV: {out_csv}")
+    if out_vcd:
+        write_vcd(out_vcd, data, cfg.sample_rate_hz)
+        print(f"[self-test] Wrote VCD: {out_vcd}")
+
+
 def list_serial_ports() -> None:
     ports = list_ports.comports()
     if not ports:
@@ -206,22 +254,29 @@ def main(argv: list[str]) -> int:
     p = argparse.ArgumentParser(description="FPGA Logic Analyzer Host (CSV + optional VCD)")
     p.add_argument("--port", default="COM3", help="Serial port (e.g., COM3)")
     p.add_argument("--baud", type=int, default=921600, help="Baud rate")
-    p.add_argument("--timeout", type=float, default=1.0,
+    p.add_argument("--timeout", type=float, default=DEFAULT_TIMEOUT_S,
                    help="Timeout in seconds for each major step (increase for slow systems)")
     p.add_argument("--samples", type=int, default=DEFAULT_NUM_SAMPLES,
                    help="Number of bytes to read after HEADER")
-    p.add_argument("--out", default="capture.csv", help="Output CSV path")
+                   
+    p.add_argument("--csv", default="capture.csv", help="Output CSV path")
     p.add_argument("--vcd", default=None,
                    help="Optional VCD output path (e.g., capture.vcd). If set, writes VCD too.")
     p.add_argument("--samplerate", type=int, default=DEFAULT_SAMPLE_RATE_HZ,
                    help="Sample rate in Hz for VCD timestamps (default 24e6)")
+                   
     p.add_argument("--list-ports", action="store_true", help="Lists serial ports and exit")
-    p.add_argument("mode", choices=["capture", "read", "capture-read"], help="Operation mode")
+    
+    p.add_argument("mode", choices=["capture", "read", "capture-read", "self-test"], help="Operation mode")
     args = p.parse_args(argv)
     
     if args.list_ports:
         list_serial_ports()
         return 0
+       
+    effective_timeout = args.timeout
+    if args.mode == "self-test" and args.timeout == DEFAULT_TIMEOUT_S:
+        effective_timeout = DEFAULT_SELFTEST_TIMEOUT_S
 
     cfg = HostConfig(
         port=args.port,
@@ -236,22 +291,32 @@ def main(argv: list[str]) -> int:
             if args.mode == "capture":
                 do_capture(ser, cfg)
                 print("Capture: OK + DONE received.")
+                
             elif args.mode == "read":
                 data = do_read(ser, cfg)
                 print_read_summary(data)
-                write_csv(args.out, data)
+                write_csv(args.csv, data)
                 if args.vcd:
                     write_vcd(args.vcd, data, cfg.sample_rate_hz)
-                print(f"Read: wrote {len(data)} bytes to {args.out}" + (f" and {args.vcd}" if args.vcd else ""))
-            else:  # capture-read
+                print(f"Read: wrote {len(data)} bytes to {args.csv}" + (f" and {args.vcd}" if args.vcd else ""))
+            
+            elif args.mode == "capture-read":  # capture-read
                 do_capture(ser, cfg)
                 data = do_read(ser, cfg)
                 print_read_summary(data)
-                write_csv(args.out, data)
+                write_csv(args.csv, data)
                 if args.vcd:
                     write_vcd(args.vcd, data, cfg.sample_rate_hz)
-                print(f"Capture+Read: wrote {len(data)} bytes to {args.out}" + (f" and {args.vcd}" if args.vcd else ""))
+                print(f"Capture+Read: wrote {len(data)} bytes to {args.csv}" + (f" and {args.vcd}" if args.vcd else ""))
+            
+            else:  # self-test
+                out_csv = args.csv if ("--csv" in argv) else None
+                out_vcd = args.vcd if ("--vcd" in argv) else None
+                do_self_test(ser, cfg, out_csv=out_csv, out_vcd=out_vcd)
+                print("[self-test] PASS")
+                
         return 0
+        
     except (serial.SerialException, TimeoutError, RuntimeError, ValueError) as e:
         print(f"ERROR: {e}", file=sys.stderr)
         return 1
