@@ -39912,3 +39912,5 @@ run -all
 # ** Failure: Simulation finished
 #    Time: 4167514512 ps  Iteration: 0  Process: /analyzer_fsm_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/analyzer_fsm_tb.vhd
 # Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/analyzer_fsm_tb.vhd line 251
+# End time: 07:03:08 on Apr 13,2026, Elapsed time: 19:48:43
+# Errors: 1, Warnings: 3
