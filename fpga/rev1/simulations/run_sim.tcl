@@ -5,6 +5,16 @@
 #vmap work work
 
 # simulate
-vsim -gui work.tx_mux_tb
-add wave sim:/tx_mux_tb/*
+vsim -gui work.top_tb
+add wave sim:/top_tb/*
+
+
+add wave sim:/top_tb/dut/E4/o_fsm_tx_start_pulse
+add wave sim:/top_tb/dut/E5/o_capture_done_pulse
+add wave sim:/top_tb/dut/E6/o_send_tx_start_pulse
+add wave sim:/top_tb/dut/E8/o_mux_tx_start_pulse
+add wave sim:/top_tb/dut/E9/o_tx_busy
+
+configure wave -timelineunits ns
+
 run -all

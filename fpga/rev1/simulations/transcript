@@ -97,3 +97,441 @@ run -all
 # HDL call sequence:
 # Stopped at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd 164 Process monitor_proc
 # 
+run -all
+# Cannot continue because of fatal error.
+# HDL call sequence:
+# Stopped at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd 164 Process monitor_proc
+# 
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+run -all
+# ** Failure: Simulation finished
+#    Time: 794685937 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 489
+# A time value could not be extracted from the current line
+configure wave -timelineunits us
+configure wave -timelineunits ns
+# WARNING: No extended dataflow license exists
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# ** Failure: Simulation finished
+#    Time: 794685937 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 489
+quit -sim
+# End time: 06:34:01 on Apr 14,2026, Elapsed time: 10:28:30
+# Errors: 1, Warnings: 1
+# Compile of SB_HFOSC.vhd was successful.
+# Compile of clocking_tb.vhd was successful.
+# Compile of clocking.vhd was successful.
+# Compile of clocking_tb.vhd was successful.
+# Compile of SB_HFOSC.vhd was successful.
+# 3 compiles, 0 failed with no errors.
+vsim -gui work.clocking_tb
+# vsim -gui work.clocking_tb 
+# Start time: 06:38:13 on Apr 14,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.clocking_tb(sim)
+# Loading work.clocking(rtl)
+# Loading work.sb_hfosc(sim)
+add wave sim:/clocking_tb/*
+run -all
+# ** Error: TC1a: expected falling edge and low signal on o_samp_tick | not observed
+#    Time: 30126 ps  Iteration: 2  Instance: /clocking_tb
+# ** Error: TC1b: expected rising edge and high signal on o_samp_tick | not observed
+#    Time: 50210 ps  Iteration: 2  Instance: /clocking_tb
+# ** Error: TC1a: expected falling edge and low signal on o_samp_tick | not observed
+#    Time: 70294 ps  Iteration: 2  Instance: /clocking_tb
+# ** Error: TC1b: expected rising edge and high signal on o_samp_tick | not observed
+#    Time: 90378 ps  Iteration: 2  Instance: /clocking_tb
+# ** Error: TC1a: expected falling edge and low signal on o_samp_tick | not observed
+#    Time: 110462 ps  Iteration: 2  Instance: /clocking_tb
+# ** Error: TC1b: expected rising edge and high signal on o_samp_tick | not observed
+#    Time: 130546 ps  Iteration: 2  Instance: /clocking_tb
+# ** Error: TC1a: expected falling edge and low signal on o_samp_tick | not observed
+#    Time: 150630 ps  Iteration: 2  Instance: /clocking_tb
+# ** Error: TC1b: expected rising edge and high signal on o_samp_tick | not observed
+#    Time: 170714 ps  Iteration: 2  Instance: /clocking_tb
+# ** Error: TC1a: expected falling edge and low signal on o_samp_tick | not observed
+#    Time: 190798 ps  Iteration: 2  Instance: /clocking_tb
+# ** Error: TC1b: expected rising edge and high signal on o_samp_tick | not observed
+#    Time: 210882 ps  Iteration: 2  Instance: /clocking_tb
+# ** Error: TC1a: expected falling edge and low signal on o_samp_tick | not observed
+#    Time: 230966 ps  Iteration: 2  Instance: /clocking_tb
+# ** Error: TC1b: expected rising edge and high signal on o_samp_tick | not observed
+#    Time: 251050 ps  Iteration: 2  Instance: /clocking_tb
+# ** Error: TC1a: expected falling edge and low signal on o_samp_tick | not observed
+#    Time: 271134 ps  Iteration: 2  Instance: /clocking_tb
+# ** Error: TC1b: expected rising edge and high signal on o_samp_tick | not observed
+#    Time: 291218 ps  Iteration: 2  Instance: /clocking_tb
+# ** Error: TC1a: expected falling edge and low signal on o_samp_tick | not observed
+#    Time: 311302 ps  Iteration: 2  Instance: /clocking_tb
+# ** Error: TC1b: expected rising edge and high signal on o_samp_tick | not observed
+#    Time: 331386 ps  Iteration: 2  Instance: /clocking_tb
+# ** Error: TC1a: expected falling edge and low signal on o_samp_tick | not observed
+#    Time: 351470 ps  Iteration: 2  Instance: /clocking_tb
+# ** Error: TC1b: expected rising edge and high signal on o_samp_tick | not observed
+#    Time: 371554 ps  Iteration: 2  Instance: /clocking_tb
+# ** Error: TC1a: expected falling edge and low signal on o_samp_tick | not observed
+#    Time: 391638 ps  Iteration: 2  Instance: /clocking_tb
+# ** Error: TC1b: expected rising edge and high signal on o_samp_tick | not observed
+#    Time: 411722 ps  Iteration: 2  Instance: /clocking_tb
+# ** Error: TC1a: expected falling edge and low signal on o_samp_tick | not observed
+#    Time: 431806 ps  Iteration: 2  Instance: /clocking_tb
+# ** Error: TC1b: expected rising edge and high signal on o_samp_tick | not observed
+#    Time: 451890 ps  Iteration: 2  Instance: /clocking_tb
+# ** Failure: Simulation finished
+#    Time: 660210 ps  Iteration: 0  Process: /clocking_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/clocking_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/clocking_tb.vhd line 84
+quit -sim
+# End time: 06:39:42 on Apr 14,2026, Elapsed time: 0:01:29
+# Errors: 23, Warnings: 4
+# Compile of clocking_tb.vhd was successful.
+vsim -gui work.clocking_tb
+# vsim -gui work.clocking_tb 
+# Start time: 06:40:13 on Apr 14,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.clocking_tb(sim)
+# Loading work.clocking(rtl)
+# Loading work.sb_hfosc(sim)
+add wave sim:/clocking_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 660210 ps  Iteration: 0  Process: /clocking_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/clocking_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/clocking_tb.vhd line 84
+quit -sim
+# End time: 06:41:14 on Apr 14,2026, Elapsed time: 0:01:01
+# Errors: 1, Warnings: 2
+vsim -gui work.top_tb
+# vsim -gui work.top_tb 
+# Start time: 06:42:20 on Apr 14,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.top_tb(sim)
+# Loading ieee.numeric_std(body)
+# Loading work.top(structure)
+# Loading work.clocking(rtl)
+# Loading work.sb_hfosc(sim)
+# Loading work.uart_rx(rtl)
+# Loading work.cmd_parser(rtl)
+# Loading work.analyzer_fsm(rtl)
+# Loading work.capture_engine(rtl)
+# Loading work.send_engine(rtl)
+# Loading work.trace_buffer(rtl)
+# Loading work.tx_mux(rtl)
+# Loading work.uart_tx(rtl)
+add wave sim:/top_tb/*
+add wave sim:/top_tb/dut/E4/o_fsm_tx_start_pulse
+add wave sim:/top_tb/dut/E5/o_capture_done_pulse
+add wave sim:/top_tb/dut/E6/o_send_tx_start_pulse
+add wave sim:/top_tb/dut/E8/o_mux_tx_start_pulse
+add wave sim:/top_tb/dut/E9/o_tx_busy
+run -all
+# ** Error: TC2/Run#0: data bit 7 not as expected
+#    Time: 35543168 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC3/Run#2: data bit 0 not as expected
+#    Time: 216154849 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC3/Run#2: data bit 1 not as expected
+#    Time: 217239918 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC3/Run#2: data bit 2 not as expected
+#    Time: 218324987 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC3/Run#2: data bit 3 not as expected
+#    Time: 219410056 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC3/Run#2: data bit 4 not as expected
+#    Time: 220495125 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC3/Run#2: data bit 5 not as expected
+#    Time: 221580194 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC3/Run#2: data bit 6 not as expected
+#    Time: 222665263 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC3/Run#2: data bit 7 not as expected
+#    Time: 223750332 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC3/Run#2: (stop bit) expected '1' | not observed
+#    Time: 224835401 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC3/Run#3: data bit 0 not as expected
+#    Time: 235053893 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC3/Run#3: data bit 1 not as expected
+#    Time: 236138962 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC3/Run#3: data bit 2 not as expected
+#    Time: 237224031 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC3/Run#3: data bit 3 not as expected
+#    Time: 238309100 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC3/Run#4: data bit 0 not as expected
+#    Time: 256061757 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC3/Run#4: data bit 1 not as expected
+#    Time: 257146826 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC3/Run#4: data bit 2 not as expected
+#    Time: 258231895 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC3/Run#4: data bit 3 not as expected
+#    Time: 259316964 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC3/Run#5: data bit 0 not as expected
+#    Time: 271807613 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC3/Run#5: data bit 1 not as expected
+#    Time: 272892682 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC3/Run#5: data bit 2 not as expected
+#    Time: 273977751 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC3/Run#5: data bit 5 not as expected
+#    Time: 277232958 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC3/Run#5: data bit 6 not as expected
+#    Time: 278318027 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC3/Run#5: data bit 7 not as expected
+#    Time: 279403096 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4a: 2nd response after back-to-backs (from IDLE) is not xEE
+#    Time: 320776935 ps  Iteration: 1  Instance: /top_tb
+# ** Error: MONITOR PROCESS: timeout waiting for start bit
+#    Time: 5506774859 ps  Iteration: 0  Instance: /top_tb
+# ** Error: MONITOR PROCESS: start bit not '0'
+#    Time: 5507317393 ps  Iteration: 0  Instance: /top_tb
+# ** Error: TC4b: 2nd response after back-to-backs (from CAPTURE) is not error code xEE
+#    Time: 5517625548 ps  Iteration: 1  Instance: /top_tb
+# ** Error: TC4b: 4th response after back-to-backs (from CAPTURE) is not error code xEE
+#    Time: 5517625548 ps  Iteration: 1  Instance: /top_tb
+# ** Error: TC4b: 5th response after back-to-backs (from CAPTURE) is not status code x77
+#    Time: 5517625548 ps  Iteration: 1  Instance: /top_tb
+# ** Error: TC4c: 5th response after back-to-backs (from DONE) is not data byte x33
+#    Time: 5777961247 ps  Iteration: 1  Instance: /top_tb
+# ** Error: TC4c: 6th response after back-to-backs (from DONE) is not data byte x33
+#    Time: 5777961247 ps  Iteration: 1  Instance: /top_tb
+# ** Failure: Simulation finished
+#    Time: 5824061507 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 489
+configure wave -timelineunits ns
+quit -sim
+# End time: 06:52:03 on Apr 14,2026, Elapsed time: 0:09:43
+# Errors: 33, Warnings: 1
+# Compile of clocking.vhd was successful.
+# Compile of clocking_tb.vhd was successful.
+# Compile of SB_HFOSC.vhd was successful.
+# Compile of top.vhd was successful.
+# Compile of top_tb.vhd was successful.
+# 5 compiles, 0 failed with no errors.
+vsim -gui work.top_tb
+# vsim -gui work.top_tb 
+# Start time: 06:52:43 on Apr 14,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.top_tb(sim)
+# Loading ieee.numeric_std(body)
+# Loading work.top(structure)
+# Loading work.clocking(rtl)
+# Loading work.sb_hfosc(sim)
+# Loading work.uart_rx(rtl)
+# Loading work.cmd_parser(rtl)
+# Loading work.analyzer_fsm(rtl)
+# Loading work.capture_engine(rtl)
+# Loading work.send_engine(rtl)
+# Loading work.trace_buffer(rtl)
+# Loading work.tx_mux(rtl)
+# Loading work.uart_tx(rtl)
+add wave sim:/top_tb/*
+	add wave sim:/top_tb/dut/E4/o_fsm_tx_start_pulse
+	add wave sim:/top_tb/dut/E5/o_capture_done_pulse
+	add wave sim:/top_tb/dut/E6/o_send_tx_start_pulse
+	add wave sim:/top_tb/dut/E8/o_mux_tx_start_pulse
+	add wave sim:/top_tb/dut/E9/o_tx_busy
+run -all
+# ** Failure: Simulation finished
+#    Time: 794685937 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 489
+configure wave -timelineunits ns
+quit -sim
+# End time: 07:01:01 on Apr 14,2026, Elapsed time: 0:08:18
+# Errors: 1, Warnings: 2
+# Compile of SB_HFOSC.vhd was successful.
+# Load canceled
+# Compile of SB_HFOSC.vhd was successful.
+vsim -gui work.top_tb
+# vsim -gui work.top_tb 
+# Start time: 07:01:58 on Apr 14,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.top_tb(sim)
+# Loading ieee.numeric_std(body)
+# Loading work.top(structure)
+# Loading work.clocking(rtl)
+# Loading work.sb_hfosc(sim)
+# Loading work.uart_rx(rtl)
+# Loading work.cmd_parser(rtl)
+# Loading work.analyzer_fsm(rtl)
+# Loading work.capture_engine(rtl)
+# Loading work.send_engine(rtl)
+# Loading work.trace_buffer(rtl)
+# Loading work.tx_mux(rtl)
+# Loading work.uart_tx(rtl)
+add wave sim:/top_tb/*
+add wave sim:/top_tb/dut/E4/o_fsm_tx_start_pulse
+add wave sim:/top_tb/dut/E5/o_capture_done_pulse
+add wave sim:/top_tb/dut/E6/o_send_tx_start_pulse
+add wave sim:/top_tb/dut/E8/o_mux_tx_start_pulse
+add wave sim:/top_tb/dut/E9/o_tx_busy
+
+configure wave -timelineunits ns
+run -all
+# ** Failure: Simulation finished
+#    Time: 794719502 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 489
+add wave sim:/top_tb/dut/E6/o_send_tx_byte
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# ** Failure: Simulation finished
+#    Time: 794719502 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 489
+quit -sim
+# End time: 07:16:40 on Apr 16,2026, Elapsed time: 48:14:42
+# Errors: 1, Warnings: 1
+# Compile of send_engine.vhd was successful.
+# Compile of send_engine_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -gui work.send_engine_tb
+# vsim -gui work.send_engine_tb 
+# Start time: 07:17:21 on Apr 16,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.send_engine_tb(sim)
+# Loading work.send_engine(rtl)
+add wave sim:/send_engine_tb/*
+run -all
+# ** Failure: Simulation finished
+#    Time: 171646264 ps  Iteration: 0  Process: /send_engine_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd line 390
+quit -sim
+# End time: 07:41:23 on Apr 16,2026, Elapsed time: 0:24:02
+# Errors: 1, Warnings: 2
+# Compile of send_engine.vhd was successful.
+# Compile of send_engine_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -gui work.send_engine_tb
+# vsim -gui work.send_engine_tb 
+# Start time: 07:41:37 on Apr 16,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.send_engine_tb(sim)
+# Loading work.send_engine(rtl)
+add wave sim:/send_engine_tb/*
+run -all
+# ** Error: TC3(Sample 1): Ram address not updated to 1 after 1 clock cycle in SEND_DATA state
+#    Time: 156240 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC3(Sample 1): Data not equal to CC
+#    Time: 156240 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC3(Sample 1): Start pulse not high when sending 1st data byte in state SEND_DATA...
+#    Time: 156240 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC3(Sample 1): Start pulse asserted high while in SEND_SET_ADDR
+#    Time: 177072 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC3(Sample 2): Ram address not updated to 2 after 2nd clock cycle in SEND_DATA state
+#    Time: 197904 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC3(Sample 2): Ram data not updated to AA
+#    Time: 197904 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC3(Sample 2): Start pulse not asserted high while in SEND_DATA
+#    Time: 197904 ps  Iteration: 1  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 2737): Header byte not sent despite tx_busy being low
+#    Time: 171229624 ps  Iteration: 0  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 2738): Header byte not sent despite tx_busy being low
+#    Time: 171250456 ps  Iteration: 0  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 2738): Ram address not updated to 1 after 1 clock cycle in SEND_DATA state
+#    Time: 171271288 ps  Iteration: 0  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 2738): Start pulse not high when sending 1st data byte in state SEND_DATA...
+#    Time: 171271288 ps  Iteration: 0  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 2738): Ram address updated while in SEND_SET_ADDR
+#    Time: 171292120 ps  Iteration: 0  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 2738): RAM data updated while in SEND_SET_ADDR
+#    Time: 171292120 ps  Iteration: 0  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 2738): Start pulse asserted high while in SEND_SET_ADDR
+#    Time: 171292120 ps  Iteration: 0  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 2739): Ram address not updated to 2 after 2nd clock cycle in SEND_DATA state
+#    Time: 171312952 ps  Iteration: 0  Instance: /send_engine_tb
+# ** Error: TC5b(Sample 2739): Start pulse not asserted high while in SEND_DATA
+#    Time: 171312952 ps  Iteration: 0  Instance: /send_engine_tb
+# ** Error: TC5c(Sample 2739): Ram address updated while in SEND_SET_ADDR
+#    Time: 171354616 ps  Iteration: 0  Instance: /send_engine_tb
+# ** Error: TC5c(Sample 2739): Ram address updated despite tx_busy being high
+#    Time: 171375448 ps  Iteration: 0  Instance: /send_engine_tb
+# ** Error: TC5c(Sample 2739): Ram address updated despite tx_busy being high
+#    Time: 171396280 ps  Iteration: 0  Instance: /send_engine_tb
+# ** Error: TC5c(Sample 2739): Ram address updated despite tx_busy being high
+#    Time: 171417112 ps  Iteration: 0  Instance: /send_engine_tb
+# ** Error: TC5c(Sample 2739): Ram address updated despite tx_busy being high
+#    Time: 171437944 ps  Iteration: 0  Instance: /send_engine_tb
+# ** Error: TC5c(Sample 2739): Ram address updated despite tx_busy being high
+#    Time: 171458776 ps  Iteration: 0  Instance: /send_engine_tb
+# ** Error: TC5c(Sample 2739): Ram address updated despite tx_busy being high
+#    Time: 171479608 ps  Iteration: 0  Instance: /send_engine_tb
+# ** Error: TC5c(Sample 2739): Ram address updated despite tx_busy being high
+#    Time: 171500440 ps  Iteration: 0  Instance: /send_engine_tb
+# ** Error: TC5c(Sample 2739): Ram address updated despite tx_busy being high
+#    Time: 171521272 ps  Iteration: 0  Instance: /send_engine_tb
+# ** Error: TC5c(Sample 2739): Ram address updated despite tx_busy being high
+#    Time: 171542104 ps  Iteration: 0  Instance: /send_engine_tb
+# ** Error: TC5c(Sample 2739): Ram address updated despite tx_busy being high
+#    Time: 171562936 ps  Iteration: 0  Instance: /send_engine_tb
+# ** Error: TC5c(Sample 2739): Ram address updated despite tx_busy being high
+#    Time: 171583768 ps  Iteration: 0  Instance: /send_engine_tb
+# ** Failure: Simulation finished
+#    Time: 171583768 ps  Iteration: 0  Process: /send_engine_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd line 392
+quit -sim
+# End time: 07:43:29 on Apr 16,2026, Elapsed time: 0:01:52
+# Errors: 29, Warnings: 2
+# Compile of top_tb.vhd was successful.
+vsim -gui work.top_tb
+# vsim -gui work.top_tb 
+# Start time: 07:43:48 on Apr 16,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.top_tb(sim)
+# ** Error: (vsim-13) Recompile work.top(structure) because work.send_engine has changed.
+# Load interrupted
+# Error loading design
+# End time: 07:43:49 on Apr 16,2026, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 2
+# Compile of top.vhd was successful.
+vsim -gui work.top_tb
+# vsim -gui work.top_tb 
+# Start time: 07:44:11 on Apr 16,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.top_tb(sim)
+# Loading ieee.numeric_std(body)
+# Loading work.top(structure)
+# Loading work.clocking(rtl)
+# Loading work.sb_hfosc(sim)
+# Loading work.uart_rx(rtl)
+# Loading work.cmd_parser(rtl)
+# Loading work.analyzer_fsm(rtl)
+# Loading work.capture_engine(rtl)
+# Loading work.send_engine(rtl)
+# Loading work.trace_buffer(rtl)
+# Loading work.tx_mux(rtl)
+# Loading work.uart_tx(rtl)
+add wave sim:/top_tb/*
+add wave sim:/top_tb/dut/E4/o_fsm_tx_start_pulse
+add wave sim:/top_tb/dut/E5/o_capture_done_pulse
+add wave sim:/top_tb/dut/E6/o_send_tx_start_pulse
+add wave sim:/top_tb/dut/E8/o_mux_tx_start_pulse
+add wave sim:/top_tb/dut/E9/o_tx_busy
+
+configure wave -timelineunits ns
+run -all
+# ** Failure: Simulation finished
+#    Time: 794719502 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 489

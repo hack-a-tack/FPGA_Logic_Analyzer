@@ -2,7 +2,7 @@
 -- MODULE: send_engine.vhd
 -- FUNCTION: streams captured data from BRAM to host via UART
 -- AUTHOR: Jakob Kieszek Ottesen
--- DATE: 2026-03-31 (YYYY-MM-DD)
+-- DATE: 2026-04-16 (YYYY-MM-DD)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -18,10 +18,13 @@
 -- o_send_done_pulse		1 bit		-> analyzer_fsm
 --
 -- NOTES
--- o_ram_rd_addr (going to trace_buffer) is set at the same time as the tx_byte and tx_start_pulse (going to tx_mux).
+-- o_ram_rd_addr (-> trace_buffer) is set at the same time as the tx_byte and tx_start_pulse (-> tx_mux) [SEND_DATA].
 -- BUT!: note that the ram_rd_addr is 1 cycle ahead and in the waveform will show address 1 when sample 0 was just sent to tx_mux
 -- this is because the rd_addr is passed to trace_buffer slightly ahead of time so the associated data arrives at send_engine in time
--- ... for it to be sent to tx_mux
+-- ... for it to be sent to tx_mux.
+-- state [SEND_SET_ADDR] is used so trace_buffer has time to load ram data (associated with o_ram_rd_addr) onto the i_ram_rd_data line.
+-- state [SEND_HOLD] is used to stall one more clock cycle, such that i_tx_busy (from uart_tx) has time to reach send_engine before
+-- ... we prematurely skip to the next ram address before uart_tx actually sending the previous one
 --
 -- PREFIXES
 -- i_ : input
@@ -55,7 +58,7 @@ end entity send_engine;
 
 architecture RTL of send_engine is
 	-- Internal send_engine state machine
-	type send_engine_state_type is (SEND_IDLE, SEND_HEADER, SEND_SET_ADDR, SEND_DATA);
+	type send_engine_state_type is (SEND_IDLE, SEND_HEADER, SEND_SET_ADDR, SEND_HOLD, SEND_DATA);
 	
 	-- Register signals, next-state signals
 	signal r_state, n_state : send_engine_state_type := SEND_IDLE;
@@ -117,6 +120,12 @@ begin
 				
 			when SEND_SET_ADDR =>
 				-- synchronous RAM latency stage (1 clock to produce valid i_ram_rd_data after o_ram_rd_addr changes)
+				n_state <= SEND_HOLD;
+				
+			when SEND_HOLD =>
+				-- add one clock cycle for updated i_tx_busy flag to reach send_engine before new transfer is initiated.
+				-- without this the module sends 2 start pulses every time tx_busy goes low because it doesn't toggle fast enough.
+				-- but the uart_tx module only takes one byte (and sets busy high) so essentially half the samples never get transmitted.
 				n_state <= SEND_DATA;
 			
 			when SEND_DATA =>
@@ -133,7 +142,7 @@ begin
 						n_ram_rd_addr <= std_logic_vector(unsigned(r_ram_rd_addr) + 1);
 						n_state <= SEND_SET_ADDR;
 					end if;
-				end if;
+				end if;				
 		end case;
 	end process fsm_proc;
 	

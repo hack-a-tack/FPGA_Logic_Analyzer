@@ -249,7 +249,7 @@ begin
 		i_ram_rd_data <= x"33";  -- 0011 0011
 		wait until rising_edge(i_clk);
 		i_send_start_pulse <= '0';
-		wait until rising_edge(i_clk);  -- arrive in SEND_HEADER (will remain here until tx_busy goes low
+		wait until rising_edge(i_clk);  -- arrive in SEND_HEADER (will remain here until tx_busy goes low)
 		wait until rising_edge(i_clk);  -- tx_byte and tx_start_pulse should not have been updated
 		assert o_send_tx_byte = x"AA"
 			report "TC5a(Sample " & integer'image(tick_count) & "): Data byte has been updated but tx is busy"
@@ -384,6 +384,8 @@ begin
 				report "TC5c(Sample " & integer'image(tick_count) & "): send_done_pulse asserted high despite tx_busy being high"
 				severity error;
 		end loop;
+		
+		-- Test case 6: tx_busy does not update immediately
 
         -- Finish simulation
         --wait for 10*CLK_ACTUAL;

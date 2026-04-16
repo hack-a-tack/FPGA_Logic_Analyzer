@@ -28,7 +28,7 @@ entity SB_HFOSC is
 end entity SB_HFOSC; 
 
 architecture sim of SB_HFOSC is
-	constant HALF : time := 10.416 ns;  -- 48MHz
+	constant HALF : time := 10.4165 ns;  -- 48MHz, 20.833 period
 begin
 	process
 	begin
