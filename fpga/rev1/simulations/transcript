@@ -101,3 +101,234 @@ run -all
 # ** Failure: Simulation finished
 #    Time: 257557432 ps  Iteration: 0  Process: /send_engine_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd
 # Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd line 587
+quit -sim
+# End time: 07:44:53 on Apr 18,2026, Elapsed time: 23:24:18
+# Errors: 1, Warnings: 4
+# Compile of uart_rx.vhd was successful.
+# Compile of uart_rx_tb.vhd was successful.
+# Compile of uart_tx.vhd was successful.
+# Compile of uart_tx_tb.vhd was successful.
+# Compile of cmd_parser_tb.vhd was successful.
+# Compile of cmd_parser.vhd was successful with warnings.
+# Compile of analyzer_fsm.vhd was successful.
+# Compile of analyzer_fsm_tb.vhd was successful.
+# Compile of capture_engine.vhd was successful.
+# Compile of capture_engine_tb.vhd was successful.
+# Compile of send_engine.vhd was successful.
+# Compile of send_engine_tb.vhd was successful.
+# Compile of trace_buffer.vhd was successful.
+# Compile of trace_buffer_tb.vhd was successful.
+# Compile of tx_mux.vhd was successful.
+# Compile of tx_mux_tb.vhd was successful.
+# Compile of clocking.vhd was successful.
+# Compile of clocking_tb.vhd was successful.
+# Compile of SB_HFOSC.vhd was successful.
+# Compile of top.vhd was successful.
+# Compile of top_tb.vhd was successful.
+# 21 compiles, 0 failed with no errors.
+vsim -gui work.top_tb
+# vsim -gui work.top_tb 
+# Start time: 08:05:42 on Apr 18,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.top_tb(sim)
+# Loading ieee.numeric_std(body)
+# Loading work.top(structure)
+# Loading work.clocking(rtl)
+# Loading work.sb_hfosc(sim)
+# Loading work.uart_rx(rtl)
+# Loading work.cmd_parser(rtl)
+# Loading work.analyzer_fsm(rtl)
+# Loading work.capture_engine(rtl)
+# Loading work.send_engine(rtl)
+# Loading work.trace_buffer(rtl)
+# Loading work.tx_mux(rtl)
+# Loading work.uart_tx(rtl)
+add wave sim:/top_tb/*
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: Jakob  Hostname: DESKTOP-JTKRLJD  ProcessID: 13976
+#           Attempting to use alternate WLF file "./wlft3881mi".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlft3881mi
+add wave sim:/top_tb/dut/E4/o_fsm_tx_start_pulse
+add wave sim:/top_tb/dut/E5/o_capture_done_pulse
+add wave sim:/top_tb/dut/E6/o_send_tx_start_pulse
+add wave sim:/top_tb/dut/E8/o_mux_tx_start_pulse
+add wave sim:/top_tb/dut/E9/o_tx_busy
+
+configure wave -timelineunits ns
+run -all
+# ** Failure: Simulation finished
+#    Time: 794719502 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 489
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+add wave sim:/top_tb/dut/E3/o_capture_cmd_pulse
+add wave sim:/top_tb/dut/E3/o_read_cmd_pulse
+add wave sim:/top_tb/dut/E3/o_cmd_error_pulse
+add wave sim:/top_tb/dut/E6/i_tx_busy
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# ** Failure: Simulation finished
+#    Time: 794719502 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 489
+quit -sim
+# End time: 12:53:27 on Apr 18,2026, Elapsed time: 4:47:45
+# Errors: 1, Warnings: 1
+# Compile of uart_tx.vhd was successful.
+# Compile of uart_tx_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -gui work.uart_tx_tb
+# vsim -gui work.uart_tx_tb 
+# Start time: 12:54:30 on Apr 18,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_tx_tb(sim)
+# Loading work.uart_tx(rtl)
+add wave sim:/uart_tx_tb/*
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: Jakob  Hostname: DESKTOP-JTKRLJD  ProcessID: 13976
+#           Attempting to use alternate WLF file "./wlftqksqx8".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftqksqx8
+run -all
+# ** Failure: Simulation finished
+#    Time: 55215216 ps  Iteration: 0  Process: /uart_tx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_tx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_tx_tb.vhd line 273
+configure wave -timelineunits ns
+quit -sim
+# End time: 13:01:40 on Apr 18,2026, Elapsed time: 0:07:10
+# Errors: 1, Warnings: 4
+# Compile of uart_tx.vhd was successful.
+# Compile of uart_tx_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -gui work.uart_tx_tb
+# vsim -gui work.uart_tx_tb 
+# Start time: 13:02:11 on Apr 18,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_tx_tb(sim)
+# Loading work.uart_tx(rtl)
+add wave sim:/uart_tx_tb/*
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: Jakob  Hostname: DESKTOP-JTKRLJD  ProcessID: 13976
+#           Attempting to use alternate WLF file "./wlft9hmyxg".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlft9hmyxg
+run -all
+# ** Error: TC7: uart_tx not outputting IDLE HIGH ('1')
+#    Time: 11488848 ps  Iteration: 1  Instance: /uart_tx_tb
+# ** Failure: Simulation finished
+#    Time: 55215216 ps  Iteration: 0  Process: /uart_tx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_tx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_tx_tb.vhd line 273
+quit -sim
+# End time: 13:21:57 on Apr 18,2026, Elapsed time: 0:19:46
+# Errors: 2, Warnings: 4
+# Compile of uart_tx.vhd was successful.
+# Compile of uart_tx_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -gui work.uart_tx_tb
+# vsim -gui work.uart_tx_tb 
+# Start time: 13:22:17 on Apr 18,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.uart_tx_tb(sim)
+# Loading work.uart_tx(rtl)
+add wave sim:/uart_tx_tb/*
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: Jakob  Hostname: DESKTOP-JTKRLJD  ProcessID: 13976
+#           Attempting to use alternate WLF file "./wlftee5wx9".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftee5wx9
+run -all
+# ** Failure: Simulation finished
+#    Time: 55215216 ps  Iteration: 0  Process: /uart_tx_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_tx_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/uart_tx_tb.vhd line 273
+quit -sim
+# End time: 13:30:46 on Apr 18,2026, Elapsed time: 0:08:29
+# Errors: 1, Warnings: 5
+# Compile of uart_tx.vhd was successful.
+vsim -gui work.top_tb
+# vsim -gui work.top_tb 
+# Start time: 13:45:10 on Apr 18,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.top_tb(sim)
+# ** Error: (vsim-13) Recompile work.top(structure) because work.uart_tx has changed.
+# Load interrupted
+# Error loading design
+# End time: 13:45:11 on Apr 18,2026, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 2
+# Compile of uart_rx.vhd was successful.
+# Compile of uart_rx_tb.vhd was successful.
+# Compile of uart_tx.vhd was successful.
+# Compile of uart_tx_tb.vhd was successful.
+# Compile of cmd_parser_tb.vhd was successful.
+# Compile of cmd_parser.vhd was successful with warnings.
+# Compile of analyzer_fsm.vhd was successful.
+# Compile of analyzer_fsm_tb.vhd was successful.
+# Compile of capture_engine.vhd was successful.
+# Compile of capture_engine_tb.vhd was successful.
+# Compile of send_engine.vhd was successful.
+# Compile of send_engine_tb.vhd was successful.
+# Compile of trace_buffer.vhd was successful.
+# Compile of trace_buffer_tb.vhd was successful.
+# Compile of tx_mux.vhd was successful.
+# Compile of tx_mux_tb.vhd was successful.
+# Compile of clocking.vhd was successful.
+# Compile of clocking_tb.vhd was successful.
+# Compile of SB_HFOSC.vhd was successful.
+# Compile of top.vhd was successful.
+# Compile of top_tb.vhd was successful.
+# 21 compiles, 0 failed with no errors.
+vsim -gui work.top_tb
+# vsim -gui work.top_tb 
+# Start time: 13:45:32 on Apr 18,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.top_tb(sim)
+# Loading ieee.numeric_std(body)
+# Loading work.top(structure)
+# Loading work.clocking(rtl)
+# Loading work.sb_hfosc(sim)
+# Loading work.uart_rx(rtl)
+# Loading work.cmd_parser(rtl)
+# Loading work.analyzer_fsm(rtl)
+# Loading work.capture_engine(rtl)
+# Loading work.send_engine(rtl)
+# Loading work.trace_buffer(rtl)
+# Loading work.tx_mux(rtl)
+# Loading work.uart_tx(rtl)
+add wave sim:/top_tb/*
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: Jakob  Hostname: DESKTOP-JTKRLJD  ProcessID: 13976
+#           Attempting to use alternate WLF file "./wlftfk46sc".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftfk46sc
+add wave sim:/top_tb/*
+add wave sim:/top_tb/dut/E3/o_capture_cmd_pulse
+add wave sim:/top_tb/dut/E3/o_read_cmd_pulse
+add wave sim:/top_tb/dut/E3/o_cmd_error_pulse
+add wave sim:/top_tb/dut/E4/o_fsm_tx_start_pulse
+add wave sim:/top_tb/dut/E5/o_capture_done_pulse
+add wave sim:/top_tb/dut/E6/o_send_tx_start_pulse
+add wave sim:/top_tb/dut/E6/i_tx_busy
+add wave sim:/top_tb/dut/E8/o_mux_tx_start_pulse
+add wave sim:/top_tb/dut/E9/o_tx_busy
+
+configure wave -timelineunits ns
+run -all
+# ** Failure: Simulation finished
+#    Time: 794865340 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
+# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 489

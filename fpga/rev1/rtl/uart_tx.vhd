@@ -2,7 +2,7 @@
 -- MODULE: uart_tx.vhd
 -- FUNCTION: converts data bytes going to the host into serial UART data
 -- AUTHOR: Jakob Kieszek Ottesen
--- DATE: 2026-03-22 (YYYY-MM-DD)
+-- DATE: 2026-04-18 (YYYY-MM-DD)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -22,6 +22,16 @@
 -- --> Each bit has to be transmitted for CLKS_PER_BIT (~52) clock cycles
 -- Therefore, actual baud rate = 48e6/52 = 923076, not 921600 --> +0.16% error
 -- But UART usually tolerates +- 2-3% error
+--
+-- Note: DEMONSTRATING TX_STOP_BIT flow and why tx_busy and UART_TX_LED
+-- ... are toggled prematurely relative to 52 clocks per bit
+-- Registered signal observed next clock --> i.e. clock counter = 51 => 52nd clock cycle in TX_STOP_BIT
+-- But because signal is registered, the 52nd stop bit is seen first in the following clock cycle
+-- _ = low; - = high; P = previous
+-- clock cycle in TX_STOP_BIT:|1|2|3|4|5|6|...|50|51|52|(IDLE)|...
+-- n_UART_TX                  |-|-|-|-|-|-|...|--|--|--|signal changes to what it's given in IDLE
+-- o_UART_TX                  |P|-|-|-|-|-|...|--|--|--|-----|signal changes to what it's given in IDLE
+-- observed in waveform         |1|2|3|4|5|...|49|50|51|52   |<new uart bit period>
 --
 -- PREFIXES					
 -- i_ : input
@@ -109,16 +119,14 @@ begin
 	
 		case r_state is
 			when TX_IDLE =>
+				n_tx_busy <= '0';
+				n_UART_TX <= '1';  -- force line high (UART is idle high)
 				if i_mux_tx_start_pulse = '1' then
 					n_tx_byte <= i_mux_tx_byte;  -- latch input byte so it doesn't change during transmission
 					n_clk_counter <= 0;
 					n_bit_counter <= 0;
-					n_tx_busy <= '1';  -- assert busy flag so analyzer_fsm/send_engine waits
-					n_UART_TX <= '0';
+					n_tx_busy <= '1';  -- assert busy flag so send_engine waits
 					n_state <= TX_START_BIT;
-				else
-					n_tx_busy <= '0';
-					n_UART_TX <= '1';  -- force line high (UART is idle high)
 				end if;
 			
 			when TX_START_BIT =>  -- hold '0' for CLKS_PER_BIT
@@ -153,8 +161,8 @@ begin
 				if r_clk_counter = CLKS_PER_BIT-1 then
 					n_clk_counter <= 0;
 					n_bit_counter <= 0;
-					n_tx_busy <= '0';
-					n_UART_TX_LED <= not r_UART_TX_LED;
+					n_tx_busy <= '0';  -- premature (1 clk) busy toggle to keep good flow with 
+					n_UART_TX_LED <= not r_UART_TX_LED;  -- premature LED toggle (after 51 clks of stop bit HIGH)
 					n_state <= TX_IDLE;
 				else
 					n_clk_counter <= r_clk_counter + 1;

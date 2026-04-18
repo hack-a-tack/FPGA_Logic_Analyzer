@@ -7,8 +7,8 @@ GND             9 uses
 SB_CARRY        52 uses
 SB_DFF          24 uses
 SB_DFFESR       32 uses
-SB_DFFSR        83 uses
-SB_DFFSS        3 uses
+SB_DFFSR        85 uses
+SB_DFFSS        4 uses
 SB_GB           2 uses
 SB_HFOSC        1 use
 SB_RAM2048x2    8 uses
@@ -20,7 +20,7 @@ I/O primitives: 14
 SB_IO          14 uses
 
 I/O Register bits:                  0
-Register bits not including I/Os:   142 (2%)
+Register bits not including I/Os:   145 (2%)
 
 RAM/ROM usage summary
 Block Rams : 8 of 30 (26%)

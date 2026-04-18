@@ -5,14 +5,14 @@
 
 #### START OF CLOCK OPTIMIZATION REPORT #####[
 
-2 non-gated/non-generated clock tree(s) driving 158 clock pin(s) of sequential element(s)
+2 non-gated/non-generated clock tree(s) driving 161 clock pin(s) of sequential element(s)
 0 gated/generated clock tree(s) driving 0 clock pin(s) of sequential element(s)
 0 instances converted, 0 sequential instances remain driven by gated/generated clocks
 
 =================================== Non-Gated/Non-Generated Clocks ===================================
 Clock Tree ID     Driving Element     Drive Element Type                Fanout     Sample Instance    
 ------------------------------------------------------------------------------------------------------
-@K:CKID0001       E1                  clock definition on hierarchy     157        E9.r_clk_counter[0]
+@K:CKID0001       E1                  clock definition on hierarchy     160        E9.r_clk_counter[0]
 @K:CKID0002       E1.o_clk_keep       clock definition on keepbuf       1          E1.r_samp_tick     
 ======================================================================================================
 
