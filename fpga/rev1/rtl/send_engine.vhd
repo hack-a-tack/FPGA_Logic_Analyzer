@@ -122,6 +122,10 @@ begin
 				-- synchronous RAM latency stage (1 clock to produce valid i_ram_rd_data after o_ram_rd_addr changes)
 				n_state <= SEND_HOLD;
 				
+				
+			-- Rev1 workaround (with extra intermediary clock cycle) tolerates only bounded busy-feedback latency
+			-- duplicate sends still possible if busy feedback is delayed too many cycles
+			-- Rev2 will replace this with explicit handshake
 			when SEND_HOLD =>
 				-- add one clock cycle for updated i_tx_busy flag to reach send_engine before new transfer is initiated.
 				-- without this the module sends 2 start pulses every time tx_busy goes low because it doesn't toggle fast enough.
@@ -134,7 +138,7 @@ begin
 					n_send_tx_start_pulse <= '1';
 					
 					if r_ram_rd_addr = LAST_ADDR then
-						-- Sample nr 4096 (index 4095) just captured
+						-- Last sample (nr 4096, index 4095) just launched to tx_path
 						n_send_done_pulse <= '1';
 						n_ram_rd_addr <= (others => '0');
 						n_state <= SEND_IDLE;

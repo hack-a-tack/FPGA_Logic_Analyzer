@@ -2,7 +2,7 @@
 -- MODULE: send_engine_tb.vhd
 -- FUNCTION: TESTBENCH for entity which streams captured data from BRAM to host
 -- AUTHOR: Jakob Kieszek Ottesen
--- DATE: 2026-04-01 (YYYY-MM-DD)
+-- DATE: 2026-04-17 (YYYY-MM-DD)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -165,18 +165,32 @@ begin
 			
 		-- Test case 2: check that start pulse is only high for 1 clock cycle
 		test_id <= 2;
-		wait until rising_edge(i_clk);  -- right after, we're in state SEND_DATA
+		wait until rising_edge(i_clk);  -- right after, we're in state SEND_HOLD
 		assert o_ram_rd_addr = x"000"
-			report "TC2(Sample " & integer'image(tick_count) & "): Ram address updated in state SEND_SET_ADDR, now in state SEND_DATA"
+			report "TC2(Sample " & integer'image(tick_count) & "): Ram address updated in state SEND_SET_ADDR, now in state SEND_HOLD"
 			severity error;
 		assert o_send_tx_byte = x"99"
 			report "TC2(Sample " & integer'image(tick_count) & "): Tx byte updated while in state SEND_SET_ADDR"
 			severity error;
 		assert o_send_tx_start_pulse = '0'
+			report "TC2(Sample " & integer'image(tick_count) & "): Start pulse high but should be reset to '0' when just arrived in SEND_HOLD state"
+			severity error;
+		assert o_send_done_pulse = '0'
+			report "TC2(Sample " & integer'image(tick_count) & "): send_done_pulse asserted high while in state SEND_SET_ADDR (now SEND_HOLD)"
+			severity error;
+			
+		wait until rising_edge(i_clk);  -- right after, we're in state SEND_DATA
+		assert o_ram_rd_addr = x"000"
+			report "TC2(Sample " & integer'image(tick_count) & "): Ram address updated in state SEND_HOLD, now in state SEND_DATA"
+			severity error;
+		assert o_send_tx_byte = x"99"
+			report "TC2(Sample " & integer'image(tick_count) & "): Tx byte updated while in state SEND_HOLD"
+			severity error;
+		assert o_send_tx_start_pulse = '0'
 			report "TC2(Sample " & integer'image(tick_count) & "): Start pulse high but should be reset to '0' when just arrived in SEND_DATA state"
 			severity error;
 		assert o_send_done_pulse = '0'
-			report "TC2(Sample " & integer'image(tick_count) & "): send_done_pulse asserted high while in state SEND_SET_ADDR (now SEND_DATA)"
+			report "TC2(Sample " & integer'image(tick_count) & "): send_done_pulse asserted high while in state SEND_HOLD (now SEND_DATA)"
 			severity error;
 		
 		-- Test case 3: first few data bytes
@@ -195,19 +209,33 @@ begin
 			report "TC3(Sample " & integer'image(tick_count) & "): send_done_pulse asserted high prematurely (still sending data)"
 			severity error;
 			
-		i_ram_rd_data <= x"AA";  -- 1010 1010
-		wait until rising_edge(i_clk);  -- finished in SEND_SET_ADDR, start second cycle in state SEND_DATA
+		wait until rising_edge(i_clk);  -- finished first cycle in state SEND_SET_ADDR, then in SEND_HOLD for 1 cycle
 		assert o_ram_rd_addr = x"001"
-			report "TC3(Sample " & integer'image(tick_count) & "): Ram address updated while in SEND_SET_ADDR"
+			report "TC3(Sample " & integer'image(tick_count) & "): Ram address not updated to 1 after 1 clock cycle in SEND_SET_ADDR state"
 			severity error;
 		assert o_send_tx_byte = x"CC"
-			report "TC3(Sample " & integer'image(tick_count) & "): RAM data updated while in SEND_SET_ADDR"
+			report "TC3(Sample " & integer'image(tick_count) & "): Data not equal to CC"
 			severity error;
 		assert o_send_tx_start_pulse = '0'
-			report "TC3(Sample " & integer'image(tick_count) & "): Start pulse asserted high while in SEND_SET_ADDR"
+			report "TC3(Sample " & integer'image(tick_count) & "): Start pulse still high (2nd clock cycle) after state SEND_SET_ADDR..."
 			severity error;
 		assert o_send_done_pulse = '0'
-			report "TC3(Sample " & integer'image(tick_count) & "): send_done_pulse asserted high while in SEND_SET_ADDR"
+			report "TC3(Sample " & integer'image(tick_count) & "): send_done_pulse asserted high prematurely (still sending data)"
+			severity error;
+			
+		i_ram_rd_data <= x"AA";  -- 1010 1010
+		wait until rising_edge(i_clk);  -- finished in SEND_HOLD, start second cycle in state SEND_DATA
+		assert o_ram_rd_addr = x"001"
+			report "TC3(Sample " & integer'image(tick_count) & "): Ram address updated while in SEND_HOLD"
+			severity error;
+		assert o_send_tx_byte = x"CC"
+			report "TC3(Sample " & integer'image(tick_count) & "): RAM data updated while in SEND_HOLD"
+			severity error;
+		assert o_send_tx_start_pulse = '0'
+			report "TC3(Sample " & integer'image(tick_count) & "): Start pulse asserted high while in SEND_HOLD"
+			severity error;
+		assert o_send_done_pulse = '0'
+			report "TC3(Sample " & integer'image(tick_count) & "): send_done_pulse asserted high while in SEND_HOLD"
 			severity error;
 			
 		wait until rising_edge(i_clk);  -- finished 2nd cycle in state SEND_DATA, then in SEND_SET_ADDR for 1 cycle
@@ -223,10 +251,38 @@ begin
 		assert o_send_done_pulse = '0'
 			report "TC3(Sample " & integer'image(tick_count) & "): send_done_pulse asserted high while still sending data"
 			severity error;
+			
+		wait until rising_edge(i_clk);  -- finished 2nd cycle in state SEND_SET_ADDR, then in SEND_HOLD for 1 cycle
+		assert o_ram_rd_addr = x"002"
+			report "TC3(Sample " & integer'image(tick_count) & "): Ram address not 2 after 2nd clock cycle in SEND_SET_ADDR state"
+			severity error;
+		assert o_send_tx_byte = x"AA"
+			report "TC3(Sample " & integer'image(tick_count) & "): Data not equal to AA"
+			severity error;
+		assert o_send_tx_start_pulse = '0'
+			report "TC3(Sample " & integer'image(tick_count) & "): Start pulse high when it should have gone low at the end of state SEND_SET_ADDR (ie now)..."
+			severity error;
+		assert o_send_done_pulse = '0'
+			report "TC3(Sample " & integer'image(tick_count) & "): send_done_pulse asserted high prematurely (still sending data)"
+			severity error;
+			
+		wait until rising_edge(i_clk);  -- finished in SEND_HOLD, start 3rd cycle in state SEND_DATA
+		assert o_ram_rd_addr = x"002"
+			report "TC3(Sample " & integer'image(tick_count) & "): Ram address updated while in SEND_HOLD"
+			severity error;
+		assert o_send_tx_byte = x"AA"
+			report "TC3(Sample " & integer'image(tick_count) & "): RAM data updated while in SEND_HOLD"
+			severity error;
+		assert o_send_tx_start_pulse = '0'
+			report "TC3(Sample " & integer'image(tick_count) & "): Start pulse asserted high while in SEND_HOLD"
+			severity error;
+		assert o_send_done_pulse = '0'
+			report "TC3(Sample " & integer'image(tick_count) & "): send_done_pulse asserted high while in SEND_HOLD (so seen now in state SEND_DATA)"
+			severity error;
 		
 		-- Test case 4: stop condition. Done pulse after NUM_SAMPLES
 		test_id <= 4;
-		for i in 0 to NUM_SAMPLES+NUM_SAMPLES+10 loop  -- NUM_SAMPLES addresses to fill up + some margin
+		for i in 0 to (NUM_SAMPLES * 3)+10 loop  -- NUM_SAMPLES addresses to fill up (3 clocks per sample) + some margin
 			wait until rising_edge(i_clk);
 			
 			if o_ram_rd_addr = std_logic_vector(to_unsigned(NUM_SAMPLES-1, ADDR_LENGTH)) then
@@ -285,7 +341,7 @@ begin
 			
 		-- Test case 5b: data transmitted normally when tx busy is low
 		i_tx_busy <= '0';
-		wait until rising_edge(i_clk);  -- goes to SEND_SET_HEADER after rising edge
+		wait until rising_edge(i_clk);  -- goes to SEND_SET_ADDR after rising edge
 		wait for 1 ns;
 		assert o_send_tx_byte = x"99"
 			report "TC5b(Sample " & integer'image(tick_count) & "): Header byte not sent despite tx_busy being low"
@@ -294,13 +350,22 @@ begin
 			report "TC5b(Sample " & integer'image(tick_count) & "): tx_start_pulse not asserted high despite tx busy being low"
 			severity error;
 			
+		wait until rising_edge(i_clk);  -- goes to SEND_HOLD after rising edge
+		wait for 1 ns;
+		assert o_send_tx_byte = x"99"
+			report "TC5b(Sample " & integer'image(tick_count) & "): Header byte not sent despite tx_busy being low"
+			severity error;
+		assert o_send_tx_start_pulse = '0'
+			report "TC5b(Sample " & integer'image(tick_count) & "): tx_start_pulse not deasserted yet"
+			severity error;
+			
 		wait until rising_edge(i_clk);  -- goes to SEND_DATA after rising edge
 		wait for 1 ns;  -- let outputs get set
 		assert o_send_tx_byte = x"99"
 			report "TC5b(Sample " & integer'image(tick_count) & "): Header byte not sent despite tx_busy being low"
 			severity error;
 		assert o_send_tx_start_pulse = '0'
-			report "TC5b(Sample " & integer'image(tick_count) & "): tx_start_pulse not asserted high despite tx busy being low"
+			report "TC5b(Sample " & integer'image(tick_count) & "): tx_start_pulse not asserted yet"
 			severity error;
 		
 		wait until rising_edge(i_clk);  -- finished first cycle in state SEND_DATA, then in SEND_SET_ADDR for 1 cycle
@@ -318,20 +383,35 @@ begin
 			report "TC5b(Sample " & integer'image(tick_count) & "): send_done_pulse asserted high prematurely (still sending data)"
 			severity error;
 			
-		i_ram_rd_data <= x"AA";  -- 1010 1010
-		wait until rising_edge(i_clk);  -- finished in SEND_SET_ADDR, start second cycle in state SEND_DATA
+		wait until rising_edge(i_clk);  -- finished first cycle in state SEND_SET_ADDR, then in SEND_HOLD for 1 cycle
 		wait for 1 ns;  -- let outputs get set
 		assert o_ram_rd_addr = x"001"
-			report "TC5b(Sample " & integer'image(tick_count) & "): Ram address updated while in SEND_SET_ADDR"
+			report "TC5b(Sample " & integer'image(tick_count) & "): Ram address not 1 in state SEND_HOLD"
 			severity error;
 		assert o_send_tx_byte = x"33"
-			report "TC5b(Sample " & integer'image(tick_count) & "): RAM data updated while in SEND_SET_ADDR"
+			report "TC5b(Sample " & integer'image(tick_count) & "): Data not equal to 33"
 			severity error;
 		assert o_send_tx_start_pulse = '0'
-			report "TC5b(Sample " & integer'image(tick_count) & "): Start pulse asserted high while in SEND_SET_ADDR"
+			report "TC5b(Sample " & integer'image(tick_count) & "): Start pulse high when in state SEND_HOLD"
 			severity error;
 		assert o_send_done_pulse = '0'
-			report "TC5b(Sample " & integer'image(tick_count) & "): send_done_pulse asserted high while in SEND_SET_ADDR"
+			report "TC5b(Sample " & integer'image(tick_count) & "): send_done_pulse asserted high prematurely (still sending data)"
+			severity error;
+			
+		i_ram_rd_data <= x"AA";  -- 1010 1010
+		wait until rising_edge(i_clk);  -- finished in SEND_HOLD, start second cycle in state SEND_DATA
+		wait for 1 ns;  -- let outputs get set
+		assert o_ram_rd_addr = x"001"
+			report "TC5b(Sample " & integer'image(tick_count) & "): Ram address updated while in SEND_HOLD"
+			severity error;
+		assert o_send_tx_byte = x"33"
+			report "TC5b(Sample " & integer'image(tick_count) & "): RAM data updated while in SEND_HOLD"
+			severity error;
+		assert o_send_tx_start_pulse = '0'
+			report "TC5b(Sample " & integer'image(tick_count) & "): Start pulse asserted high while in SEND_HOLD"
+			severity error;
+		assert o_send_done_pulse = '0'
+			report "TC5b(Sample " & integer'image(tick_count) & "): send_done_pulse asserted high while in SEND_HOLD"
 			severity error;
 			
 		wait until rising_edge(i_clk);  -- finished 2nd cycle in state SEND_DATA, then in SEND_SET_ADDR for 1 cycle
@@ -348,24 +428,39 @@ begin
 		assert o_send_done_pulse = '0'
 			report "TC5b(Sample " & integer'image(tick_count) & "): send_done_pulse asserted high while still sending data"
 			severity error;
-		
-		-- Test case 5c: data bytes should not be transmitted when tx is busy
-		wait until rising_edge(i_clk);  -- finished in SEND_SET_ADDR, start third cycle in state SEND_DATA
-		i_tx_busy <= '1';
-		i_ram_rd_data <= x"28";
-		wait until rising_edge(i_clk);  -- finished in SEND_SET_ADDR, start fourth cycle in state SEND_DATA
+			
+		wait until rising_edge(i_clk);  -- finished 2nd cycle in state SEND_SET_ADDR, then in SEND_HOLD for 1 cycle
 		wait for 1 ns;  -- let outputs get set
 		assert o_ram_rd_addr = x"002"
-			report "TC5c(Sample " & integer'image(tick_count) & "): Ram address updated while in SEND_SET_ADDR"
+			report "TC5b(Sample " & integer'image(tick_count) & "): Ram address not 1 in state SEND_HOLD"
 			severity error;
 		assert o_send_tx_byte = x"AA"
-			report "TC5c(Sample " & integer'image(tick_count) & "): RAM data updated while in SEND_SET_ADDR"
+			report "TC5b(Sample " & integer'image(tick_count) & "): Data not equal to AA"
 			severity error;
 		assert o_send_tx_start_pulse = '0'
-			report "TC5c(Sample " & integer'image(tick_count) & "): Start pulse asserted high while in SEND_SET_ADDR"
+			report "TC5b(Sample " & integer'image(tick_count) & "): Start pulse high when in state SEND_HOLD"
 			severity error;
 		assert o_send_done_pulse = '0'
-			report "TC5c(Sample " & integer'image(tick_count) & "): send_done_pulse asserted high while in SEND_SET_ADDR"
+			report "TC5b(Sample " & integer'image(tick_count) & "): send_done_pulse asserted high prematurely (still sending data)"
+			severity error;
+		
+		-- Test case 5c: data bytes should not be transmitted when tx is busy
+		wait until rising_edge(i_clk);  -- finished in SEND_HOLD, start third cycle in state SEND_DATA
+		i_tx_busy <= '1';
+		i_ram_rd_data <= x"28";
+		wait until rising_edge(i_clk);  -- finished in SEND_HOLD, start fourth cycle in state SEND_DATA
+		wait for 1 ns;  -- let outputs get set
+		assert o_ram_rd_addr = x"002"
+			report "TC5c(Sample " & integer'image(tick_count) & "): Ram address updated while in SEND_HOLD"
+			severity error;
+		assert o_send_tx_byte = x"AA"
+			report "TC5c(Sample " & integer'image(tick_count) & "): RAM data updated while in SEND_HOLD"
+			severity error;
+		assert o_send_tx_start_pulse = '0'
+			report "TC5c(Sample " & integer'image(tick_count) & "): Start pulse asserted high while in SEND_HOLD"
+			severity error;
+		assert o_send_done_pulse = '0'
+			report "TC5c(Sample " & integer'image(tick_count) & "): send_done_pulse asserted high while in SEND_HOLD"
 			severity error;
 		
 		for i in 0 to 10 loop
@@ -385,10 +480,110 @@ begin
 				severity error;
 		end loop;
 		
-		-- Test case 6: tx_busy does not update immediately
+		-- Test case 6: tx_busy LOW asserts HIGH 2 clocks after send_engine start_pulse
+		test_id <= 6;
+		i_tx_busy <= '0';
+		wait until rising_edge(i_clk);  -- arrive in SEND_SET_ADDR | tx_busy been 0 for 1 clock cycle
+		wait for 1 ns;
+		assert o_send_tx_byte = x"28"
+			report "TC6(Sample " & integer'image(tick_count) & "): byte not sent despite tx_busy being low"
+			severity error;
+		assert o_send_tx_start_pulse = '1'
+			report "TC6(Sample " & integer'image(tick_count) & "): tx_start_pulse not asserted high despite tx busy being low"
+			severity error;
+			
+		wait until rising_edge(i_clk);  -- arrive in SEND_HOLD | tx_busy been 0 for 2 clock cycle
+		wait for 1 ns;
+		assert o_send_tx_byte = x"28"
+			report "TC6(Sample " & integer'image(tick_count) & "): byte not x28 as expected"
+			severity error;
+		assert o_send_tx_start_pulse = '0'
+			report "TC6(Sample " & integer'image(tick_count) & "): start pulse asserted while in SEND_HOLD"
+			severity error;
+			
+		i_tx_busy <= '1';  -- tx busy goes high, 2 clock cycles after it was set low (standard behaviour)
+		i_ram_rd_data <= x"59";  -- we should not see this data byte or another start pulse in test case 6!
+		
+		wait until rising_edge(i_clk);  -- arrive in SEND_DATA
+		wait for 1 ns;
+		assert o_send_tx_byte = x"28"
+			report "TC6(Sample " & integer'image(tick_count) & "): byte not x28 as expected"
+			severity error;
+		assert o_send_tx_start_pulse = '0'
+			report "TC6(Sample " & integer'image(tick_count) & "): tx_start_pulse asserted high while in previous state (SEND_HOLD)"
+			severity error;
+		
+		-- no changes should occur with o_send_tx_byte and o_send_tx_start_pulse as long as tx_busy is high
+		wait until rising_edge(i_clk);
+		assert o_send_tx_byte = x"28"
+			report "TC6(Sample " & integer'image(tick_count) & "): byte not x28 as expected"
+			severity error;
+		assert o_send_tx_start_pulse = '0'
+			report "TC6(Sample " & integer'image(tick_count) & "): tx_start_pulse asserted high while in SEND_DATA (but tx_busy is high)"
+			severity error;
+			
+		wait until rising_edge(i_clk);
+		assert o_send_tx_byte = x"28"
+			report "TC6(Sample " & integer'image(tick_count) & "): byte not x28 as expected"
+			severity error;
+		assert o_send_tx_start_pulse = '0'
+			report "TC6(Sample " & integer'image(tick_count) & "): tx_start_pulse asserted high while in SEND_DATA (but tx_busy is high)"
+			severity error;
+			
+		wait until rising_edge(i_clk);
+		assert o_send_tx_byte = x"28"
+			report "TC6(Sample " & integer'image(tick_count) & "): byte not x28 as expected"
+			severity error;
+		assert o_send_tx_start_pulse = '0'
+			report "TC6(Sample " & integer'image(tick_count) & "): tx_start_pulse asserted high while in SEND_DATA (but tx_busy is high)"
+			severity error;
+		
+		-- Test case 7: tx_busy LOW asserts HIGH 4 clocks after send_engine start_pulse. Expecting: double start_pulse
+		test_id <= 7;
+		i_tx_busy <= '0';
+		wait until rising_edge(i_clk);  -- arrive in SEND_SET_ADDR | tx_busy been 0 for 1 clock cycle
+		wait for 1 ns;
+		assert o_send_tx_byte = x"59"
+			report "TC7(Sample " & integer'image(tick_count) & "): byte not sent despite tx_busy being low"
+			severity error;
+		assert o_send_tx_start_pulse = '1'
+			report "TC7(Sample " & integer'image(tick_count) & "): tx_start_pulse not asserted high despite tx busy being low"
+			severity error;
+		
+		-- trace_buffer would set i_ram_rd_data during the SEND_SET_ADDR state
+		i_ram_rd_data <= x"73";  -- we should see this data byte and another start pulse at the end of TC7 as tx_busy goes high
+		wait until rising_edge(i_clk);  -- arrive in SEND_HOLD | tx_busy been 0 for 2 clock cycles
+		wait for 1 ns;
+		assert o_send_tx_byte = x"59"
+			report "TC7(Sample " & integer'image(tick_count) & "): byte not x59 as expected"
+			severity error;
+		assert o_send_tx_start_pulse = '0'
+			report "TC7(Sample " & integer'image(tick_count) & "): start pulse asserted while in SEND_HOLD"
+			severity error;
+			
+		wait until rising_edge(i_clk);  -- arrive in SEND_DATA | tx_busy been 0 for 3 clock cycles
+		wait for 1 ns;
+		assert o_send_tx_byte = x"59"
+			report "TC7(Sample " & integer'image(tick_count) & "): byte not sent despite tx_busy being low"
+			severity error;
+		assert o_send_tx_start_pulse = '0'
+			report "TC7(Sample " & integer'image(tick_count) & "): tx_start_pulse not asserted high while in previous state (SEND_HOLD)"
+			severity error;
+			
+		wait until rising_edge(i_clk);  -- arrive in SEND_SET_ADDR | now faulty/additional send should become visible
+		-- now it's 4 clocks of i_tx_busy technically! the DUT cares about what i_tx_busy is during the WHOLE SEND_DATA evaluation window
+		i_tx_busy <= '1';  -- tx busy goes high, 4 clock cycles after it was set low (delayed/unusual toggle behaviour)
+		wait for 1 ns;
+		assert o_send_tx_byte = x"73"
+			report "TC7(Sample " & integer'image(tick_count) & "): byte not updated to 73"
+			severity error;
+		assert o_send_tx_start_pulse = '1'
+			report "TC7(Sample " & integer'image(tick_count) & "): tx_start_pulse not asserted high despite tx_busy taking 3 (not 2) clock cycles to toggle"
+			severity error;
+		
 
         -- Finish simulation
-        --wait for 10*CLK_ACTUAL;
+        wait for 10*CLK_ACTUAL;
         assert false report "Simulation finished" severity failure;
     end process;
 
