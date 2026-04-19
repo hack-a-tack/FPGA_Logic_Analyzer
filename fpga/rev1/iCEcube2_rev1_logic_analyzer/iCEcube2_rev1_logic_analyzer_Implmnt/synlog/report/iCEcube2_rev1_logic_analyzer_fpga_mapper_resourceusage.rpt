@@ -13,7 +13,7 @@ SB_GB           2 uses
 SB_HFOSC        1 use
 SB_RAM2048x2    8 uses
 VCC             9 uses
-SB_LUT4         221 uses
+SB_LUT4         227 uses
 
 I/O ports: 14
 I/O primitives: 14
@@ -27,8 +27,8 @@ Block Rams : 8 of 30 (26%)
 
 
 @S |Mapping Summary:
-Total  LUTs: 221 (4%)
+Total  LUTs: 227 (4%)
 
 Distribution of All Consumed LUTs = LUT4 
-Distribution of All Consumed Luts 221 = 221 
+Distribution of All Consumed Luts 227 = 227 
 

@@ -3,5 +3,5 @@
 @W: CL249 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":81:2:81:3|Initial value is not supported on state machine r_state
 @W: CL260 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":81:2:81:3|Pruning register bit 6 of r_fsm_tx_status_byte(7 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
 @W: CL249 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":78:2:78:3|Initial value is not supported on state machine r_state
-@W: CL249 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":86:2:86:3|Initial value is not supported on state machine r_state
+@W: CL249 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":76:2:76:3|Initial value is not supported on state machine r_state
 

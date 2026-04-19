@@ -2,7 +2,7 @@
 -- MODULE: uart_tx.vhd
 -- FUNCTION: converts data bytes going to the host into serial UART data
 -- AUTHOR: Jakob Kieszek Ottesen
--- DATE: 2026-04-18 (YYYY-MM-DD)
+-- DATE: 2026-04-19 (YYYY-MM-DD)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -22,16 +22,6 @@
 -- --> Each bit has to be transmitted for CLKS_PER_BIT (~52) clock cycles
 -- Therefore, actual baud rate = 48e6/52 = 923076, not 921600 --> +0.16% error
 -- But UART usually tolerates +- 2-3% error
---
--- Note: DEMONSTRATING TX_STOP_BIT flow and why tx_busy and UART_TX_LED
--- ... are toggled prematurely relative to 52 clocks per bit
--- Registered signal observed next clock --> i.e. clock counter = 51 => 52nd clock cycle in TX_STOP_BIT
--- But because signal is registered, the 52nd stop bit is seen first in the following clock cycle
--- _ = low; - = high; P = previous
--- clock cycle in TX_STOP_BIT:|1|2|3|4|5|6|...|50|51|52|(IDLE)|...
--- n_UART_TX                  |-|-|-|-|-|-|...|--|--|--|signal changes to what it's given in IDLE
--- o_UART_TX                  |P|-|-|-|-|-|...|--|--|--|-----|signal changes to what it's given in IDLE
--- observed in waveform         |1|2|3|4|5|...|49|50|51|52   |<new uart bit period>
 --
 -- PREFIXES					
 -- i_ : input
@@ -126,6 +116,7 @@ begin
 					n_clk_counter <= 0;
 					n_bit_counter <= 0;
 					n_tx_busy <= '1';  -- assert busy flag so send_engine waits
+					n_UART_TX <= '0';  -- since r_UART_TX is registered, setting it here gives o_UART_TX = '0' from first clock in TX_START_BIT
 					n_state <= TX_START_BIT;
 				end if;
 			
@@ -135,6 +126,7 @@ begin
 				if r_clk_counter = CLKS_PER_BIT-1 then
 					n_clk_counter <= 0;
 					n_bit_counter <= 0;
+					n_UART_TX <= r_tx_byte(r_bit_counter);  -- preload first value so o_UART_TX becomes correct from first clock in DATA_BITS
 					n_state <= TX_DATA_BITS;
 				else
 					n_clk_counter <= r_clk_counter + 1;
@@ -147,9 +139,11 @@ begin
 					n_clk_counter <= 0;
 					if r_bit_counter = DATA_LENGTH-1 then
 						n_bit_counter <= 0;
+						n_UART_TX <= '1';  -- preload stop bit so o_UART_TX becomes correct from first clock in TX_STOP_BIT
 						n_state <= TX_STOP_BIT;
 					else
 						n_bit_counter <= r_bit_counter + 1;
+						n_UART_TX <= r_tx_byte(r_bit_counter+1);  -- preload next data bit
 					end if;
 				else
 					n_clk_counter <= r_clk_counter + 1;
@@ -161,8 +155,9 @@ begin
 				if r_clk_counter = CLKS_PER_BIT-1 then
 					n_clk_counter <= 0;
 					n_bit_counter <= 0;
-					n_tx_busy <= '0';  -- premature (1 clk) busy toggle to keep good flow with 
-					n_UART_TX_LED <= not r_UART_TX_LED;  -- premature LED toggle (after 51 clks of stop bit HIGH)
+					n_tx_busy <= '0';  -- preload busy toggle so o_tx_busy becomes '0' when you reach TX_IDLE
+					n_UART_TX <= '1';  -- explicitly preloading IDLE HIGH
+					n_UART_TX_LED <= not r_UART_TX_LED;  -- preload LED toggle so the registered output toggles when you reach TX_IDLE
 					n_state <= TX_IDLE;
 				else
 					n_clk_counter <= r_clk_counter + 1;
