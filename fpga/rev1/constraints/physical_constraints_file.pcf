@@ -1,15 +1,15 @@
 # iCE40UP5K Logic Analyzer, Rev1
 # Physical Constraints File
 
-# Sampling signals
-set_io i_LA0 48 -pullup yes
-set_io i_LA1 47 -pullup yes
-set_io i_LA2 46 -pullup yes
-set_io i_LA3 45 -pullup yes
-set_io i_LA4 43 -pullup yes
-set_io i_LA5 42 -pullup yes
-set_io i_LA6 38 -pullup yes
-set_io i_LA7 36 -pullup yes
+# Sampling signals (enable pullups with '-pullup yes')
+set_io i_LA0 48
+set_io i_LA1 47
+set_io i_LA2 46
+set_io i_LA3 45
+set_io i_LA4 43
+set_io i_LA5 42
+set_io i_LA6 38
+set_io i_LA7 36
 
 # LED signals
 set_io o_UART_TX_LED 12

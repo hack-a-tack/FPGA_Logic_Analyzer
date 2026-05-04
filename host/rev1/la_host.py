@@ -1,7 +1,7 @@
 """
 MODULE: la_host.py
 FUNCTION: Python script for capturing, receiving and converting logic analyzer data into a csv/vcd file.
-DATE: 2026-04-13 (YYYY-MM-DD)
+DATE: 2026-05-04 (YYYY-MM-DD)
 
 NOTES
 - HostConfig is a data container only.
@@ -12,6 +12,8 @@ NOTES
 -- read: transfer data to host (csv/vcd)
 -- capture-read: normal mode (full operation + produce files)
 ---- csv file written by default; optional vcd file
+-- raw: send raw opcode (doesn't have to be A0 (CAPTURE) or A1 (READ)) to test system error response
+-- capture-twice: do two captures back-to-back. If sufficiently fast, returns error because capture already taking place
 -- self-test: bring-up/diagnostics mode (prove the whole chain works and make failures obvious)
 ---- csv file and vcd files only written if explicit flags added when running the script in self-test mode
 """
@@ -25,6 +27,7 @@ from dataclasses import dataclass
 
 import serial
 from serial.tools import list_ports
+from typing import Optional
 
 # Protocol constants
 CAPTURE = 0xA0
@@ -80,12 +83,28 @@ def expect_byte(ser: serial.Serial, expected: int, timeout_s: float, label: str)
 def send_cmd(ser: serial.Serial, opcode: int) -> None:
     ser.write(bytes([opcode]))
     ser.flush()
+    
+
+def send_raw_opcode(ser: serial.Serial, hex_str: str):
+    value = int(hex_str, 16)
+    ser.write(bytes([value]))
+    ser.flush()
+    return ser.read(1)
 
 
 def do_capture(ser: serial.Serial, cfg: HostConfig) -> None:
     send_cmd(ser, CAPTURE)
     expect_byte(ser, OK, cfg.timeout_s, "CAPTURE/OK")
     expect_byte(ser, DONE, cfg.timeout_s, "CAPTURE/DONE")
+    
+    
+def capture_twice_fast(ser: serial.Serial):
+    ser.write(bytes([CAPTURE, CAPTURE]))
+    ser.flush()
+    
+    # Read whatever comes back
+    resp = ser.read(4)
+    return resp
 
 
 def do_read(ser: serial.Serial, cfg: HostConfig) -> bytes:
@@ -267,12 +286,16 @@ def main(argv: list[str]) -> int:
                    
     p.add_argument("--list-ports", action="store_true", help="Lists serial ports and exit")
     
-    p.add_argument("mode", choices=["capture", "read", "capture-read", "self-test"], help="Operation mode")
+    p.add_argument("mode", nargs="?", choices=["capture", "read", "capture-read", "raw", "capture-twice", "self-test"], help="Operation mode")
+    p.add_argument("value", nargs="?")
     args = p.parse_args(argv)
     
     if args.list_ports:
         list_serial_ports()
         return 0
+    
+    if args.mode is None:
+        p.error("mode is reauired unless --list-ports is used")
        
     effective_timeout = args.timeout
     if args.mode == "self-test" and args.timeout == DEFAULT_TIMEOUT_S:
@@ -281,7 +304,7 @@ def main(argv: list[str]) -> int:
     cfg = HostConfig(
         port=args.port,
         baud=args.baud,
-        timeout_s=args.timeout,
+        timeout_s=effective_timeout,
         num_samples=args.samples,
         sample_rate_hz=args.samplerate
     )
@@ -300,7 +323,7 @@ def main(argv: list[str]) -> int:
                     write_vcd(args.vcd, data, cfg.sample_rate_hz)
                 print(f"Read: wrote {len(data)} bytes to {args.csv}" + (f" and {args.vcd}" if args.vcd else ""))
             
-            elif args.mode == "capture-read":  # capture-read
+            elif args.mode == "capture-read":
                 do_capture(ser, cfg)
                 data = do_read(ser, cfg)
                 print_read_summary(data)
@@ -308,6 +331,17 @@ def main(argv: list[str]) -> int:
                 if args.vcd:
                     write_vcd(args.vcd, data, cfg.sample_rate_hz)
                 print(f"Capture+Read: wrote {len(data)} bytes to {args.csv}" + (f" and {args.vcd}" if args.vcd else ""))
+               
+            elif args.mode == "raw":
+                if args.value is None:
+                    p.error("raw mode requries a hex value, e.g. raw B0")
+                else:
+                    resp = send_raw_opcode(ser, args.value)
+                    print("RX:", resp.hex(" "))
+            
+            elif args.mode == "capture-twice":
+                resp = capture_twice_fast(ser)
+                print("RX:", resp.hex(" "))
             
             else:  # self-test
                 out_csv = args.csv if ("--csv" in argv) else None
