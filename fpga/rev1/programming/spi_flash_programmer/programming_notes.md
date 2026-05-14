@@ -17,9 +17,9 @@ Replace COMx with the Arduino Pro Micro serial port shown in Device Manager. On 
 - FPGA held in reset using the CRESET_B DIP switch
 - Arduino GND connected to PCB GND
 - Voltage dividers used on Arduino-driven SPI lines:
--  CS#
--  MOSI
--  SCK
+  - CS#
+  - MOSI
+  - SCK
 - MISO connected directly from flash/PCB to Arduino MISO
 - Arduino SPI pins disconnected after programming before releasing FPGA reset
 
@@ -42,11 +42,7 @@ After disconnecting the programmer and releasing CRESET_B, the FPGA should confi
 Measured after FPGA PCB was programmed and CRESET_B released:
 
 - CRESET_B: 3.32 V
--  Other LEDs momentarily flickered when measuring CRESET_B
+  - Other LEDs momentarily flickered when measuring CRESET_B
 - CDONE: 1.95 V
--  CDONE LED faintly lit
--  Note: Rev1 CDONE LED circuit loads the open-drain CDONE signal incorrectly; this should be corrected in Rev2.
-
-Voltage read from CRESET_B and CDONE when FPGA PCB programmed and CRESET_B released:
-- CRESET_B: 3.32V (other LEDs momentarily flick when measuring CRESET_B voltage)
-- CDONE: 1.95V
+  - CDONE LED faintly lit
+  - Note: Rev1 CDONE LED circuit loads the open-drain CDONE signal incorrectly; this should be corrected in Rev2.
