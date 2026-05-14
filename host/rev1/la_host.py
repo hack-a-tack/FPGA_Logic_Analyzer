@@ -2,6 +2,7 @@
 MODULE: la_host.py
 FUNCTION: Python script for capturing, receiving and converting logic analyzer data into a csv/vcd file.
 DATE: 2026-05-04 (YYYY-MM-DD)
+LAST MODIFIED: 2026-05-14
 
 NOTES
 - HostConfig is a data container only.
@@ -89,7 +90,7 @@ def send_raw_opcode(ser: serial.Serial, hex_str: str):
     value = int(hex_str, 16)
     ser.write(bytes([value]))
     ser.flush()
-    return ser.read(1)
+    return ser.read(1, timeout_s)
 
 
 def do_capture(ser: serial.Serial, cfg: HostConfig) -> None:
@@ -215,6 +216,8 @@ def open_serial(cfg: HostConfig) -> serial.Serial:
         timeout=0.01,           # non-blocking-ish; we do deadlines ourselves
         write_timeout=cfg.timeout_s,
     )
+    
+    time.sleep(0.1)
     ser.reset_input_buffer()
     ser.reset_output_buffer()
     return ser
@@ -259,6 +262,13 @@ def do_self_test(ser: serial.Serial, cfg: HostConfig, out_csv: Optional[str], ou
         print(f"[self-test] Wrote VCD: {out_vcd}")
 
 
+def spam_capture(ser: serial.Serial) -> None:
+    while True:
+        ser.write(bytes([CAPTURE]))
+        ser.flush()
+        time.sleep(0.1)
+
+
 def list_serial_ports() -> None:
     ports = list_ports.comports()
     if not ports:
@@ -286,7 +296,7 @@ def main(argv: list[str]) -> int:
                    
     p.add_argument("--list-ports", action="store_true", help="Lists serial ports and exit")
     
-    p.add_argument("mode", nargs="?", choices=["capture", "read", "capture-read", "raw", "capture-twice", "self-test"], help="Operation mode")
+    p.add_argument("mode", nargs="?", choices=["capture", "read", "capture-read", "raw", "capture-twice", "spam-capture", "self-test"], help="Operation mode")
     p.add_argument("value", nargs="?")
     args = p.parse_args(argv)
     
@@ -336,12 +346,15 @@ def main(argv: list[str]) -> int:
                 if args.value is None:
                     p.error("raw mode requries a hex value, e.g. raw B0")
                 else:
-                    resp = send_raw_opcode(ser, args.value)
+                    resp = send_raw_opcode(ser, args.value, cfg.timeout_s)
                     print("RX:", resp.hex(" "))
             
             elif args.mode == "capture-twice":
                 resp = capture_twice_fast(ser)
                 print("RX:", resp.hex(" "))
+                
+            elif args.mode == "spam-capture":
+                spam_capture(ser)
             
             else:  # self-test
                 out_csv = args.csv if ("--csv" in argv) else None

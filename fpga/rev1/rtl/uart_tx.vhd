@@ -3,6 +3,7 @@
 -- FUNCTION: converts data bytes going to the host into serial UART data
 -- AUTHOR: Jakob Kieszek Ottesen
 -- DATE: 2026-04-19 (YYYY-MM-DD)
+-- MODIFIED: 2026-05-14 (reset active low)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -74,7 +75,7 @@ begin
 	seq_proc: process(i_clk) is
 	begin
 		if rising_edge(i_clk) then
-			if i_rst = '1' then
+			if i_rst = '0' then
 				r_state 	  <= TX_IDLE;
 				r_tx_busy 	  <= '0';
 				r_UART_TX 	  <= '1';  -- UART is idle high

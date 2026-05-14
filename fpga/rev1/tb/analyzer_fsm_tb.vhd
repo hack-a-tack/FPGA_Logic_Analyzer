@@ -3,6 +3,7 @@
 -- FUNCTION: TESTBENCH for controlling entity of logic analyzer state machine
 -- AUTHOR: Jakob Kieszek Ottesen
 -- DATE: 2026-04-12 (YYYY-MM-DD)
+-- MODIFIED: 2026-05-14 (reset active low)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -64,7 +65,7 @@ architecture sim of analyzer_fsm_tb is
 
     -- Signals to connect to DUT
 	signal i_clk 					: std_logic := '0';
-	signal i_rst 					: std_logic := '0';
+	signal i_rst 					: std_logic := '1';
 	signal i_cmd_error_pulse		: std_logic := '0';
 	signal i_capture_cmd_pulse		: std_logic := '0';
 	signal i_capture_done_pulse		: std_logic := '0';
@@ -122,9 +123,9 @@ begin
     begin
         -- Reset phase
         wait until rising_edge(i_clk);
-		i_rst <= '1';
-		wait until rising_edge(i_clk);
 		i_rst <= '0';
+		wait until rising_edge(i_clk);
+		i_rst <= '1';
 		wait until rising_edge(i_clk);
 		
         -- Test case 1: command error received from cmd_parser (should send EE to tx_mux)

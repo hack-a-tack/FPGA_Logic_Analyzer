@@ -3,6 +3,7 @@
 -- FUNCTION: TESTBENCH for entity which converts data bytes into serial UART data
 -- AUTHOR: Jakob Kieszek Ottesen
 -- DATE: 2026-03-22 (YYYY-MM-DD)
+-- MODIFIED: 2026-05-14 (reset active low)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -65,7 +66,7 @@ architecture sim of uart_tx_tb is
 
     -- Signals to connect to DUT	
 	signal i_clk					: std_logic := '0';
-	signal i_rst					: std_logic := '0';
+	signal i_rst					: std_logic := '1';
 	signal i_mux_tx_byte			: std_logic_vector(DATA_LENGTH-1 downto 0) := (others => '0');
 	signal i_mux_tx_start_pulse		: std_logic := '0';
 	signal o_tx_busy				: std_logic;
@@ -159,9 +160,9 @@ begin
     begin
         -- Reset phase
 		wait until rising_edge(i_clk);
-		i_rst <= '1';
-		wait until rising_edge(i_clk);
 		i_rst <= '0';
+		wait until rising_edge(i_clk);
+		i_rst <= '1';
 		wait until rising_edge(i_clk);
 		
 		-- Test case 1: TX_IDLE state. UART should be IDLE high and busy signal should be low

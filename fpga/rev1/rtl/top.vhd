@@ -3,6 +3,7 @@
 -- FUNCTION: ties all underlying modules together
 -- AUTHOR: Jakob Kieszek Ottesen
 -- DATE: 2026-03-24 (YYYY-MM-DD)
+-- MODIFIED: 2026-05-14 (reset active low)
 --
 -- INPUTS 					DATA		TO INTERNAL MODULE
 -- i_RESET					1 bit		-> uart_rx | cmd_parser | analyzer_fsm | capture_engine | send_engine | tx_mux | uart_tx
@@ -24,6 +25,7 @@
 --
 -- NOTES
 -- i_LA0 through i_LA7 get assembled into std_logic_vector of length 8 "ANALYZER_INPUTS" before it's sent to -> capture_engine
+-- Since i_RESET is connected to CRESET_B going to the DIP switch, it's active low. I.e. reset when i_RESET = '0'
 --
 -- PREFIXES					
 -- i_ : input

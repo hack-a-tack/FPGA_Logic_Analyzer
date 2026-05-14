@@ -1,4 +1,2 @@
-@E: CG119 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":268:23:268:25|Expecting closing )
-@E: CD415 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":279:20:279:20|Expecting keyword of
-@E: Parse errors encountered - exiting
+@E: CD329 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\top.vhd":239:19:239:27|Illegal connection of instance output o_uart_tx to entity input/constant i_uart_rx
 

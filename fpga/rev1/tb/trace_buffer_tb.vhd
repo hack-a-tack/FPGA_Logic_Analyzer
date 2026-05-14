@@ -3,6 +3,7 @@
 -- FUNCTION: writes sample data to RAM and reads captured data out to host
 -- AUTHOR: Jakob Kieszek Ottesen
 -- DATE: 2026-04-04 (YYYY-MM-DD)
+-- MODIFIED: 2026-05-14 (reset active low)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -62,7 +63,7 @@ architecture sim of trace_buffer_tb is
 
     -- Signals to connect to DUT
 	signal i_clk					: std_logic := '0';
-	signal i_rst					: std_logic := '0';	
+	signal i_rst					: std_logic := '1';	
 	signal i_ram_wr_en_pulse		: std_logic := '0';
 	signal i_ram_wr_addr			: std_logic_vector(ADDR_LENGTH-1 downto 0) := (others => '0');
 	signal i_ram_wr_data			: std_logic_vector(DATA_LENGTH-1 downto 0) := (others => '0');
@@ -107,9 +108,9 @@ begin
     begin
         -- Reset phase
         wait until rising_edge(i_clk);
-		i_rst <= '1';
-		wait until rising_edge(i_clk);
 		i_rst <= '0';
+		wait until rising_edge(i_clk);
+		i_rst <= '1';
 		wait until rising_edge(i_clk);
 		
 		-- Test case 1: write to one address, read it back | write enable, valid data, same read/write address
@@ -147,9 +148,9 @@ begin
 		wait until rising_edge(i_clk);
 		test_id <= 3;
 		wait until rising_edge(i_clk);
-		i_rst <= '1';
-		wait until rising_edge(i_clk);
 		i_rst <= '0';
+		wait until rising_edge(i_clk);
+		i_rst <= '1';
 		wait for 0 ns;
 		assert o_ram_rd_data = x"00"
 			report "TC3: expected data byte x00 after reset | not observed"

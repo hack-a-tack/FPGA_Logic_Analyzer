@@ -3,6 +3,7 @@
 -- FUNCTION: TESTBENCH for entity that samples logic analyzer inputs and writes to BRAM
 -- AUTHOR: Jakob Kieszek Ottesen
 -- DATE: 2026-03-31 (YYYY-MM-DD)
+-- MODIFIED: 2026-05-14 (reset active low)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -61,7 +62,7 @@ architecture sim of capture_engine_tb is
     -- Signals to connect to DUT
 	signal i_clk 					: std_logic := '0';
 	signal i_samp_tick 				: std_logic := '0';
-	signal i_rst 					: std_logic := '0';
+	signal i_rst 					: std_logic := '1';
 	signal i_capture_start_pulse	: std_logic := '0';
 	signal i_inputs					: std_logic_vector(DATA_LENGTH-1 downto 0) := (others => '0');
 	signal o_raw_wr_en_pulse		: std_logic;
@@ -133,7 +134,7 @@ begin
 	count_proc : process(i_clk) is
 	begin
 		if rising_edge(i_clk) then
-			if i_rst = '1' then
+			if i_rst = '0' then
 				tick_count <= 0;
 				r_prev_tick <= '0';
 			else
@@ -169,9 +170,9 @@ begin
     begin
         -- Reset
         wait until rising_edge(i_clk);
-		i_rst <= '1';
-		wait until rising_edge(i_clk);
 		i_rst <= '0';
+		wait until rising_edge(i_clk);
+		i_rst <= '1';
 		wait until rising_edge(i_clk);
 		
         -- Test case 1: Capture start pulse. State IDLE.

@@ -3,6 +3,7 @@
 -- FUNCTION: TESTBENCH for entity which streams captured data from BRAM to host
 -- AUTHOR: Jakob Kieszek Ottesen
 -- DATE: 2026-04-17 (YYYY-MM-DD)
+-- MODIFIED: 2026-05-14 (reset active low)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -63,7 +64,7 @@ architecture sim of send_engine_tb is
 
     -- Signals to connect to DUT
 	signal i_clk 					: std_logic := '0';
-	signal i_rst 					: std_logic := '0';
+	signal i_rst 					: std_logic := '1';
 	signal i_send_start_pulse		: std_logic := '0';
 	signal i_tx_busy				: std_logic := '0';
 	signal i_ram_rd_data			: std_logic_vector(DATA_LENGTH-1 downto 0) := (others => '0');
@@ -113,7 +114,7 @@ begin
 	count_proc : process(i_clk) is
 	begin
 		if rising_edge(i_clk) then
-			if i_rst = '1' then
+			if i_rst = '0' then
 				tick_count <= 0;
 			else
 				-- count increments when start_pulse (along with data_byte) is sent to tx
@@ -137,9 +138,9 @@ begin
     begin
         -- Reset
         wait until rising_edge(i_clk);
-		i_rst <= '1';
-		wait until rising_edge(i_clk);
 		i_rst <= '0';
+		wait until rising_edge(i_clk);
+		i_rst <= '1';
 		wait until rising_edge(i_clk);
 		
 		-- Test case 1: Header byte

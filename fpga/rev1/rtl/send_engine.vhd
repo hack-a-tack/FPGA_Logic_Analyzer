@@ -3,6 +3,7 @@
 -- FUNCTION: streams captured data from BRAM to host via UART
 -- AUTHOR: Jakob Kieszek Ottesen
 -- DATE: 2026-04-16 (YYYY-MM-DD)
+-- MODIFIED: 2026-05-14 (reset active low)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -76,7 +77,7 @@ begin
 	seq_proc: process(i_clk) is
 	begin
 		if rising_edge(i_clk) then
-			if i_rst = '1' then
+			if i_rst = '0' then
 				-- reset logic
 				r_state <= SEND_IDLE;
 				r_ram_rd_addr <= (others => '0');

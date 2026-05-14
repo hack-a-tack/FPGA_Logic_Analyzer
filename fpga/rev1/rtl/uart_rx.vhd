@@ -3,6 +3,7 @@
 -- FUNCTION: converts serial UART data from the host into data bytes
 -- AUTHOR: Jakob Kieszek Ottesen
 -- DATE: 2026-03-22 (YYYY-MM-DD)
+-- MODIFIED: 2026-05-14 (reset active low)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -81,7 +82,7 @@ begin
 	seq_proc: process(i_clk) is
 	begin
 		if rising_edge(i_clk) then
-			if i_rst = '1' then
+			if i_rst = '0' then  -- rst is active low (DIP switch)
 				r_state 	  	 <= RX_IDLE;
 				r_rx_byte 		 <= (others => '0');
 				r_rx_valid_pulse <= '0';
@@ -108,7 +109,7 @@ begin
 	sync_proc: process(i_clk) is
 	begin
 		if rising_edge(i_clk) then
-			if i_rst = '1' then
+			if i_rst = '0' then
 				r_rx_sync_1 <= '1';  -- IDLE HIGH
 				r_rx_sync_2 <= '1';  -- IDLE HIGH
 			else

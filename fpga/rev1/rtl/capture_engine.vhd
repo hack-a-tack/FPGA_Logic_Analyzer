@@ -3,6 +3,7 @@
 -- FUNCTION: samples logic analyzer inputs at i_clk and writes to BRAM
 -- AUTHOR: Jakob Kieszek Ottesen
 -- DATE: 2026-03-31 (YYYY-MM-DD)
+-- MODIFIED: 2026-05-14 (reset active low)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -69,7 +70,7 @@ begin
 	seq_proc: process(i_clk) is
 	begin
 		if rising_edge(i_clk) then
-			if i_rst = '1' then
+			if i_rst = '0' then
 				-- reset logic
 				r_state <= CAPTURE_IDLE;
 				r_raw_wr_en_pulse <= '0';

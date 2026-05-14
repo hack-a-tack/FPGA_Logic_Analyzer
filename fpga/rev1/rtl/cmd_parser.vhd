@@ -3,6 +3,7 @@
 -- FUNCTION: decodes opcodes and outputs one-cycle command pulses
 -- AUTHOR: Jakob Kieszek Ottesen
 -- DATE: 2026-03-12 (YYYY-MM-DD)
+-- MODIFIED: 2026-05-14 (reset active low)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -49,7 +50,7 @@ begin
 	seq_proc: process(i_clk) is
 	begin
 		if rising_edge(i_clk) then
-			if i_rst = '1' then
+			if i_rst = '0' then
 				o_capture_cmd_pulse <= '0';
 				o_read_cmd_pulse 	<= '0';
 				o_cmd_error_pulse 	<= '0';

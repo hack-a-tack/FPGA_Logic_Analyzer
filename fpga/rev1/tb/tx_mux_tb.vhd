@@ -3,6 +3,7 @@
 -- FUNCTION: TESTBENCH for entity which multiplexes data signals to uart_tx 
 -- AUTHOR: Jakob Kieszek Ottesen
 -- DATE: 2026-04-05 (YYYY-MM-DD)
+-- MODIFIED: 2026-05-14 (reset active low)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -51,7 +52,7 @@ architecture sim of tx_mux_tb is
 
     -- Signals to connect to DUT	
 	signal i_clk					: std_logic := '0';
-	signal i_rst					: std_logic := '0';
+	signal i_rst					: std_logic := '1';
 	signal i_fsm_tx_status_byte		: std_logic_vector(DATA_LENGTH-1 downto 0) := (others => '0');
 	signal i_fsm_tx_start_pulse		: std_logic := '0';
 	signal i_send_tx_byte			: std_logic_vector(DATA_LENGTH-1 downto 0) := (others => '0');
@@ -96,9 +97,9 @@ begin
     begin
         -- Reset phase
         wait until rising_edge(i_clk);
-		i_rst <= '1';
-		wait until rising_edge(i_clk);
 		i_rst <= '0';
+		wait until rising_edge(i_clk);
+		i_rst <= '1';
 		wait until rising_edge(i_clk);
 		
         -- Test case 1: start pulse received from analyzer_fsm (tx_mux should output status byte + start pulse)

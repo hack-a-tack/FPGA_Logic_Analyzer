@@ -3,6 +3,7 @@
 -- FUNCTION: multiplexes data signals going to uart_tx (based on priority)
 -- AUTHOR: Jakob Kieszek Ottesen
 -- DATE: 2026-03-26 (YYYY-MM-DD)
+-- MODIFIED: 2026-05-14 (reset active low)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -53,7 +54,7 @@ begin
 	seq_proc: process(i_clk) is
 	begin
 		if rising_edge(i_clk) then
-			if i_rst = '1' then
+			if i_rst = '0' then
 				-- Reset logic / defaults
 				r_mux_tx_byte <= (others => '0');
 				r_mux_tx_start_pulse <= '0';
