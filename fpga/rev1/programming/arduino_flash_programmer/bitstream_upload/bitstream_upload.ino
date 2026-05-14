@@ -1,14 +1,14 @@
 /*
 -- MODULE: bitstream_upload.ino
--- FUNCTION: upload bitstream to SPI flash
+-- FUNCTION: upload bitstream (together with python script) to SPI flash
 -- AUTHOR: Jakob Kieszek Ottesen
 -- CREATED: 2026-05-11 (YYYY-MM-DD)
 -- MODIFIED: 2026-05-14
 
 Arduino: Pro Micro
 
-Circuit:
-  CS#: pin 10    DEFAULT (explicitly defined below)
+CIRCUIT:
+  CS#: pin 10    DEFAULT
   MOSI: pin 16   DEFAULT
   MISO: pin 14   DEFAULT
   SCK: pin 15    DEFAULT
@@ -29,14 +29,43 @@ Circuit:
   
   Downside: low-value divider which burns more current. Specifically ~4.5mA (5V / 1100ohms ~= 4.5mA)
 
- */
+SPI FLASH: Winbond W25Q40CL
+  Density: 4 Mbit = 512 KiB = 524,288 bytes
+  Page size: 256 bytes
+  Number of pages: 2048
+  Sector size: 4kB
+  Number of sectors: 128
+  Number of pages per sector: 16
+
+  bitmap file size: 104,157 bytes --> / 4096 (sector size) --> 26 x (4k) sectors
+  104,157 bytes / 256 bytes per page = 407 pages (only 221/256 bytes on last page)
+  Numbers to keep in mind: 26 (4k) sectors. 16 (256 byte) pages per sector. 256 bytes per page.
+
+  So sector 0 contains page start addresses:
+  0x000000
+  0x000100
+  0x000200
+  ...
+  0x000F00
+  
+  Sector 1 contains:
+  0x001000
+  0x001100
+  ...
+  0x001F00
+
+NOTE that the FPGA must be held in reset (CRESET_B pulled low using DIP switch) during programming.
+*/
 
 #include <SPI.h>  // arduino and flash communicate via SPI, so include the library:
 
-const int SPI_SPEED = 100000;
+const int PIN_MOSI = 16;  // use PIN_ prefix to avoid conflict with Arduino core definitions
+const int PIN_SCK = 15;
+const int PIN_MISO = 14;
 const int chipSelectPin = 10;
 
-SPISettings flashSPI(100000, MSBFIRST, SPI_MODE0);  // 100kHz
+const int SPI_SPEED = 100000;  // 100kHz
+SPISettings flashSPI(SPI_SPEED, MSBFIRST, SPI_MODE0);
 
 uint8_t pageBuf[256];     // stores incoming page data from Python
 uint8_t verifyBuf[256];   // stores flash readback data for comparison
@@ -121,7 +150,7 @@ void printHexByteln(uint8_t value) {
 }
 
 void waitBusyClear() {
-  // Waits until status bit 1 (BUSY bit) goes low (high during sector erase cycle / page program cycle; low when the cycle is finished)
+  // Waits until status bit 0 (BUSY bit) goes low (high during sector erase cycle / page program cycle; low when the cycle is finished)
   while (readStatus1() & 0x01) {
     delay(1);
   }
@@ -135,7 +164,7 @@ void sendAddress(uint32_t addr) {
 }
 
 void sectorErase4k(uint32_t addr) {
-  // Erase 4kB sector with address addr
+  // Erase 4kB sector containing byte address addr
   writeEnable();
 
   SPI.beginTransaction(flashSPI);
@@ -150,15 +179,21 @@ void sectorErase4k(uint32_t addr) {
 }
 
 void pageProgram(uint32_t addr, const uint8_t *data, uint16_t len) {
-  // You can program one page at a time. 16 pages per sector (sector is referenced by address addr)
+  // You can program one page at a time. 16 pages per sector.
+  // addr = exact flash byte address where data[0] should be written
+  /*
+    Examples
+      pageProgram(0x000000, data, 256);  // writes bytes 0x000000–0x0000FF
+      pageProgram(0x000100, data, 256);  // writes bytes 0x000100–0x0001FF
+      pageProgram(0x000200, data, 256);  // writes bytes 0x000200–0x0002FF
+  */
   // len must be <= 256 and must not cross a 256-byte page boundary
   writeEnable();
 
   SPI.beginTransaction(flashSPI);
   digitalWrite(chipSelectPin, LOW);
   SPI.transfer(0x02);
-  sendAddress(addr);  // address of sector to which you want to write data
-  // TODO: I don't understand how you would be able to program multiple pages within the same sector address...
+  sendAddress(addr);  // byte address of first byte to program
 
   for (uint16_t i = 0; i < len; i++) {
     SPI.transfer(data[i]);
@@ -172,7 +207,7 @@ void pageProgram(uint32_t addr, const uint8_t *data, uint16_t len) {
 }
 
 void readData(uint32_t addr, uint8_t *buf, uint16_t len) {
-  // Read data from sector with address addr. Read this data (of length len) into buffer buf
+  // Read len bytes starting from flash byte address addr into buf
   SPI.beginTransaction(flashSPI);
   digitalWrite(chipSelectPin, LOW);
   SPI.transfer(0x03);
@@ -277,69 +312,223 @@ void testEraseReadProgramRead() {
 
 
 
+// -----------------------------------------------------------------------------------------------------
+// Functions used for communicating with python script over serial line --------------------------------
+// -----------------------------------------------------------------------------------------------------
+bool readExact(uint8_t *buf, uint16_t len) {
+  // Reads exactly len bytes from USB serial into buf
+  uint16_t got = 0;
+  unsigned long start = millis();
+
+  while (got < len) {
+    if (Serial.available()) {
+      buf[got++] = (uint8_t)Serial.read();
+      start = millis();
+    }
+
+    if (millis() - start > 2000) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+bool readU32BE(uint32_t *out) {
+  // Reads 4 bytes from serial and converts to a 32-bit address (python sends big-endian)
+  uint8_t b[4];
+  if (!readExact(b, 4)) return false;
+
+  *out = ((uint32_t)b[0] << 24) |
+         ((uint32_t)b[1] << 16) |
+         ((uint32_t)b[2] << 8)  |
+         ((uint32_t)b[3]);
+  
+  return true;
+}
+
+bool readU16BE(uint16_t *out) {
+  // Reads 2 bytes from serial and converts to a 16-bit address (python sends big-endian)
+  // Used for page length, checksum, data length
+  uint8_t b[2];
+  if (!readExact(b, 2)) return false;
+
+  *out = ((uint16_t)b[0] << 8) | b[1];
+
+  return true;
+}
+
+uint16_t checksum16(const uint8_t *buf, uint16_t len) {
+  // Computes simple 16-bit sum of data bytes
+  // Used to detect corrupted serial packets before programming flash
+  uint16_t s = 0;
+  for (uint16_t i = 0; i < len; i++) {
+    s += buf[i];
+  }
+  return s;
+}
+
+void sendOK() {
+  Serial.write('K');
+}
+
+void sendFail(uint8_t code) {
+  Serial.write('F');
+  Serial.write(code);
+}
+
+void tristatePins() {
+  // Disables SPI and makes pins high impedance.
+  // Purpose: Arduino stops driving the SPI bus before FPGA tries to boot.
+  // Reality check: for maximum certainty, physically disconnect Arduino after programming. But this function helps.
+  SPI.end();
+
+  pinMode(chipSelectPin, INPUT);
+  pinMode(PIN_MOSI, INPUT);
+  pinMode(PIN_SCK, INPUT);
+  pinMode(PIN_MISO, INPUT);
+}
+
+
+
+// -------------------------------------------------------
+// Arduino setup and loop --------------------------------
+// -------------------------------------------------------
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(115200);  
 
   // Explicitly set inputs/outputs
-  pinMode(16, OUTPUT);                // MOSI
-  pinMode(15, OUTPUT);                // SCK
-  pinMode(14, INPUT);                 // MISO
-  pinMode(chipSelectPin, OUTPUT);     // CS#
+  pinMode(PIN_MOSI, OUTPUT);          // 16
+  pinMode(PIN_SCK, OUTPUT);           // 15
+  pinMode(PIN_MISO, INPUT);           // 14
+  pinMode(chipSelectPin, OUTPUT);     // 10
   digitalWrite(chipSelectPin, HIGH);  // default high
 
   SPI.begin();  // start the SPI library
   delay(1000);  // give the SPI flash time to set up
 
-  confirmFlashCommunication();  // MUST BE COMMENTED OUT DURING PROPER FLASH PROGRAMMING!
-  testEraseReadProgramRead();   // MUST BE COMMENTED OUT DURING PROPER FLASH PROGRAMMING!
-
-  
-  /*
-
-  // -------------------------------------------------------------------------
-  // ERASE + PROGRAM  --------------------------------------------------------
-  // -------------------------------------------------------------------------
-
-  // bitmap file size: 104,157 bytes --> / 4096 (sector size) --> 26 x (4k) sectors
-  // 104,157 bytes / 256 bytes per page = 407 pages (only 221/256 bytes on last page)
-  // Numbers to keep in mind: 26 (4k) sectors. 16 (256 byte) pages per sector. 256 bytes per page.
-
-  uint8_t py_data[256] = {0}
-
-  for (int i = 0; i < 26, i++) {  // 26 sectors
-    // erase sector
-    sectorErase4k(i);
-
-    for (int j = 0, j < 16, j++) {  // 16 pages per sector
-      // program 1 page (256 bytes) after receiving said bytes from python script on serial line
-      for (int k = 0, k < 256, k++) {  // 256 data bytes per page
-        if (Serial.available() > 0) {
-          char incomingByte = Serial.read();  // Read one byte
-          py_data[k] = incomingByte;
-
-          if k == 255 {  // page program when full py_data array of 256 bytes
-            pageProgram(j, py_data, 256);
-          }
-        }
-      }
-    }
-  }
-
-  // -------------------------------------------------------------------------
-  // VERIFY ------------------------------------------------------------------
-  // -------------------------------------------------------------------------
-
-  // read back addresses from SPI flash
-  for (int i = 0; i < 26, i++) {
-    readData(i, <buf>, <length>);
-  }
-  */
-
+  //confirmFlashCommunication();  // MUST BE COMMENTED OUT DURING PROPER FLASH PROGRAMMING! (because they contain serial prints)
+  //testEraseReadProgramRead();   // MUST BE COMMENTED OUT DURING PROPER FLASH PROGRAMMING! (because they contain serial prints)
 }
 
 void loop() {
-  Serial.println("In loop");
-  delay(5000);
+  if (!Serial.available()) return;
+
+  uint8_t cmd = Serial.read();
+
+  if (cmd == 'J') {
+    uint8_t id[3];
+    readJEDEC(id);
+
+    sendOK();
+    Serial.write(id, 3);
+  }
+
+  else if (cmd == 'E') {  // ERASE
+    uint32_t addr;
+
+    if (!readU32BE(&addr)) {
+      sendFail(10);
+      return;
+    }
+
+    sectorErase4k(addr);
+
+    sendOK();
+  }
+
+  else if (cmd == 'P') {  // PROGRAM   
+    uint32_t addr;
+    uint16_t len;
+
+    if (!readU32BE(&addr)) {
+      sendFail(11);
+      return;
+    }
+
+    if (!readU16BE(&len)) {
+      sendFail(12);
+      return;
+    }
+
+    if (len == 0 || len > 256) {  // Reject: if no data or too any data bytes for one page
+      sendFail(1);
+      return;
+    }
+
+    if (((addr & 0xFF) + len) > 256) {  // Reject: if data would cross page boundary
+      sendFail(2);
+      return;
+    }
+
+    // Store data from python in pageBuf
+    if (!readExact(pageBuf, len)) {  // Reject: if timeout (2 seconds without progress) or length not as expected
+      sendFail(3);
+      return;
+    }
+
+    // Read checksum from Python and compute local checksum
+    uint16_t expectedChecksum;
+
+    if (!readU16BE(&expectedChecksum)) {
+      sendFail(13);
+      return;
+    }
+
+    uint16_t actualChecksum = checksum16(pageBuf, len);
+
+    if (expectedChecksum != actualChecksum) {  // Reject: if corrupted serial packet
+      sendFail(4);
+      return;
+    }
+
+    pageProgram(addr, pageBuf, len);
+
+    readData(addr, verifyBuf, len);
+
+    for (uint16_t i = 0; i < len; i++) {
+      if (verifyBuf[i] != pageBuf[i]) {
+        sendFail(5);
+        return;
+      }
+    }
+
+    sendOK();
+  }
+
+  else if (cmd == 'R') {  // VERIFY
+    uint32_t addr;
+    uint16_t len;
+
+    if (!readU32BE(&addr)) {
+      sendFail(14);
+      return;
+    }
+
+    if (!readU16BE(&len)) {
+      sendFail(15);
+      return;
+    }
+
+    if (len == 0 || len > 256) {  // Limit reads to 256 bytes
+      sendFail(6);
+      return;
+    }
+
+    readData(addr, pageBuf, len);
+
+    sendOK();
+    Serial.write(pageBuf, len);
+  }
+
+  else if (cmd == 'Z') {
+    tristatePins();
+    sendOK();
+  }
+
+  else {
+    sendFail(99);
+  }
 }
 
 
