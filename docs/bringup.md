@@ -85,7 +85,7 @@ Notes:
 
 ##B) READ after CAPTURE → HEADER + data
  Run:
-python host/la_host.py --port COM__ read --out host/output/read.csv
+python host/la_host.py --port COM__ read --csv output/read.csv
  Expected: 0x99 + 4096 bytes
  Observed length: ______ bytes
  If ERROR 0xEE: likely capture not completed / state issue
@@ -93,7 +93,7 @@ Notes:
 
 ##C) Capture+Read one shot
  Run:
-python host/la_host.py --port COM__ capture-read --out host/output/run1.csv --vcd host/output/run1.vcd
+python host/la_host.py --port COM__ capture-read --csv output/run1.csv --vcd output/run1.vcd
  Expected: success, CSV+VCD created
 Notes:
 

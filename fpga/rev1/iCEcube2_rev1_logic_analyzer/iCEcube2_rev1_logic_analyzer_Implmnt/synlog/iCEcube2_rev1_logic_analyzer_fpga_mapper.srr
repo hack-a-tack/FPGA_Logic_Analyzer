@@ -1,4 +1,4 @@
-# Thu May 14 15:28:23 2026
+# Fri May 15 17:46:33 2026
 
 Synopsys Lattice Technology Mapper, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -41,23 +41,23 @@ Available hyper_sources - for debug and ip models
 @W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":84:2:84:3|User-specified initial value defined for instance E2.r_UART_RX_LED is being ignored. 
 @W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":111:2:111:3|User-specified initial value defined for instance E2.r_rx_sync_2 is being ignored. 
 @W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_rx.vhd":111:2:111:3|User-specified initial value defined for instance E2.r_rx_sync_1 is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":82:2:82:3|User-specified initial value defined for instance E4.r_fsm_tx_status_byte[5:0] is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":82:2:82:3|User-specified initial value defined for instance E4.r_fsm_tx_status_byte[7] is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":82:2:82:3|User-specified initial value defined for instance E4.r_fsm_tx_start_pulse is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":82:2:82:3|User-specified initial value defined for instance E4.r_wd_count[21:0] is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":82:2:82:3|User-specified initial value defined for instance E4.r_wd_timeout is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":82:2:82:3|User-specified initial value defined for instance E4.r_capture_start_pulse is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":82:2:82:3|User-specified initial value defined for instance E4.r_send_start_pulse is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":82:2:82:3|User-specified initial value defined for instance E4.r_USER_LED is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":83:2:83:3|User-specified initial value defined for instance E4.r_fsm_tx_status_byte[5:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":83:2:83:3|User-specified initial value defined for instance E4.r_fsm_tx_status_byte[7] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":83:2:83:3|User-specified initial value defined for instance E4.r_wd_count[21:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":83:2:83:3|User-specified initial value defined for instance E4.r_fsm_tx_start_pulse is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":83:2:83:3|User-specified initial value defined for instance E4.r_wd_timeout is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":83:2:83:3|User-specified initial value defined for instance E4.r_send_start_pulse is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":83:2:83:3|User-specified initial value defined for instance E4.r_capture_start_pulse is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":83:2:83:3|User-specified initial value defined for instance E4.r_USER_LED is being ignored. 
 @W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":72:2:72:3|User-specified initial value defined for instance E5.r_state[0] is being ignored. 
 @W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":72:2:72:3|User-specified initial value defined for instance E5.r_raw_wr_addr[11:0] is being ignored. 
 @W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":72:2:72:3|User-specified initial value defined for instance E5.r_capture_done_pulse is being ignored. 
 @W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":72:2:72:3|User-specified initial value defined for instance E5.r_raw_wr_en_pulse is being ignored. 
 @W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":72:2:72:3|User-specified initial value defined for instance E5.r_raw_wr_data[7:0] is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":79:2:79:3|User-specified initial value defined for instance E6.r_ram_rd_addr[11:0] is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":79:2:79:3|User-specified initial value defined for instance E6.r_send_done_pulse is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":79:2:79:3|User-specified initial value defined for instance E6.r_send_tx_byte[7:0] is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":79:2:79:3|User-specified initial value defined for instance E6.r_send_tx_start_pulse is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":93:2:93:3|User-specified initial value defined for instance E6.r_ram_rd_addr[11:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":93:2:93:3|User-specified initial value defined for instance E6.r_send_tx_byte[7:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":93:2:93:3|User-specified initial value defined for instance E6.r_send_tx_start_pulse is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":93:2:93:3|User-specified initial value defined for instance E6.r_send_done_pulse is being ignored. 
 @W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":77:2:77:3|User-specified initial value defined for instance E9.r_UART_TX is being ignored. 
 @W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":77:2:77:3|User-specified initial value defined for instance E9.r_bit_counter[2:0] is being ignored. 
 @W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":77:2:77:3|User-specified initial value defined for instance E9.r_clk_counter[5:0] is being ignored. 
@@ -96,14 +96,18 @@ original code -> new code
    01 -> 01
    10 -> 10
    11 -> 11
-@N: MO225 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":82:2:82:3|There are no possible illegal states for state machine r_state[0:3] (in view: work.analyzer_fsm(rtl)); safe FSM implementation is not required.
-Encoding state machine r_state[0:4] (in view: work.send_engine(rtl))
+@N: MO225 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":83:2:83:3|There are no possible illegal states for state machine r_state[0:3] (in view: work.analyzer_fsm(rtl)); safe FSM implementation is not required.
+Encoding state machine r_state[0:8] (in view: work.send_engine(rtl))
 original code -> new code
-   00001 -> 00001
-   00010 -> 00010
-   00100 -> 00100
-   01000 -> 01000
-   10000 -> 10000
+   000000001 -> 000000001
+   000000010 -> 000000010
+   000000100 -> 000000100
+   000001000 -> 000001000
+   000010000 -> 000010000
+   000100000 -> 000100000
+   001000000 -> 001000000
+   010000000 -> 010000000
+   100000000 -> 100000000
 Encoding state machine r_state[0:3] (in view: work.uart_tx(rtl))
 original code -> new code
    00 -> 00
@@ -155,16 +159,16 @@ Finished factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; M
 Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 134MB peak: 135MB)
 
 
-Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 135MB peak: 136MB)
+Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 136MB)
 
 
-Starting Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 135MB peak: 136MB)
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 137MB)
 
 
-Finished Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 135MB peak: 136MB)
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 137MB)
 
 
-Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 135MB peak: 136MB)
+Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 137MB)
 
 @N: BN362 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\trace_buffer.vhd":53:8:53:10|Removing sequential instance E7.mem_mem_0_0_OLD_0[1] (in view: work.top(structure)) because it does not drive other instances.
 @N: BN362 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\trace_buffer.vhd":53:8:53:10|Removing sequential instance E7.mem_mem_0_0_OLD_0[0] (in view: work.top(structure)) because it does not drive other instances.
@@ -186,14 +190,14 @@ Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:00s; CP
 @N: BN362 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\trace_buffer.vhd":53:8:53:10|Removing sequential instance E7.mem_mem_1_3_OLD_0[0] (in view: work.top(structure)) because it does not drive other instances.
 @N: MF794 |RAM E7.mem[7:0] required 2 registers during mapping 
 
-Finished preparing to map (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 135MB peak: 136MB)
+Finished preparing to map (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 137MB)
 
 
-Finished technology mapping (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 136MB peak: 138MB)
+Finished technology mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 137MB peak: 139MB)
 
 Pass		 CPU time		Worst Slack		Luts / Registers
 ------------------------------------------------------------
-   1		0h:00m:01s		     8.87ns		 240 /       145
+   1		0h:00m:00s		     8.87ns		 248 /       149
 @A: BN291 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":72:2:72:3|Boundary register E5.r_raw_wr_data[7] (in view: work.top(structure)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
 @A: BN291 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":72:2:72:3|Boundary register E5.r_raw_wr_data[6] (in view: work.top(structure)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
 @A: BN291 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":72:2:72:3|Boundary register E5.r_raw_wr_data[5] (in view: work.top(structure)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
@@ -202,13 +206,14 @@ Pass		 CPU time		Worst Slack		Luts / Registers
 @A: BN291 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":72:2:72:3|Boundary register E5.r_raw_wr_data[2] (in view: work.top(structure)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
 @A: BN291 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":72:2:72:3|Boundary register E5.r_raw_wr_data[1] (in view: work.top(structure)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
 @A: BN291 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":72:2:72:3|Boundary register E5.r_raw_wr_data[0] (in view: work.top(structure)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
+@A: BN291 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":83:2:83:3|Boundary register E4.r_fsm_tx_status_byte[2] (in view: work.top(structure)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
 @N: FX1017 :|SB_GB inserted on the net i_RESET_c_i.
-@N: FX1017 :|SB_GB inserted on the net N_193.
+@N: FX1017 :|SB_GB inserted on the net N_217.
 
-Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 137MB peak: 138MB)
+Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 137MB peak: 139MB)
 
 
-Finished restoring hierarchy (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 137MB peak: 138MB)
+Finished restoring hierarchy (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 137MB peak: 139MB)
 
 
 
@@ -217,14 +222,14 @@ Finished restoring hierarchy (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:
 
 #### START OF CLOCK OPTIMIZATION REPORT #####[
 
-2 non-gated/non-generated clock tree(s) driving 161 clock pin(s) of sequential element(s)
+2 non-gated/non-generated clock tree(s) driving 165 clock pin(s) of sequential element(s)
 0 gated/generated clock tree(s) driving 0 clock pin(s) of sequential element(s)
 0 instances converted, 0 sequential instances remain driven by gated/generated clocks
 
 =================================== Non-Gated/Non-Generated Clocks ===================================
 Clock Tree ID     Driving Element     Drive Element Type                Fanout     Sample Instance    
 ------------------------------------------------------------------------------------------------------
-@K:CKID0001       E1                  clock definition on hierarchy     160        E9.r_clk_counter[0]
+@K:CKID0001       E1                  clock definition on hierarchy     164        E9.r_clk_counter[0]
 @K:CKID0002       E1.o_clk_keep       clock definition on keepbuf       1          E1.r_samp_tick     
 ======================================================================================================
 
@@ -232,11 +237,11 @@ Clock Tree ID     Driving Element     Drive Element Type                Fanout  
 ##### END OF CLOCK OPTIMIZATION REPORT ######]
 
 
-Start Writing Netlists (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 111MB peak: 138MB)
+Start Writing Netlists (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 111MB peak: 139MB)
 
 Writing Analyst data base C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\iCEcube2_rev1_logic_analyzer\iCEcube2_rev1_logic_analyzer_Implmnt\synwork\iCEcube2_rev1_logic_analyzer_m.srm
 
-Finished Writing Netlist Databases (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 136MB peak: 138MB)
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 136MB peak: 139MB)
 
 Writing EDIF Netlist and constraint files
 @N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.
@@ -244,16 +249,16 @@ Writing EDIF Netlist and constraint files
 @N: FX1056 |Writing EDF file: C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\iCEcube2_rev1_logic_analyzer\iCEcube2_rev1_logic_analyzer_Implmnt\iCEcube2_rev1_logic_analyzer.edf
 L-2016.09L+ice40
 
-Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 137MB peak: 139MB)
+Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 138MB peak: 140MB)
 
 
-Start final timing analysis (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 137MB peak: 139MB)
+Start final timing analysis (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 136MB peak: 140MB)
 
 @N: MT615 |Found clock clk52 with period 18.94ns 
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Thu May 14 15:28:26 2026
+# Timing Report written on Fri May 15 17:46:35 2026
 #
 
 
@@ -341,14 +346,14 @@ Instance                Reference     Type         Pin     Net                  
 ------------------------------------------------------------------------------------------------------
 E9.r_UART_TX            clk52         SB_DFFSS     D       N_14_i                   18.784       4.503
 E2.r_bit_counter[2]     clk52         SB_DFFSR     D       r_bit_counter_RNO[2]     18.784       6.587
-E4.r_wd_timeout         clk52         SB_DFFSR     D       un5_n_wd_timeout_0_i     18.784       6.690
+E4.r_wd_timeout         clk52         SB_DFFSR     D       un5_n_wd_timeout_0_i     18.784       6.607
 E2.r_bit_counter[1]     clk52         SB_DFFSR     D       r_bit_counter_RNO[1]     18.784       6.690
 E9.r_state[0]           clk52         SB_DFFSR     D       N_12                     18.784       6.690
 E2.r_valid_stop         clk52         SB_DFFSR     D       r_valid_stop_0           18.784       6.721
 E2.r_valid_start        clk52         SB_DFFSR     D       r_valid_start_0          18.784       6.773
-E4.r_wd_count[0]        clk52         SB_DFFSR     R       N_193_g                  18.784       7.194
-E4.r_wd_count[1]        clk52         SB_DFFSR     R       N_193_g                  18.784       7.194
-E4.r_wd_count[2]        clk52         SB_DFFSR     R       N_193_g                  18.784       7.194
+E4.r_wd_count[0]        clk52         SB_DFFSR     R       N_217_g                  18.784       7.412
+E4.r_wd_count[1]        clk52         SB_DFFSR     R       N_217_g                  18.784       7.412
+E4.r_wd_count[2]        clk52         SB_DFFSR     R       N_217_g                  18.784       7.412
 ======================================================================================================
 
 
@@ -408,10 +413,10 @@ Path delay compensated for clock skew. Clock skew is added to clock-to-out value
 Timing exceptions that could not be applied
 None
 
-Finished final timing analysis (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 137MB peak: 139MB)
+Finished final timing analysis (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 137MB peak: 140MB)
 
 
-Finished timing report (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 137MB peak: 139MB)
+Finished timing report (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 137MB peak: 140MB)
 
 ---------------------------------------
 Resource Usage Report for top 
@@ -420,40 +425,41 @@ Mapping to part: ice40up5ksg48
 Cell usage:
 GND             9 uses
 SB_CARRY        52 uses
-SB_DFF          24 uses
+SB_DFF          29 uses
+SB_DFFE         1 use
 SB_DFFESR       32 uses
-SB_DFFSR        85 uses
-SB_DFFSS        4 uses
+SB_DFFSR        84 uses
+SB_DFFSS        3 uses
 SB_GB           2 uses
 SB_HFOSC        1 use
 SB_RAM2048x2    8 uses
 VCC             9 uses
-SB_LUT4         228 uses
+SB_LUT4         234 uses
 
 I/O ports: 14
 I/O primitives: 14
 SB_IO          14 uses
 
 I/O Register bits:                  0
-Register bits not including I/Os:   145 (2%)
+Register bits not including I/Os:   149 (2%)
 
 RAM/ROM usage summary
 Block Rams : 8 of 30 (26%)
 
 Total load per clock:
-   clk52: 161
+   clk52: 165
 
 @S |Mapping Summary:
-Total  LUTs: 228 (4%)
+Total  LUTs: 234 (4%)
 
 Distribution of All Consumed LUTs = LUT4 
-Distribution of All Consumed Luts 228 = 228 
+Distribution of All Consumed Luts 234 = 234 
 
 Mapper successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 29MB peak: 139MB)
+At Mapper Exit (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 29MB peak: 140MB)
 
 Process took 0h:00m:02s realtime, 0h:00m:02s cputime
-# Thu May 14 15:28:26 2026
+# Fri May 15 17:46:35 2026
 
 ###########################################################]

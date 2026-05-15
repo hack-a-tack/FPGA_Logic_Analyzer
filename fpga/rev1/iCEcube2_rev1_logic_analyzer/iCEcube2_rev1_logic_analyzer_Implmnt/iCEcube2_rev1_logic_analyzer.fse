@@ -11,31 +11,39 @@ fsm_state_encoding {16842841} rx_stop_bit {11}
 
 fsm_registers {16842841} {r_state[1]}  {r_state[0]} 
 
-fsm_encoding {9822822} sequential
+fsm_encoding {9832832} sequential
 
-fsm_state_encoding {9822822} idle {00}
+fsm_state_encoding {9832832} idle {00}
 
-fsm_state_encoding {9822822} capture {01}
+fsm_state_encoding {9832832} capture {01}
 
-fsm_state_encoding {9822822} done {10}
+fsm_state_encoding {9832832} done {10}
 
-fsm_state_encoding {9822822} send {11}
+fsm_state_encoding {9832832} send {11}
 
-fsm_registers {9822822} {r_state[1]}  {r_state[0]} 
+fsm_registers {9832832} {r_state[1]}  {r_state[0]} 
 
-fsm_encoding {13792793} onehot
+fsm_encoding {13932933} onehot
 
-fsm_state_encoding {13792793} send_idle {00001}
+fsm_state_encoding {13932933} send_idle {000000001}
 
-fsm_state_encoding {13792793} send_header {00010}
+fsm_state_encoding {13932933} send_header_start {000000010}
 
-fsm_state_encoding {13792793} send_set_addr {00100}
+fsm_state_encoding {13932933} send_header_wait_busy_high {000000100}
 
-fsm_state_encoding {13792793} send_hold {01000}
+fsm_state_encoding {13932933} send_header_wait_busy_low {000001000}
 
-fsm_state_encoding {13792793} send_data {10000}
+fsm_state_encoding {13932933} send_set_addr {000010000}
 
-fsm_registers {13792793} {r_state[0]}  {r_state[1]}  {r_state[2]}  {r_state[3]}  {r_state[4]} 
+fsm_state_encoding {13932933} send_data_start {000100000}
+
+fsm_state_encoding {13932933} send_data_wait_busy_high {001000000}
+
+fsm_state_encoding {13932933} send_data_wait_busy_low {010000000}
+
+fsm_state_encoding {13932933} send_done {100000000}
+
+fsm_registers {13932933} {r_state[0]}  {r_state[1]}  {r_state[2]}  {r_state[3]}  {r_state[4]}  {r_state[5]}  {r_state[6]}  {r_state[7]}  {r_state[8]} 
 
 fsm_encoding {17772774} sequential
 

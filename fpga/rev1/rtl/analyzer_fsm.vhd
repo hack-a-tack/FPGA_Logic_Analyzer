@@ -4,6 +4,7 @@
 -- AUTHOR: Jakob Kieszek Ottesen
 -- DATE: 2026-04-12 (YYYY-MM-DD)
 -- MODIFIED: 2026-05-14 (reset active low)
+-- LAST MODIFIED: 2026-05-15 (watchdog)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -99,12 +100,6 @@ begin
 				r_wd_count <= n_wd_count;
 				r_wd_timeout <= n_wd_timeout;
 			end if;
-			
-			if r_wd_timeout = '1' then
-				r_state <= IDLE;
-				r_fsm_tx_status_byte <= x"DD";  -- 0xDD (WATCHDOG ERROR), 0b11011101; watchdog triggered
-				r_fsm_tx_start_pulse <= '1';
-			end if;
 		end if;
 	end process seq_proc;
 	
@@ -139,7 +134,7 @@ begin
 				
 			when CAPTURE =>
 				if i_capture_done_pulse = '1' then
-					n_USER_LED <= not r_USER_LED;  -- toggle the LED once CAPTURE message is received
+					n_USER_LED <= not r_USER_LED;  -- toggle the LED once CAPTURE is complete
 					n_state <= DONE;
 					n_fsm_tx_status_byte <= x"77";  -- 0x77 (DONE), 0b01110111
 					n_fsm_tx_start_pulse <= '1';
@@ -176,9 +171,9 @@ begin
 		end case;
 		
 		-- Watchdog logic: prevents getting stuck in CAPTURE or SEND
-		if n_state = CAPTURE and r_state = IDLE then
+		if n_state = CAPTURE and r_state /= CAPTURE then
 			n_wd_count <= (others => '0');
-		elsif n_state = SEND and r_state = IDLE then
+		elsif n_state = SEND and r_state /= SEND then
 			n_wd_count <= (others => '0');
 		elsif (n_state = CAPTURE and r_state = CAPTURE) then
 			if r_wd_count >= WD_LIMIT_CAPTURE then
@@ -200,6 +195,12 @@ begin
 		n_wd_timeout <= '1' when 	(r_state = CAPTURE and r_wd_count >= WD_LIMIT_CAPTURE) or 
 									(r_state = SEND and r_wd_count >= WD_LIMIT_SEND)
 									else '0';
+		
+		if r_wd_timeout = '1' then
+			n_state <= IDLE;
+			n_fsm_tx_status_byte <= x"DD";  -- 0xDD (WATCHDOG ERROR), 0b11011101; watchdog triggered
+			n_fsm_tx_start_pulse <= '1';
+		end if;
 	end process fsm_proc;
 	
 	

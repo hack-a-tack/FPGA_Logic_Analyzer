@@ -1,7 +1,7 @@
 #--  Synopsys, Inc.
 #--  Version L-2016.09L+ice40
 #--  Project file C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\iCEcube2_rev1_logic_analyzer\iCEcube2_rev1_logic_analyzer_Implmnt\run_options.txt
-#--  Written on Thu May 14 15:28:20 2026
+#--  Written on Fri May 15 17:46:30 2026
 
 
 #project files

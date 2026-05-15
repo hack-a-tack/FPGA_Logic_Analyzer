@@ -54,8 +54,8 @@ architecture sim of send_engine_tb is
     end component;
 	
 	-- Constant declaration
-	constant ADDR_LENGTH : integer := 12;
-	constant NUM_SAMPLES : integer := 2**ADDR_LENGTH;
+	constant ADDR_LENGTH : integer := 3;
+	constant NUM_SAMPLES : integer := 2**ADDR_LENGTH;   -- 8; 4096 samples is overkill for basic unit testing
 	constant DATA_LENGTH : integer := 8;
 	constant CLK_FREQ   : real := 48.0e6;
 	constant CLK_PERIOD : time := 1 sec / CLK_FREQ;  	-- 20833 ps (truncated)
@@ -130,6 +130,32 @@ begin
 				end if;
 			end if;
 		end if;
+	end process;
+	
+	
+	uart_busy_model_proc : process
+	begin
+		i_tx_busy <= '0';
+
+		wait until i_rst = '1';
+
+		while true loop
+			wait until rising_edge(i_clk) and o_send_tx_start_pulse = '1';
+
+			-- Model registered tx_mux/uart_tx latency before busy is visible
+			wait until rising_edge(i_clk);
+			wait until rising_edge(i_clk);
+
+			i_tx_busy <= '1';
+
+			-- Model UART being busy for some cycles.
+			-- Keep short in unit TB; this is not a UART timing test.
+			for i in 0 to 5 loop
+				wait until rising_edge(i_clk);
+			end loop;
+
+			i_tx_busy <= '0';
+		end loop;
 	end process;
 	
 	

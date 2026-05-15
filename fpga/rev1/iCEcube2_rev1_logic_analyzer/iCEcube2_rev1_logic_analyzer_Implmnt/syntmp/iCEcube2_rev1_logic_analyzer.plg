@@ -7,7 +7,7 @@
 @P: top Part : ice40up5ksg48
 @P: top I/O primitives : 14
 @P: top I/O Register bits : 0
-@P: top Register bits (Non I/O) : 145 (2%)
+@P: top Register bits (Non I/O) : 149 (2%)
 @P: top Block Rams : 8 of 30 (26%)
-@P: top Total Luts : 228 (4%)
+@P: top Total Luts : 234 (4%)
 @P:  CPU Time : 0h:00m:02s
