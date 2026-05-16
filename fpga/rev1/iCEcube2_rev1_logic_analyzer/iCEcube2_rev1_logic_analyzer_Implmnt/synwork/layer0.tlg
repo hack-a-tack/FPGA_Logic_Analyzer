@@ -8,8 +8,8 @@ Post processing for work.tx_mux.rtl
 @N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\trace_buffer.vhd":33:7:33:18|Synthesizing work.trace_buffer.rtl.
 Post processing for work.trace_buffer.rtl
 @N: CL134 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\trace_buffer.vhd":53:8:53:10|Found RAM mem, depth=4096, width=8
-@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":42:7:42:17|Synthesizing work.send_engine.rtl.
-@N: CD231 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":66:29:66:30|Using onehot encoding for type send_engine_state_type. For example, enumeration send_idle is mapped to "100000000".
+@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":52:7:52:17|Synthesizing work.send_engine.rtl.
+@N: CD231 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":76:29:76:30|Using onehot encoding for type send_engine_state_type. For example, enumeration send_idle is mapped to "100000000".
 Post processing for work.send_engine.rtl
 @N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":35:7:35:20|Synthesizing work.capture_engine.rtl.
 @N: CD233 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":56:32:56:33|Using sequential encoding for type capture_engine_state_type.
@@ -45,7 +45,7 @@ State machine has 4 reachable states with original encodings of:
    11
 @W: CL249 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":83:2:83:3|Initial value is not supported on state machine r_state
 @W: CL260 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":83:2:83:3|Pruning register bit 6 of r_fsm_tx_status_byte(7 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
-@N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":93:2:93:3|Trying to extract state machine for register r_state.
+@N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":103:2:103:3|Trying to extract state machine for register r_state.
 Extracted state machine for register r_state
 State machine has 9 reachable states with original encodings of:
    000000001
@@ -57,7 +57,7 @@ State machine has 9 reachable states with original encodings of:
    001000000
    010000000
    100000000
-@W: CL249 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":93:2:93:3|Initial value is not supported on state machine r_state
+@W: CL249 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":103:2:103:3|Initial value is not supported on state machine r_state
 @N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":77:2:77:3|Trying to extract state machine for register r_state.
 Extracted state machine for register r_state
 State machine has 4 reachable states with original encodings of:

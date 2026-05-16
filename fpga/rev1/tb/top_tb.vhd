@@ -3,6 +3,7 @@
 -- FUNCTION: TESTBENCH for top level entity which ties all underlying modules together
 -- AUTHOR: Jakob Kieszek Ottesen
 -- DATE: 2026-04-09 (YYYY-MM-DD)
+-- MODIFIED: 2026-05-16 (reset active low)
 --
 -- INPUTS 					DATA		TO INTERNAL MODULE
 -- i_RESET					1 bit		-> uart_rx | cmd_parser | analyzer_fsm | capture_engine | send_engine | tx_mux | uart_tx
@@ -81,7 +82,7 @@ architecture sim of top_tb is
 	constant HALF_BIT_P : time := BIT_PERIOD / 2;
 
     -- Signals to connect to DUT
-	signal i_RESET 			: std_logic := '0';
+	signal i_RESET 			: std_logic := '1';  -- active low
 	signal i_LA0 			: std_logic := '0';
 	signal i_LA1 			: std_logic := '0';
 	signal i_LA2 			: std_logic := '0';
@@ -236,9 +237,9 @@ begin
 		-- Reset phase
 		--------------------------------------------------------
         wait for CLK_ACTUAL;
-		i_RESET <= '1';
-		wait for CLK_ACTUAL;
 		i_RESET <= '0';
+		wait for CLK_ACTUAL;
+		i_RESET <= '1';
 		wait for CLK_ACTUAL;
 		
 		
@@ -317,9 +318,9 @@ begin
 		--------------------------------------------------------
 		-- reset before TC4 to avoid waiting ~45 ms of sim time
 		wait for CLK_ACTUAL;
-		i_RESET <= '1';
-		wait for CLK_ACTUAL;
 		i_RESET <= '0';
+		wait for CLK_ACTUAL;
+		i_RESET <= '1';
 		wait for CLK_ACTUAL;
 		test_id <= 4;
 		
@@ -414,9 +415,9 @@ begin
 		--------------------------------------------------------
 		-- reset before TC5 to avoid waiting ~45 ms of sim time
 		wait for CLK_ACTUAL;
-		i_RESET <= '1';
-		wait for CLK_ACTUAL;
 		i_RESET <= '0';
+		wait for CLK_ACTUAL;
+		i_RESET <= '1';
 		wait for CLK_ACTUAL;
 		test_id <= 5;
 		
