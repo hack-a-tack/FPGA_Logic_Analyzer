@@ -20,7 +20,7 @@
 #CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\tx_mux.vhd":1778765008
 #CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\uart_rx.vhd":1778764485
 #CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\uart_tx.vhd":1778764532
-#CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\top.vhd":1778765219
+#CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\top.vhd":1779002745
 0 "C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd" vhdl
 1 "C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd" vhdl
 2 "C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\clocking.vhd" vhdl

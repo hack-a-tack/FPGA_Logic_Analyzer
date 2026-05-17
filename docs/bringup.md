@@ -86,7 +86,7 @@ Notes:
 ##B) READ after CAPTURE → HEADER + data
  Run:
 python host/la_host.py --port COM__ read --csv output/read.csv
- Expected: 0x99 + 4096 bytes
+ Expected: 4096 bytes
  Observed length: ______ bytes
  If ERROR 0xEE: likely capture not completed / state issue
 Notes:
@@ -158,3 +158,37 @@ COM ok, no responses → reset/clocking/FPGA not configured
 Responses garbled → baud mismatch / clock wrong / wrong pins
 Header ok but wrong data → LA pin mapping / bit order / input floating
 Intermittent weirdness → grounding, floating inputs, clock tolerance, timing closure, noise
+
+
+
+(new notes:)
+
+## Rev1 Hardware Bring-up Result
+
+The rev1 FPGA logic analyzer PCB successfully completed end-to-end operation using the Python host script over UART.
+
+Validated modes:
+- self-test
+- capture
+- read
+- capture-read
+
+Input validation:
+- All inputs low: 4096/4096 samples = 0x00 across 10+ runs
+- All inputs high: 4096/4096 samples = 0xFF across 10+ runs
+- One-hot input tests:
+  - LA0 = 0x01
+  - LA1 = 0x02
+  - LA2 = 0x04
+  - LA3 = 0x08
+  - LA4 = 0x10
+  - LA5 = 0x20
+  - LA6 = 0x40
+  - LA7 = 0x80
+- Floating inputs produced undefined values, including 0x00, 0xFF, and one observed 0xFE case.
+
+Conclusion:
+- UART command/response path works.
+- Capture buffer and send path work.
+- Input bit ordering is correct.
+- Floating inputs are undefined and require driven or biased signals for valid captures.

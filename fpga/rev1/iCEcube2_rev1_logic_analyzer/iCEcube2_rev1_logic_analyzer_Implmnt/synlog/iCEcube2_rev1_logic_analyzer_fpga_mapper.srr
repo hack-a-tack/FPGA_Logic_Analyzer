@@ -1,4 +1,4 @@
-# Sat May 16 12:17:14 2026
+# Sun May 17 09:25:58 2026
 
 Synopsys Lattice Technology Mapper, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -159,16 +159,16 @@ Finished factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; M
 Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 134MB peak: 135MB)
 
 
-Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 136MB)
+Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 135MB peak: 136MB)
 
 
-Starting Early Timing Optimization (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 136MB peak: 137MB)
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 135MB peak: 136MB)
 
 
-Finished Early Timing Optimization (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 136MB peak: 137MB)
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 135MB peak: 136MB)
 
 
-Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 136MB peak: 137MB)
+Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:01s; Memory used current: 135MB peak: 136MB)
 
 @N: BN362 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\trace_buffer.vhd":53:8:53:10|Removing sequential instance E7.mem_mem_0_0_OLD_0[1] (in view: work.top(structure)) because it does not drive other instances.
 @N: BN362 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\trace_buffer.vhd":53:8:53:10|Removing sequential instance E7.mem_mem_0_0_OLD_0[0] (in view: work.top(structure)) because it does not drive other instances.
@@ -190,14 +190,14 @@ Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:01s; CP
 @N: BN362 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\trace_buffer.vhd":53:8:53:10|Removing sequential instance E7.mem_mem_1_3_OLD_0[0] (in view: work.top(structure)) because it does not drive other instances.
 @N: MF794 |RAM E7.mem[7:0] required 2 registers during mapping 
 
-Finished preparing to map (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 136MB peak: 137MB)
+Finished preparing to map (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 135MB peak: 136MB)
 
 
 Finished technology mapping (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 137MB peak: 139MB)
 
 Pass		 CPU time		Worst Slack		Luts / Registers
 ------------------------------------------------------------
-   1		0h:00m:01s		     8.87ns		 248 /       149
+   1		0h:00m:01s		     8.87ns		 252 /       153
 @A: BN291 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":72:2:72:3|Boundary register E5.r_raw_wr_data[7] (in view: work.top(structure)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
 @A: BN291 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":72:2:72:3|Boundary register E5.r_raw_wr_data[6] (in view: work.top(structure)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
 @A: BN291 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":72:2:72:3|Boundary register E5.r_raw_wr_data[5] (in view: work.top(structure)) is packed into a complex cell. To disable register packing, set syn_keep=1 on the net between the register and the complex cell. 
@@ -222,16 +222,16 @@ Finished restoring hierarchy (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:
 
 #### START OF CLOCK OPTIMIZATION REPORT #####[
 
-2 non-gated/non-generated clock tree(s) driving 165 clock pin(s) of sequential element(s)
+2 non-gated/non-generated clock tree(s) driving 169 clock pin(s) of sequential element(s)
 0 gated/generated clock tree(s) driving 0 clock pin(s) of sequential element(s)
 0 instances converted, 0 sequential instances remain driven by gated/generated clocks
 
-=================================== Non-Gated/Non-Generated Clocks ===================================
-Clock Tree ID     Driving Element     Drive Element Type                Fanout     Sample Instance    
-------------------------------------------------------------------------------------------------------
-@K:CKID0001       E1                  clock definition on hierarchy     164        E9.r_clk_counter[0]
-@K:CKID0002       E1.o_clk_keep       clock definition on keepbuf       1          E1.r_samp_tick     
-======================================================================================================
+================================= Non-Gated/Non-Generated Clocks =================================
+Clock Tree ID     Driving Element     Drive Element Type                Fanout     Sample Instance
+--------------------------------------------------------------------------------------------------
+@K:CKID0001       E1                  clock definition on hierarchy     168        samp_div_cnt[0]
+@K:CKID0002       E1.o_clk_keep       clock definition on keepbuf       1          E1.r_samp_tick 
+==================================================================================================
 
 
 ##### END OF CLOCK OPTIMIZATION REPORT ######]
@@ -241,7 +241,7 @@ Start Writing Netlists (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01
 
 Writing Analyst data base C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\iCEcube2_rev1_logic_analyzer\iCEcube2_rev1_logic_analyzer_Implmnt\synwork\iCEcube2_rev1_logic_analyzer_m.srm
 
-Finished Writing Netlist Databases (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:01s; Memory used current: 136MB peak: 139MB)
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 136MB peak: 139MB)
 
 Writing EDIF Netlist and constraint files
 @N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.
@@ -249,16 +249,16 @@ Writing EDIF Netlist and constraint files
 @N: FX1056 |Writing EDF file: C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\iCEcube2_rev1_logic_analyzer\iCEcube2_rev1_logic_analyzer_Implmnt\iCEcube2_rev1_logic_analyzer.edf
 L-2016.09L+ice40
 
-Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 138MB peak: 140MB)
+Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 137MB peak: 139MB)
 
 
-Start final timing analysis (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 136MB peak: 140MB)
+Start final timing analysis (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 136MB peak: 139MB)
 
 @N: MT615 |Found clock clk52 with period 18.94ns 
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Sat May 16 12:17:17 2026
+# Timing Report written on Sun May 17 09:26:00 2026
 #
 
 
@@ -413,10 +413,10 @@ Path delay compensated for clock skew. Clock skew is added to clock-to-out value
 Timing exceptions that could not be applied
 None
 
-Finished final timing analysis (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 137MB peak: 140MB)
+Finished final timing analysis (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 137MB peak: 139MB)
 
 
-Finished timing report (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 137MB peak: 140MB)
+Finished timing report (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 137MB peak: 139MB)
 
 ---------------------------------------
 Resource Usage Report for top 
@@ -424,42 +424,42 @@ Resource Usage Report for top
 Mapping to part: ice40up5ksg48
 Cell usage:
 GND             9 uses
-SB_CARRY        52 uses
+SB_CARRY        55 uses
 SB_DFF          29 uses
 SB_DFFE         1 use
 SB_DFFESR       32 uses
-SB_DFFSR        84 uses
+SB_DFFSR        88 uses
 SB_DFFSS        3 uses
 SB_GB           2 uses
 SB_HFOSC        1 use
 SB_RAM2048x2    8 uses
 VCC             9 uses
-SB_LUT4         234 uses
+SB_LUT4         238 uses
 
-I/O ports: 14
-I/O primitives: 14
-SB_IO          14 uses
+I/O ports: 16
+I/O primitives: 16
+SB_IO          16 uses
 
 I/O Register bits:                  0
-Register bits not including I/Os:   149 (2%)
+Register bits not including I/Os:   153 (2%)
 
 RAM/ROM usage summary
 Block Rams : 8 of 30 (26%)
 
 Total load per clock:
-   clk52: 165
+   clk52: 169
 
 @S |Mapping Summary:
-Total  LUTs: 234 (4%)
+Total  LUTs: 238 (4%)
 
 Distribution of All Consumed LUTs = LUT4 
-Distribution of All Consumed Luts 234 = 234 
+Distribution of All Consumed Luts 238 = 238 
 
 Mapper successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 29MB peak: 140MB)
+At Mapper Exit (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 29MB peak: 139MB)
 
 Process took 0h:00m:02s realtime, 0h:00m:02s cputime
-# Sat May 16 12:17:17 2026
+# Sun May 17 09:26:00 2026
 
 ###########################################################]

@@ -1,5 +1,6 @@
 @N: CD231 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\vhd2008\std1164.vhd":890:16:890:17|Using onehot encoding for type mvl9plus. For example, enumeration 'U' is mapped to "1000000000".
-@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\top.vhd":38:7:38:9|Synthesizing work.top.structure.
+@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\top.vhd":39:7:39:9|Synthesizing work.top.structure.
+@W: CD638 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\top.vhd":101:8:101:18|Signal uart_tx_int is undriven. Either assign the signal a value or remove the signal declaration.
 @N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":38:7:38:13|Synthesizing work.uart_tx.rtl.
 @N: CD233 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":57:25:57:26|Using sequential encoding for type uart_tx_state_type.
 Post processing for work.uart_tx.rtl
