@@ -1,8 +1,7 @@
 @N: CD231 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\vhd2008\std1164.vhd":890:16:890:17|Using onehot encoding for type mvl9plus. For example, enumeration 'U' is mapped to "1000000000".
 @N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\top.vhd":39:7:39:9|Synthesizing work.top.structure.
-@W: CD638 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\top.vhd":101:8:101:18|Signal uart_tx_int is undriven. Either assign the signal a value or remove the signal declaration.
-@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":38:7:38:13|Synthesizing work.uart_tx.rtl.
-@N: CD233 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":57:25:57:26|Using sequential encoding for type uart_tx_state_type.
+@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":39:7:39:13|Synthesizing work.uart_tx.rtl.
+@N: CD233 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":58:25:58:26|Using sequential encoding for type uart_tx_state_type.
 Post processing for work.uart_tx.rtl
 @N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\tx_mux.vhd":31:7:31:12|Synthesizing work.tx_mux.rtl.
 Post processing for work.tx_mux.rtl
@@ -59,11 +58,11 @@ State machine has 9 reachable states with original encodings of:
    010000000
    100000000
 @W: CL249 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":103:2:103:3|Initial value is not supported on state machine r_state
-@N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":77:2:77:3|Trying to extract state machine for register r_state.
+@N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":82:2:82:3|Trying to extract state machine for register r_state.
 Extracted state machine for register r_state
 State machine has 4 reachable states with original encodings of:
    00
    01
    10
    11
-@W: CL249 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":77:2:77:3|Initial value is not supported on state machine r_state
+@W: CL249 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\uart_tx.vhd":82:2:82:3|Initial value is not supported on state machine r_state

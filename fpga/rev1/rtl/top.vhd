@@ -72,7 +72,6 @@ architecture STRUCTURE of top is
 	-- CLOCKING
 	signal CLK 			: std_logic;											-- driven by clocking
 	signal SAMP_TICK 	: std_logic;											-- driven by clocking
-	signal samp_div_cnt : unsigned(3 downto 0);									-- used for DEBUGGING
 	
 	-- SAMPLING
 	signal ANALYZER_INPUTS	: std_logic_vector(DATA_LENGTH-1 downto 0);			-- driven by top
@@ -98,7 +97,7 @@ architecture STRUCTURE of top is
 	signal MUX_TX_BYTE 			: std_logic_vector(DATA_LENGTH-1 downto 0);		-- driven by tx_mux
 	signal MUX_TX_START_PULSE 	: std_logic;									-- driven by tx_mux
 	signal TX_BUSY 				: std_logic;									-- driven by uart_tx
-	signal UART_TX_INT 			: std_logic;									-- create net for additional DEBUG output
+	signal UART_TX_LED_DEBUG 	: std_logic;									-- create net for additional DEBUG output
 	
 	-- RAM RELATED: TRACE_BUFFER <--> CAPTURE_ENGINE, SEND_ENGINE
 	signal WR_EN_PULSE	: std_logic;											-- driven by capture_engine
@@ -244,25 +243,16 @@ begin
 			i_mux_tx_start_pulse	=> MUX_TX_START_PULSE,
 			o_tx_busy				=> TX_BUSY,
 			o_UART_TX				=> o_UART_TX,
-			o_UART_TX_LED			=> o_UART_TX_LED
+			o_UART_TX_LED			=> UART_TX_LED_DEBUG
 		);
 		
 	----------------------------
 	-- DEBUG SECTION
-	----------------------------
-	DEBUG_PROC : process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if i_RESET = '0' then
-				samp_div_cnt <= (others => '0');
-			elsif SAMP_TICK = '1' then
-				samp_div_cnt <= samp_div_cnt + 1;
-			end if;
-		end if;
-	end process;
+	----------------------------	
+	o_UART_TX_LED <= UART_TX_LED_DEBUG;
 	
-	o_DEBUG_1 <= SAMP_TICK;	 					-- raw sample tick, expected ~24 MHz
-	o_DEBUG_2 <= std_logic(samp_div_cnt(3));  	-- sample tick / 16, expected ~1.5 MHz
+	o_DEBUG_1 <= TX_BUSY;	 			-- TX_BUSY to measure transfer time
+	o_DEBUG_2 <= UART_TX_LED_DEBUG;  	-- toggles on at falling edge of 0x99 start bit; off at final data byte stop bit
 	----------------------------
 
 end architecture STRUCTURE;
