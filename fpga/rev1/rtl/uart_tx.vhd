@@ -4,7 +4,6 @@
 -- AUTHOR: Jakob Kieszek Ottesen
 -- DATE: 2026-04-19 (YYYY-MM-DD)
 -- MODIFIED: 2026-05-14 (reset active low)
--- STARTING POINT FOR MODIFICATIONS TO UART_TX.VHD -- REMOVE THIS AFTER METRICS
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -71,10 +70,6 @@ architecture RTL of uart_tx is
 	signal r_clk_counter, n_clk_counter : integer range 0 to CLKS_PER_BIT-1 := 0;  -- counts FPGA clock cycles in one UART bit period
 	signal r_bit_counter, n_bit_counter : integer range 0 to DATA_LENGTH-1  := 0;  -- tracks data bits inside one data byte
 	
-	-- METRICS signals  -- REMOVE THIS AFTER METRICS
-	signal r_start_counter, n_start_counter : std_logic						:= '0';  -- REMOVE THIS AFTER METRICS
-	signal r_transfer_counter, n_transfer_counter : integer range 0 to 4096	:= 0; 	 -- REMOVE THIS AFTER METRICS (index 4096 because it's 4097 with header)
-	
 begin
 	-- Sequential process for dealing with clocking
 	seq_proc: process(i_clk) is
@@ -88,8 +83,6 @@ begin
 				r_tx_byte 	  <= (others => '0');
 				r_clk_counter <= 0;
 				r_bit_counter <= 0;
-				r_start_counter <= '0';  -- REMOVE THIS AFTER METRICS
-				r_transfer_counter <= 0; -- REMOVE THIS AFTER METRICS
 			else
 				r_state 	  <= n_state;
 				r_tx_busy 	  <= n_tx_busy;
@@ -98,8 +91,6 @@ begin
 				r_tx_byte 	  <= n_tx_byte;
 				r_clk_counter <= n_clk_counter;
 				r_bit_counter <= n_bit_counter;
-				r_start_counter <= n_start_counter;  		-- REMOVE THIS AFTER METRICS
-				r_transfer_counter <= n_transfer_counter;  	-- REMOVE THIS AFTER METRICS
 			end if;
 		end if;
 	end process seq_proc;
@@ -116,8 +107,6 @@ begin
 		n_tx_byte 	   <= r_tx_byte;
 		n_clk_counter  <= r_clk_counter;
 		n_bit_counter  <= r_bit_counter;
-		n_start_counter <= r_start_counter;  		-- REMOVE THIS AFTER METRICS
-		n_transfer_counter <= r_transfer_counter;  	-- REMOVE THIS AFTER METRICS
 	
 		case r_state is
 			when TX_IDLE =>
@@ -125,11 +114,6 @@ begin
 				n_UART_TX <= '1';  -- force line high (UART is idle high)
 				if i_mux_tx_start_pulse = '1' then
 					n_tx_byte <= i_mux_tx_byte;  -- latch input byte so it doesn't change during transmission
-					if (i_mux_tx_byte = x"99") and (r_start_counter = '0') then	-- REMOVE THIS AFTER METRICS
-						n_UART_TX_LED <= '1';									-- REMOVE THIS AFTER METRICS
-						n_start_counter <= '1';  								-- REMOVE THIS AFTER METRICS
-						n_transfer_counter <= 0; 								-- REMOVE THIS AFTER METRICS
-					end if;  													-- REMOVE THIS AFTER METRICS
 					n_clk_counter <= 0;
 					n_bit_counter <= 0;
 					n_tx_busy <= '1';  -- assert busy flag so send_engine waits
@@ -174,16 +158,7 @@ begin
 					n_bit_counter <= 0;
 					n_tx_busy <= '0';  -- preload busy toggle so o_tx_busy becomes '0' when you reach TX_IDLE
 					n_UART_TX <= '1';  -- explicitly preloading IDLE HIGH
-					-- BRING BACK AFTER METRICS: n_UART_TX_LED <= not r_UART_TX_LED;  -- preload LED toggle so the registered output toggles when you reach TX_IDLE
-					if r_start_counter = '1' then  							-- REMOVE THIS AFTER METRICS
-						if r_transfer_counter = 4096 then  -- we've already done header + 4095 bytes, this is the last one
-							n_UART_TX_LED <= '0';  							-- REMOVE THIS AFTER METRICS
-							n_start_counter <= '0';  						-- REMOVE THIS AFTER METRICS
-							n_transfer_counter <= 0;  						-- REMOVE THIS AFTER METRICS
-						else  												-- REMOVE THIS AFTER METRICS
-							n_transfer_counter <= r_transfer_counter + 1;  	-- REMOVE THIS AFTER METRICS
-						end if;  											-- REMOVE THIS AFTER METRICS
-					end if;  												-- REMOVE THIS AFTER METRICS
+					n_UART_TX_LED <= not r_UART_TX_LED;  -- preload LED toggle so the registered output toggles when you reach TX_IDLE
 					n_state <= TX_IDLE;
 				else
 					n_clk_counter <= r_clk_counter + 1;

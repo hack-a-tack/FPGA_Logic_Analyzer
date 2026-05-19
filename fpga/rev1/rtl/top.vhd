@@ -58,9 +58,7 @@ entity top is
 		o_UART_TX			: out std_logic;
 		o_UART_TX_LED		: out std_logic;
 		o_UART_RX_LED		: out std_logic;
-		o_USER_LED			: out std_logic;
-		o_DEBUG_1			: out std_logic;	-- added for DEBUGGING
-		o_DEBUG_2			: out std_logic  	-- added for DEBUGGING
+		o_USER_LED			: out std_logic
 	);
 end entity top;
 	
@@ -97,7 +95,6 @@ architecture STRUCTURE of top is
 	signal MUX_TX_BYTE 			: std_logic_vector(DATA_LENGTH-1 downto 0);		-- driven by tx_mux
 	signal MUX_TX_START_PULSE 	: std_logic;									-- driven by tx_mux
 	signal TX_BUSY 				: std_logic;									-- driven by uart_tx
-	signal UART_TX_LED_DEBUG 	: std_logic;									-- create net for additional DEBUG output
 	
 	-- RAM RELATED: TRACE_BUFFER <--> CAPTURE_ENGINE, SEND_ENGINE
 	signal WR_EN_PULSE	: std_logic;											-- driven by capture_engine
@@ -243,16 +240,7 @@ begin
 			i_mux_tx_start_pulse	=> MUX_TX_START_PULSE,
 			o_tx_busy				=> TX_BUSY,
 			o_UART_TX				=> o_UART_TX,
-			o_UART_TX_LED			=> UART_TX_LED_DEBUG
+			o_UART_TX_LED			=> o_UART_TX_LED
 		);
-		
-	----------------------------
-	-- DEBUG SECTION
-	----------------------------	
-	o_UART_TX_LED <= UART_TX_LED_DEBUG;
-	
-	o_DEBUG_1 <= TX_BUSY;	 			-- TX_BUSY to measure transfer time
-	o_DEBUG_2 <= UART_TX_LED_DEBUG;  	-- toggles on at falling edge of 0x99 start bit; off at final data byte stop bit
-	----------------------------
 
 end architecture STRUCTURE;

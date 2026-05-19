@@ -45,14 +45,14 @@ fsm_state_encoding {1310321033} send_done {100000000}
 
 fsm_registers {1310321033} {r_state[0]}  {r_state[1]}  {r_state[2]}  {r_state[3]}  {r_state[4]}  {r_state[5]}  {r_state[6]}  {r_state[7]}  {r_state[8]} 
 
-fsm_encoding {17822824} sequential
+fsm_encoding {17772774} sequential
 
-fsm_state_encoding {17822824} tx_idle {00}
+fsm_state_encoding {17772774} tx_idle {00}
 
-fsm_state_encoding {17822824} tx_start_bit {01}
+fsm_state_encoding {17772774} tx_start_bit {01}
 
-fsm_state_encoding {17822824} tx_data_bits {10}
+fsm_state_encoding {17772774} tx_data_bits {10}
 
-fsm_state_encoding {17822824} tx_stop_bit {11}
+fsm_state_encoding {17772774} tx_stop_bit {11}
 
-fsm_registers {17822824} {r_state[1]}  {r_state[0]} 
+fsm_registers {17772774} {r_state[1]}  {r_state[0]} 

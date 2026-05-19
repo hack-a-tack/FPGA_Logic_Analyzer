@@ -11,10 +11,11 @@ NOTES
 - Modes
 -- capture: capture data
 -- read: transfer data to host (csv/vcd)
--- capture-read: normal mode (full operation + produce files)
+-- capture-read: normal mode (full operation + produce files + report time duration for different phases of acquisition)
 ---- csv file written by default; optional vcd file
 -- raw: send raw opcode (doesn't have to be A0 (CAPTURE) or A1 (READ)) to test system error response
 -- capture-twice: do two captures back-to-back. If sufficiently fast, returns error because capture already taking place
+-- spam-capture: run capture continuously
 -- self-test: bring-up/diagnostics mode (prove the whole chain works and make failures obvious)
 ---- csv file and vcd files only written if explicit flags added when running the script in self-test mode
 """
@@ -86,11 +87,11 @@ def send_cmd(ser: serial.Serial, opcode: int) -> None:
     ser.flush()
     
 
-def send_raw_opcode(ser: serial.Serial, hex_str: str):
+def send_raw_opcode(ser: serial.Serial, hex_str: str, timeout_s: float):
     value = int(hex_str, 16)
     ser.write(bytes([value]))
     ser.flush()
-    return ser.read(1, timeout_s)
+    return read_exact(ser, 1, timeout_s)
 
 
 def do_capture(ser: serial.Serial, cfg: HostConfig) -> None:
@@ -119,6 +120,36 @@ def do_read(ser: serial.Serial, cfg: HostConfig) -> bytes:
 
     data = read_exact(ser, cfg.num_samples, cfg.timeout_s)
     return data
+
+
+def do_capture_read_timed(ser: serial.Serial, cfg: HostConfig) -> tuple[bytes, float, float, float, float]:
+    t_start = time.perf_counter()  # start timing immediately before sending CAPTURE
+
+    send_cmd(ser, CAPTURE)
+    expect_byte(ser, OK, cfg.timeout_s, "TIMED/CAPTURE/OK")  # wait for CAPTURE OK
+    expect_byte(ser, DONE, cfg.timeout_s, "TIMED/CAPTURE/DONE")  # wait for CAPTURE DONE
+    t_capture_done = time.perf_counter()  # timestamp when capture phase is acknowledged complete
+
+    send_cmd(ser, READ)
+
+    first = read_one(ser, cfg.timeout_s) 
+    if first == ERROR:  # preserve existing READ error handling
+        raise RuntimeError("TIMED/READ: device returned ERROR (0xEE) - data not ready?")  # explicit timed-read error
+    if first != HEADER:  # preserve existing HEADER validation
+        raise RuntimeError(f"TIMED/READ: expected HEADER 0x{HEADER:02X}, got 0x{first:02X}")  # explicit timed-read header error
+
+    t_header_received = time.perf_counter()  # timestamp when header has reached Python
+
+    data = read_exact(ser, cfg.num_samples, cfg.timeout_s)  # read expected payload bytes
+    t_end = time.perf_counter()  # stop timing immediately after final expected data byte is received
+
+    return  (
+        data,                           # captured data
+        (t_end - t_start),              # end-to-end acquisition cycle
+        (t_capture_done - t_start),     # capture phase
+        (t_end - t_capture_done),       # read phase from READ command to final data byte
+        (t_end - t_header_received)     # payload receive phase after HEADER (read phase - time to receive HEADER)
+    )
     
 
 def print_read_summary(data: bytes, n: int = 16) -> None:
@@ -334,14 +365,17 @@ def main(argv: list[str]) -> int:
                 print(f"Read: wrote {len(data)} bytes to {args.csv}" + (f" and {args.vcd}" if args.vcd else ""))
             
             elif args.mode == "capture-read":
-                do_capture(ser, cfg)
-                data = do_read(ser, cfg)
+                data, total_s, capture_phase_s, payload_header_read_s, payload_read_s = do_capture_read_timed(ser, cfg)
                 print_read_summary(data)
                 write_csv(args.csv, data)
                 if args.vcd:
                     write_vcd(args.vcd, data, cfg.sample_rate_hz)
                 print(f"Capture+Read: wrote {len(data)} bytes to {args.csv}" + (f" and {args.vcd}" if args.vcd else ""))
-               
+                print(f"End-to-end acquisition cycle time: {total_s * 1e3:.3f} ms")
+                print(f"Capture command phase time: {capture_phase_s * 1e3:.3f} ms")
+                print(f"Read command phase time (header + data bytes): {payload_header_read_s * 1e3:.3f} ms")  # host-side payload receive duration from (before) HEADER
+                print(f"Payload read phase after HEADER received (data bytes only): {payload_read_s * 1e3:.3f} ms")  # host-side payload receive duration after HEADER
+                        
             elif args.mode == "raw":
                 if args.value is None:
                     p.error("raw mode requries a hex value, e.g. raw B0")
