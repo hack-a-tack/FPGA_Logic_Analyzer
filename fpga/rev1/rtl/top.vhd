@@ -82,13 +82,13 @@ architecture STRUCTURE of top is
 	signal CAPTURE_PULSE 	: std_logic;										-- driven by cmd_parser
 	signal READ_PULSE 		: std_logic;										-- driven by cmd_parser
 	signal ERROR_PULSE 		: std_logic;										-- driven by cmd_parser
-	signal DEBUG_PULSE		: std_logic;	-- TO BE REMOVED, USED FOR LATENCIES; driven by cmd_parser
 	
 	-- DATA CAPTURE AND TRANSFER: ANALYZER_FSM <--> CAPTURE_ENGINE, SEND_ENGINE
 	signal CAPTURE_START_PULSE 	: std_logic;									-- driven by analyzer_fsm
 	signal CAPTURE_DONE_PULSE 	: std_logic;									-- driven by capture_engine
 	signal SEND_START_PULSE 	: std_logic;									-- driven by analyzer_fsm
 	signal SEND_DONE_PULSE 		: std_logic;									-- driven by send_engine
+	signal DEBUG_PULSE		: std_logic;	-- TO BE REMOVED, USED FOR LATENCIES; driven by capture_engine
 	
 	-- TX: UART_TX, TX_MUX <--> ANALYZER_FSM, SEND_ENGINE
 	signal FSM_TX_STATUS_BYTE 	: std_logic_vector(DATA_LENGTH-1 downto 0);		-- driven by analyzer_fsm
@@ -142,8 +142,7 @@ begin
 			i_rx_valid_pulse 	=> RX_VALID_PULSE,
 			o_capture_cmd_pulse => CAPTURE_PULSE,
 			o_read_cmd_pulse 	=> READ_PULSE,
-			o_cmd_error_pulse 	=> ERROR_PULSE,
-			o_read_cmd_debug 	=> DEBUG_PULSE				-- TO BE REMOVED, USED FOR LATENCIES
+			o_cmd_error_pulse 	=> ERROR_PULSE
 		);
 		
 	E4: entity WORK.analyzer_fsm(RTL)
@@ -180,7 +179,8 @@ begin
 			o_raw_wr_en_pulse		=> WR_EN_PULSE,
 			o_raw_wr_addr			=> WR_ADDR,
 			o_raw_wr_data			=> WR_DATA,
-			o_capture_done_pulse 	=> CAPTURE_DONE_PULSE
+			o_capture_done_pulse 	=> CAPTURE_DONE_PULSE,
+			o_capture_done_debug	=> DEBUG_PULSE				-- TO BE REMOVED, USED FOR LATENCIES
 		);
 		
 	E6: entity WORK.send_engine(RTL)
