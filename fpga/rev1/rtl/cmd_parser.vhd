@@ -37,7 +37,7 @@ entity cmd_parser is
 		o_capture_cmd_pulse		: out std_logic;
 		o_read_cmd_pulse		: out std_logic;
 		o_cmd_error_pulse		: out std_logic;
-		o_capture_cmd_debug 	: out std_logic  -- TO BE REMOVED, USED FOR LATENCIES
+		o_read_cmd_debug 		: out std_logic  -- TO BE REMOVED, USED FOR LATENCIES
 	);
 end entity cmd_parser;
 
@@ -47,7 +47,7 @@ architecture RTL of cmd_parser is
 	constant CMD_READ 		: std_logic_vector(DATA_LENGTH-1 downto 0) := x"A1";
 	
 	-- TEMP SIGNALS FOR FINDING LATENCY MEASUREMENTS (TO BE REMOVED)
-	signal r_capture_debug_cnt : integer range 0 to 15 := 0;  -- TO BE REMOVED, USED FOR LATENCIES
+	signal r_read_debug_cnt : integer range 0 to 15 := 0;  -- TO BE REMOVED, USED FOR LATENCIES
 	
 begin
 	-- Sequential process for dealing with clocking
@@ -58,8 +58,8 @@ begin
 				o_capture_cmd_pulse <= '0';
 				o_read_cmd_pulse 	<= '0';
 				o_cmd_error_pulse 	<= '0';
-				o_capture_cmd_debug <= '0';          -- TO BE REMOVED, USED FOR LATENCIES
-				r_capture_debug_cnt <= 0;            -- TO BE REMOVED, USED FOR LATENCIES
+				o_read_cmd_debug <= '0';          -- TO BE REMOVED, USED FOR LATENCIES
+				r_read_debug_cnt <= 0;            -- TO BE REMOVED, USED FOR LATENCIES
 			else
 				-- Defaults
 				o_capture_cmd_pulse <= '0';
@@ -67,22 +67,22 @@ begin
 				o_cmd_error_pulse 	<= '0';
 				
 				-- Default debug stretcher behavior
-				if r_capture_debug_cnt > 0 then                      -- TO BE REMOVED, USED FOR LATENCIES
-					o_capture_cmd_debug <= '1';                       -- TO BE REMOVED, USED FOR LATENCIES
-					r_capture_debug_cnt <= r_capture_debug_cnt - 1;   -- TO BE REMOVED, USED FOR LATENCIES
+				if r_read_debug_cnt > 0 then                      -- TO BE REMOVED, USED FOR LATENCIES
+					o_read_cmd_debug <= '1';                       -- TO BE REMOVED, USED FOR LATENCIES
+					r_read_debug_cnt <= r_read_debug_cnt - 1;   -- TO BE REMOVED, USED FOR LATENCIES
 				else                                                  -- TO BE REMOVED, USED FOR LATENCIES
-					o_capture_cmd_debug <= '0';                       -- TO BE REMOVED, USED FOR LATENCIES
+					o_read_cmd_debug <= '0';                       -- TO BE REMOVED, USED FOR LATENCIES
 				end if;                                               -- TO BE REMOVED, USED FOR LATENCIES
 				
 				if i_rx_valid_pulse = '1' then
 					case i_rx_byte is
-						when CMD_CAPTURE 	=>
-							o_capture_cmd_pulse	<= '1';
-							o_capture_cmd_debug <= '1';       -- TO BE REMOVED, USED FOR LATENCIES
-							r_capture_debug_cnt <= 15;        -- TO BE REMOVED, USED FOR LATENCIES
-							-- Debug pulse rises in same clock cycle as o_capture_cmd_pulse.
+						when CMD_CAPTURE 	=> o_capture_cmd_pulse	<= '1';
+						when CMD_READ 		=>
+							o_read_cmd_pulse 	<= '1';
+							o_read_cmd_debug <= '1';       -- TO BE REMOVED, USED FOR LATENCIES
+							r_read_debug_cnt <= 15;     -- TO BE REMOVED, USED FOR LATENCIES
+							-- Debug pulse rises in same clock cycle as o_read_cmd_pulse.
 							-- Width is stretched only for external measurement visibility.
-						when CMD_READ 		=> o_read_cmd_pulse 	<= '1';
 						when others			=> o_cmd_error_pulse 	<= '1';
 					end case;
 				end if;

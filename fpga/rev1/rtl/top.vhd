@@ -143,7 +143,7 @@ begin
 			o_capture_cmd_pulse => CAPTURE_PULSE,
 			o_read_cmd_pulse 	=> READ_PULSE,
 			o_cmd_error_pulse 	=> ERROR_PULSE,
-			o_capture_cmd_debug => DEBUG_PULSE
+			o_read_cmd_debug 	=> DEBUG_PULSE				-- TO BE REMOVED, USED FOR LATENCIES
 		);
 		
 	E4: entity WORK.analyzer_fsm(RTL)
