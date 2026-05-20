@@ -14,9 +14,9 @@
 #CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\analyzer_fsm.vhd":1778822008
 #CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\capture_engine.vhd":1778764769
 #CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\clocking.vhd":1776142282
-#CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\cmd_parser.vhd":1778764583
+#CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\cmd_parser.vhd":1779251029
 #CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\send_engine.vhd":1778860946
-#CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\top.vhd":1779044096
+#CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\top.vhd":1779251158
 #CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\trace_buffer.vhd":1778764934
 #CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\tx_mux.vhd":1778765008
 #CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\fpga\\rev1\\rtl\\uart_rx.vhd":1778764485

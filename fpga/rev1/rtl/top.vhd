@@ -58,7 +58,9 @@ entity top is
 		o_UART_TX			: out std_logic;
 		o_UART_TX_LED		: out std_logic;
 		o_UART_RX_LED		: out std_logic;
-		o_USER_LED			: out std_logic
+		o_USER_LED			: out std_logic;
+		o_DEBUG_1			: out std_logic;  -- TO BE REMOVED, USED FOR LATENCIES
+		o_DEBUG_2			: out std_logic   -- TO BE REMOVED, USED FOR LATENCIES
 	);
 end entity top;
 	
@@ -80,6 +82,7 @@ architecture STRUCTURE of top is
 	signal CAPTURE_PULSE 	: std_logic;										-- driven by cmd_parser
 	signal READ_PULSE 		: std_logic;										-- driven by cmd_parser
 	signal ERROR_PULSE 		: std_logic;										-- driven by cmd_parser
+	signal DEBUG_PULSE		: std_logic;	-- TO BE REMOVED, USED FOR LATENCIES; driven by cmd_parser
 	
 	-- DATA CAPTURE AND TRANSFER: ANALYZER_FSM <--> CAPTURE_ENGINE, SEND_ENGINE
 	signal CAPTURE_START_PULSE 	: std_logic;									-- driven by analyzer_fsm
@@ -95,6 +98,7 @@ architecture STRUCTURE of top is
 	signal MUX_TX_BYTE 			: std_logic_vector(DATA_LENGTH-1 downto 0);		-- driven by tx_mux
 	signal MUX_TX_START_PULSE 	: std_logic;									-- driven by tx_mux
 	signal TX_BUSY 				: std_logic;									-- driven by uart_tx
+	signal UART_TX_COMMON		: std_logic; 						-- TO BE REMOVED, USED FOR LATENCIES
 	
 	-- RAM RELATED: TRACE_BUFFER <--> CAPTURE_ENGINE, SEND_ENGINE
 	signal WR_EN_PULSE	: std_logic;											-- driven by capture_engine
@@ -138,7 +142,8 @@ begin
 			i_rx_valid_pulse 	=> RX_VALID_PULSE,
 			o_capture_cmd_pulse => CAPTURE_PULSE,
 			o_read_cmd_pulse 	=> READ_PULSE,
-			o_cmd_error_pulse 	=> ERROR_PULSE
+			o_cmd_error_pulse 	=> ERROR_PULSE,
+			o_capture_cmd_debug => DEBUG_PULSE
 		);
 		
 	E4: entity WORK.analyzer_fsm(RTL)
@@ -239,8 +244,14 @@ begin
 			i_mux_tx_byte			=> MUX_TX_BYTE,
 			i_mux_tx_start_pulse	=> MUX_TX_START_PULSE,
 			o_tx_busy				=> TX_BUSY,
-			o_UART_TX				=> o_UART_TX,
+			o_UART_TX				=> UART_TX_COMMON,			-- change back to o_UART_TX afterwards, USED FOR LATENCIES
 			o_UART_TX_LED			=> o_UART_TX_LED
 		);
+		
+	-- DEBUG/METRICS SECTION -- TO BE REMOVED, USED FOR LATENCIES
+	o_UART_TX <= UART_TX_COMMON;  -- TO BE REMOVED, USED FOR LATENCIES
+	
+	o_DEBUG_1 <= DEBUG_PULSE;  -- TO BE REMOVED, USED FOR LATENCIES
+	o_DEBUG_2 <= UART_TX_COMMON;  -- TO BE REMOVED, USED FOR LATENCIES
 
 end architecture STRUCTURE;
