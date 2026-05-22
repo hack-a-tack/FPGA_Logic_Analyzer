@@ -1,54 +1,3 @@
-# Compile of send_engine.vhd was successful.
-# Compile of send_engine_tb.vhd was successful with warnings.
-# 2 compiles, 0 failed with no errors.
-vsim -gui work.send_engine_tb
-# vsim -gui work.send_engine_tb 
-# Start time: 11:12:43 on May 16,2026
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.numeric_std(body)
-# Loading work.send_engine_tb(sim)
-# Loading work.send_engine(rtl)
-add wave sim:/send_engine_tb/*
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by: Jakob  Hostname: DESKTOP-JTKRLJD  ProcessID: 13976
-#           Attempting to use alternate WLF file "./wlftq4d9bb".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftq4d9bb
-run -all
-# ** Failure: Simulation finished: TC0 + TC1 passed
-#    Time: 2802904 ps  Iteration: 0  Process: /send_engine_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd
-# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/send_engine_tb.vhd line 308
-quit -sim
-# End time: 12:05:17 on May 16,2026, Elapsed time: 0:52:34
-# Errors: 1, Warnings: 5
-# Compile of send_engine_tb.vhd was successful with warnings.
-# Compile of analyzer_fsm.vhd was successful.
-# Compile of analyzer_fsm_tb.vhd was successful.
-# 2 compiles, 0 failed with no errors.
-vsim -gui work.analyzer_fsm_tb
-# vsim -gui work.analyzer_fsm_tb 
-# Start time: 12:07:33 on May 16,2026
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.numeric_std(body)
-# Loading work.analyzer_fsm_tb(sim)
-# Loading work.analyzer_fsm(rtl)
-add wave sim:/analyzer_fsm_tb/*
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by: Jakob  Hostname: DESKTOP-JTKRLJD  ProcessID: 13976
-#           Attempting to use alternate WLF file "./wlft07gvv0".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlft07gvv0
-run -all
-# ** Failure: Simulation finished
-#    Time: 4167514512 ps  Iteration: 0  Process: /analyzer_fsm_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/analyzer_fsm_tb.vhd
-# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/analyzer_fsm_tb.vhd line 252
-quit -sim
-# End time: 12:10:18 on May 16,2026, Elapsed time: 0:02:45
-# Errors: 1, Warnings: 5
 # Compile of uart_rx.vhd was successful.
 # Compile of uart_rx_tb.vhd was successful.
 # Compile of uart_tx.vhd was successful.
@@ -73,7 +22,7 @@ quit -sim
 # 21 compiles, 0 failed with no errors.
 vsim -gui work.top_tb
 # vsim -gui work.top_tb 
-# Start time: 12:10:55 on May 16,2026
+# Start time: 18:19:42 on May 20,2026
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
@@ -93,215 +42,58 @@ vsim -gui work.top_tb
 add wave sim:/top_tb/*
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 #           File in use by: Jakob  Hostname: DESKTOP-JTKRLJD  ProcessID: 13976
-#           Attempting to use alternate WLF file "./wlftx43h01".
+#           Attempting to use alternate WLF file "./wlftzwarbg".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftx43h01
-run -all
-# ** Error: MONITOR PROCESS: timeout waiting for start bit
-#    Time: 5 ms  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: start bit not '0'
-#    Time: 5000542534 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC2/Run#0: timeout waiting for start bit
-#    Time: 5025039904 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC2/Run#0: data bit 1 not as expected
-#    Time: 5027210042 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC2/Run#0: data bit 3 not as expected
-#    Time: 5029380180 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC2/Run#0: data bit 5 not as expected
-#    Time: 5031550318 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC2/Run#0: data bit 7 not as expected
-#    Time: 5033720456 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: timeout waiting for start bit
-#    Time: 10010850689 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: start bit not '0'
-#    Time: 10011393223 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC2/Run#1: timeout waiting for start bit
-#    Time: 10035890593 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC2/Run#1: data bit 3 not as expected
-#    Time: 10040230869 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC2/Run#1: data bit 7 not as expected
-#    Time: 10044571145 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: timeout waiting for start bit
-#    Time: 15021701378 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: start bit not '0'
-#    Time: 15022243912 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC3/Run#2: timeout waiting for start bit
-#    Time: 15059782942 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC3/Run#2: data bit 1 not as expected
-#    Time: 15061953080 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC3/Run#2: data bit 2 not as expected
-#    Time: 15063038149 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC3/Run#2: data bit 5 not as expected
-#    Time: 15066293356 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC3/Run#2: data bit 6 not as expected
-#    Time: 15067378425 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: timeout waiting for start bit
-#    Time: 20032552067 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: start bit not '0'
-#    Time: 20033094601 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC3/Run#3: timeout waiting for start bit
-#    Time: 20070633631 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC3/Run#3: data bit 4 not as expected
-#    Time: 20076058976 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC3/Run#3: data bit 5 not as expected
-#    Time: 20077144045 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC3/Run#3: data bit 6 not as expected
-#    Time: 20078229114 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC3/Run#3: data bit 7 not as expected
-#    Time: 20079314183 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: timeout waiting for start bit
-#    Time: 25043402756 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: start bit not '0'
-#    Time: 25043945290 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC3/Run#4: timeout waiting for start bit
-#    Time: 25081484320 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC3/Run#4: data bit 4 not as expected
-#    Time: 25086909665 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC3/Run#4: data bit 5 not as expected
-#    Time: 25087994734 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC3/Run#4: data bit 6 not as expected
-#    Time: 25089079803 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC3/Run#4: data bit 7 not as expected
-#    Time: 25090164872 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: timeout waiting for start bit
-#    Time: 30054253445 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: start bit not '0'
-#    Time: 30054795979 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC3/Run#5: timeout waiting for start bit
-#    Time: 30092335009 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC3/Run#5: data bit 4 not as expected
-#    Time: 30097760354 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC3/Run#5: data bit 5 not as expected
-#    Time: 30098845423 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC3/Run#5: data bit 6 not as expected
-#    Time: 30099930492 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC3/Run#5: data bit 7 not as expected
-#    Time: 30101015561 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: timeout waiting for start bit
-#    Time: 35065104134 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: start bit not '0'
-#    Time: 35065646668 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: timeout waiting for start bit
-#    Time: 40075954823 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: start bit not '0'
-#    Time: 40076497357 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC4a: 1st response after back-to-backs (from IDLE) is not xEE
-#    Time: 40086805512 ps  Iteration: 1  Instance: /top_tb
-# ** Error: TC4a: 2nd response after back-to-backs (from IDLE) is not xEE
-#    Time: 40086805512 ps  Iteration: 1  Instance: /top_tb
-# ** Error: MONITOR PROCESS: timeout waiting for start bit
-#    Time: 45086805512 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: start bit not '0'
-#    Time: 45087348046 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: timeout waiting for start bit
-#    Time: 50097656201 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: start bit not '0'
-#    Time: 50098198735 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: timeout waiting for start bit
-#    Time: 55108506890 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: start bit not '0'
-#    Time: 55109049424 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: timeout waiting for start bit
-#    Time: 60119357579 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: start bit not '0'
-#    Time: 60119900113 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: timeout waiting for start bit
-#    Time: 65130208268 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: start bit not '0'
-#    Time: 65130750802 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC4b: 1st response after back-to-backs (from CAPTURE) is not status code x55
-#    Time: 65141058957 ps  Iteration: 1  Instance: /top_tb
-# ** Error: TC4b: 2nd response after back-to-backs (from CAPTURE) is not error code xEE
-#    Time: 65141058957 ps  Iteration: 1  Instance: /top_tb
-# ** Error: TC4b: 3rd response after back-to-backs (from CAPTURE) is not error code xEE
-#    Time: 65141058957 ps  Iteration: 1  Instance: /top_tb
-# ** Error: TC4b: 4th response after back-to-backs (from CAPTURE) is not error code xEE
-#    Time: 65141058957 ps  Iteration: 1  Instance: /top_tb
-# ** Error: TC4b: 5th response after back-to-backs (from CAPTURE) is not status code x77
-#    Time: 65141058957 ps  Iteration: 1  Instance: /top_tb
-# ** Error: MONITOR PROCESS: timeout waiting for start bit
-#    Time: 70141058957 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: start bit not '0'
-#    Time: 70141601491 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: timeout waiting for start bit
-#    Time: 75151909646 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: start bit not '0'
-#    Time: 75152452180 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: timeout waiting for start bit
-#    Time: 80162760335 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: start bit not '0'
-#    Time: 80163302869 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC4c: 1st response after back-to-backs (from DONE) is not error code xEE
-#    Time: 80173611024 ps  Iteration: 1  Instance: /top_tb
-# ** Error: TC4c: 2nd response after back-to-backs (from DONE) is not status code x55
-#    Time: 80173611024 ps  Iteration: 1  Instance: /top_tb
-# ** Error: TC4c: 3rd response after back-to-backs (from DONE) is not status code x77
-#    Time: 80173611024 ps  Iteration: 1  Instance: /top_tb
-# ** Error: MONITOR PROCESS: timeout waiting for start bit
-#    Time: 85173611024 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: start bit not '0'
-#    Time: 85174153558 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: timeout waiting for start bit
-#    Time: 90184461713 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: start bit not '0'
-#    Time: 90185004247 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: timeout waiting for start bit
-#    Time: 95195312402 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: start bit not '0'
-#    Time: 95195854936 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: timeout waiting for start bit
-#    Time: 100206163091 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: start bit not '0'
-#    Time: 100206705625 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC4c: 4th response after back-to-backs (from DONE) is not status code x99
-#    Time: 100217013780 ps  Iteration: 1  Instance: /top_tb
-# ** Error: TC4c: 5th response after back-to-backs (from DONE) is not data byte x33
-#    Time: 100217013780 ps  Iteration: 1  Instance: /top_tb
-# ** Error: TC4c: 6th response after back-to-backs (from DONE) is not data byte x33
-#    Time: 100217013780 ps  Iteration: 1  Instance: /top_tb
-# ** Error: TC4c: 7th response after back-to-backs (from DONE) is not data byte x33
-#    Time: 100217013780 ps  Iteration: 1  Instance: /top_tb
-# ** Error: MONITOR PROCESS: timeout waiting for start bit
-#    Time: 105217013780 ps  Iteration: 0  Instance: /top_tb
-# ** Error: MONITOR PROCESS: start bit not '0'
-#    Time: 105217556314 ps  Iteration: 0  Instance: /top_tb
-# ** Error: TC5: x55 NOT received after valid CAPTURE frame
-#    Time: 105227864469 ps  Iteration: 1  Instance: /top_tb
-# ** Failure: Simulation finished
-#    Time: 105228072789 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
-# Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 489
-quit -sim
-# End time: 12:15:31 on May 16,2026, Elapsed time: 0:04:36
-# Errors: 86, Warnings: 4
-# Compile of top_tb.vhd was successful.
-vsim -gui work.top_tb
-# vsim -gui work.top_tb 
-# Start time: 12:15:46 on May 16,2026
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading work.top_tb(sim)
-# Loading ieee.numeric_std(body)
-# Loading work.top(structure)
-# Loading work.clocking(rtl)
-# Loading work.sb_hfosc(sim)
-# Loading work.uart_rx(rtl)
-# Loading work.cmd_parser(rtl)
-# Loading work.analyzer_fsm(rtl)
-# Loading work.capture_engine(rtl)
-# Loading work.send_engine(rtl)
-# Loading work.trace_buffer(rtl)
-# Loading work.tx_mux(rtl)
-# Loading work.uart_tx(rtl)
-add wave sim:/top_tb/*
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by: Jakob  Hostname: DESKTOP-JTKRLJD  ProcessID: 13976
-#           Attempting to use alternate WLF file "./wlftbc2sv7".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftbc2sv7
+#           Using alternate file: ./wlftzwarbg
+add wave sim:/top_tb/dut/E3/o_capture_cmd_pulse
+add wave sim:/top_tb/dut/E3/o_read_cmd_pulse
+add wave sim:/top_tb/dut/E3/o_cmd_error_pulse
+add wave sim:/top_tb/dut/E4/o_fsm_tx_start_pulse
+add wave sim:/top_tb/dut/E5/o_capture_done_pulse
+add wave sim:/top_tb/dut/E6/o_send_tx_start_pulse
+add wave sim:/top_tb/dut/E6/i_tx_busy
+add wave sim:/top_tb/dut/E8/o_mux_tx_start_pulse
+add wave sim:/top_tb/dut/E9/o_tx_busy
+
+configure wave -timelineunits ns
 run -all
 # ** Failure: Simulation finished
 #    Time: 794969510 ps  Iteration: 0  Process: /top_tb/stim_proc File: C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd
 # Break in Process stim_proc at C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/fpga/rev1/tb/top_tb.vhd line 490
-# End time: 12:24:30 on May 16,2026, Elapsed time: 0:08:44
+# WARNING: No extended dataflow license exists
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# End time: 21:29:14 on May 22,2026, Elapsed time: 51:09:32
 # Errors: 1, Warnings: 4

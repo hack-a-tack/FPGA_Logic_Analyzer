@@ -11,3 +11,10 @@ Run host using:
 '''
 python la_host.py --port COMx self-test
 '''
+
+## Soak test
+
+Run soak test using:
+'''
+python la_host.py --port COMx --runs 1000 --expect <00/FF/any/...> soak-test
+'''

@@ -47,8 +47,7 @@ entity capture_engine is
 		o_raw_wr_en_pulse		: out std_logic;
 		o_raw_wr_addr			: out std_logic_vector(ADDR_LENGTH-1 downto 0);
 		o_raw_wr_data			: out std_logic_vector(DATA_LENGTH-1 downto 0);
-		o_capture_done_pulse	: out std_logic;
-		o_capture_done_debug 	: out std_logic  -- TO BE REMOVED, USED FOR LATENCIES
+		o_capture_done_pulse	: out std_logic
 	);
 end entity capture_engine;
 
@@ -66,10 +65,6 @@ architecture RTL of capture_engine is
 	-- Define constants
 	constant LAST_ADDR : std_logic_vector(ADDR_LENGTH-1 downto 0) := std_logic_vector(to_unsigned(NUM_SAMPLES-1, ADDR_LENGTH));
 	
-	-- TEMP SIGNALS FOR FINDING LATENCY MEASUREMENTS (TO BE REMOVED)
-	signal r_capture_done_debug_cnt, n_capture_done_debug_cnt : integer range 0 to 15 := 0;  -- TO BE REMOVED, USED FOR LATENCIES
-	signal r_capture_done_debug, n_capture_done_debug : std_logic := '0';  -- TO BE REMOVED, USED FOR LATENCIES
-	
 begin
 	-- Sequential process to deal with clocking
 	seq_proc: process(i_clk) is
@@ -82,16 +77,12 @@ begin
 				r_raw_wr_addr <= (others => '0');
 				r_raw_wr_data <= (others => '0');
 				r_capture_done_pulse <= '0';
-				r_capture_done_debug_cnt <= 0;  -- TO BE REMOVED, USED FOR LATENCIES
-				r_capture_done_debug <= '0';  -- TO BE REMOVED, USED FOR LATENCIES
 			else
 				r_state <= n_state;
 				r_raw_wr_en_pulse <= n_raw_wr_en_pulse;
 				r_raw_wr_addr <= n_raw_wr_addr;
 				r_raw_wr_data <= n_raw_wr_data;
 				r_capture_done_pulse <= n_capture_done_pulse;
-				r_capture_done_debug_cnt <= n_capture_done_debug_cnt;  -- TO BE REMOVED, USED FOR LATENCIES
-				r_capture_done_debug <= n_capture_done_debug;  -- TO BE REMOVED, USED FOR LATENCIES
 				
 			end if;
 		end if;
@@ -107,16 +98,6 @@ begin
 		n_raw_wr_addr <= r_raw_wr_addr;
 		n_raw_wr_data <= r_raw_wr_data;
 		n_capture_done_pulse <= '0';
-		n_capture_done_debug_cnt <= r_capture_done_debug_cnt;  -- TO BE REMOVED, USED FOR LATENCIES
-		n_capture_done_debug <= '0';  -- TO BE REMOVED, USED FOR LATENCIES
-		
-		-- Default debug stretcher behavior
-		if r_capture_done_debug_cnt > 0 then                      -- TO BE REMOVED, USED FOR LATENCIES
-			n_capture_done_debug <= '1';                       -- TO BE REMOVED, USED FOR LATENCIES
-			n_capture_done_debug_cnt <= r_capture_done_debug_cnt - 1;   -- TO BE REMOVED, USED FOR LATENCIES
-		else                                                  -- TO BE REMOVED, USED FOR LATENCIES
-			n_capture_done_debug <= '0';                       -- TO BE REMOVED, USED FOR LATENCIES
-		end if;                                               -- TO BE REMOVED, USED FOR LATENCIES
 		
 		case r_state is
 			when CAPTURE_IDLE =>
@@ -137,10 +118,6 @@ begin
 					if r_raw_wr_addr = LAST_ADDR then
 						-- Sample nr 4096 (index 4095) just captured in last cycle
 						n_capture_done_pulse <= '1';
-						n_capture_done_debug <= '1';       -- TO BE REMOVED, USED FOR LATENCIES
-						n_capture_done_debug_cnt <= 15;     -- TO BE REMOVED, USED FOR LATENCIES
-						-- Debug pulse rises in same clock cycle as o_capture_done_pulse.
-						-- Width is stretched only for external measurement visibility.
 						n_raw_wr_addr <= (others => '0');
 						n_state <= CAPTURE_IDLE;
 					else
@@ -156,6 +133,5 @@ begin
 	o_raw_wr_addr <= r_raw_wr_addr;
 	o_raw_wr_data <= r_raw_wr_data;
 	o_capture_done_pulse <= r_capture_done_pulse;
-	o_capture_done_debug <= r_capture_done_debug;  -- TO BE REMOVED, USED FOR LATENCIES
 	
 end architecture RTL;

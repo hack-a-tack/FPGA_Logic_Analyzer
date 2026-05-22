@@ -18,6 +18,7 @@ NOTES
 -- spam-capture: run capture continuously
 -- self-test: bring-up/diagnostics mode (prove the whole chain works and make failures obvious)
 ---- csv file and vcd files only written if explicit flags added when running the script in self-test mode
+-- soak-test: perform high quantity of repeated runs and report error rate, drop rate, payload mismatch rate, timing stability
 """
 
 
@@ -26,6 +27,7 @@ import csv
 import sys
 import time
 from dataclasses import dataclass
+import statistics
 
 import serial
 from serial.tools import list_ports
@@ -150,6 +152,24 @@ def do_capture_read_timed(ser: serial.Serial, cfg: HostConfig) -> tuple[bytes, f
         (t_end - t_capture_done),       # read phase from READ command to final data byte
         (t_end - t_header_received)     # payload receive phase after HEADER (read phase - time to receive HEADER)
     )
+
+
+def parse_expect_byte(expect: str) -> Optional[int]:  # parses optional expected static payload byte (a "parser" takes unstructured raw data or code and breaks it down into a structured format)
+    if expect.lower() in ("any", "none"):  # allow no payload validation
+        return None  # no expected byte means payload content is not checked
+
+    value = int(expect, 16)  # parse hex string such as "00", "FF", "01", "80"
+    if value < 0 or value > 0xFF:  # reject invalid byte values
+        raise ValueError("--expect must be a byte value from 00 to FF, or 'any'")
+
+    return value
+    
+    
+def validate_payload(data: bytes, expected_byte: Optional[int]) -> bool:  # validates static input payloads
+    if expected_byte is None:  # no validation requested
+        return True
+
+    return all(b == expected_byte for b in data)  # true only if every sample byte matches expected value
     
 
 def print_read_summary(data: bytes, n: int = 16) -> None:
@@ -310,6 +330,93 @@ def list_serial_ports() -> None:
         print(f"{p.device}\t{p.description}")
 
 
+def do_soak_test(ser: serial.Serial, cfg: HostConfig, runs: int, expect: str, progress_every: int) -> None:
+    """repeated acquisition reliability test"""
+    expected_byte = parse_expect_byte(expect)  # parse expected payload byte once before loop
+
+    successes = 0  # count full successful acquisitions
+    protocol_errors = 0  # count wrong status/header or FPGA error responses
+    timeouts = 0  # count incomplete reads / missing expected bytes
+    serial_errors = 0  # count serial-port-level errors
+    payload_mismatches = 0  # count completed reads with incorrect payload content
+
+    total_times = []  # store end-to-end cycle times for successful runs
+    capture_times = []  # store capture command phase times
+    read_times = []  # store READ phase times including header + payload
+    payload_times = []  # store payload-only receive times after HEADER
+
+    t_test_start = time.perf_counter()  # total wall-clock test timer
+
+    for i in range(1, runs + 1):
+        try:
+            data, total_s, capture_s, read_s, payload_s = do_capture_read_timed(ser, cfg)  # one timed capture-read cycle
+
+            if not validate_payload(data, expected_byte):  # check payload if expected byte was specified
+                payload_mismatches += 1  # count completed-but-wrong acquisitions
+            else:  # only count as success if protocol/read and payload validation pass
+                successes += 1
+
+            total_times.append(total_s)
+            capture_times.append(capture_s)
+            read_times.append(read_s)
+            payload_times.append(payload_s)
+
+        except TimeoutError as e:  # classify short reads / missing response bytes
+            timeouts += 1  # count timeout/drop-type failure
+            ser.reset_input_buffer()  # clear any late bytes before next run
+            ser.reset_output_buffer()  # clear host-side output buffer before next run
+            time.sleep(0.05)  # small recovery pause after failed run
+
+        except serial.SerialException as e:  # classify serial/USB/port failures
+            serial_errors += 1
+            ser.reset_input_buffer()
+            ser.reset_output_buffer()
+            time.sleep(0.05)
+
+        except RuntimeError as e:  # classify protocol-level failures
+            protocol_errors += 1  # count unexpected OK/DONE/HEADER/ERROR cases
+            ser.reset_input_buffer()
+            ser.reset_output_buffer()
+            time.sleep(0.05)
+
+        if progress_every > 0 and (i % progress_every == 0):
+            print(f"[soak-test] {i}/{runs} runs complete...")  # progress reporting
+
+    t_test_end = time.perf_counter()  # total wall-clock test timer stop
+
+    completed = successes + payload_mismatches  # protocol-complete acquisitions, whether payload matched or not
+    failures = runs - successes  # total non-success count
+
+    print("\n[soak-test] RESULTS")
+    print(f"Runs attempted: {runs}")  # total requested runs
+    print(f"Successful acquisitions: {successes}")
+    print(f"Failures total: {failures}")  # all failure/mismatch categories combined
+    print(f"Acquisition success rate: {(successes / runs) * 100:.3f}%")  # headline reliability metric
+
+    print(f"Protocol errors: {protocol_errors}")  # unexpected protocol/status/header count
+    print(f"Timeouts / short reads: {timeouts}")  # drop/short-read count
+    print(f"Serial errors: {serial_errors}")  # host serial failure count
+    print(f"Payload mismatches: {payload_mismatches}")  # content validation failure count
+
+    print(f"Completed protocol runs: {completed}")  # completed acquisitions regardless of payload correctness
+    print(f"Total wall time: {t_test_end - t_test_start:.3f} s")  # full test duration
+
+    if total_times:  # only print timing stats if at least one run completed
+        print("\n[soak-test] TIMING, successful/protocol-complete runs")
+        print(f"End-to-end mean: {statistics.mean(total_times) * 1e3:.3f} ms")
+        print(f"End-to-end min/max: {min(total_times) * 1e3:.3f} / {max(total_times) * 1e3:.3f} ms")
+        if len(total_times) > 1:  # std dev requires at least two samples
+            print(f"End-to-end std dev: {statistics.stdev(total_times) * 1e3:.3f} ms")  # timing stability metric
+
+        print(f"Capture phase mean: {statistics.mean(capture_times) * 1e3:.3f} ms")  # capture phase average
+        print(f"Read phase mean: {statistics.mean(read_times) * 1e3:.3f} ms")  # read phase average
+        print(f"Payload phase mean: {statistics.mean(payload_times) * 1e3:.3f} ms")  # payload-only receive average
+
+    if failures == 0:  # useful upper-bound statement for zero failures
+        print(f"\n[soak-test] No failures observed in {runs} runs.")
+        print(f"[soak-test] Rule-of-thumb 95% upper bound on failure probability: ~{(3 / runs) * 100:.4f}%")  # rough zero-failure confidence bound
+
+
 def main(argv: list[str]) -> int:
     p = argparse.ArgumentParser(description="FPGA Logic Analyzer Host (CSV + optional VCD)")
     p.add_argument("--port", default="COM3", help="Serial port (e.g., COM3)")
@@ -327,7 +434,11 @@ def main(argv: list[str]) -> int:
                    
     p.add_argument("--list-ports", action="store_true", help="Lists serial ports and exit")
     
-    p.add_argument("mode", nargs="?", choices=["capture", "read", "capture-read", "raw", "capture-twice", "spam-capture", "self-test"], help="Operation mode")
+    p.add_argument("--runs", type=int, default=1000, help="Number of runs for soak-test mode")
+    p.add_argument("--expect", default="any", help="Expected payload byte for soak-test, e.g. 00, FF, 01, 80, or any")  # optional payload validation
+    p.add_argument("--progress-every", type=int, default=100, help="Print soak-test progress every N runs; 0 disables")  # progress control
+    
+    p.add_argument("mode", nargs="?", choices=["capture", "read", "capture-read", "raw", "capture-twice", "spam-capture", "self-test", "soak-test"], help="Operation mode")
     p.add_argument("value", nargs="?")
     args = p.parse_args(argv)
     
@@ -389,6 +500,9 @@ def main(argv: list[str]) -> int:
                 
             elif args.mode == "spam-capture":
                 spam_capture(ser)
+                
+            elif args.mode == "soak-test":
+                do_soak_test(ser, cfg, runs=args.runs, expect=args.expect, progress_every=args.progress_every)  # run soak-test without writing files
             
             else:  # self-test
                 out_csv = args.csv if ("--csv" in argv) else None

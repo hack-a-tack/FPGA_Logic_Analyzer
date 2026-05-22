@@ -12,7 +12,7 @@
 @N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":52:7:52:17|Synthesizing work.send_engine.rtl.
 @N: CD231 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\send_engine.vhd":76:29:76:30|Using onehot encoding for type send_engine_state_type. For example, enumeration send_idle is mapped to "100000000".
 @N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":35:7:35:20|Synthesizing work.capture_engine.rtl.
-@N: CD233 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":57:32:57:33|Using sequential encoding for type capture_engine_state_type.
+@N: CD233 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\capture_engine.vhd":56:32:56:33|Using sequential encoding for type capture_engine_state_type.
 @N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":40:7:40:18|Synthesizing work.analyzer_fsm.rtl.
 @N: CD233 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\analyzer_fsm.vhd":61:25:61:26|Using sequential encoding for type runtime_state_type.
 @N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\cmd_parser.vhd":28:7:28:16|Synthesizing work.cmd_parser.rtl.
