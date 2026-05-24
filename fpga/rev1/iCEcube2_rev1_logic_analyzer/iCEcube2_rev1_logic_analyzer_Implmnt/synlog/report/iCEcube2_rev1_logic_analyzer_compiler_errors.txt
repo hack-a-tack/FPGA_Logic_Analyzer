@@ -1,2 +1,0 @@
-@E: CD441 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\fpga\rev1\rtl\top.vhd":252:19:252:25|process must contain at least one wait
-

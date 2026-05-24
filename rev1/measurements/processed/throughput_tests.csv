@@ -1,0 +1,5 @@
+test_name,payload_bytes,baud_rate_baud,uart_bits_per_byte,time_value,time_unit,throughput_value,throughput_unit,source_method,notes
+Ideal UART payload throughput,,921600,10,,,92.16,kB/s,Theoretical,Baud rate divided by 10 UART bits per byte
+FPGA-level transfer,4096,921600,10,44.64,ms,91.75,kB/s,HW measured + derived,FPGA-level transfer time and payload throughput
+Host-side payload throughput,4096,921600,10,,,87.36,kB/s,Derived,Host-side payload throughput
+End-to-end acquisition cycle,4096,921600,10,49.47,ms,82.79,kB/s,Host timing + derived,Full acquisition cycle including command/capture/read path

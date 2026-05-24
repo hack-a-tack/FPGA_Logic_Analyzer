@@ -1,2 +1,0 @@
-CKID0001:@|S:E1@|E:E9.r_clk_counter[0]@|F:@syn_sample_clock_path==CKID0001@|M:ClockId0001 
-CKID0002:@|S:E1.o_clk_keep@|E:E1.r_samp_tick@|F:@syn_sample_clock_path==CKID0002@|M:ClockId0002 

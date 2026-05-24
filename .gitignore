@@ -1,8 +1,5 @@
 *.log
-fpga/rev1/current_vhdl_for_easy_review.txt
-fpga/rev1/current_vhdl.txt
-fpga/rev1/iCEcube2_rev1_logic_analyzer
-fpga/rev1/debug_log.txt
-fpga/rev1/programming/diamond_programmer_setup/diamond_programmer_project_logic_analyzer_project.xcf
-fpga/rev1/programming/debug_artifacts
-host/rev1/output
+rev1/fpga/current_vhdl.txt
+rev1/fpga/debug_log.txt
+rev1/fpga/iCEcube2_rev1_logic_analyzer
+rev1/debug_artifacts

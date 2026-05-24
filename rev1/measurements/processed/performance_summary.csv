@@ -1,0 +1,25 @@
+category,metric,rev1_value,unit,source_method,notes
+Sampling,(Target) Clock source,48 MHz internal osc.,,Design spec,
+Sampling,Sample rate,24.03,MS/s,HW measured,
+Sampling,Time resolution,41.61,ns,Derived,Derived from measured sample rate
+Sampling,Sampling channels,8,channels,Design spec,
+Sampling,Input threshold (low),VIL <= 0.8,V,Datasheet,
+Sampling,Input threshold (high),VIH >= 2.0,V,Datasheet,
+Capture,Capture depth,4096,samples,Design spec,
+Capture,Pre/post-trigger split,No trigger,,Design spec,Rev1 has no trigger system
+Capture,Max capture window,170.44,us,Derived,4096 samples at measured 24.03 MS/s
+Transfer,UART baud rate,921600,baud,Design spec,
+Transfer,Ideal UART payload throughput,92.16,kB/s,Theoretical,921600 baud / 10 UART bits per byte
+Transfer,FPGA-level transfer time,44.64,ms,HW measured,
+Transfer,FPGA-level payload throughput,91.75,kB/s,Derived,4096-byte payload over measured FPGA-level transfer time
+Transfer,Host-side payload throughput,87.36,kB/s,Derived,
+System,End-to-end acquisition cycle time,49.47,ms,Host timing,
+System,End-to-end effective throughput,82.79,kB/s,Derived,4096-byte payload over end-to-end acquisition cycle time
+Timing,Fmax,57.20,MHz,P&R timing,From place-and-route timing report
+Timing,WNS,+3.351,ns,P&R timing,From place-and-route timing report
+Reliability,Acquisition success rate,100.000,%,Soak test,"24,000 / 24,000 successful acquisitions"
+Reliability,Protocol/timeout/payload failures,0 / 24000,failures,Soak test,
+Resources,LUT usage,265 / 5280,LUTs,P&R utilization,
+Resources,FF usage,149 / 5280,FFs,P&R utilization,
+Resources,BRAM usage,8 / 30,BRAMs,P&R utilization,
+Resources,DSP usage,0 / 8,DSPs,P&R utilization,

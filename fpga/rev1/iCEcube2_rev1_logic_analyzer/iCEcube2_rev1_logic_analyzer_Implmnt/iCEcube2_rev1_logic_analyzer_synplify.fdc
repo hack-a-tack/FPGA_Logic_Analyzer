@@ -1,5 +1,0 @@
-
-#1001 : create_clock -name clk52 -period 18.939 [get_nets E1.o_clk]
-# line 5 in c:/users/jakob/documents/ee-projects/fpga_logic_analyzer/fpga/rev1/constraints/synopsys_design_constraints.sdc
-
-create_clock -name {clk52} -period {18.939} [get_nets {E1.CLK}]

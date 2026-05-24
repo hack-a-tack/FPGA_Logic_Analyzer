@@ -1,0 +1,95 @@
+$date
+  2026-05-18 18:09:19
+$end
+$version
+  la_host.py VCD export
+$end
+$timescale 1ns $end
+$scope module logic_analyzer $end
+$var wire 1 a LA0 $end
+$var wire 1 b LA1 $end
+$var wire 1 c LA2 $end
+$var wire 1 d LA3 $end
+$var wire 1 e LA4 $end
+$var wire 1 f LA5 $end
+$var wire 1 g LA6 $end
+$var wire 1 h LA7 $end
+$upscope $end
+$enddefinitions $end
+#0
+0a
+0b
+0c
+0d
+0e
+0f
+0g
+0h
+#3875
+1a
+#8875
+0a
+#13875
+1a
+#18917
+0a
+#23917
+1a
+#28917
+0a
+#33917
+1a
+#38958
+0a
+#43958
+1a
+#48958
+0a
+#53958
+1a
+#59000
+0a
+#64000
+1a
+#69000
+0a
+#74000
+1a
+#79000
+0a
+#84042
+1a
+#89042
+0a
+#94042
+1a
+#99042
+0a
+#104083
+1a
+#109083
+0a
+#114083
+1a
+#119083
+0a
+#124083
+1a
+#129125
+0a
+#134125
+1a
+#139125
+0a
+#144167
+1a
+#149167
+0a
+#154167
+1a
+#159208
+0a
+#164208
+1a
+#169208
+0a
