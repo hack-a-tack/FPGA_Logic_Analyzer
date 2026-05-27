@@ -35,3 +35,7 @@ set_io i_RESET 8
 # UART signals
 set_io o_UART_TX 4
 set_io i_UART_RX 3
+
+# UART HW Handhsaking signals
+set_io o_CTSn 6
+set_io i_RTSn 2
