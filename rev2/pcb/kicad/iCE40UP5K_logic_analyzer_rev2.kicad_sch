@@ -7561,6 +7561,18 @@
 		(uuid 5fc3ec2d-9d72-4ffa-a871-06691966a2d7)
 	)
 	(rectangle
+		(start 13.208 205.994)
+		(end 63.5 234.95)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 60b64d87-9058-41bd-9bc9-45812a208668)
+	)
+	(rectangle
 		(start 113.03 223.52)
 		(end 168.148 278.13)
 		(stroke
@@ -7658,6 +7670,16 @@
 		)
 		(uuid "3705abb4-632f-4e2b-9fc2-56e576ae3838")
 	)
+	(text "FTDI_UART_RX"
+		(exclude_from_sim no)
+		(at 55.88 220.218 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "37858360-2f4b-40d9-b4db-b65500aac73b")
+	)
 	(text "YE"
 		(exclude_from_sim no)
 		(at 138.43 262.89 0)
@@ -7689,6 +7711,16 @@
 		)
 		(uuid "44e3f67c-fe70-4f24-b2c0-709e0ae06d65")
 	)
+	(text "61300821121"
+		(exclude_from_sim no)
+		(at 30.734 113.538 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "45bc9ba5-3e71-4a73-983e-bcf6fdad4d2b")
+	)
 	(text "add layout label:\nDONE_LED_EN"
 		(exclude_from_sim no)
 		(at 158.75 231.394 0)
@@ -7708,6 +7740,17 @@
 			)
 		)
 		(uuid "49d8d5ba-509c-4109-899b-3b7adc6b80ff")
+	)
+	(text "UART PROBE HEADER\nUART lines between FPGA and FTDI (USB-UART\nbridge IC) for external logic analyzer/scope."
+		(exclude_from_sim no)
+		(at 14.224 210.058 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "5221c174-2377-4ee1-9b8a-f69ba9e8961f")
 	)
 	(text "D-\nD+"
 		(exclude_from_sim no)
@@ -7790,6 +7833,16 @@
 		)
 		(uuid "b249779d-d4db-4b9b-aa58-e5f9e933df51")
 	)
+	(text "61300821121"
+		(exclude_from_sim no)
+		(at 30.734 229.108 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "bf09a164-1b50-4605-b44d-aa003cff4e88")
+	)
 	(text "pin2: 3V3_VREF only — do not drive"
 		(exclude_from_sim no)
 		(at 44.196 141.732 0)
@@ -7830,6 +7883,22 @@
 			(justify left)
 		)
 		(uuid "e7db0dcc-9670-446a-aba1-ca2f3fbcef5d")
+	)
+	(text "FTDI_UART_TX"
+		(exclude_from_sim no)
+		(at 55.88 217.678 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "eab63a31-a3c6-4a10-b74f-a9cec7e50337")
+	)
+	(junction
+		(at 17.78 220.98)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "02fc4c20-14ab-4dd7-ba17-3ec1e8a34cf8")
 	)
 	(junction
 		(at 410.21 132.08)
@@ -7938,6 +8007,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "26cd13f6-1da1-4dee-8199-b5944bdf9893")
+	)
+	(junction
+		(at 17.78 223.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2f02a15f-65f7-4301-820b-9d1f721e10e8")
 	)
 	(junction
 		(at 402.59 76.2)
@@ -8052,6 +8127,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "6bf85969-4f9d-4ca1-85ef-c23e53de3166")
+	)
+	(junction
+		(at 17.78 226.06)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6eaa894b-8f8f-4ab5-b044-1a551970e43a")
 	)
 	(junction
 		(at 161.29 139.7)
@@ -8651,6 +8732,16 @@
 	)
 	(wire
 		(pts
+			(xy 17.78 226.06) (xy 20.32 226.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "04eaffa3-f4bb-4c44-9e0b-3e9136573061")
+	)
+	(wire
+		(pts
 			(xy 17.78 107.95) (xy 17.78 105.41)
 		)
 		(stroke
@@ -8698,6 +8789,16 @@
 			(type default)
 		)
 		(uuid "05d44ae7-1063-4308-8751-638ee1395692")
+	)
+	(wire
+		(pts
+			(xy 17.78 228.6) (xy 17.78 226.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "060d5663-686d-4518-880c-f30718f1944d")
 	)
 	(wire
 		(pts
@@ -9151,6 +9252,16 @@
 	)
 	(wire
 		(pts
+			(xy 17.78 223.52) (xy 20.32 223.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1b18d728-c48d-4dc7-be3f-04dfab261716")
+	)
+	(wire
+		(pts
 			(xy 392.43 111.76) (xy 438.15 111.76)
 		)
 		(stroke
@@ -9361,6 +9472,16 @@
 	)
 	(wire
 		(pts
+			(xy 33.02 220.98) (xy 48.26 220.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "21ac5fa2-3fa7-4c85-abbd-2bffe0603875")
+	)
+	(wire
+		(pts
 			(xy 417.83 132.08) (xy 417.83 128.27)
 		)
 		(stroke
@@ -9418,6 +9539,16 @@
 			(type default)
 		)
 		(uuid "22aa977d-d7c9-424f-adfa-68bf7dd1598e")
+	)
+	(wire
+		(pts
+			(xy 17.78 218.44) (xy 20.32 218.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "22d29452-8f6e-4124-b6aa-6776c9c05084")
 	)
 	(wire
 		(pts
@@ -9791,6 +9922,16 @@
 	)
 	(wire
 		(pts
+			(xy 17.78 226.06) (xy 17.78 223.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "311275de-2b6f-4771-9cba-c8cf0263dc5e")
+	)
+	(wire
+		(pts
 			(xy 431.8 88.9) (xy 431.8 64.77)
 		)
 		(stroke
@@ -9938,6 +10079,16 @@
 			(type default)
 		)
 		(uuid "37cc7d52-9cd1-45c1-bef3-7348ffda05d3")
+	)
+	(wire
+		(pts
+			(xy 17.78 220.98) (xy 17.78 218.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "382b15c1-35d2-4974-8ad7-602cdda5003b")
 	)
 	(wire
 		(pts
@@ -10581,6 +10732,16 @@
 	)
 	(wire
 		(pts
+			(xy 33.02 226.06) (xy 48.26 226.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "59e93842-d947-4333-be1d-f4a138d65388")
+	)
+	(wire
+		(pts
 			(xy 370.84 78.74) (xy 384.81 78.74)
 		)
 		(stroke
@@ -10961,6 +11122,16 @@
 	)
 	(wire
 		(pts
+			(xy 33.02 218.44) (xy 48.26 218.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "68f4424f-41b9-4dd1-91eb-cf80884197ea")
+	)
+	(wire
+		(pts
 			(xy 146.05 260.35) (xy 142.24 260.35)
 		)
 		(stroke
@@ -11208,6 +11379,16 @@
 			(type default)
 		)
 		(uuid "72962314-39a3-4672-9034-1bd57bf9436f")
+	)
+	(wire
+		(pts
+			(xy 33.02 223.52) (xy 48.26 223.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "729a04fb-43a3-4c2e-9fea-888c3eca194c")
 	)
 	(wire
 		(pts
@@ -12448,6 +12629,16 @@
 			(type default)
 		)
 		(uuid "a9bfdbcb-6b13-498e-9b70-d7b211056bbd")
+	)
+	(wire
+		(pts
+			(xy 17.78 220.98) (xy 20.32 220.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aa213144-5201-41bf-a599-7a1cc7a163c0")
 	)
 	(wire
 		(pts
@@ -13901,6 +14092,16 @@
 	)
 	(wire
 		(pts
+			(xy 17.78 223.52) (xy 17.78 220.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fb402cb4-5d7b-4bac-a936-76bce6f6668b")
+	)
+	(wire
+		(pts
 			(xy 392.43 104.14) (xy 430.53 104.14)
 		)
 		(stroke
@@ -14129,6 +14330,16 @@
 		)
 		(uuid "07f93e39-297a-4e93-a147-1590ce5bf0a9")
 	)
+	(label "FPGA_UART_TX"
+		(at 48.26 220.98 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "0998b219-edfe-470e-acdd-91faba89471b")
+	)
 	(label "USB_D+"
 		(at 198.12 54.61 90)
 		(effects
@@ -14168,6 +14379,16 @@
 			(justify right bottom)
 		)
 		(uuid "17782b21-deeb-4d39-9828-86f92523f8b2")
+	)
+	(label "RTS#"
+		(at 48.26 223.52 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "1bb00d4b-c397-47df-ab2c-5a006e28ea93")
 	)
 	(label "LA2_raw"
 		(at 370.84 78.74 0)
@@ -14288,6 +14509,16 @@
 			(justify left bottom)
 		)
 		(uuid "3cf9d241-e034-4084-a799-daa8e7afd33e")
+	)
+	(label "CTS#"
+		(at 48.2363 226.06 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "3f54ad76-1b05-4a3f-9c67-9b115de5fd33")
 	)
 	(label "LA7_raw"
 		(at 405.13 36.83 180)
@@ -14908,6 +15139,16 @@
 			(justify right bottom)
 		)
 		(uuid "d62379a5-6d39-4d6a-9cc5-fe59020f61f7")
+	)
+	(label "FPGA_UART_RX"
+		(at 48.26 218.44 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "d6771c30-a380-4e1f-9330-1bb786a29ab4")
 	)
 	(label "SPI_MISO"
 		(at 50.8 162.56 0)
@@ -19170,6 +19411,71 @@
 			(project "iCE40UP5K_logic_analyzer_rev2"
 				(path "/84c66010-816c-4380-94a0-a9b9d431fb8c"
 					(reference "#PWR082")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 17.78 228.6 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "27f53e39-0d8c-4246-8509-432e12109aec")
+		(property "Reference" "#PWR0118"
+			(at 17.78 234.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 17.78 232.156 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 17.78 228.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 17.78 228.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 17.78 228.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ea30f51a-2eca-47c4-8e70-9452cf8a1268")
+		)
+		(instances
+			(project "iCE40UP5K_logic_analyzer_rev2"
+				(path "/84c66010-816c-4380-94a0-a9b9d431fb8c"
+					(reference "#PWR0118")
 					(unit 1)
 				)
 			)
@@ -30735,6 +31041,183 @@
 			(project "iCE40UP5K_logic_analyzer_rev2"
 				(path "/84c66010-816c-4380-94a0-a9b9d431fb8c"
 					(reference "#PWR072")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "8_pin_2x4_61300821121:61300821121")
+		(at 26.67 222.25 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c32f2850-58c5-4ff8-b140-a8946a6e8842")
+		(property "Reference" "J5"
+			(at 26.67 214.63 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "61300821121"
+			(at 12.7 222.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Connector_THT_Wurth:J_Wurth_WR-PHD_61300821121"
+			(at 43.18 222.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.we-online.com/en/components/products/datasheet/61300821121?ki"
+			(at 39.37 262.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "2.54 mm THT Dual Pin Header"
+			(at 26.67 222.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Wurth Elektronik"
+			(at 36.83 262.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer URL" "https://www.we-online.com"
+			(at 34.29 262.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Series" "WR-PHD"
+			(at 31.75 262.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Pitch" "2.54 mm"
+			(at 29.21 262.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mounting Technology" "THT"
+			(at 26.67 262.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Pins (pcs)" "8"
+			(at 24.13 262.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Rows" "Dual"
+			(at 21.59 262.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Gender" "Pin Header"
+			(at 19.05 262.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Type" "Straight"
+			(at 16.51 262.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "IR (A)" "3"
+			(at 13.97 262.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "8"
+			(uuid "63732b9e-3a3c-4f22-ae80-fd403eba5c22")
+		)
+		(pin "2"
+			(uuid "4d3ec912-45ca-4ead-90a8-d38649ca6612")
+		)
+		(pin "5"
+			(uuid "c73dfad4-71e6-49b6-b977-f8f2fa16d1a4")
+		)
+		(pin "4"
+			(uuid "9f299a72-873a-46e4-81cc-ef026291db29")
+		)
+		(pin "7"
+			(uuid "03619336-6c35-4fb7-ab8a-1bd788f2708a")
+		)
+		(pin "1"
+			(uuid "cd2abbbd-cf50-4dfc-900b-396cde5c7797")
+		)
+		(pin "6"
+			(uuid "4034e995-34f2-4214-b69e-7b702ab251e7")
+		)
+		(pin "3"
+			(uuid "972f797e-9aff-4575-949a-b5c13fd772c8")
+		)
+		(instances
+			(project "iCE40UP5K_logic_analyzer_rev2"
+				(path "/84c66010-816c-4380-94a0-a9b9d431fb8c"
+					(reference "J5")
 					(unit 1)
 				)
 			)
