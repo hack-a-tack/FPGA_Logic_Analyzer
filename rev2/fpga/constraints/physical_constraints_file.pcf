@@ -26,8 +26,8 @@ set_io o_DBG1 19
 set_io o_DBG0 18
 
 # SPI signals, used for DEBUGGING/obtaining metrics AFTER the board is programmed. MISO pin = DEBUG_1; MOSI pin = DEBUG_2
-#set_io o_DEBUG_1 17
-#set_io o_DEBUG_2 14
+#set_io o_BACKUP_DBG1 17
+#set_io o_BACKUP_DBG2 14
 
 # LED signals
 set_io o_UART_TX_LED 12

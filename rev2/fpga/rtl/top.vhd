@@ -3,7 +3,7 @@
 -- FUNCTION: ties all underlying modules together
 -- AUTHOR: Jakob Kieszek Ottesen
 -- DATE: 2026-05-25 (YYYY-MM-DD)
--- MODIFIED: 
+-- MODIFIED: 2026-06-06
 --
 -- INPUTS 					DATA		TO INTERNAL MODULE
 -- i_RESET					1 bit		-> uart_rx | cmd_parser | analyzer_fsm | capture_engine | send_engine | tx_mux | uart_tx
