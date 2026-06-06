@@ -30,6 +30,10 @@
 -- o_UART_TX_LED			1 bit		<- uart_tx
 -- o_UART_RX_LED			1 bit		<- uart_rx
 -- o_USER_LED				1 bit		<- analyzer_fsm
+-- o_DBG0					1 bit		<- UP TO THE USER (WHATEVER HELPS DEBUGGING / METRICS)
+-- o_DBG1					1 bit		<- UP TO THE USER (WHATEVER HELPS DEBUGGING / METRICS)
+-- o_DBG2					1 bit		<- UP TO THE USER (WHATEVER HELPS DEBUGGING / METRICS)
+-- o_DBG3					1 bit		<- UP TO THE USER (WHATEVER HELPS DEBUGGING / METRICS)
 --
 -- NOTES
 -- i_LA0 through i_LA15 get assembled into std_logic_vector of length 16 "ANALYZER_INPUTS" before it's sent to -> capture_engine
@@ -74,7 +78,11 @@ entity top is
 		o_UART_TX			: out std_logic;
 		o_UART_TX_LED		: out std_logic;
 		o_UART_RX_LED		: out std_logic;
-		o_USER_LED			: out std_logic
+		o_USER_LED			: out std_logic;
+		o_DBG0				: out std_logic;
+		o_DBG1				: out std_logic;
+		o_DBG2				: out std_logic;
+		o_DBG3				: out std_logic
 	);
 end entity top;
 	

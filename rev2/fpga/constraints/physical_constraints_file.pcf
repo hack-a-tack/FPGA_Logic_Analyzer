@@ -19,7 +19,13 @@ set_io i_LA13 31
 set_io i_LA14 28
 set_io i_LA15 27
 
-# SPI signals, used for DEBUGGING/obtaining metrics once board is programmed. MISO pin = DEBUG_1; MOSI pin = DEBUG_2
+# Debug signals
+set_io o_DBG3 21
+set_io o_DBG2 20
+set_io o_DBG1 19
+set_io o_DBG0 18
+
+# SPI signals, used for DEBUGGING/obtaining metrics AFTER the board is programmed. MISO pin = DEBUG_1; MOSI pin = DEBUG_2
 #set_io o_DEBUG_1 17
 #set_io o_DEBUG_2 14
 
