@@ -15526,7 +15526,7 @@
 		)
 		(uuid "0cf5dc23-8b03-4b3d-a424-7a07e1ee4ec1")
 	)
-	(label "FTDI_USB_TX_LED"
+	(label "FTDI_TX_LED#"
 		(at 111.76 184.15 0)
 		(effects
 			(font
@@ -16026,7 +16026,7 @@
 		)
 		(uuid "73a5f43a-69d2-4160-b23b-d5641a107095")
 	)
-	(label "FTDI_USB_TX_LED"
+	(label "FTDI_TX_LED#"
 		(at 160.02 251.46 0)
 		(effects
 			(font
@@ -16296,7 +16296,7 @@
 		)
 		(uuid "9a4da87d-bb4f-4daf-9fe7-1d99b3e42b5b")
 	)
-	(label "FTDI_USB_RX_LED"
+	(label "FTDI_RX_LED#"
 		(at 111.76 173.99 0)
 		(effects
 			(font
@@ -16556,7 +16556,7 @@
 		)
 		(uuid "cce5ab26-2516-4c14-82fc-e987f48f84d3")
 	)
-	(label "FTDI_USB_RX_LED"
+	(label "FTDI_RX_LED#"
 		(at 160.02 248.92 0)
 		(effects
 			(font
@@ -17449,7 +17449,7 @@
 				)
 			)
 		)
-		(property "Value" "USB_RX"
+		(property "Value" "FTDI_RX"
 			(at 135.128 170.942 0)
 			(effects
 				(font
@@ -27680,7 +27680,7 @@
 				)
 			)
 		)
-		(property "Value" "USB_TX"
+		(property "Value" "FTDI_TX"
 			(at 135.128 181.61 0)
 			(effects
 				(font
