@@ -14,10 +14,10 @@ set_io i_LA8 37
 set_io i_LA9 36
 set_io i_LA10 35
 set_io i_LA11 34
-set_io i_LA12 32
-set_io i_LA13 31
-set_io i_LA14 28
-set_io i_LA15 27
+set_io i_LA12 28
+set_io i_LA13 27
+set_io i_LA14 26
+set_io i_LA15 25
 
 # Debug signals
 set_io o_DBG3 21
