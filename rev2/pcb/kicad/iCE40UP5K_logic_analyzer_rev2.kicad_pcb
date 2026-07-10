@@ -910,15 +910,15 @@
 			(uuid "11fbdbb0-36b7-41c4-8bff-b53a52e34a31")
 		)
 		(embedded_fonts no)
-		(model "BLM18AG601SN1D.stp"
+		(model "C:/Users/Jakob/Documents/Logic analyzer components KiCad/LIB_BLM18AG601SN1D/BLM18AG601SN1D/3D/BLM18AG601SN1D.stp"
 			(offset
-				(xyz 0.7999999999 0 0.4)
+				(xyz 0.8 0 0.4)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -90 0 -90)
+				(xyz -0 -90 -0)
 			)
 		)
 	)
@@ -1687,7 +1687,7 @@
 			(uuid "346d695d-d342-4967-82bf-b9b49ddfdc3e")
 		)
 		(embedded_fonts no)
-		(model "C0603C104M4RAC.stp"
+		(model "C:/Users/Jakob/Documents/Logic analyzer components KiCad/LIB_C0603C104M4RAC/C0603C104M4RAC/3D/C0603C104M4RAC.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -1968,7 +1968,7 @@
 			(uuid "bb34e208-4909-4e64-911e-a86ec64db5c5")
 		)
 		(embedded_fonts no)
-		(model "C0603C104M4RAC.stp"
+		(model "C:/Users/Jakob/Documents/Logic analyzer components KiCad/LIB_C0603C104M4RAC/C0603C104M4RAC/3D/C0603C104M4RAC.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -2572,7 +2572,7 @@
 			(uuid "a2d59856-c73c-4009-9edd-895ae1bbeec2")
 		)
 		(embedded_fonts no)
-		(model "C0603C104M4RAC.stp"
+		(model "C:/Users/Jakob/Documents/Logic analyzer components KiCad/LIB_C0603C104M4RAC/C0603C104M4RAC/3D/C0603C104M4RAC.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -4404,15 +4404,15 @@
 			(uuid "8ce8d667-a204-4685-90d0-708cb8d36ba8")
 		)
 		(embedded_fonts no)
-		(model "C0805C475K4RACTM.stp"
+		(model "C:/Users/Jakob/Documents/Logic analyzer components KiCad/LIB_C0805C475K4RACTM/C0805C475K4RACTM/3D/C0805C475K4RACTM.stp"
 			(offset
-				(xyz -1.149999959 -0.7799999597 0)
+				(xyz -1.15 -0.8 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -90 0 0)
+				(xyz -90 -0 -0)
 			)
 		)
 	)
@@ -7029,7 +7029,7 @@
 			(uuid "69a2a0af-47f7-48d0-ba5d-909a2bd21656")
 		)
 		(embedded_fonts no)
-		(model "C0603C104M4RAC.stp"
+		(model "C:/Users/Jakob/Documents/Logic analyzer components KiCad/LIB_C0603C104M4RAC/C0603C104M4RAC/3D/C0603C104M4RAC.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -9184,7 +9184,7 @@
 			(uuid "2d6eaaf6-b087-4727-9b1e-feb5a30dce67")
 		)
 		(embedded_fonts no)
-		(model "C0603C104M4RAC.stp"
+		(model "C:/Users/Jakob/Documents/Logic analyzer components KiCad/LIB_C0603C104M4RAC/C0603C104M4RAC/3D/C0603C104M4RAC.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -10248,15 +10248,15 @@
 			(uuid "2bea4a87-d5ae-41ee-bd58-8acd455c2fb6")
 		)
 		(embedded_fonts no)
-		(model "BLM18AG601SN1D.stp"
+		(model "C:/Users/Jakob/Documents/Logic analyzer components KiCad/LIB_BLM18AG601SN1D/BLM18AG601SN1D/3D/BLM18AG601SN1D.stp"
 			(offset
-				(xyz 0.7999999999 0 0.4)
+				(xyz 0.8 0 0.4)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -90 0 -90)
+				(xyz -0 -90 -0)
 			)
 		)
 	)
@@ -11760,7 +11760,7 @@
 			(uuid "384f6c7d-4595-43be-bd27-41eda60b5763")
 		)
 		(embedded_fonts no)
-		(model "C0603C104M4RAC.stp"
+		(model "C:/Users/Jakob/Documents/Logic analyzer components KiCad/LIB_C0603C104M4RAC/C0603C104M4RAC/3D/C0603C104M4RAC.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -11949,15 +11949,15 @@
 			(uuid "edbbd87f-eafb-4d97-bb6b-942d8067bb9c")
 		)
 		(embedded_fonts no)
-		(model "C0805C475K4RACTM.stp"
+		(model "C:/Users/Jakob/Documents/Logic analyzer components KiCad/LIB_C0805C475K4RACTM/C0805C475K4RACTM/3D/C0805C475K4RACTM.stp"
 			(offset
-				(xyz -1.149999959 -0.7799999597 0)
+				(xyz -1.2 -0.8 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -90 0 0)
+				(xyz -90 -0 -0)
 			)
 		)
 	)
@@ -12419,6 +12419,17 @@
 				(xyz 0 0 0)
 			)
 		)
+		(model "C:/Users/Jakob/Documents/Logic analyzer components KiCad/LIB_150080YS75000/150080YS75000/3D/150080YS75000.stp"
+			(offset
+				(xyz 0 0 0.2)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 -0 -0)
+			)
+		)
 	)
 	(footprint "0u1_0603_cap_C0603C104M4RAC:CAPC1608X95N"
 		(layer "F.Cu")
@@ -12586,7 +12597,7 @@
 			(uuid "8ea12ca2-f7c8-441d-a636-ed92c557cf71")
 		)
 		(embedded_fonts no)
-		(model "C0603C104M4RAC.stp"
+		(model "C:/Users/Jakob/Documents/Logic analyzer components KiCad/LIB_C0603C104M4RAC/C0603C104M4RAC/3D/C0603C104M4RAC.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -15753,6 +15764,17 @@
 			)
 			(rotate
 				(xyz -90 0 0)
+			)
+		)
+		(model "C:/Users/Jakob/Documents/Logic analyzer components KiCad/LIB_APT2012LVBC_D/APT2012LVBC_D/3D/APT2012LVBC_D.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 -0 -0)
 			)
 		)
 	)
@@ -19328,7 +19350,7 @@
 			(uuid "9410712f-e2cb-4544-98d7-d0eb3ec79a0e")
 		)
 		(embedded_fonts no)
-		(model "C0603C104M4RAC.stp"
+		(model "C:/Users/Jakob/Documents/Logic analyzer components KiCad/LIB_C0603C104M4RAC/C0603C104M4RAC/3D/C0603C104M4RAC.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -21692,7 +21714,7 @@
 			(uuid "3344791b-09e4-4cff-95c4-bf938acdecf6")
 		)
 		(embedded_fonts no)
-		(model "C0603C104M4RAC.stp"
+		(model "C:/Users/Jakob/Documents/Logic analyzer components KiCad/LIB_C0603C104M4RAC/C0603C104M4RAC/3D/C0603C104M4RAC.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -22938,7 +22960,7 @@
 			(uuid "6a320600-13e1-423c-8440-bb4bbc3225ff")
 		)
 		(embedded_fonts no)
-		(model "C0603C104M4RAC.stp"
+		(model "C:/Users/Jakob/Documents/Logic analyzer components KiCad/LIB_C0603C104M4RAC/C0603C104M4RAC/3D/C0603C104M4RAC.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -24891,15 +24913,15 @@
 			(uuid "18dd17d7-e237-43f8-b4ac-5ad5876bcbf5")
 		)
 		(embedded_fonts no)
-		(model "C0805C475K4RACTM.stp"
+		(model "C:/Users/Jakob/Documents/Logic analyzer components KiCad/LIB_C0805C475K4RACTM/C0805C475K4RACTM/3D/C0805C475K4RACTM.stp"
 			(offset
-				(xyz -1.149999959 -0.7799999597 0)
+				(xyz -1.15 -0.8 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -90 0 0)
+				(xyz -90 -0 -0)
 			)
 		)
 	)
@@ -27213,7 +27235,7 @@
 			(uuid "acbca93d-b945-40d5-a2d1-766d6d1351bb")
 		)
 		(embedded_fonts no)
-		(model "C0603C104M4RAC.stp"
+		(model "C:/Users/Jakob/Documents/Logic analyzer components KiCad/LIB_C0603C104M4RAC/C0603C104M4RAC/3D/C0603C104M4RAC.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -28589,6 +28611,17 @@
 			)
 			(rotate
 				(xyz -90 0 0)
+			)
+		)
+		(model "C:/Users/Jakob/Documents/Logic analyzer components KiCad/LIB_C0805C475K4RACTM/C0805C475K4RACTM/3D/C0805C475K4RACTM.stp"
+			(offset
+				(xyz -1.2 -0.8 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 -0 -0)
 			)
 		)
 	)
@@ -30562,7 +30595,7 @@
 		(descr "C0603C104M4RAC")
 		(tags "Capacitor")
 		(property "Reference" "C36"
-			(at 1.905 -0.2286 180)
+			(at 1.905 -0.2286 0)
 			(layer "F.SilkS")
 			(uuid "238f5780-de4d-4bf4-9993-b87d30058070")
 			(effects
@@ -30721,7 +30754,7 @@
 			(uuid "d83ebdd8-0694-4fa0-be81-be8af345784f")
 		)
 		(embedded_fonts no)
-		(model "C0603C104M4RAC.stp"
+		(model "C:/Users/Jakob/Documents/Logic analyzer components KiCad/LIB_C0603C104M4RAC/C0603C104M4RAC/3D/C0603C104M4RAC.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -32277,7 +32310,7 @@
 			(uuid "9a84fe41-b7dc-4908-998a-d35277c3d303")
 		)
 		(embedded_fonts no)
-		(model "C0603C104M4RAC.stp"
+		(model "C:/Users/Jakob/Documents/Logic analyzer components KiCad/LIB_C0603C104M4RAC/C0603C104M4RAC/3D/C0603C104M4RAC.stp"
 			(offset
 				(xyz 0 0 0)
 			)
