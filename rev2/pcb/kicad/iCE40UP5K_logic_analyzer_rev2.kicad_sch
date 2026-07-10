@@ -9183,6 +9183,16 @@
 		)
 		(uuid "e0483012-c6a3-4c97-992e-c9188e25c00a")
 	)
+	(text "DO NOT PLACE R68\n(by default)"
+		(exclude_from_sim no)
+		(at 60.452 100.838 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "e3251c4e-ee61-4615-a5a4-75bc664aca09")
+	)
 	(text "INPUT AUXILIARIES\n- series resistors\n- weak pulldowns\n- Schmitt buffers"
 		(exclude_from_sim no)
 		(at 276.86 97.536 0)
@@ -17917,7 +17927,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "0b08176d-0d2a-482e-b816-f87455354176")
-		(property "Reference" "TP21"
+		(property "Reference" "TP:GND"
 			(at 240.538 209.55 90)
 			(effects
 				(font
@@ -17969,7 +17979,7 @@
 		(instances
 			(project "iCE40UP5K_logic_analyzer_rev2"
 				(path "/84c66010-816c-4380-94a0-a9b9d431fb8c"
-					(reference "TP21")
+					(reference "TP:GND")
 					(unit 1)
 				)
 			)
@@ -18308,7 +18318,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "LIB_1x3_61300311121:J_Wurth_WR-PHD_61300311121"
+		(property "Footprint" "8pin_header_2x4_61300821121:J_Wurth_WR-PHD_61300311121"
 			(at 13.97 217.17 0)
 			(effects
 				(font
@@ -18317,7 +18327,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.we-online.com/en/components/products/datasheet/61300311121?ki"
+		(property "Datasheet" ""
 			(at 7.62 257.81 0)
 			(effects
 				(font
@@ -18326,7 +18336,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "2.54 mm THT Pin Header"
+		(property "Description" ""
 			(at 20.32 217.17 0)
 			(effects
 				(font
@@ -18655,7 +18665,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "0e57b016-36fa-402d-b431-017686d54670")
-		(property "Reference" "TP15"
+		(property "Reference" "TP:1V2"
 			(at 367.792 29.21 90)
 			(effects
 				(font
@@ -18707,7 +18717,7 @@
 		(instances
 			(project "iCE40UP5K_logic_analyzer_rev2"
 				(path "/84c66010-816c-4380-94a0-a9b9d431fb8c"
-					(reference "TP15")
+					(reference "TP:1V2")
 					(unit 1)
 				)
 			)
@@ -18961,6 +18971,15 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 48.26 214.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "silkscreen_text" "GND"
 			(at 48.26 214.63 0)
 			(effects
 				(font
@@ -19540,7 +19559,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "162a0d2e-cf87-485a-bf9c-024f4c4549e8")
-		(property "Reference" "TP28"
+		(property "Reference" "TP:RESET#"
 			(at 116.332 204.47 90)
 			(effects
 				(font
@@ -19592,7 +19611,7 @@
 		(instances
 			(project "iCE40UP5K_logic_analyzer_rev2"
 				(path "/84c66010-816c-4380-94a0-a9b9d431fb8c"
-					(reference "TP28")
+					(reference "TP:RESET#")
 					(unit 1)
 				)
 			)
@@ -20911,6 +20930,15 @@
 				(hide yes)
 			)
 		)
+		(property "Silkscreen_text" "TP:5V"
+			(at 83.82 210.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "77aea766-6bf4-4e08-bda8-2bda1ea25afe")
 		)
@@ -21130,7 +21158,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "2547fa3b-0b1f-40c5-b226-1e81159ca022")
-		(property "Reference" "TP24"
+		(property "Reference" "TP:REF"
 			(at 116.332 194.31 90)
 			(effects
 				(font
@@ -21182,7 +21210,7 @@
 		(instances
 			(project "iCE40UP5K_logic_analyzer_rev2"
 				(path "/84c66010-816c-4380-94a0-a9b9d431fb8c"
-					(reference "TP24")
+					(reference "TP:REF")
 					(unit 1)
 				)
 			)
@@ -21826,6 +21854,15 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 62.23 222.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Silkscreen_text" "GND"
 			(at 62.23 222.25 0)
 			(effects
 				(font
@@ -22689,6 +22726,15 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 95.25 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Silkscreen_text" "TP:3V3"
 			(at 95.25 213.36 0)
 			(effects
 				(font
@@ -25355,7 +25401,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "5dd9dbc6-c342-4963-8d07-35334a9486f1")
-		(property "Reference" "R68_unp1"
+		(property "Reference" "R68"
 			(at 37.338 102.108 90)
 			(effects
 				(font
@@ -25407,7 +25453,7 @@
 		(instances
 			(project "iCE40UP5K_logic_analyzer_rev2"
 				(path "/84c66010-816c-4380-94a0-a9b9d431fb8c"
-					(reference "R68_unp1")
+					(reference "R68")
 					(unit 1)
 				)
 			)
@@ -25751,7 +25797,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "61963456-c3da-42f3-98fc-933ca0d9d9de")
-		(property "Reference" "TP8"
+		(property "Reference" "TP:SUSPEND#"
 			(at 205.74 268.986 90)
 			(effects
 				(font
@@ -25803,7 +25849,7 @@
 		(instances
 			(project "iCE40UP5K_logic_analyzer_rev2"
 				(path "/84c66010-816c-4380-94a0-a9b9d431fb8c"
-					(reference "TP8")
+					(reference "TP:SUSPEND#")
 					(unit 1)
 				)
 			)
@@ -26786,7 +26832,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "LIB_2x4_61300821121:J_Wurth_WR-PHD_61300621121"
+		(property "Footprint" "6pin_header_2x3_61300621121:J_Wurth_WR-PHD_61300621121"
 			(at 87.63 213.36 0)
 			(effects
 				(font
@@ -26795,7 +26841,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.we-online.com/en/components/products/datasheet/61300621121?ki"
+		(property "Datasheet" ""
 			(at 83.82 254 0)
 			(effects
 				(font
@@ -26804,7 +26850,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "2.54 mm THT Dual Pin Header"
+		(property "Description" ""
 			(at 71.12 213.36 0)
 			(effects
 				(font
@@ -27452,6 +27498,15 @@
 				(hide yes)
 			)
 		)
+		(property "Silkscreen_text" "CRST_B"
+			(at 35.56 217.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "53de8988-31f1-4c76-8a7d-2bc02cf9c7b9")
 		)
@@ -27879,7 +27934,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "7798dd3c-8045-4b0b-aace-ef118205a35a")
-		(property "Reference" "TP29"
+		(property "Reference" "TP:3V3"
 			(at 244.602 137.16 90)
 			(effects
 				(font
@@ -27931,7 +27986,7 @@
 		(instances
 			(project "iCE40UP5K_logic_analyzer_rev2"
 				(path "/84c66010-816c-4380-94a0-a9b9d431fb8c"
-					(reference "TP29")
+					(reference "TP:3V3")
 					(unit 1)
 				)
 			)
@@ -27946,7 +28001,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "7802273e-5d5b-4383-9b9c-3f085a9233c0")
-		(property "Reference" "TP9"
+		(property "Reference" "TP:PWRSAV"
 			(at 225.552 168.91 90)
 			(effects
 				(font
@@ -27998,7 +28053,7 @@
 		(instances
 			(project "iCE40UP5K_logic_analyzer_rev2"
 				(path "/84c66010-816c-4380-94a0-a9b9d431fb8c"
-					(reference "TP9")
+					(reference "TP:PWRSAV")
 					(unit 1)
 				)
 			)
@@ -28228,7 +28283,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "LIB_2x4_61300821121:J_Wurth_WR-PHD_61300821121"
+		(property "Footprint" "8pin_header_2x4_61300821121:J_Wurth_WR-PHD_61300821121"
 			(at 87.63 185.42 0)
 			(effects
 				(font
@@ -28784,7 +28839,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "7efc2280-d416-4f30-844a-29289471aca6")
-		(property "Reference" "TP11"
+		(property "Reference" "TP:3V3"
 			(at 300.482 22.86 90)
 			(effects
 				(font
@@ -28836,7 +28891,7 @@
 		(instances
 			(project "iCE40UP5K_logic_analyzer_rev2"
 				(path "/84c66010-816c-4380-94a0-a9b9d431fb8c"
-					(reference "TP11")
+					(reference "TP:3V3")
 					(unit 1)
 				)
 			)
@@ -28851,7 +28906,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "80bd09c1-b926-4215-9fb3-1c968830214c")
-		(property "Reference" "TP18"
+		(property "Reference" "TP:VCCPLL"
 			(at 346.202 67.31 90)
 			(effects
 				(font
@@ -28903,7 +28958,7 @@
 		(instances
 			(project "iCE40UP5K_logic_analyzer_rev2"
 				(path "/84c66010-816c-4380-94a0-a9b9d431fb8c"
-					(reference "TP18")
+					(reference "TP:VCCPLL")
 					(unit 1)
 				)
 			)
@@ -29023,6 +29078,15 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 95.25 215.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Silkscreen_text" "TP:1V2"
 			(at 95.25 215.9 0)
 			(effects
 				(font
@@ -29452,7 +29516,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "88f2a975-ddf2-4807-85a2-5fca79888146")
-		(property "Reference" "TP33"
+		(property "Reference" "TP:GND"
 			(at 238.76 264.922 0)
 			(effects
 				(font
@@ -29504,7 +29568,7 @@
 		(instances
 			(project "iCE40UP5K_logic_analyzer_rev2"
 				(path "/84c66010-816c-4380-94a0-a9b9d431fb8c"
-					(reference "TP33")
+					(reference "TP:GND")
 					(unit 1)
 				)
 			)
@@ -30111,7 +30175,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8e603ac0-4edb-4eac-987a-ba40f0fcef2c")
-		(property "Reference" "TP7"
+		(property "Reference" "TP:PWREN#"
 			(at 267.462 228.6 90)
 			(effects
 				(font
@@ -30163,7 +30227,7 @@
 		(instances
 			(project "iCE40UP5K_logic_analyzer_rev2"
 				(path "/84c66010-816c-4380-94a0-a9b9d431fb8c"
-					(reference "TP7")
+					(reference "TP:PWREN#")
 					(unit 1)
 				)
 			)
@@ -30300,7 +30364,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "915b02ec-1c37-479b-8faf-9a062de65d16")
-		(property "Reference" "TP10"
+		(property "Reference" "TP:1V8"
 			(at 198.628 168.91 90)
 			(effects
 				(font
@@ -30352,7 +30416,7 @@
 		(instances
 			(project "iCE40UP5K_logic_analyzer_rev2"
 				(path "/84c66010-816c-4380-94a0-a9b9d431fb8c"
-					(reference "TP10")
+					(reference "TP:1V8")
 					(unit 1)
 				)
 			)
@@ -30562,7 +30626,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "944cf53e-6b3a-41de-853a-4e3f5d2516dc")
-		(property "Reference" "TP22"
+		(property "Reference" "TP:3V3"
 			(at 203.962 115.824 0)
 			(effects
 				(font
@@ -30614,7 +30678,7 @@
 		(instances
 			(project "iCE40UP5K_logic_analyzer_rev2"
 				(path "/84c66010-816c-4380-94a0-a9b9d431fb8c"
-					(reference "TP22")
+					(reference "TP:3V3")
 					(unit 1)
 				)
 			)
@@ -31005,7 +31069,7 @@
 				(hide yes)
 			)
 		)
-		(property "silkscreen_text" "GND"
+		(property "silkscreen_text" "TP:GND"
 			(at 279.4 36.83 90)
 			(effects
 				(font
@@ -31516,7 +31580,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "LIB_2x4_61300821121:J_Wurth_WR-PHD_61300821121"
+		(property "Footprint" "8pin_header_2x4_61300821121:J_Wurth_WR-PHD_61300821121"
 			(at 43.18 185.42 0)
 			(effects
 				(font
@@ -31525,7 +31589,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.we-online.com/en/components/products/datasheet/61300821121?ki"
+		(property "Datasheet" ""
 			(at 39.37 226.06 0)
 			(effects
 				(font
@@ -31534,7 +31598,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "2.54 mm THT Dual Pin Header"
+		(property "Description" ""
 			(at 26.67 185.42 0)
 			(effects
 				(font
@@ -33014,7 +33078,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "a901d5c4-2402-4788-b4fd-205f225be3a1")
-		(property "Reference" "TP25"
+		(property "Reference" "TP:VPLL"
 			(at 116.332 146.05 90)
 			(effects
 				(font
@@ -33066,7 +33130,7 @@
 		(instances
 			(project "iCE40UP5K_logic_analyzer_rev2"
 				(path "/84c66010-816c-4380-94a0-a9b9d431fb8c"
-					(reference "TP25")
+					(reference "TP:VPLL")
 					(unit 1)
 				)
 			)
@@ -33797,7 +33861,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b1b6b64d-2f5d-4ae8-9c41-f4a9c812c307")
-		(property "Reference" "TP23"
+		(property "Reference" "TP:VPHY"
 			(at 116.332 125.73 90)
 			(effects
 				(font
@@ -33849,7 +33913,7 @@
 		(instances
 			(project "iCE40UP5K_logic_analyzer_rev2"
 				(path "/84c66010-816c-4380-94a0-a9b9d431fb8c"
-					(reference "TP23")
+					(reference "TP:VPHY")
 					(unit 1)
 				)
 			)
@@ -34464,7 +34528,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b99e8337-0075-4885-b9b1-c0431e0ca332")
-		(property "Reference" "TP26"
+		(property "Reference" "TP:1V8"
 			(at 193.802 137.16 90)
 			(effects
 				(font
@@ -34516,7 +34580,7 @@
 		(instances
 			(project "iCE40UP5K_logic_analyzer_rev2"
 				(path "/84c66010-816c-4380-94a0-a9b9d431fb8c"
-					(reference "TP26")
+					(reference "TP:1V8")
 					(unit 1)
 				)
 			)
@@ -35259,7 +35323,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c1499ebf-b93c-48dd-b6c4-c1d9ecf6527e")
-		(property "Reference" "TP12"
+		(property "Reference" "TP:3V3"
 			(at 198.628 179.07 90)
 			(effects
 				(font
@@ -35311,7 +35375,7 @@
 		(instances
 			(project "iCE40UP5K_logic_analyzer_rev2"
 				(path "/84c66010-816c-4380-94a0-a9b9d431fb8c"
-					(reference "TP12")
+					(reference "TP:3V3")
 					(unit 1)
 				)
 			)
@@ -35457,7 +35521,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c34f8313-27f3-4e1f-9e99-64c364583ddc")
-		(property "Reference" "TP27"
+		(property "Reference" "TP:GND"
 			(at 210.058 198.12 90)
 			(effects
 				(font
@@ -35509,7 +35573,7 @@
 		(instances
 			(project "iCE40UP5K_logic_analyzer_rev2"
 				(path "/84c66010-816c-4380-94a0-a9b9d431fb8c"
-					(reference "TP27")
+					(reference "TP:GND")
 					(unit 1)
 				)
 			)
@@ -38562,6 +38626,15 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 35.56 219.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Silkscreen_text" "CDONE"
 			(at 35.56 219.71 0)
 			(effects
 				(font
