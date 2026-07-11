@@ -1,4 +1,4 @@
-26804504431210608
+27263932654522554
 0u1_0603_cap_C0603C104M4RAC
 CAPC1608X95N
 C0603C104M4RAC
@@ -27,6 +27,13 @@ Capacitor
 0
 2
 2
+3pin_header_1x3_61300311121
+J_Wurth_WR-PHD_61300311121
+2.54 mm THT Pin Header, body 7.62x2.54x11.54mm, https://www.we-online.com/en/components/products/datasheet/61300311121?ki
+THT
+0
+3
+3
 4u7_0805_cap_C0805C475K4RACTM
 C0805
 C0805
@@ -41,6 +48,1749 @@ Connector
 0
 6
 6
+6pin_header_2x3_61300621121
+J_Wurth_WR-PHD_61300621121
+2.54 mm THT Dual Pin Header, body 7.62x5.08x11.54mm, https://www.we-online.com/en/components/products/datasheet/61300621121?ki
+THT
+0
+6
+6
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613002143121
+2.54 mm Angled Socket Header, body 5.58x10x5.6mm, https://www.we-online.com/en/components/products/datasheet/613002143121?ki
+THT
+0
+2
+2
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613003143121
+2.54 mm Angled Socket Header, body 8.12x10x5.6mm, https://www.we-online.com/en/components/products/datasheet/613003413121?ki
+THT
+0
+3
+3
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613004143121
+2.54 mm Angled Socket Header, body 10.66x10x5.6mm, https://www.we-online.com/en/components/products/datasheet/613004143121?ki
+THT
+0
+4
+4
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613004216921
+2.54 mm Dual Socket Header Bottom Entry Large, body 5.58x7.87x8.1mm, https://www.we-online.com/en/components/products/datasheet/613004216921?ki
+THT
+0
+4
+4
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613004243121
+2.54 mm Angled Dual Socket Header, body 5.58x12.6x8.3mm, https://www.we-online.com/en/components/products/datasheet/613004243121?ki
+THT
+0
+4
+4
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613005143121
+2.54 mm Angled Socket Header, body 13.2x10x5.6mm, https://www.we-online.com/en/components/products/datasheet/613005143121?ki
+THT
+0
+5
+5
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613006143121
+2.54 mm Angled Socket Header, body 15.74x10x5.6mm, https://www.we-online.com/en/components/products/datasheet/613006143121?ki
+THT
+0
+6
+6
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613006216921
+2.54 mm Dual Socket Header Bottom Entry Large, body 8.12x7.87x8.1mm, https://www.we-online.com/en/components/products/datasheet/613006216921?ki
+THT
+0
+6
+6
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613006243121
+2.54 mm Angled Dual Socket Header, body 8.12x12.6x8.3mm, https://www.we-online.com/en/components/products/datasheet/613006243121?ki
+THT
+0
+6
+6
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613007143121
+2.54 mm Angled Socket Header, body 18.28x10x5.6mm, https://www.we-online.com/en/components/products/datasheet/613007143121?ki
+THT
+0
+7
+7
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613008143121
+2.54 mm Angled Socket Header, body 20.82x10x5.6mm, https://www.we-online.com/en/components/products/datasheet/613008143121?ki
+THT
+0
+8
+8
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613008216921
+2.54 mm Dual Socket Header Bottom Entry Large, body 10.66x7.87x8.1mm, https://www.we-online.com/en/components/products/datasheet/613008216921?ki
+THT
+0
+8
+8
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613008243121
+2.54 mm Angled Dual Socket Header, body 10.66x12.6x8.3mm, https://www.we-online.com/en/components/products/datasheet/613008243121?ki
+THT
+0
+8
+8
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613009143121
+2.54 mm Angled Socket Header, body 23.36x10x5.6mm, https://www.we-online.com/en/components/products/datasheet/613009143121?ki
+THT
+0
+9
+9
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613010143121
+2.54 mm Angled Socket Header, body 25.9x10x5.6mm, https://www.we-online.com/en/components/products/datasheet/613010143121?ki
+THT
+0
+10
+10
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613010216921
+2.54 mm Dual Socket Header Bottom Entry Large, body 13.2x7.87x8.1mm, https://www.we-online.com/en/components/products/datasheet/613010216921?ki
+THT
+0
+10
+10
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613010243121
+2.54 mm Angled Dual Socket Header, body 13.2x12.6x8.3mm, https://www.we-online.com/en/components/products/datasheet/613010243121?ki
+THT
+0
+10
+10
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613012143121
+2.54 mm Angled Socket Header, body 30.98x10x5.6mm, https://www.we-online.com/en/components/products/datasheet/613012143121?ki
+THT
+0
+12
+12
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613012216921
+2.54 mm Dual Socket Header Bottom Entry Large, body 15.74x7.87x8.1mm, https://www.we-online.com/en/components/products/datasheet/613012216921?ki
+THT
+0
+12
+12
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613012243121
+2.54 mm Angled Dual Socket Header, body 15.74x12.6x8.3mm, https://www.we-online.com/en/components/products/datasheet/613012243121?ki
+THT
+0
+12
+12
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613013143121
+2.54 mm Angled Socket Header, body 33.52x10x5.6mm, https://www.we-online.com/en/components/products/datasheet/613013143121?ki
+THT
+0
+13
+13
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613014243121
+2.54 mm Angled Dual Socket Header, body 18.28x12.6x8.3mm, https://www.we-online.com/en/components/products/datasheet/613014243121?ki
+THT
+0
+14
+14
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613015143121
+2.54 mm Angled Socket Header, body 38.6x10x5.6mm, https://www.we-online.com/en/components/products/datasheet/613015143121?ki
+THT
+0
+15
+15
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613016143121
+2.54 mm Angled Socket Header, body 41.14x10x5.6mm, https://www.we-online.com/en/components/products/datasheet/613016143121?ki
+THT
+0
+16
+16
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613016216921
+2.54 mm Dual Socket Header Bottom Entry Large, body 20.82x7.87x8.1mm, https://www.we-online.com/en/components/products/datasheet/613016216921?ki
+THT
+0
+16
+16
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613016243121
+2.54 mm Angled Dual Socket Header, body 20.82x12.6x8.3mm, https://www.we-online.com/en/components/products/datasheet/613016243121?ki
+THT
+0
+16
+16
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613018143121
+2.54 mm Angled Socket Header, body 46.22x10x5.6mm, https://www.we-online.com/en/components/products/datasheet/613018143121?ki
+THT
+0
+18
+18
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613018216921
+2.54 mm Dual Socket Header Bottom Entry Large, body 23.36x7.87x8.1mm, https://www.we-online.com/en/components/products/datasheet/613018216921?ki
+THT
+0
+18
+18
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613020143121
+2.54 mm Angled Socket Header, body 51.3x10x5.6mm, https://www.we-online.com/en/components/products/datasheet/613020143121?ki
+THT
+0
+20
+20
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613020216921
+2.54 mm Dual Socket Header Bottom Entry Large, body 25.9x7.87x8.1mm, https://www.we-online.com/en/components/products/datasheet/613020216921?ki
+THT
+0
+20
+20
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613020243121
+2.54 mm Angled Dual Socket Header, body 25.9x12.6x8.3mm, https://www.we-online.com/en/components/products/datasheet/613020243121?ki
+THT
+0
+20
+20
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613022216921
+2.54 mm Dual Socket Header Bottom Entry Large, body 28.44x7.87x8.1mm, https://www.we-online.com/en/components/products/datasheet/613022216921?ki
+THT
+0
+22
+22
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613022243121
+2.54 mm Angled Dual Socket Header, body 28.44x12.6x8.3mm, https://www.we-online.com/en/components/products/datasheet/613022243121?ki
+THT
+0
+22
+22
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613024143121
+2.54 mm Angled Socket Header, body 61.46x10x5.6mm, https://www.we-online.com/en/components/products/datasheet/613024143121?ki
+THT
+0
+24
+24
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613024216921
+2.54 mm Dual Socket Header Bottom Entry Large, body 30.98x7.87x8.1mm, https://www.we-online.com/en/components/products/datasheet/613024216921?ki
+THT
+0
+24
+24
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613024243121
+2.54 mm Angled Dual Socket Header, body 30.98x12.6x8.3mm, https://www.we-online.com/en/components/products/datasheet/613024243121?ki
+THT
+0
+24
+24
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613026216921
+2.54 mm Dual Socket Header Bottom Entry Large, body 33.52x7.87x8.1mm, https://www.we-online.com/en/components/products/datasheet/613026216921?ki
+THT
+0
+26
+26
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613026243121
+2.54 mm Angled Dual Socket Header, body 33.52x12.6x8.3mm, https://www.we-online.com/en/components/products/datasheet/613026243121?ki
+THT
+0
+26
+26
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613032143121
+2.54 mm Angled Socket Header, body 81.78x10x5.6mm, https://www.we-online.com/en/components/products/datasheet/613032143121?ki
+THT
+0
+32
+32
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613032216921
+2.54 mm Dual Socket Header Bottom Entry Large, body 41.14x7.87x8.1mm, https://www.we-online.com/en/components/products/datasheet/613032216921?ki
+THT
+0
+32
+32
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613032243121
+2.54 mm Angled Dual Socket Header, body 41.14x12.6x8.3mm, https://www.we-online.com/en/components/products/datasheet/613032243121?ki
+THT
+0
+32
+32
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613034216921
+2.54 mm Dual Socket Header Bottom Entry Large, body 43.68x7.87x8.1mm, https://www.we-online.com/en/components/products/datasheet/613034216921?ki
+THT
+0
+34
+34
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613034243121
+2.54 mm Angled Dual Socket Header, body 43.68x12.6x8.3mm, https://www.we-online.com/en/components/products/datasheet/613034243121?ki
+THT
+0
+34
+34
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613040216921
+2.54 mm Dual Socket Header Bottom Entry Large, body 51.3x7.87x8.1mm, https://www.we-online.com/en/components/products/datasheet/613040216921?ki
+THT
+0
+40
+40
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613040243121
+2.54 mm Angled Dual Socket Header, body 51.3x12.6x8.3mm, https://www.we-online.com/en/components/products/datasheet/613040243121?ki
+THT
+0
+40
+40
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613064243121
+2.54 mm Angled Dual Socket Header, body 81.78x12.6x8.3mm, https://www.we-online.com/en/components/products/datasheet/613064243121?ki
+THT
+0
+64
+64
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_613072243121
+2.54 mm Angled Dual Socket Header, body 91.94x12.6x8.3mm, https://www.we-online.com/en/components/products/datasheet/613072243121?ki
+THT
+0
+72
+72
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300111121
+2.54 mm THT Pin Header, body 2.54x2.54x11.54mm, https://www.we-online.com/en/components/products/datasheet/61300111121?ki
+THT
+0
+1
+1
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300211021
+2.54 mm THT Pin Header, body 5.08x2.54x11.54mm, https://www.we-online.com/en/components/products/datasheet/61300211121?ki
+THT
+0
+2
+2
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300211121
+2.54 mm THT Pin Header, body 5.08x2.54x11.54mm, https://www.we-online.com/en/components/products/datasheet/61300211121?ki
+THT
+0
+2
+2
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300211821
+2.54 mm Socket Header, body 5.58x2.5x11.6mm, https://www.we-online.com/en/components/products/datasheet/61300211821?ki
+THT
+0
+2
+2
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300311021
+2.54 mm THT Angled Pin Header, body 7.62x10.36x5.54mm, https://www.we-online.com/en/components/products/datasheet/61300311021?ki
+THT
+0
+3
+3
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300311121
+2.54 mm THT Pin Header, body 7.62x2.54x11.54mm, https://www.we-online.com/en/components/products/datasheet/61300311121?ki
+THT
+0
+3
+3
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300311821
+2.54 mm Socket Header, body 8.12x2.5x11.6mm, https://www.we-online.com/en/components/products/datasheet/61300311821?ki
+THT
+0
+3
+3
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300411021
+2.54 mm THT Angled Pin Header, body 10.16x10.36x5.54mm, https://www.we-online.com/en/components/products/datasheet/61300411021?ki
+THT
+0
+4
+4
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300411121
+2.54 mm THT Pin Header, body 10.16x2.54x11.54mm, https://www.we-online.com/en/components/products/datasheet/61300411121?ki
+THT
+0
+4
+4
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300411821
+2.54 mm Socket Header, body 10.66x2.5x11.6mm, https://www.we-online.com/en/components/products/datasheet/61300411821?ki
+THT
+0
+4
+4
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300415721
+2.54 mm Socket Header Bottom Entry, body 10.66x5.08x8.1mm, https://www.we-online.com/en/components/products/datasheet/61300415721?ki
+THT
+0
+4
+4
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300421021
+2.54 mm THT Angled Dual Pin Header, body 5.08x12.9x8.08mm, https://www.we-online.com/en/components/products/datasheet/61300421021?ki
+THT
+0
+4
+4
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300421121
+2.54 mm THT Dual Pin Header, body 5.08x5.08x11.54mm, https://www.we-online.com/en/components/products/datasheet/61300421121?ki
+THT
+0
+4
+4
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300421821
+2.54 mm Dual Socket Header, body 5.58x5.08x11.6mm, https://www.we-online.com/en/components/products/datasheet/61300421821?ki
+THT
+0
+4
+4
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300425721
+2.54 mm Dual Socket Header Bottom Entry, body 5.58x5.33x8.1mm, https://www.we-online.com/en/components/products/datasheet/61300425721?ki
+THT
+0
+4
+4
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300511021
+2.54 mm THT Angled Pin Header, body 12.7x10.36x5.54mm, https://www.we-online.com/en/components/products/datasheet/61300511021?ki
+THT
+0
+5
+5
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300511121
+2.54 mm THT Pin Header, body 12.7x2.54x11.54mm, https://www.we-online.com/en/components/products/datasheet/61300511121?ki
+THT
+0
+5
+5
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300511821
+2.54 mm Socket Header, body 13.2x2.5x11.6mm, https://www.we-online.com/en/components/products/datasheet/61300511821?ki
+THT
+0
+5
+5
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300515721
+2.54 mm Socket Header Bottom Entry, body 13.2x5.08x8.1mm, https://www.we-online.com/en/components/products/datasheet/61300515721?ki
+THT
+0
+5
+5
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300611021
+2.54 mm THT Angled Pin Header, body 15.24x10.36x5.54mm, https://www.we-online.com/en/components/products/datasheet/61300611021?ki
+THT
+0
+6
+6
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300611121
+2.54 mm THT Pin Header, body 15.24x2.54x11.5mm, https://www.we-online.com/en/components/products/datasheet/61300611121?ki
+THT
+0
+6
+6
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300611821
+2.54 mm Socket Header, body 15.74x2.5x11.6mm, https://www.we-online.com/en/components/products/datasheet/61300611821?ki
+THT
+0
+6
+6
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300615721
+2.54 mm Socket Header Bottom Entry, body 15.74x5.08x8.1mm, https://www.we-online.com/en/components/products/datasheet/61300615721?ki
+THT
+0
+6
+6
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300621021
+2.54 mm THT Angled Dual Pin Header, body 7.62x12.9x8.08mm, https://www.we-online.com/en/components/products/datasheet/61300621021?ki
+THT
+0
+6
+6
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300621121
+2.54 mm THT Dual Pin Header, body 7.62x5.08x11.54mm, https://www.we-online.com/en/components/products/datasheet/61300621121?ki
+THT
+0
+6
+6
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300621821
+2.54 mm Dual Socket Header, body 8.12x5.08x11.6mm, https://www.we-online.com/en/components/products/datasheet/61300621821?ki
+THT
+0
+6
+6
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300625721
+2.54 mm Dual Socket Header Bottom Entry, body 8.12x5.33x8.1mm, https://www.we-online.com/en/components/products/datasheet/61300625721?ki
+THT
+0
+6
+6
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300711021
+2.54 mm THT Angled Pin Header, body 17.78x10.36x5.54mm, https://www.we-online.com/en/components/products/datasheet/61300711021?ki
+THT
+0
+7
+7
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300711121
+2.54 mm THT Pin Header, body 17.78x2.54x11.5mm, https://www.we-online.com/en/components/products/datasheet/61300711121?ki
+THT
+0
+7
+7
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300711821
+2.54 mm Socket Header, body 18.28x2.5x11.6mm, https://www.we-online.com/en/components/products/datasheet/61300711821?ki
+THT
+0
+7
+7
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300811021
+2.54 mm THT Angled Pin Header, body 20.32x10.36x5.54mm, https://www.we-online.com/en/components/products/datasheet/61300811021?ki
+THT
+0
+8
+8
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300811121
+2.54 mm THT Pin Header, body 20.32x2.54x11.5mm, https://www.we-online.com/en/components/products/datasheet/61300811121?ki
+THT
+0
+8
+8
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300811821
+2.54 mm Socket Header, body 20.82x2.5x11.6mm, https://www.we-online.com/en/components/products/datasheet/61300811821?ki
+THT
+0
+8
+8
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300815721
+2.54 mm Socket Header Bottom Entry, body 20.82x5.08x8.1mm, https://www.we-online.com/en/components/products/datasheet/61300815721?ki
+THT
+0
+8
+8
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300821021
+2.54 mm THT Angled Dual Pin Header, body 10.16x12.9x8.08mm, https://www.we-online.com/en/components/products/datasheet/61300821021?ki
+THT
+0
+8
+8
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300821121
+2.54 mm THT Dual Pin Header, body 10.16x5.08x11.54mm, https://www.we-online.com/en/components/products/datasheet/61300821121?ki
+THT
+0
+8
+8
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300821821
+2.54 mm Dual Socket Header, body 10.66x5.08x11.6mm, https://www.we-online.com/en/components/products/datasheet/61300821821?ki
+THT
+0
+8
+8
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300825721
+2.54 mm Dual Socket Header Bottom Entry, body 10.66x5.33x8.1mm, https://www.we-online.com/en/components/products/datasheet/61300825721?ki
+THT
+0
+8
+8
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300911021
+2.54 mm THT Angled Pin Header, body 22.86x10.36x5.54mm, https://www.we-online.com/en/components/products/datasheet/61300911021?ki
+THT
+0
+9
+9
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300911121
+2.54 mm THT Pin Header, body 22.86x2.54x11.5mm, https://www.we-online.com/en/components/products/datasheet/61300911121?ki
+THT
+0
+9
+9
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61300911821
+2.54 mm Socket Header, body 23.36x2.5x11.6mm, https://www.we-online.com/en/components/products/datasheet/61300911821?ki
+THT
+0
+9
+9
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301011021
+2.54 mm THT Angled Pin Header, body 25.4x10.36x5.54mm, https://www.we-online.com/en/components/products/datasheet/61301011021?ki
+THT
+0
+10
+10
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301011121
+2.54 mm THT Pin Header, body 25.4x2.54x11.5mm, https://www.we-online.com/en/components/products/datasheet/61301011121?ki
+THT
+0
+10
+10
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301011821
+2.54 mm Socket Header, body 25.9x2.5x11.6mm, https://www.we-online.com/en/components/products/datasheet/61301011821?ki
+THT
+0
+10
+10
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301015721
+2.54 mm Socket Header Bottom Entry, body 25.9x5.08x8.1mm, https://www.we-online.com/en/components/products/datasheet/61301015721?ki
+THT
+0
+10
+10
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301021021
+2.54 mm THT Angled Dual Pin Header, body 12.7x12.9x8.08mm, https://www.we-online.com/en/components/products/datasheet/61301021021?ki
+THT
+0
+10
+10
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301021121
+2.54 mm THT Dual Pin Header, body 12.7x5.08x11.54mm, https://www.we-online.com/en/components/products/datasheet/61301021121?ki
+THT
+0
+10
+10
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301021821
+2.54 mm Dual Socket Header, body 13.2x5.08x11.6mm, https://www.we-online.com/en/components/products/datasheet/61301021821?ki
+THT
+0
+10
+10
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301025721
+2.54 mm Dual Socket Header Bottom Entry, body 13.2x5.33x8.1mm, https://www.we-online.com/en/components/products/datasheet/61301025721?ki
+THT
+0
+10
+10
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301211021
+2.54 mm THT Angled Pin Header, body 30.48x10.36x5.54mm, https://www.we-online.com/en/components/products/datasheet/61301211021?ki
+THT
+0
+12
+12
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301211121
+2.54 mm THT Pin Header, body 30.48x2.54x11.5mm, https://www.we-online.com/en/components/products/datasheet/61301211121?ki
+THT
+0
+12
+12
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301211821
+2.54 mm Socket Header, body 30.98x2.5x11.6mm, https://www.we-online.com/en/components/products/datasheet/61301211821?ki
+THT
+0
+12
+12
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301221021
+2.54 mm THT Angled Dual Pin Header, body 15.24x12.9x8.08mm, https://www.we-online.com/en/components/products/datasheet/61301221021?ki
+THT
+0
+12
+12
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301221121
+2.54 mm THT Dual Pin Header, body 15.24x5.08x11.54mm, https://www.we-online.com/en/components/products/datasheet/61301221121?ki
+THT
+0
+12
+12
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301221821
+2.54 mm Dual Socket Header, body 15.74x5.08x11.6mm, https://www.we-online.com/en/components/products/datasheet/61301221821?ki
+THT
+0
+12
+12
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301225721
+2.54 mm Dual Socket Header Bottom Entry, body 15.74x5.33x8.1mm, https://www.we-online.com/en/components/products/datasheet/61301225721?ki
+THT
+0
+12
+12
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301311121
+2.54 mm THT Pin Header, body 33.02x2.54x11.5mm, https://www.we-online.com/en/components/products/datasheet/61301311121?ki
+THT
+0
+13
+13
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301311821
+2.54 mm Socket Header, body 33.52x2.5x11.6mm, https://www.we-online.com/en/components/products/datasheet/61301311821?ki
+THT
+0
+13
+13
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301411021
+2.54 mm THT Angled Pin Header, body 35.56x10.36x5.54mm, https://www.we-online.com/en/components/products/datasheet/61301411021?ki
+THT
+0
+14
+14
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301411121
+2.54 mm THT Pin Header, body 35.56x2.54x11.5mm, https://www.we-online.com/en/components/products/datasheet/61301411121?ki
+THT
+0
+14
+14
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301411821
+2.54 mm Socket Header, body 36.06x2.5x11.6mm, https://www.we-online.com/en/components/products/datasheet/61301411821?ki
+THT
+0
+14
+14
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301421021
+2.54 mm THT Angled Dual Pin Header, body 17.78x12.9x8.08mm, https://www.we-online.com/en/components/products/datasheet/61301421021?ki
+THT
+0
+14
+14
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301421121
+2.54 mm THT Dual Pin Header, body 17.78x5.08x11.54mm, https://www.we-online.com/en/components/products/datasheet/61301421121?ki
+THT
+0
+14
+14
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301421821
+2.54 mm Dual Socket Header, body 18.28x5.08x11.6mm, https://www.we-online.com/en/components/products/datasheet/61301421821?ki
+THT
+0
+14
+14
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301511021
+2.54 mm THT Angled Pin Header, body 38.1x10.36x5.54mm, https://www.we-online.com/en/components/products/datasheet/61301511021?ki
+THT
+0
+15
+15
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301511121
+2.54 mm THT Pin Header, body 38.1x2.54x11.5mm, https://www.we-online.com/en/components/products/datasheet/61301511121?ki
+THT
+0
+15
+15
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301511821
+2.54 mm Socket Header, body 38.6x2.5x11.6mm, https://www.we-online.com/en/components/products/datasheet/61301511821?ki
+THT
+0
+15
+15
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301611021
+2.54 mm THT Angled Pin Header, body 40.64x10.36x5.54mm, https://www.we-online.com/en/components/products/datasheet/61301611021?ki
+THT
+0
+16
+16
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301611121
+2.54 mm THT Pin Header, body 40.64x2.54x11.5mm, https://www.we-online.com/en/components/products/datasheet/61301611121?ki
+THT
+0
+16
+16
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301611821
+2.54 mm Socket Header, body 41.14x2.5x11.6mm, https://www.we-online.com/en/components/products/datasheet/61301611821?ki
+THT
+0
+16
+16
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301621021
+2.54 mm THT Angled Dual Pin Header, body 20.32x12.9x8.08mm, https://www.we-online.com/en/components/products/datasheet/61301621021?ki
+THT
+0
+16
+16
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301621121
+2.54 mm THT Dual Pin Header, body 20.32x5.08x11.54mm, https://www.we-online.com/en/components/products/datasheet/61301621121?ki
+THT
+0
+16
+16
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301621821
+2.54 mm Dual Socket Header, body 20.82x5.08x11.6mm, https://www.we-online.com/en/components/products/datasheet/61301621821?ki
+THT
+0
+16
+16
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301625721
+2.54 mm Dual Socket Header Bottom Entry, body 20.82x5.33x8.1mm, https://www.we-online.com/en/components/products/datasheet/61301625721?ki
+THT
+0
+16
+16
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301811021
+2.54 mm THT Angled Pin Header, body 45.72x10.36x5.54mm, https://www.we-online.com/en/components/products/datasheet/61301811021?ki
+THT
+0
+18
+18
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301811121
+2.54 mm THT Pin Header, body 45.72x2.54x11.5mm, https://www.we-online.com/en/components/products/datasheet/61301811121?ki
+THT
+0
+18
+18
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301811821
+2.54 mm Socket Header, body 46.22x2.5x11.6mm, https://www.we-online.com/en/components/products/datasheet/61301811821?ki
+THT
+0
+18
+18
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301821021
+2.54 mm THT Angled Dual Pin Header, body 22.86x12.9x8.08mm, https://www.we-online.com/en/components/products/datasheet/61301821021?ki
+THT
+0
+18
+18
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301821121
+2.54 mm THT Dual Pin Header, body 22.86x5.08x11.54mm, https://www.we-online.com/en/components/products/datasheet/61301821121?ki
+THT
+0
+18
+18
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61301821821
+2.54 mm Dual Socket Header, body 23.36x5.08x11.6mm, https://www.we-online.com/en/components/products/datasheet/61301821821?ki
+THT
+0
+18
+18
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61302011121
+2.54 mm THT Pin Header, body 50.8x2.54x11.5mm, https://www.we-online.com/en/components/products/datasheet/61302011121?ki
+THT
+0
+20
+20
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61302011821
+2.54 mm Socket Header, body 51.3x2.5x11.6mm, https://www.we-online.com/en/components/products/datasheet/61302011821?ki
+THT
+0
+20
+20
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61302015721
+2.54 mm Socket Header Bottom Entry, body 51.3x5.08x8.1mm, https://www.we-online.com/en/components/products/datasheet/61302015721?ki
+THT
+0
+20
+20
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61302021021
+2.54 mm THT Angled Dual Pin Header, body 25.4x12.9x8.08mm, https://www.we-online.com/en/components/products/datasheet/61302021021?ki
+THT
+0
+20
+20
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61302021121
+2.54 mm THT Dual Pin Header, body 25.4x5.08x11.54mm, https://www.we-online.com/en/components/products/datasheet/16302021121?ki
+THT
+0
+20
+20
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61302021821
+2.54 mm Dual Socket Header, body 25.9x5.08x11.6mm, https://www.we-online.com/en/components/products/datasheet/61302021821?ki
+THT
+0
+20
+20
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61302025721
+2.54 mm Dual Socket Header Bottom Entry, body 25.9x5.33x8.1mm, https://www.we-online.com/en/components/products/datasheet/61302025721?ki
+THT
+0
+20
+20
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61302211021
+2.54 mm THT Angled Pin Header, body 55.88x10.36x5.54mm, https://www.we-online.com/en/components/products/datasheet/61302211021?ki
+THT
+0
+22
+22
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61302211121
+2.54 mm THT Pin Header, body 55.88x2.54x11.5mm, https://www.we-online.com/en/components/products/datasheet/61302211121?ki
+THT
+0
+22
+22
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61302211821
+2.54 mm Socket Header, body 56.38x2.5x11.6mm, https://www.we-online.com/en/components/products/datasheet/61302211821?ki
+THT
+0
+22
+22
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61302221021
+2.54 mm THT Angled Dual Pin Header, body 27.94x12.9x8.08mm, https://www.we-online.com/en/components/products/datasheet/61302221021?ki
+THT
+0
+22
+22
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61302221121
+2.54 mm THT Dual Pin Header, body 27.94x5.08x11.54mm, https://www.we-online.com/en/components/products/datasheet/61302221121?ki
+THT
+0
+22
+22
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61302221821
+2.54 mm Dual Socket Header, body 28.44x5.08x11.6mm, https://www.we-online.com/en/components/products/datasheet/61302221821?ki
+THT
+0
+22
+22
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61302411121
+2.54 mm THT Pin Header, body 60.96x2.54x11.5mm, https://www.we-online.com/en/components/products/datasheet/61302411121?ki
+THT
+0
+24
+24
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61302411821
+2.54 mm Socket Header, body 61.46x2.5x11.6mm, https://www.we-online.com/en/components/products/datasheet/61302411821?ki
+THT
+0
+24
+24
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61302421021
+2.54 mm THT Angled Dual Pin Header, body 30.48x12.9x8.08mm, https://www.we-online.com/en/components/products/datasheet/61302421021?ki
+THT
+0
+24
+24
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61302421121
+2.54 mm THT Dual Pin Header, body 30.48x5.08x11.54mm, https://www.we-online.com/en/components/products/datasheet/61302421121?ki
+THT
+0
+24
+24
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61302421821
+2.54 mm Dual Socket Header, body 30.98x5.08x11.6mm, https://www.we-online.com/en/components/products/datasheet/61302421821?ki
+THT
+0
+24
+24
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61302425721
+2.54 mm Dual Socket Header Bottom Entry, body 30.98x5.33x8.1mm, https://www.we-online.com/en/components/products/datasheet/61302425721?ki
+THT
+0
+24
+24
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61302511121
+2.54 mm THT Pin Header, body 63.5x2.54x11.5mm, https://www.we-online.com/en/components/products/datasheet/61302511121?ki
+THT
+0
+25
+25
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61302621021
+2.54 mm THT Angled Dual Pin Header, body 33.02x12.9x8.08mm, https://www.we-online.com/en/components/products/datasheet/61302621021?ki
+THT
+0
+26
+26
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61302621121
+2.54 mm THT Dual Pin Header, body 33.02x5.08x11.54mm, https://www.we-online.com/en/components/products/datasheet/61302621121?ki
+THT
+0
+26
+26
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61302621821
+2.54 mm Dual Socket Header, body 33.52x5.08x11.6mm, https://www.we-online.com/en/components/products/datasheet/61302621821?ki
+THT
+0
+26
+26
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61302625721
+2.54 mm Dual Socket Header Bottom Entry, body 33.52x5.33x8.1mm, https://www.we-online.com/en/components/products/datasheet/61302625721?ki
+THT
+0
+26
+26
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61302821121
+2.54 mm THT Dual Pin Header, body 35.56x5.08x11.54mm, https://www.we-online.com/en/components/products/datasheet/61302821121?ki
+THT
+0
+28
+28
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61302821821
+2.54 mm Dual Socket Header, body 36.06x5.08x11.6mm, https://www.we-online.com/en/components/products/datasheet/61302821821?ki
+THT
+0
+28
+28
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61303021121
+2.54 mm THT Dual Pin Header, body 38.1x5.08x11.54mm, https://www.we-online.com/en/components/products/datasheet/61303021121?ki
+THT
+0
+30
+30
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61303021821
+2.54 mm Dual Socket Header, body 38.6x5.08x11.6mm, https://www.we-online.com/en/components/products/datasheet/61303021821?ki
+THT
+0
+30
+30
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61303211021
+2.54 mm THT Angled Pin Header, body 81.28x10.36x5.54mm, https://www.we-online.com/en/components/products/datasheet/61303211021?ki
+THT
+0
+32
+32
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61303211121
+2.54 mm THT Pin Header, body 81.28x2.54x11.5mm, https://www.we-online.com/en/components/products/datasheet/61303211121?ki
+THT
+0
+32
+32
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61303211221
+2.54 mm THT Board Stacker, body 81.28x2.54x21.24mm, https://www.we-online.com/en/components/products/datasheet/61303211221?ki
+THT
+0
+32
+32
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61303211321
+2.54 mm THT Board Stacker, body 81.28x2.54x36.48mm, https://www.we-online.com/en/components/products/datasheet/61303211321?ki
+THT
+0
+32
+32
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61303211821
+2.54 mm Socket Header, body 81.78x2.5x11.6mm, https://www.we-online.com/en/components/products/datasheet/61303211821?ki
+THT
+0
+32
+32
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61303218421
+2.54 mm THT Board Stacker, body 81.28x2.54x24.24mm, https://www.we-online.com/en/components/products/datasheet/61303218421?ki
+THT
+0
+32
+32
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61303218521
+2.54 mm THT Board Stacker, body 81.28x2.54x39.48mm, https://www.we-online.com/en/components/products/datasheet/61303218521?ki
+THT
+0
+32
+32
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61303221021
+2.54 mm THT Angled Dual Pin Header, body 40.64x12.9x8.08mm, https://www.we-online.com/en/components/products/datasheet/61303221021?ki
+THT
+0
+32
+32
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61303221121
+2.54 mm THT Dual Pin Header, body 40.64x5.08x11.54mm, https://www.we-online.com/en/components/products/datasheet/61303221121?ki
+THT
+0
+32
+32
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61303221821
+2.54 mm Dual Socket Header, body 41.14x5.08x11.6mm, https://www.we-online.com/en/components/products/datasheet/61303221821?ki
+THT
+0
+32
+32
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61303225721
+2.54 mm Dual Socket Header Bottom Entry, body 41.14x5.33x8.1mm, https://www.we-online.com/en/components/products/datasheet/61303225721?ki
+THT
+0
+32
+32
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61303411021
+2.54 mm THT Angled Pin Header, body 86.36x10.36x5.54mm, https://www.we-online.com/en/components/products/datasheet/61303411021?ki
+THT
+0
+34
+34
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61303421021
+2.54 mm THT Angled Dual Pin Header, body 43.18x12.9x8.08mm, https://www.we-online.com/en/components/products/datasheet/61303421021?ki
+THT
+0
+34
+34
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61303421121
+2.54 mm THT Dual Pin Header, body 43.18x5.08x11.54mm, https://www.we-online.com/en/components/products/datasheet/61303421121?ki
+THT
+0
+34
+34
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61303421821
+2.54 mm Dual Socket Header, body 43.68x5.08x11.6mm, https://www.we-online.com/en/components/products/datasheet/61303421821?ki
+THT
+0
+34
+34
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61303425721
+2.54 mm Dual Socket Header Bottom Entry, body 43.68x5.33x8.1mm, https://www.we-online.com/en/components/products/datasheet/61303425721?ki
+THT
+0
+34
+32
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61303611021
+2.54 mm THT Angled Pin Header, body 91.44x10.36x5.54mm, https://www.we-online.com/en/components/products/datasheet/61303611021?ki
+THT
+0
+36
+36
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61303611121
+2.54 mm THT Pin Header, body 91.44x2.54x11.5mm, https://www.we-online.com/en/components/products/datasheet/61303611121?ki
+THT
+0
+36
+36
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61303611821
+2.54 mm Socket Header, body 91.94x2.5x11.6mm, https://www.we-online.com/en/components/products/datasheet/61303611821?ki
+THT
+0
+36
+36
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61303621021
+2.54 mm THT Angled Dual Pin Header, body 45.72x12.9x8.08mm, https://www.we-online.com/en/components/products/datasheet/61303621021?ki
+THT
+0
+36
+36
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61303621121
+2.54 mm THT Dual Pin Header, body 45.72x5.08x11.54mm, https://www.we-online.com/en/components/products/datasheet/61303621121?ki
+THT
+0
+36
+36
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61303621821
+2.54 mm Dual Socket Header, body 46.22x5.08x11.6mm, https://www.we-online.com/en/components/products/datasheet/61303621821?ki
+THT
+0
+36
+36
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61304011021
+2.54 mm THT Angled Pin Header, body 101.6x10.36x5.54mm, https://www.we-online.com/en/components/products/datasheet/61304011021?ki
+THT
+0
+40
+40
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61304011121
+2.54 mm THT Pin Header, body 101.6x2.54x11.5mm, https://www.we-online.com/en/components/products/datasheet/61304011121?ki
+THT
+0
+40
+40
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61304011821
+2.54 mm Socket Header, body 102.1x2.5x11.6mm, https://www.we-online.com/en/components/products/datasheet/61304011821?ki
+THT
+0
+40
+40
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61304021021
+2.54 mm THT Angled Dual Pin Header, body 50.8x12.9x8.08mm, https://www.we-online.com/en/components/products/datasheet/61304021021?ki
+THT
+0
+40
+40
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61304021121
+2.54 mm THT Dual Pin Header, body 50.8x5.08x11.54mm, https://www.we-online.com/en/components/products/datasheet/61304021121?ki
+THT
+0
+40
+40
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61304021821
+2.54 mm Dual Socket Header, body 51.3x5.08x11.6mm, https://www.we-online.com/en/components/products/datasheet/61304021821?ki
+THT
+0
+40
+40
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61304421121
+2.54 mm THT Dual Pin Header, body 55.88x5.08x11.54mm, https://www.we-online.com/en/components/products/datasheet/61304421121?ki
+THT
+0
+44
+44
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61304421821
+2.54 mm Dual Socket Header, body 56.38x5.08x11.6mm, https://www.we-online.com/en/components/products/datasheet/61304421821?ki
+THT
+0
+44
+44
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61306421021
+2.54 mm THT Angled Dual Pin Header, body 81.28x12.9x8.08mm, https://www.we-online.com/en/components/products/datasheet/61306421021?ki
+THT
+0
+64
+64
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61306421121
+2.54 mm THT Dual Pin Header, body 81.28x5.08x11.54mm, https://www.we-online.com/en/components/products/datasheet/61306421121?ki
+THT
+0
+64
+64
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61306421221
+2.54 mm THT Dual Board Stacker, body 81.28x5.08x21.24mm, https://www.we-online.com/en/components/products/datasheet/61306421221?ki
+THT
+0
+64
+64
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61306421321
+2.54 mm THT Dual Board Stacker, body 81.28x5.08x36.48mm, https://www.we-online.com/en/components/products/datasheet/61306421321?ki
+THT
+0
+64
+64
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61306421821
+2.54 mm Dual Socket Header, body 81.78x5.08x11.6mm, https://www.we-online.com/en/components/products/datasheet/61306421821?ki
+THT
+0
+64
+64
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61306428421
+2.54 mm THT Dual Board Stacker, body 81.28x5.08x24.24mm, https://www.we-online.com/en/components/products/datasheet/61306428421?ki
+THT
+0
+64
+64
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61306428521
+2.54 mm THT Dual Board Stacker, body 81.28x5.08x39.48mm, https://www.we-online.com/en/components/products/datasheet/61306428521?ki
+THT
+0
+64
+64
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61307221021
+2.54 mm THT Angled Dual Pin Header, body 91.44x12.9x8.08mm, https://www.we-online.com/en/components/products/datasheet/61307221021?ki
+THT
+0
+72
+72
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61307221121
+2.54 mm THT Dual Pin Header, body 91.44x5.08x11.54mm, https://www.we-online.com/en/components/products/datasheet/61307221121?ki
+THT
+0
+72
+72
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61307221821
+2.54 mm Dual Socket Header, body 91.94x5.08x11.6mm, https://www.we-online.com/en/components/products/datasheet/61307221821?ki
+THT
+0
+72
+72
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_61308021121
+2.54 mm THT Dual Pin Header, body 101.6x5.08x11.54mm, https://www.we-online.com/en/components/products/datasheet/61308021121?ki
+THT
+0
+80
+80
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62000211121
+2.00 mm THT Pin Header, body 4x2x8.7mm, https://www.we-online.com/en/components/products/datasheet/62000211121?ki
+THT
+0
+2
+2
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62000211821
+2.00 mm Socket Header, body 4.4x2.5x7mm, https://www.we-online.com/en/components/products/datasheet/62000211821?ki
+THT
+0
+2
+2
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62000311121
+2.00 mm THT Pin Header, body 6x2x8.7mm, https://www.we-online.com/en/components/products/datasheet/62000311121?ki
+THT
+0
+3
+3
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62000411121
+2.00 mm THT Pin Header, body 8x2x8.7mm, https://www.we-online.com/en/components/products/datasheet/62000411121?ki
+THT
+0
+4
+4
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62000411821
+2.00 mm Socket Header, body 8.4x2.5x7mm, https://www.we-online.com/en/components/products/datasheet/62000411821?ki
+THT
+0
+4
+4
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62000421121
+2.00 mm THT Dual Pin Header, body 4x4x8.7mm, https://www.we-online.com/en/components/products/datasheet/62000421121?ki
+THT
+0
+4
+4
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62000421821
+2.00 mm Dual Socket Header, body 4.4x4x7mm, https://www.we-online.com/en/components/products/datasheet/62000421821?ki
+THT
+0
+4
+4
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62000611121
+2.00 mm THT Pin Header, body 12x2x8.7mm, https://www.we-online.com/en/components/products/datasheet/62000611121?ki
+THT
+0
+6
+6
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62000611821
+2.00 mm Socket Header, body 12.4x2.5x7mm, https://www.we-online.com/en/components/products/datasheet/62000611821?ki
+THT
+0
+6
+6
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62000621121
+2.00 mm THT Dual Pin Header, body 6x4x8.7mm, https://www.we-online.com/en/components/products/datasheet/62000621121?ki
+THT
+0
+6
+6
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62000621821
+2.00 mm Dual Socket Header, body 6.4x4x7mm, https://www.we-online.com/en/components/products/datasheet/62000621821?ki
+THT
+0
+6
+6
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62000811121
+2.00 mm THT Pin Header, body 16x2x8.7mm, https://www.we-online.com/en/components/products/datasheet/62000811121?ki
+THT
+0
+8
+8
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62000811821
+2.00 mm Socket Header, body 16.4x2.5x7mm, https://www.we-online.com/en/components/products/datasheet/62000811821?ki
+THT
+0
+8
+8
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62000821121
+2.00 mm THT Dual Pin Header, body 8x4x8.7mm, https://www.we-online.com/en/components/products/datasheet/62000821121?ki
+THT
+0
+8
+8
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62000821821
+2.00 mm Dual Socket Header, body 8.4x4x7mm, https://www.we-online.com/en/components/products/datasheet/62000821821?ki
+THT
+0
+8
+8
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62001011121
+2.00 mm THT Pin Header, body 20x2x8.7mm, https://www.we-online.com/en/components/products/datasheet/62001011121?ki
+THT
+0
+10
+10
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62001011821
+2.00 mm Socket Header, body 20.4x2.5x7mm, https://www.we-online.com/en/components/products/datasheet/62001011821?ki
+THT
+0
+10
+10
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62001021121
+2.00 mm THT Dual Pin Header, body 10x4x8.7mm, https://www.we-online.com/en/components/products/datasheet/62001021121?ki
+THT
+0
+10
+10
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62001021821
+2.00 mm Dual Socket Header, body 10.4x4x7mm, https://www.we-online.com/en/components/products/datasheet/62001021821?ki
+THT
+0
+10
+10
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62001421821
+2.00 mm Dual Socket Header, body 14.4x4x7mm, https://www.we-online.com/en/components/products/datasheet/62001421821?ki
+THT
+0
+14
+14
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62001621121
+2.00 mm THT Dual Pin Header, body 16x4x8.7mm, https://www.we-online.com/en/components/products/datasheet/62001621121?ki
+THT
+0
+16
+16
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62001621821
+2.00 mm Dual Socket Header, body 16.4x4x7mm, https://www.we-online.com/en/components/products/datasheet/62001621821?ki
+THT
+0
+16
+16
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62002011121
+2.00 mm THT Pin Header, body 40x2x8.7mm, https://www.we-online.com/en/components/products/datasheet/62002011121?ki
+THT
+0
+20
+20
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62002011821
+2.00 mm Socket Header, body 40.4x2.5x7mm, https://www.we-online.com/en/components/products/datasheet/62002011821?ki
+THT
+0
+20
+20
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62002021121
+2.00 mm THT Dual Pin Header, body 20x4x8.7mm, https://www.we-online.com/en/components/products/datasheet/62002021121?ki
+THT
+0
+20
+20
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62002021821
+2.00 mm Dual Socket Header, body 20.4x4x7mm, https://www.we-online.com/en/components/products/datasheet/62002021821?ki
+THT
+0
+20
+20
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62002421121
+2.00 mm THT Dual Pin Header, body 24x4x8.7mm, https://www.we-online.com/en/components/products/datasheet/62002421121?ki
+THT
+0
+24
+24
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62002421821
+2.00 mm Dual Socket Header, body 24.4x4x7mm, https://www.we-online.com/en/components/products/datasheet/62002421821?ki
+THT
+0
+24
+24
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62002821121
+2.00 mm THT Dual Pin Header, body 28x4x8.7mm, https://www.we-online.com/en/components/products/datasheet/62002821121?ki
+THT
+0
+28
+28
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62002821821
+2.00 mm Dual Socket Header, body 28.4x4x7mm, https://www.we-online.com/en/components/products/datasheet/62002821821?ki
+THT
+0
+28
+28
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62003211121
+2.00 mm THT Pin Header, body 40x2x8.7mm, https://www.we-online.com/en/components/products/datasheet/62003211121?ki
+THT
+0
+32
+32
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62003211821
+2.00 mm Socket Header, body 64.4x2.5x7mm, https://www.we-online.com/en/components/products/datasheet/62003211821?ki
+THT
+0
+32
+32
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62003221121
+2.00 mm THT Dual Pin Header, body 32x4x8.7mm, https://www.we-online.com/en/components/products/datasheet/62003221121?ki
+THT
+0
+32
+32
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62003221821
+2.00 mm Dual Socket Header, body 32.4x4x7mm, https://www.we-online.com/en/components/products/datasheet/62003221821?ki
+THT
+0
+32
+32
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62004021121
+2.00 mm THT Dual Pin Header, body 40x4x8.7mm, https://www.we-online.com/en/components/products/datasheet/62004021121?ki
+THT
+0
+40
+40
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62004021821
+2.00 mm Dual Socket Header, body 40.4x4x7mm, https://www.we-online.com/en/components/products/datasheet/62004021821?ki
+THT
+0
+40
+40
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62004421121
+2.00 mm THT Dual Pin Header, body 44x4x8.7mm, https://www.we-online.com/en/components/products/datasheet/62004421121?ki
+THT
+0
+44
+44
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62004421821
+2.00 mm Dual Socket Header, body 44.4x4x7mm, https://www.we-online.com/en/components/products/datasheet/62004421821?ki
+THT
+0
+44
+43
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62200421121
+1.27 mm THT Dual Pin Header, body 2.54x3.4x7.6mm, https://www.we-online.com/en/components/products/datasheet/62200421121?ki
+THT
+0
+4
+4
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62200421821
+1.27 mm Dual Socket Header, body 2.54x3x6.6mm, https://www.we-online.com/en/components/products/datasheet/62200421821?ki
+THT
+0
+4
+4
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62200821121
+1.27 mm THT Dual Pin Header, body 5.08x3.4x7.6mm, https://www.we-online.com/en/components/products/datasheet/62200821121?ki
+THT
+0
+8
+8
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62200821821
+1.27 mm Dual Socket Header, body 5.08x3x6.6mm, https://www.we-online.com/en/components/products/datasheet/62200821821?ki
+THT
+0
+8
+8
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62201021121
+1.27 mm THT Dual Pin Header, body 6.35x3.4x7.6mm, https://www.we-online.com/en/components/products/datasheet/62201021121?ki
+THT
+0
+10
+10
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62201021821
+1.27 mm Dual Socket Header, body 6.35x3x6.6mm, https://www.we-online.com/en/components/products/datasheet/62201021821?ki
+THT
+0
+10
+10
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62201421121
+1.27 mm THT Dual Pin Header, body 8.89x3.4x7.6mm, https://www.we-online.com/en/components/products/datasheet/62201421121?ki
+THT
+0
+14
+14
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62201421821
+1.27 mm Dual Socket Header, body 8.89x3x6.6mm, https://www.we-online.com/en/components/products/datasheet/62201421821?ki
+THT
+0
+14
+14
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62201621121
+1.27 mm THT Dual Pin Header, body 10.16x3.4x7.6mm, https://www.we-online.com/en/components/products/datasheet/62201621121?ki
+THT
+0
+16
+16
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62201621821
+1.27 mm Dual Socket Header, body 10.16x3x6.6mm, https://www.we-online.com/en/components/products/datasheet/62201621821?ki
+THT
+0
+16
+16
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62202021121
+1.27 mm THT Dual Pin Header, body 12.7x3.4x7.6mm, https://www.we-online.com/en/components/products/datasheet/62202021121?ki
+THT
+0
+20
+20
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62202021821
+1.27 mm Dual Socket Header, body 12.7x3x6.6mm, https://www.we-online.com/en/components/products/datasheet/62202021821?ki
+THT
+0
+20
+20
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62202821121
+1.27 mm THT Dual Pin Header, body 17.78x3.4x7.6mm, https://www.we-online.com/en/components/products/datasheet/62202821121?ki
+THT
+0
+28
+28
+8pin_header_2x4_61300821121
+J_Wurth_WR-PHD_62202821821
+1.27 mm Dual Socket Header, body 17.78x3x6.6mm, https://www.we-online.com/en/components/products/datasheet/62202821821?ki
+THT
+0
+28
+28
 10_pin_2x5_shroued_header_61201021621
 SHDR10W64P254_2X5_2036X885X925P
 61201021621
@@ -48,6 +1798,20 @@ Connector
 0
 10
 10
+12MHz_CMOS_clock_830208214809
+830208214809
+830208214809-1
+Crystal or Oscillator
+0
+4
+4
+20_pin_2x10_shrouded_header_61202021621
+SHDR20W64P254_2X10_3306X910X885P
+61202021621
+Connector
+0
+20
+20
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -61452,6 +63216,13 @@ Ferrite vertical LairdTech 28C0236-0JW-10
 0
 2
 2
+Ferrite_bead_BLM18AG601SN1D
+BLM18SP221SN1B
+BLM18_3 L=1.6 W=0.8 T=0.8
+Ferrite Bead
+0
+2
+2
 Ferrite_bead_BLM21SP601SN1D
 BLM21AG102BH1J
 BLM21_3 L=2.0 W=1.25 T=0.85
@@ -73527,6 +75298,13 @@ threaded screw
 0
 4
 1
+NMOS_2N7002H6327XTSA2
+SOT95P240X110-3N
+PG-SOT-23_2024
+MOSFET (N-Channel)
+0
+3
+3
 NetTie
 NetTie-2_SMD_Pad0.5mm
 Net tie, 2 pin, 0.5mm square SMD pads
@@ -97411,6 +99189,13 @@ Integrated Circuit
 0
 8
 8
+Schmitt_trigger_buffer_SN74LVC14ADBRE4
+SOP65P780X200-14N
+DB (R-PDSO-G14)
+Integrated Circuit
+0
+14
+14
 Sensor
 ASAIR_AM2302_P2.54mm_Lead2.75mm_TabDown
 Temperature and humidity module, http://akizukidenshi.com/download/ds/aosong/AM2302.pdf
@@ -97964,6 +99749,20 @@ LEM Hall Effect Voltage transducer
 0
 5
 5
+Slide_switch_SPDT_ON/ON_OS102011MA1QN1
+OS102011MA1QN1
+OS102011MA1QN1
+Switch
+0
+5
+5
+Slide_switch_SPST_ON/OFF_L101011MS02Q
+L101011MS02Q
+L101011MS02Q-2
+Switch
+0
+2
+2
 Socket
 3M_Textool_240-1288-00-0602J_2x20_P2.54mm
 3M 40-pin zero insertion force socket, though-hole, row spacing 25.4 mm (1000 mils)
@@ -105727,6 +107526,13 @@ Integrated Circuit
 0
 25
 25
+UART_USB_bridge_FT2232HL
+QFP50P1200X1200X160-64N
+64 pin LQFP Package
+Integrated Circuit
+0
+64
+64
 USB_B_Female_Connector
 61400416121
 61400416121
