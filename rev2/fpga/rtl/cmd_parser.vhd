@@ -1,6 +1,6 @@
 -- ========================================
 -- MODULE: cmd_parser.vhd
--- FUNCTION: decodes opcodes and outputs one-cycle command pulses
+-- FUNCTION: decodes opcodes and outputs one-cycle command pulses (and config data)
 -- AUTHOR: Jakob Kieszek Ottesen
 -- DATE: 2026-03-12 (YYYY-MM-DD)
 -- MODIFIED: 2026-05-14 (reset active low)
@@ -24,7 +24,6 @@
 -- i_ : input
 -- o_ : output
 -- r_ : register 			(internal signal; current; 		for sequential process)
--- n_ : next <register> 	(internal signal; next state; 	for combinational process)
 
 -- ITERATIVE PROCESS NOTES:
 -- For this first implementation, cmd_parser can update configuration whenever it receives a valid configuration command. Later, when integrating with analyzer_fsm, add: /i_config_write_allowed/. Then reject configuration changes during CAPTURE or SEND. Do not try to solve that before the basic parser works.
@@ -62,10 +61,10 @@ architecture RTL of cmd_parser is
 	constant CMD_READ 						: std_logic_vector(DATA_LENGTH-1 downto 0) := x"A1";
 	
 	constant CMD_UART_BAUD 					: std_logic_vector(DATA_LENGTH-1 downto 0) := x"C0";
-	constant CMD_NUM_SAMP_CHS 				: std_logic_vector(DATA_LENGTH-1 downto 0) := x"C1";
+	constant CMD_CAPTURE_WIDTH 				: std_logic_vector(DATA_LENGTH-1 downto 0) := x"C1";
 	constant CMD_SAMP_RATE 					: std_logic_vector(DATA_LENGTH-1 downto 0) := x"C2";
 	constant CMD_CAPTURE_DEPTH				: std_logic_vector(DATA_LENGTH-1 downto 0) := x"C3";
-	constant CMD_EDGE_TRIGGER_MODE 			: std_logic_vector(DATA_LENGTH-1 downto 0) := x"C4";
+	constant CMD_TRIGGER_MODE 				: std_logic_vector(DATA_LENGTH-1 downto 0) := x"C4";
 	constant CMD_EDGE_TRIGGER_CH 			: std_logic_vector(DATA_LENGTH-1 downto 0) := x"C5";
 	constant CMD_EDGE_TRIGGER_TYPE 			: std_logic_vector(DATA_LENGTH-1 downto 0) := x"C6";
 	constant CMD_PATTERN_TRIGGER_PATTERN	: std_logic_vector(DATA_LENGTH-1 downto 0) := x"C7";
@@ -112,7 +111,7 @@ begin
                                 when CMD_READ 		=> o_read_cmd_pulse <= '1';
 
                                 when CMD_UART_BAUD               |
-                                     CMD_NUM_SAMP_CHS            |
+                                     CMD_CAPTURE_WIDTH           |
                                      CMD_SAMP_RATE               |
                                      CMD_CAPTURE_DEPTH           |
                                      CMD_TRIGGER_MODE            |
