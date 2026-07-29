@@ -42,6 +42,9 @@
 -- PREFIXES					
 -- i_ : input
 -- o_ : output
+
+-- ITERATIVE PROCESS NOTES:
+-- update VHDL entities in OneNote once module is locked
 -- ========================================
 
 library IEEE;

@@ -26,6 +26,7 @@
 -- r_ : register 			(internal signal; current; 		for sequential process)
 
 -- ITERATIVE PROCESS NOTES:
+-- update VHDL entities in OneNote once module is locked
 -- For this first implementation, cmd_parser can update configuration whenever it receives a valid configuration command. Later, when integrating with analyzer_fsm, add: /i_config_write_allowed/. Then reject configuration changes during CAPTURE or SEND. Do not try to solve that before the basic parser works.
 -- ========================================
 
