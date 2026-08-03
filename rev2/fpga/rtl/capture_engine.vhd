@@ -28,21 +28,24 @@
 -- o_raw_wr_data			8 bits		-> trace_buffer
 -- o_capture_done_pulse		1 bit		-> analyzer_fsm
 -- o_capture_start_addr 	14 bits		-> send_engine
+-- o_capture_sample_count	14 bits		-> send_engine
+-- o_capture_width_sel		1 bit		-> send_engine
 -- o_trigger_addr       	14 bits		-> send_engine
 --
 -- NOTES
--- Linear capture in rev1 wrote the first sample in IDLE state. This no longer applies here in rev2.
+--
 --
 -- PREFIXES:
 -- i_ : input
 -- o_ : output
 -- r_ : register 			(internal signal; current; 		for sequential process)
 -- n_ : next <register> 	(internal signal; next state; 	for combinational process)
+-- v_ : variable
 
 -- ITERATIVE PROCESS NOTES:
 -- update VHDL entities in OneNote once module is locked
--- outputs that should be added: captured metadata such as capture width, depth, trigger position. Do not let send_engine use live configuration registers to describe an older capture
 -- Later, add an explicit ABORT command or optional host-configured trigger timeout. Do not treat “trigger has not happened” as an internal watchdog fault.
+-- In IDLE, we have 2 comments about REJECTION of certain config values (relative to other config vals). For now, assume the configuration is valid and add assertions in simulation. Later, the controller/analyzer FSM should reject CAPTURE and send an error.
 -- ========================================
 
 library IEEE;
@@ -51,9 +54,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity capture_engine is
 	generic (
-		ADDR_LENGTH : integer := 14;
-		NUM_SAMPLES : integer := 2**ADDR_LENGTH;  -- 16,384. 12,288 will be used if deep capture depth and 8 bit depth are chosen
-		DATA_LENGTH : integer := 16
+		ADDR_LENGTH : integer := 14
 	);
 	port (
 		i_clk					: in  std_logic;
@@ -76,8 +77,10 @@ entity capture_engine is
 		o_raw_wr_data			: out std_logic_vector(15 downto 0);
 		o_capture_done_pulse	: out std_logic;
 		
-		o_capture_start_addr 	: out std_logic_vector(13 downto 0);  -- needed for chronological readout
-		o_trigger_addr       	: out std_logic_vector(13 downto 0)
+		o_capture_start_addr 	: out std_logic_vector(ADDR_LENGTH-1 downto 0);  -- needed for chronological readout
+		o_capture_sample_count	: out std_logic_vector(ADDR_LENGTH-1 downto 0);
+		o_capture_width_sel		: out std_logic;
+		o_trigger_addr       	: out std_logic_vector(ADDR_LENGTH-1 downto 0)
 	);
 end entity capture_engine;
 
@@ -87,11 +90,9 @@ architecture RTL of capture_engine is
 	
 	-- Register signals, next-state signals
 	signal r_state, n_state : capture_engine_state_type := IDLE;
-	signal r_raw_wr_en_pulse, n_raw_wr_en_pulse : std_logic := '0';
-	signal r_raw_wr_addr, n_raw_wr_addr : std_logic_vector(ADDR_LENGTH-1 downto 0) := (others => '0');
-	signal r_raw_wr_data, n_raw_wr_data : std_logic_vector(DATA_LENGTH-1 downto 0) := (others => '0');
 	signal r_capture_done_pulse, n_capture_done_pulse : std_logic := '0';
 	
+	-- Latched config values
 	signal r_capture_width_sel, n_capture_width_sel : std_logic := '0';  	-- default: narrow (8 bits)
 	signal r_capture_depth_sel, n_capture_depth_sel : std_logic := '0';  	-- default: shallow (4096 bytes)
 	signal r_trigger_mode, n_trigger_mode : std_logic_vector(1 downto 0) := "00"; 	-- default: immediate capture
@@ -101,49 +102,18 @@ architecture RTL of capture_engine is
 	signal r_pattern_mask, n_pattern_mask : std_logic_vector(15 downto 0) := x"FFFF";		-- default: 0b1111 1111 1111 1111
 	signal r_trigger_pos, n_trigger_pos : std_logic_vector(1 downto 0) := "00"; 			-- default: 25% pre / 75% post trigger
 	
-	--------------- TBC
+	signal r_start_addr, n_start_addr : unsigned(ADDR_LENGTH-1 downto 0) := (others => '0');  -- addr sent to send_engine to start reading from RAM
+	signal r_trigger_addr, n_trigger_addr : unsigned(ADDR_LENGTH-1 downto 0) := (others => '0');  -- address where trigger occurs
+	signal r_last_addr, n_last_addr : unsigned(ADDR_LENGTH-1 downto 0) := to_unsigned(12288-1, ADDR_LENGTH);  -- how many addresses to fill in RAM (not actual end address)
+
+	signal r_write_ptr, n_write_ptr : unsigned(ADDR_LENGTH-1 downto 0);
+	signal r_prev_sample, n_prev_sample : std_logic_vector(15 downto 0) := (others => '0');
+	signal r_pre_samples, n_pre_samples : integer := 0; 		-- samples strictly before trigger
+	signal r_post_samples, n_post_samples : integer := 0;		-- trigger sample + samples after trigger	
+	signal r_prefill_count, n_prefill_count : integer := 0;
+	signal r_post_remaining, n_post_remaining : integer := 0;
 	
-	signal r_last_addr, n_last_address : std_logic_vector(ADDR_LENGTH-1 downto 0) := std_logic_vector(to_unsigned(12288-1, ADDR_LENGTH));  -- last address to fill in RAM before returning to addr 0
-	signal r_trigger_address, n_trigger_address : std_logic_vector(13 downto 0) := (others => '0');  -- address where trigger occurs
-	
-	signal r_total_count : integer range 0 to 12287 := 0;
-	signal r_pre_count : integer range 0 to 12287 := 0;
-	signal r_post_count : integer range 0 to 12287 := 0;
-	
-	signal r_total_samples : integer := 0;
-	signal r_pre_samples : integer := 0; 		-- samples strictly before trigger
-	signal r_post_samples : integer := 0;		-- trigger sample + samples after trigger
-	
-	-- separate counters == easier to verify logic
-	r_write_ptr
-	r_linear_sample_count
-	r_prefill_count
-	r_post_remaining
-	r_prev_sample
-	signal r_start_addr : std_logic_vector(13 downto 0) := (others => '0');
-	r_trigger_addr
-	
-	signal r_prev_sample : std_logic_vector(15 downto 0) := (others => '0');
-	
-		
 begin
-	addr_proc : process(i_cfg_capture_depth_sel, i_cfg_capture_width_sel) is
-	begin
-		if i_cfg_capture_depth_sel = '0' then		-- shallow capture (4096 bytes)
-			if i_cfg_capture_width_sel = '0' then  	-- 1 byte (8 bits) per sample, i.e. 4096 samples
-				r_last_addr <= std_logic_vector(to_unsigned(4096-1, ADDR_LENGTH));;
-			else									-- 2 bytes (16 bits) per sample, i.e. 2048 samples
-				r_last_addr <= std_logic_vector(to_unsigned(2048-1, ADDR_LENGTH));;
-			end if;
-		else										-- deep capture (12288 bytes)
-			if i_cfg_capture_width_sel = '0' then  	-- 1 byte (8 bits) per sample, i.e. 12288 samples
-				r_last_addr <= std_logic_vector(to_unsigned(12288-1, ADDR_LENGTH));;
-			else									-- 2 bytes (16 bits) per sample, i.e. 6144 samples
-				r_last_addr <= std_logic_vector(to_unsigned(6144-1, ADDR_LENGTH));;
-			end if;
-		end if;
-	end process addr_proc;
-	
 	-- Sequential process to deal with clocking
 	seq_proc: process(i_clk) is
 	begin
@@ -151,9 +121,6 @@ begin
 			if i_rst_n = '0' then
 				-- reset logic
 				r_state <= IDLE;
-				r_raw_wr_en_pulse <= '0';
-				r_raw_wr_addr <= (others => '0');
-				r_raw_wr_data <= (others => '0');
 				r_capture_done_pulse <= '0';
 				
 				r_capture_width_sel <= '0';
@@ -164,11 +131,19 @@ begin
 				r_pattern_value <= x"0000";
 				r_pattern_mask <= x"FFFF";
 				r_trigger_pos <= "00";
+				
+				r_start_addr <= (others => '0');
+				r_trigger_addr <= (others => '0');
+				r_last_addr <= (others => '0');
+				
+				r_write_ptr <= (others => '0');
+				r_prev_sample <= (others => '0');
+				r_pre_samples <= 0;
+				r_post_samples <= 0;
+				r_prefill_count <= 0;
+				r_post_remaining <= 0;
 			else
 				r_state <= n_state;
-				r_raw_wr_en_pulse <= n_raw_wr_en_pulse;
-				r_raw_wr_addr <= n_raw_wr_addr;
-				r_raw_wr_data <= n_raw_wr_data;
 				r_capture_done_pulse <= n_capture_done_pulse;
 				
 				r_capture_width_sel <= n_capture_width_sel;
@@ -179,38 +154,76 @@ begin
 				r_pattern_value <= n_pattern_value;
 				r_pattern_mask <= n_pattern_mask;
 				r_trigger_pos <= n_trigger_pos;
-	
 				
+				r_start_addr <= n_start_addr;
+				r_trigger_addr <= n_trigger_addr;
+				r_last_addr <= n_last_addr;
 				
-				-- TO BE CHANGED:
-				if i_samp_tick = '1' then
-					r_prev_sample <= i_inputs;
-				end if;
+				r_write_ptr <= n_write_ptr;
+				r_prev_sample <= n_prev_sample;
+				r_pre_samples <= n_pre_samples;
+				r_post_samples <= n_post_samples;
+				r_prefill_count <= n_prefill_count;
+				r_post_remaining <= n_post_remaining;
 			end if;
 		end if;
 	end process seq_proc;
 
-
 	-- Combinational process to deal with capture engine FSM logic
 	fsm_proc: process(all) is
+		variable v_next_ptr : unsigned(ADDR_LENGTH-1 downto 0);
 	begin
 		-- Defaults
 		n_state <= r_state;
-		n_raw_wr_en_pulse <= '0';
-		n_raw_wr_addr <= r_raw_wr_addr;
-		n_raw_wr_data <= r_raw_wr_data;
 		n_capture_done_pulse <= '0';
+		
+		n_capture_width_sel <= r_capture_width_sel;
+		n_capture_depth_sel <= r_capture_depth_sel;
+		n_trigger_mode <= r_trigger_mode;
+		n_edge_trigger_ch <= r_edge_trigger_ch;
+		n_edge_trigger_type <= r_edge_trigger_type;
+		n_pattern_value <= r_pattern_value;
+		n_pattern_mask <= r_pattern_mask;
+		n_trigger_pos <= r_trigger_pos;
+		
+		n_start_addr <= r_start_addr;
+		n_trigger_addr <= r_trigger_addr;
+		n_last_addr <= r_last_addr;
+		
+		n_write_ptr <= r_write_ptr;
+		n_prev_sample <= r_prev_sample;
+		n_pre_samples <= r_pre_samples;
+		n_post_samples <= r_post_samples;
+		n_prefill_count <= r_prefill_count;
+		n_post_remaining <= r_post_remaining;
+		
+		
+		-- wraparound logic for write_ptr
+		if r_write_ptr = r_last_addr then
+			v_next_ptr := (others => '0');
+		else
+			v_next_ptr := r_write_ptr + 1;
+		end if;
+		
 		
 		case r_state is   -- IDLE, LINEAR_CAPTURE, ARMED, POST_TRIGGER, DONE
 			when IDLE =>
 				if i_capture_start_pulse = '1' then
+					-- reset per-capture runtime state
+					n_write_ptr      <= (others => '0');
+					n_prefill_count  <= 0;
+					n_start_addr     <= (others => '0');
+					n_trigger_addr   <= (others => '0');
+					n_prev_sample    <= (others => '0');
+				
 					-- latch all relevant configuration values
 					n_capture_width_sel <= i_cfg_capture_width_sel;
 					n_capture_depth_sel <= i_cfg_capture_depth_sel;
 					n_trigger_mode		<= i_cfg_trigger_mode;
 					if i_cfg_capture_width_sel = '0' then
-						if i_cfg_edge_trigger_ch >= "1000" then
+						if i_cfg_edge_trigger_ch(3) = '1' then  -- i.e. >= 1000 (8)
 							-- REJECT! cannot use channels 8-15 as edge trigger for 8 channel capture (ch0-ch7)
+							-- default value "0000" will be kept
 						else
 							n_edge_trigger_ch	<= i_cfg_edge_trigger_ch;
 						end if;
@@ -219,75 +232,88 @@ begin
 					end if;
 					n_edge_trigger_type <= i_cfg_edge_trigger_type;
 					n_pattern_value		<= i_cfg_pattern_value;
-					if i_cfg_capture_width_sel = '0' then
+					if i_cfg_capture_width_sel = '0' and i_cfg_pattern_mask(7 downto 0) = x"00" then
+						-- REJECT! cannot use pattern mask 0 as any pattern would lead to trigger
+					elsif i_cfg_capture_width_sel = '0' and i_cfg_pattern_mask(7 downto 0) /= x"00" then
 						n_pattern_mask 	<= x"00" & i_cfg_pattern_mask(7 downto 0);
 					else
 						n_pattern_mask	<= i_cfg_pattern_mask;
 					end if;
 					n_trigger_pos		<= i_cfg_trigger_pos;
 					
-					
-					-- calculate total/pre/post sample counts
+					-- set last addr (how many addresses to fill up in RAM), and pre/post samples given trigger pos
 					if i_cfg_capture_depth_sel = '0' then		-- shallow capture (4096 bytes)
 						if i_cfg_capture_width_sel = '0' then  	-- 1 byte (8 bits) per sample, i.e. 4096 samples
-							r_total_samples <= 4096;
+							n_last_addr <= to_unsigned(4095, ADDR_LENGTH);  -- 4096 samples, index one less
 							case i_cfg_trigger_pos is
 								when "00" =>  	-- 25% trigger pos
-									r_pre_samples <= 1024;
-									r_post_samples <= 3072;
+									n_pre_samples <= 1024;
+									n_post_samples <= 3072;
+									n_post_remaining <= 3072;
 								when "01" =>	-- 50% trigger pos
-									r_pre_samples <= 2048;
-									r_post_samples <= 2048;
+									n_pre_samples <= 2048;
+									n_post_samples <= 2048;
+									n_post_remaining <= 2048;
 								when others =>	-- 75% trigger pos
-									r_pre_samples <= 3072;
-									r_post_samples <= 1024;
+									n_pre_samples <= 3072;
+									n_post_samples <= 1024;
+									n_post_remaining <= 1024;
 							end case;
 						else									-- 2 bytes (16 bits) per sample, i.e. 2048 samples
-							r_total_samples <= 2048;
+							n_last_addr <= to_unsigned(2047, ADDR_LENGTH);  -- 2048 samples, index one less
 							case i_cfg_trigger_pos is
 								when "00" =>  	-- 25% trigger pos
-									r_pre_samples <= 512;
-									r_post_samples <= 1536;
+									n_pre_samples <= 512;
+									n_post_samples <= 1536;
+									n_post_remaining <= 1536;
 								when "01" =>	-- 50% trigger pos
-									r_pre_samples <= 1024;
-									r_post_samples <= 1024;
+									n_pre_samples <= 1024;
+									n_post_samples <= 1024;
+									n_post_remaining <= 1024;
 								when others =>	-- 75% trigger pos
-									r_pre_samples <= 1536;
-									r_post_samples <= 512;
+									n_pre_samples <= 1536;
+									n_post_samples <= 512;
+									n_post_remaining <= 512;
 							end case;
 						end if;
 					else										-- deep capture (12288 bytes)
 						if i_cfg_capture_width_sel = '0' then  	-- 1 byte (8 bits) per sample, i.e. 12288 samples
-							r_total_samples <= 12288;
+							n_last_addr <= to_unsigned(12287, ADDR_LENGTH);  -- 12288 samples, index one less
 							case i_cfg_trigger_pos is
 								when "00" =>  	-- 25% trigger pos
-									r_pre_samples <= 3072;
-									r_post_samples <= 9216;
+									n_pre_samples <= 3072;
+									n_post_samples <= 9216;
+									n_post_remaining <= 9216;
 								when "01" =>	-- 50% trigger pos
-									r_pre_samples <= 6144;
-									r_post_samples <= 6144;
+									n_pre_samples <= 6144;
+									n_post_samples <= 6144;
+									n_post_remaining <= 6144;
 								when others =>	-- 75% trigger pos
-									r_pre_samples <= 9216;
-									r_post_samples <= 3072;
+									n_pre_samples <= 9216;
+									n_post_samples <= 3072;
+									n_post_remaining <= 3072;
 							end case;
 						else									-- 2 bytes (16 bits) per sample, i.e. 6144 samples
-							r_total_samples <= 6144;
+							n_last_addr <= to_unsigned(6143, ADDR_LENGTH);  -- 6144 samples, index one less
 							case i_cfg_trigger_pos is
 								when "00" =>  	-- 25% trigger pos
-									r_pre_samples <= 1536;
-									r_post_samples <= 4608;
+									n_pre_samples <= 1536;
+									n_post_samples <= 4608;
+									n_post_remaining <= 4608;
 								when "01" =>	-- 50% trigger pos
-									r_pre_samples <= 3072;
-									r_post_samples <= 3072;
+									n_pre_samples <= 3072;
+									n_post_samples <= 3072;
+									n_post_remaining <= 3072;
 								when others =>	-- 75% trigger pos
-									r_pre_samples <= 4608;
-									r_post_samples <= 1536;
+									n_pre_samples <= 4608;
+									n_post_samples <= 1536;
+									n_post_remaining <= 1536;
 							end case;
 						end if;
 					end if;
 					
 					-- set write "pointer" to zero
-					n_raw_wr_addr <= (others => '0');
+					n_write_ptr <= (others => '0');
 					
 					-- trigger mode determines next state
 					if i_cfg_trigger_mode = "00" then
@@ -296,111 +322,89 @@ begin
 						n_state <= PREFILL;
 					end if;			
 				end if;
+				
 			
 			when LINEAR_CAPTURE =>
 				if i_samp_tick = '1' then
-					n_raw_wr_data <= i_inputs;
-					n_raw_wr_en_pulse <= '1';
-					r_total_count <= r_total_count + 1;  -- MIGHT HAVE TO CHANGE TO n_ and r_ prefixes...
+					n_write_ptr <= v_next_ptr;
 					
-					if r_raw_wr_addr = r_total_samples then
-						-- Sample nr 4096 (index 4095) (or sample nr 12288 (index 12287) etc.) just captured in last cycle
-						n_raw_wr_addr <= (others => '0');
+					if r_write_ptr = r_last_addr then
+						-- Sample nr 4096 (index 4095) (or similar) just captured in last cycle
+						n_start_addr <= (others => '0');  -- send_engine starts at addr 0 for linear captures
+						n_trigger_addr <= (others => '0');  -- trigger_addr doesn't matter for linear captures
 						n_state <= DONE;
+					end if;
+					-- write_ptr is updated outside the FSM so no need to increment manually
+				end if;
+				
+			
+			when PREFILL =>
+				-- PREFILL writes exactly n_pre_samples before trigger evaluation is enabled. Guarantees pre-trigger history.
+				if i_samp_tick = '1' then					
+					n_write_ptr <= v_next_ptr;
+					n_prev_sample <= i_inputs;
+					
+					-- move to ARMED state once enough samples are gathered
+					if r_prefill_count = r_pre_samples - 1 then
+						n_state <= ARMED;
 					else
-						n_raw_wr_addr <= std_logic_vector(unsigned(r_raw_wr_addr)+1);
-						-- WON'T THE ABOVE LINE MAKE IT SO THAT WE WRITE FIRST SAMPLE TO ADDRESS 1 INSTEAD OF 0?
+						n_prefill_count <= r_prefill_count + 1;
 					end if;
 				end if;
 			
-			when PREFILL =>
-				-- PREFILL writes exactly pre_count samples before trigger evaluation is enabled. Guarantees pre-trigger history.
-				if i_samp_tick = '1' then
-					n_raw_wr_data <= i_inputs;
-					n_raw_wr_en_pulse <= '1';
-					r_pre_count <= r_pre_count + 1;  -- MIGHT HAVE TO CHANGE TO n_ and r_ prefixes...
-					r_prev_sample <= i_inputs;
-					
-					if r_raw_wr_addr = r_pre_samples then
-						n_state <= ARMED;
-					else
-						n_raw_wr_addr <= std_logic_vector(unsigned(r_raw_wr_addr)+1);
-					end if;
-				end if;
 			
 			when ARMED =>
 				if i_samp_tick = '1' then
-					-- write current sample				
-					n_raw_wr_data <= i_inputs;
-					n_raw_wr_en_pulse <= '1';
+					n_write_ptr <= v_next_ptr;
+					n_prev_sample <= i_inputs;
 					
 					-- evaluate trigger condition
 					if r_trigger_mode = "01" then  -- edge trigger
 						if r_edge_trigger_type = "00" then  -- rising_edge
 							if r_prev_sample(to_integer(unsigned(r_edge_trigger_ch))) = '0' and i_inputs(to_integer(unsigned(r_edge_trigger_ch))) = '1' then
-								n_trigger_address <= r_raw_wr_addr;  -- record trigger address
-								r_post_count <= r_post_count + 1;  -- trigger address is first post trigger value
+								n_trigger_addr <= r_write_ptr;  -- record trigger address
+								n_post_remaining <= r_post_remaining - 1;  -- trigger address is first post trigger value
 								n_state <= POST_TRIGGER;
 							end if;
 						elsif r_edge_trigger_type = "01" then  -- falling_edge
 							if r_prev_sample(to_integer(unsigned(r_edge_trigger_ch))) = '1' and i_inputs(to_integer(unsigned(r_edge_trigger_ch))) = '0' then
-								n_trigger_address <= r_raw_wr_addr;  -- record trigger address
-								r_post_count <= r_post_count + 1;  -- trigger address is first post trigger value
+								n_trigger_addr <= r_write_ptr;  -- record trigger address
+								n_post_remaining <= r_post_remaining - 1;  -- trigger address is first post trigger value
 								n_state <= POST_TRIGGER;
 							end if;
 						else  -- either
-							if (r_prev_sample(to_integer((unsigned(r_edge_trigger_ch))) = '0' and i_inputs(to_integer(unsigned(r_edge_trigger_ch))) = '1') or
-								(r_prev_sample(to_integer(unsigned(r_edge_trigger_ch))) = '1' and i_inputs(to_integer(unsigned(r_edge_trigger_ch))) = '0') then
-								n_trigger_address <= r_raw_wr_addr;  -- record trigger address
-								r_post_count <= r_post_count + 1;  -- trigger address is first post trigger value
+							if r_prev_sample(to_integer(unsigned(r_edge_trigger_ch))) /= i_inputs(to_integer(unsigned(r_edge_trigger_ch))) then
+								n_trigger_addr <= r_write_ptr;  -- record trigger address
+								n_post_remaining <= r_post_remaining - 1;  -- trigger address is first post trigger value
 								n_state <= POST_TRIGGER;
 							end if;
 						end if;
 					elsif r_trigger_mode = "02" then  -- pattern trigger
 						if (i_inputs and r_pattern_mask) = (r_pattern_value and r_pattern_mask) then
-							n_trigger_address <= r_raw_wr_addr;  -- record trigger address
-							r_post_count <= r_post_count + 1;  -- trigger address is first post trigger value
+							n_trigger_addr <= r_write_ptr;  -- record trigger address
+							n_post_remaining <= r_post_remaining - 1;  -- trigger address is first post trigger value
 							n_state <= POST_TRIGGER;
 						end if;
 					else
 						-- error
 					end if;
-					
-					-- update previous sample
-					r_prev_sample <= i_inputs;
-					
-					-- advance address pointer
-					if r_raw_wr_addr = r_last_addr then
-						n_raw_wr_addr <= (others => '0');
-					else
-						n_raw_wr_addr <= std_logic_vector(unsigned(r_raw_wr_addr)+1);
-					end if;
 				end if;
+				
 			
 			when POST_TRIGGER =>
 				if i_samp_tick = '1' then
-					-- write next sample
-					n_raw_wr_data <= i_inputs;
-					n_raw_wr_en_pulse <= '1';
-					
-					-- decrement post_remaining / increment post_count
-					r_post_count <= r_post_count + 1;
+					n_write_ptr <= v_next_ptr;
 					
 					-- increment address pointer
-					if r_post_count = r_post_samples then
-						n_raw_wr_addr <= std_logic_vector(unsigned(r_raw_wr_addr)+1);
-						r_start_addr <= std_logic_vector(unsigned(r_raw_wr_addr)+1);
+					if r_post_remaining = 1 then
+						n_post_remaining <= 0;
+						n_start_addr <= v_next_ptr;
 						n_state <= DONE;
-					elsif r_raw_wr_addr = r_last_addr then
-						n_raw_wr_addr <= (others => '0');
-						r_post_count <= r_post_count + 1;
 					else
-						n_raw_wr_addr <= std_logic_vector(unsigned(r_raw_wr_addr)+1);
-						r_post_count <= r_post_count + 1;
+						n_post_remaining <= r_post_remaining - 1;
 					end if;
 				end if;
-				
-				-- if all post bytes are stored, then: n_state <= DONE;
+			
 			
 			when DONE =>
 				n_capture_done_pulse <= '1';
@@ -408,15 +412,22 @@ begin
 			
 		end case;
 	end process fsm_proc;
-
+	
 
 	-- Set outputs
-	o_raw_wr_en_pulse 		<= r_raw_wr_en_pulse;
-	o_raw_wr_addr 			<= r_raw_wr_addr;
-	o_raw_wr_data 			<= r_raw_wr_data;
+	o_raw_wr_en_pulse 		<= '1' when i_samp_tick = '1' and
+		 (r_state = LINEAR_CAPTURE or
+		  r_state = PREFILL or
+		  r_state = ARMED or
+		  r_state = POST_TRIGGER)
+		else '0';  			-- store sample to RAM (occurs each wr_en_pulse) every samp_tick when not in IDLE
+	o_raw_wr_addr 			<= std_logic_vector(r_write_ptr);
+	o_raw_wr_data 			<= i_inputs;
 	o_capture_done_pulse	<= r_capture_done_pulse;
 	
-	o_capture_start_addr 	<= r_start_addr;
-	o_trigger_addr       	<= r_trigger_addr;
+	o_capture_start_addr 	<= std_logic_vector(r_start_addr);
+	o_capture_sample_count	<= std_logic_vector(r_last_addr+1);
+	o_capture_width_sel		<= r_capture_width_sel;
+	o_trigger_addr       	<= std_logic_vector(r_trigger_addr);
 	
 end architecture RTL;

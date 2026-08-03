@@ -45,6 +45,21 @@
 -- n_ : next <register> 	(internal signal; next state; 	for combinational process)
 -- ========================================
 
+
+-- PSEUDOCODE
+read_ptr = start_addr
+samples_sent = 0
+
+while samples_sent < sample_count:
+    read one sample
+    send 1 or 2 bytes
+    samples_sent += 1
+
+    if read_ptr == sample_count - 1:
+        read_ptr = 0
+    else:
+        read_ptr += 1
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
