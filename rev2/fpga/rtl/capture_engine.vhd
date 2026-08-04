@@ -4,7 +4,7 @@
 -- AUTHOR: Jakob Kieszek Ottesen
 -- DATE: 2026-03-31 (YYYY-MM-DD)
 -- MODIFIED: 2026-05-14 (reset active low)
--- MODIFIED: 2026-07-29 (rev2)
+-- MODIFIED: 2026-08-03 (rev2)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -25,11 +25,11 @@
 -- OUTPUTS					DATA		TO MODULE
 -- o_raw_wr_en_pulse		1 bit		-> trace_buffer
 -- o_raw_wr_addr			14 bits		-> trace_buffer
--- o_raw_wr_data			8 bits		-> trace_buffer
+-- o_raw_wr_data			16 bits		-> trace_buffer
 -- o_capture_done_pulse		1 bit		-> analyzer_fsm
 -- o_capture_start_addr 	14 bits		-> send_engine
 -- o_capture_sample_count	14 bits		-> send_engine
--- o_capture_width_sel		1 bit		-> send_engine
+-- o_capture_width_sel		1 bit		-> send_engine, trace_buffer
 -- o_trigger_addr       	14 bits		-> send_engine
 --
 -- NOTES
@@ -45,7 +45,10 @@
 -- ITERATIVE PROCESS NOTES:
 -- update VHDL entities in OneNote once module is locked
 -- Later, add an explicit ABORT command or optional host-configured trigger timeout. Do not treat “trigger has not happened” as an internal watchdog fault.
--- In IDLE, we have 2 comments about REJECTION of certain config values (relative to other config vals). For now, assume the configuration is valid and add assertions in simulation. Later, the controller/analyzer FSM should reject CAPTURE and send an error.
+-- In IDLE, we have 2 comments about REJECTION of certain config values (relative to other config vals). For now, assume the configuration is valid and add assertions in simulation. Later, the controller/analyzer FSM should reject CAPTURE and send an error. --> Reject incompatible configurations before accepting CAPTURE
+-- Export more captured metadata
+-- Verify every mode with a dedicated testbench
+-- Implement actual 8/16-bit RAM-bank mapping in trace_buffer
 -- ========================================
 
 library IEEE;

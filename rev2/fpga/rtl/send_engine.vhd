@@ -5,16 +5,21 @@
 -- DATE: 2026-04-16 (YYYY-MM-DD)
 -- MODIFIED: 2026-05-14 (reset active low)
 -- LAST MODIFIED: 2026-05-15
+-- MODIFIED: 2026-08-03 (rev2)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
--- i_rst					1 bit		<- top
+-- i_rst_n					1 bit		<- top
 -- i_send_start_pulse		1 bit		<- analyzer_fsm
 -- i_tx_busy				1 bit		<- uart_tx
--- i_ram_rd_data			8 bits		<- trace_buffer
+-- i_capture_start_addr 	14 bits		<- capture_engine
+-- i_capture_sample_count	14 bits		<- capture_engine
+-- i_capture_width_sel		1 bit		<- capture_engine
+-- i_trigger_addr       	14 bits		<- capture_engine
+-- i_ram_rd_data			16 bits		<- trace_buffer
 --
 -- OUTPUTS					DATA		TO MODULE
--- o_ram_rd_addr			12 bits		-> trace_buffer
+-- o_ram_rd_addr			14 bits		-> trace_buffer
 -- o_send_tx_byte			8 bits		-> tx_mux
 -- o_send_tx_start_pulse	1 bit		-> tx_mux
 -- o_send_done_pulse		1 bit		-> analyzer_fsm
@@ -43,22 +48,13 @@
 -- o_ : output
 -- r_ : register 			(internal signal; current; 		for sequential process)
 -- n_ : next <register> 	(internal signal; next state; 	for combinational process)
+
+-- ITERATIVE PROCESS NOTES:
+-- update VHDL entities in OneNote once module is locked
+-- IMPLEMENT TX HANDSHAKE and remove most of the FSM states
+-- TBD: wraparound read behaviour
+-- send_engine must include a RAM-read wait/pipeline state.
 -- ========================================
-
-
--- PSEUDOCODE
-read_ptr = start_addr
-samples_sent = 0
-
-while samples_sent < sample_count:
-    read one sample
-    send 1 or 2 bytes
-    samples_sent += 1
-
-    if read_ptr == sample_count - 1:
-        read_ptr = 0
-    else:
-        read_ptr += 1
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -66,16 +62,21 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity send_engine is
 	generic (
-		ADDR_LENGTH : integer := 12;
-		NUM_SAMPLES : integer := 2**ADDR_LENGTH;  -- 4096
-		DATA_LENGTH : integer := 8
+		ADDR_LENGTH : integer := 14;
+		NUM_SAMPLES : integer := 2**ADDR_LENGTH
 	);
 	port (
 		i_clk					: in  std_logic;
-		i_rst					: in  std_logic;
+		i_rst_n					: in  std_logic;
 		i_send_start_pulse		: in  std_logic;
 		i_tx_busy				: in  std_logic;
-		i_ram_rd_data			: in  std_logic_vector(DATA_LENGTH-1 downto 0);
+		
+		i_capture_start_addr 	: in  std_logic_vector(ADDR_LENGTH-1 downto 0);
+		i_capture_sample_count 	: in  std_logic_vector(ADDR_LENGTH-1 downto 0);
+		i_capture_width_sel		: in  std_logic;
+		i_trigger_addr		 	: in  std_logic_vector(ADDR_LENGTH-1 downto 0);  -- useful metadata for Python/waveform display, but not required to control RAM readout
+		i_ram_rd_data			: in  std_logic_vector(15 downto 0);
+		
 		o_ram_rd_addr			: out std_logic_vector(ADDR_LENGTH-1 downto 0);
 		o_send_tx_byte			: out std_logic_vector(DATA_LENGTH-1 downto 0);
 		o_send_tx_start_pulse	: out std_logic;
@@ -107,28 +108,31 @@ architecture RTL of send_engine is
 	signal r_send_tx_byte, n_send_tx_byte : std_logic_vector(DATA_LENGTH-1 downto 0) := (others => '0');
 	signal r_send_tx_start_pulse, n_send_tx_start_pulse : std_logic := '0';
 	signal r_send_done_pulse, n_send_done_pulse : std_logic := '0';
-		
-	-- Define constants
-	constant LAST_ADDR : std_logic_vector(ADDR_LENGTH-1 downto 0) := std_logic_vector(to_unsigned(NUM_SAMPLES-1, ADDR_LENGTH));
 	
+	signal r_samples_sent, n_samples_sent : integer := 0;
+		
 begin
 	-- Sequential process for dealing with clocking
 	seq_proc: process(i_clk) is
 	begin
 		if rising_edge(i_clk) then
-			if i_rst = '0' then
+			if i_rst_n = '0' then
 				-- reset logic
 				r_state <= SEND_IDLE;
 				r_ram_rd_addr <= (others => '0');
 				r_send_tx_byte <= (others => '0');
 				r_send_tx_start_pulse <= '0';
 				r_send_done_pulse <= '0';
+				
+				r_samples_sent <= 0;
 			else
 				r_state <= n_state;
 				r_ram_rd_addr <= n_ram_rd_addr;
 				r_send_tx_byte <= n_send_tx_byte;
 				r_send_tx_start_pulse <= n_send_tx_start_pulse;
 				r_send_done_pulse <= n_send_done_pulse;
+				
+				r_samples_sent <= n_samples_sent;
 			end if;
 		end if;
 	end process seq_proc;
@@ -143,11 +147,12 @@ begin
 		n_send_tx_byte <= r_send_tx_byte;
 		n_send_tx_start_pulse <= '0';
 		n_send_done_pulse <= '0';
+		n_samples_sent <= r_samples_sent;
 	
 		case r_state is
 			when SEND_IDLE => 
 				if i_send_start_pulse = '1' then
-					n_ram_rd_addr <= (others => '0');
+					n_ram_rd_addr <= i_capture_start_addr;  -- important for wraparound read. start reading from RAM at start_addr received from capture_engine
 					n_state <= SEND_HEADER_START;
 				end if;
 			
@@ -174,8 +179,13 @@ begin
 				
 			when SEND_DATA_START =>
 				if i_tx_busy = '0' then
-					n_send_tx_byte <= i_ram_rd_data;
+					n_send_tx_byte <= i_ram_rd_data(7 downto 0);
 					n_send_tx_start_pulse <= '1';
+					if i_capture_width_sel = '1' then
+						-- WILL HAVE TO SEND 2 BYTES IF WIDE CAPTURE WIDTH SELECTED...
+						-- go to state where you send another byte (i_ram_rd_data(15 downto 8) or something)
+					end if;
+					n_samples_sent <= r_samples_sent + 1;
 					n_state <= SEND_DATA_WAIT_BUSY_HIGH;
 				end if;
 			
@@ -186,15 +196,17 @@ begin
 				
 			when SEND_DATA_WAIT_BUSY_LOW =>
 				if i_tx_busy = '0' then
-					if r_ram_rd_addr = LAST_ADDR then
-						-- Last sample (nr 4096, index 4095) just launched to tx_path
-						n_ram_rd_addr <= (others => '0');
+					if r_samples_sent = to_integer(unsigned(i_capture_sample_count)) then
 						n_state <= SEND_DONE;
 					else
-						n_ram_rd_addr <= std_logic_vector(unsigned(r_ram_rd_addr) + 1);
+						if unsigned(r_ram_rd_addr) = unsigned(i_capture_sample_count) then
+							n_ram_rd_addr <= (others => '0');
+						else
+							n_ram_rd_addr <= std_logic_vector(unsigned(r_ram_rd_addr) + 1);
+						end if;
 						n_state <= SEND_SET_ADDR;
 					end if;
-				end if;
+				end if;		
 			
 			when SEND_DONE =>
 				n_send_done_pulse <= '1';
