@@ -4,31 +4,40 @@
 -- AUTHOR: Jakob Kieszek Ottesen
 -- DATE: 2026-04-19 (YYYY-MM-DD)
 -- MODIFIED: 2026-05-14 (reset active low)
+-- MODIFIED: 2026-08-06 (rev2)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
--- i_rst					1 bit		<- top
+-- i_rst_n					1 bit		<- top
 -- i_mux_tx_byte			8 bits 		<- tx_mux
--- i_mux_tx_start_pulse		1 bit		<- tx_mux
+-- i_mux_tx_valid			1 bit		<- tx_mux
 --
 -- OUTPUTS					DATA		TO MODULE
--- o_tx_busy				1 bit		-> send_engine
+-- o_uart_tx_ready			1 bit		-> tx_mux
 -- o_UART_TX				1 bit		-> top
 -- o_UART_TX_LED			1 bit		-> top
 --
 -- NOTES
--- 8N1 UART --> start bit, data bits 0-7 (starting with LSB), stop bit --> 10 baud
+-- 8N1 UART --> start bit, data bits 0-7 (starting with LSB), stop bit --> 10 transmitted bits per byte --> "10 baud"
 -- 1 baud = 1 symbol (1 bit for UART)
--- CLKS_PER_BIT is of type integer. 48e6/921600 = 52.0833... = 52
+-- 921600 baud: CLKS_PER_BIT is of type integer. 48e6/921600 = 52.0833... = 52
 -- --> Each bit has to be transmitted for CLKS_PER_BIT (~52) clock cycles
 -- Therefore, actual baud rate = 48e6/52 = 923076, not 921600 --> +0.16% error
 -- But UART usually tolerates +- 2-3% error
---
+
+-- By the time i_tx_mux_valid reaches uart_tx, so has the data from send_engine or analyzer_fsm on the i_mux_tx_byte lines.
+-- So by latching input byte/payload when in IDLE (uart_ready is high) and we see i_tx_mux_valid, we uphold the handshake agreement.
+
 -- PREFIXES					
 -- i_ : input
 -- o_ : output
 -- r_ : register 			(internal signal; current; 		for sequential process)
 -- n_ : next <register> 	(internal signal; next state; 	for combinational process)
+
+-- ITERATIVE PROCESS NOTES:
+-- update VHDL entities in OneNote once module is locked
+-- BAUD_RATE and CLKS_PER_BIT are still compile-time constants. That is fine for now, but runtime-selectable baud will later require: i_baud_sel : in std_logic_vector(1 downto 0);
+-- ... and a selected terminal count: 921600 → 52 clocks/bit. 4 Mbaud → 12 clocks/bit. 6 Mbaud → 8 clocks/bit. 
 -- ========================================
 
 library IEEE;
@@ -43,10 +52,12 @@ entity uart_tx is
 	);
 	port (
 		i_clk					: in  std_logic;
-		i_rst					: in  std_logic;
+		i_rst_n					: in  std_logic;
+		
 		i_mux_tx_byte			: in  std_logic_vector(DATA_LENGTH-1 downto 0);
-		i_mux_tx_start_pulse	: in  std_logic;
-		o_tx_busy				: out std_logic;
+		i_mux_tx_valid			: in  std_logic;
+		o_uart_tx_ready			: out std_logic;
+		
 		o_UART_TX				: out std_logic;
 		o_UART_TX_LED			: out std_logic
 	);
@@ -58,7 +69,6 @@ architecture RTL of uart_tx is
 	
 	-- Register signals, next-state signals
 	signal r_state, n_state : UART_TX_state_type := TX_IDLE;									-- internal state
-	signal r_tx_busy, n_tx_busy : std_logic := '0';  											-- output
 	signal r_UART_TX, n_UART_TX : std_logic := '1';  											-- output
 	signal r_UART_TX_LED, n_UART_TX_LED : std_logic := '0';										-- output
 	signal r_tx_byte, n_tx_byte : std_logic_vector(DATA_LENGTH-1 downto 0) := (others => '0');  -- for input latching
@@ -75,9 +85,8 @@ begin
 	seq_proc: process(i_clk) is
 	begin
 		if rising_edge(i_clk) then
-			if i_rst = '0' then
+			if i_rst_n = '0' then
 				r_state 	  <= TX_IDLE;
-				r_tx_busy 	  <= '0';
 				r_UART_TX 	  <= '1';  -- UART is idle high
 				r_UART_TX_LED <= '0';
 				r_tx_byte 	  <= (others => '0');
@@ -85,7 +94,6 @@ begin
 				r_bit_counter <= 0;
 			else
 				r_state 	  <= n_state;
-				r_tx_busy 	  <= n_tx_busy;
 				r_UART_TX 	  <= n_UART_TX;
 				r_UART_TX_LED <= n_UART_TX_LED;
 				r_tx_byte 	  <= n_tx_byte;
@@ -101,7 +109,6 @@ begin
 	begin
 		-- Defaults
 		n_state 	   <= r_state;
-		n_tx_busy 	   <= r_tx_busy;
 		n_UART_TX 	   <= r_UART_TX;
 		n_UART_TX_LED  <= r_UART_TX_LED;
 		n_tx_byte 	   <= r_tx_byte;
@@ -110,19 +117,16 @@ begin
 	
 		case r_state is
 			when TX_IDLE =>
-				n_tx_busy <= '0';
 				n_UART_TX <= '1';  -- force line high (UART is idle high)
-				if i_mux_tx_start_pulse = '1' then
+				if i_mux_tx_valid = '1' then  -- valid high. tx_ready signal also high (only during IDLE)
 					n_tx_byte <= i_mux_tx_byte;  -- latch input byte so it doesn't change during transmission
 					n_clk_counter <= 0;
 					n_bit_counter <= 0;
-					n_tx_busy <= '1';  -- assert busy flag so send_engine waits
 					n_UART_TX <= '0';  -- since r_UART_TX is registered, setting it here gives o_UART_TX = '0' from first clock in TX_START_BIT
 					n_state <= TX_START_BIT;
 				end if;
 			
 			when TX_START_BIT =>  -- hold '0' for CLKS_PER_BIT
-				n_tx_busy <= '1';
 				n_UART_TX <= '0';
 				if r_clk_counter = CLKS_PER_BIT-1 then
 					n_clk_counter <= 0;
@@ -134,7 +138,6 @@ begin
 				end if;
 				
 			when TX_DATA_BITS =>  -- send bits 0..7, hold each for CLKS_PER_BIT
-				n_tx_busy <= '1';
 				n_UART_TX <= r_tx_byte(r_bit_counter);
 				if r_clk_counter = CLKS_PER_BIT-1 then
 					n_clk_counter <= 0;
@@ -151,12 +154,10 @@ begin
 				end if;
 			
 			when TX_STOP_BIT =>  -- hold '1' for CLKS_PER_BIT
-				n_tx_busy <= '1';
 				n_UART_TX <= '1';
 				if r_clk_counter = CLKS_PER_BIT-1 then
 					n_clk_counter <= 0;
 					n_bit_counter <= 0;
-					n_tx_busy <= '0';  -- preload busy toggle so o_tx_busy becomes '0' when you reach TX_IDLE
 					n_UART_TX <= '1';  -- explicitly preloading IDLE HIGH
 					n_UART_TX_LED <= not r_UART_TX_LED;  -- preload LED toggle so the registered output toggles when you reach TX_IDLE
 					n_state <= TX_IDLE;
@@ -168,8 +169,10 @@ begin
 	
 	
 	-- Set outputs	
-	o_tx_busy <= r_tx_busy;
+	o_uart_tx_ready <= '1' when r_state = TX_IDLE else '0';
+	
 	o_UART_TX <= r_UART_TX;
 	o_UART_TX_LED <= r_UART_TX_LED;
+	
 	
 end architecture RTL;

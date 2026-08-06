@@ -11,8 +11,8 @@
 -- i_rst_n					1 bit		<- top
 -- i_capture_width_sel		1 bit		<- capture_engine
 -- i_ram_wr_en_pulse		1 bit 		<- capture_engine
--- i_ram_wr_addr			14 bits		<- capture_engine
 -- i_ram_wr_data [din]		16 bits		<- capture_engine
+-- i_ram_wr_addr			14 bits		<- capture_engine
 -- i_ram_rd_addr			14 bits		<- send_engine
 --
 -- OUTPUTS					DATA		TO MODULE
@@ -40,6 +40,7 @@
 -- PREFIXES					
 -- i_ : input
 -- o_ : output
+-- v_ : variable
 
 -- ITERATIVE PROCESS NOTES:
 -- update VHDL entities in OneNote once module is locked
@@ -61,8 +62,8 @@ entity trace_buffer is
 		-- capture_engine
 		i_capture_width_sel		: in  std_logic;
 		i_ram_wr_en_pulse		: in  std_logic;
-		i_ram_wr_addr			: in  std_logic_vector(ADDR_LENGTH-1 downto 0);
 		i_ram_wr_data			: in  std_logic_vector(15 downto 0);
+		i_ram_wr_addr			: in  std_logic_vector(ADDR_LENGTH-1 downto 0);
 		
 		-- send_engine
 		i_ram_rd_addr			: in  std_logic_vector(ADDR_LENGTH-1 downto 0);

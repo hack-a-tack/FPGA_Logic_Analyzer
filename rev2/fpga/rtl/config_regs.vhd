@@ -14,7 +14,7 @@
 -- OUTPUTS					DATA		TO MODULE
 -- o_cfg_uart_baud_rate    	2 bits		->
 -- o_cfg_capture_width_sel	1 bit
--- o_cfg_sample_rate      	2 bits
+-- o_cfg_sample_rate      	2 bits		-> clocking
 -- o_cfg_capture_depth_sel	1 bit
 -- o_cfg_trigger_mode		2 bits
 -- o_cfg_edge_trigger_ch	4 bits
@@ -22,8 +22,8 @@
 -- o_cfg_pattern_value		16 bits
 -- o_cfg_pattern_mask		16 bits
 -- o_cfg_trigger_pos		2 bits
--- o_cfg_ack_pulse			1 bit		-> 
--- o_cfg_error_pulse		1 bit		-> 
+-- o_cfg_ack_pulse			1 bit		-> analyzer_fsm?
+-- o_cfg_error_pulse		1 bit		-> analyzer_fsm?
 --
 -- PREFIXES					
 -- i_ : input
@@ -84,7 +84,7 @@ architecture RTL of config_regs is
 	signal r_uart_baud_rate					: std_logic_vector(1 downto 0) := "00";
 	signal r_capture_width_sel				: std_logic := '0';
 	signal r_sample_rate					: std_logic_vector(1 downto 0) := "00";
-	signal r_capture_depth_sel					: std_logic := '0';
+	signal r_capture_depth_sel				: std_logic := '0';
 	signal r_trigger_mode 					: std_logic_vector(1 downto 0) := "00";
 	signal r_edge_trigger_ch				: std_logic_vector(3 downto 0) := "0000";
 	signal r_edge_trigger_type				: std_logic_vector(1 downto 0) := "00";
