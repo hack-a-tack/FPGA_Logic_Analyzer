@@ -12,25 +12,25 @@
 -- i_cfg_value				16 bits		<- cmd_parser
 --
 -- OUTPUTS					DATA		TO MODULE
--- o_cfg_uart_baud_rate    	2 bits		->
--- o_cfg_capture_width_sel	1 bit
--- o_cfg_sample_rate      	2 bits		-> clocking
--- o_cfg_capture_depth_sel	1 bit
--- o_cfg_trigger_mode		2 bits
--- o_cfg_edge_trigger_ch	4 bits
--- o_cfg_edge_trigger_type	2 bits
--- o_cfg_pattern_value		16 bits
--- o_cfg_pattern_mask		16 bits
--- o_cfg_trigger_pos		2 bits
--- o_cfg_ack_pulse			1 bit		-> analyzer_fsm?
--- o_cfg_error_pulse		1 bit		-> analyzer_fsm?
+-- o_cfg_uart_baud_rate    	2 bits		-> ???
+-- o_cfg_capture_width_sel	1 bit		-> capture_engine
+-- o_cfg_sample_rate_sel   	2 bits		-> clocking
+-- o_cfg_capture_depth_sel	1 bit		-> capture_engine
+-- o_cfg_trigger_mode		2 bits		-> capture_engine
+-- o_cfg_edge_trigger_ch	4 bits		-> capture_engine
+-- o_cfg_edge_trigger_type	2 bits		-> capture_engine
+-- o_cfg_pattern_value		16 bits		-> capture_engine
+-- o_cfg_pattern_mask		16 bits		-> capture_engine
+-- o_cfg_trigger_pos		2 bits		-> capture_engine
+-- o_cfg_ack_pulse			1 bit		-> analyzer_fsm
+-- o_cfg_error_pulse		1 bit		-> analyzer_fsm
 --
 -- PREFIXES					
 -- i_ : input
 -- o_ : output
 -- r_ : register 			(internal signal; current; 		for sequential process)
 -- n_ : next <register> 	(internal signal; next state; 	for combinational process)
-
+--
 -- ITERATIVE PROCESS NOTES:
 -- There is more to updating UART BAUD RATE than updating an internal register... TBC
 -- Where do we want to send ACK/ERROR from config_regs? back to host via TX path?
@@ -53,7 +53,7 @@ entity config_regs is
 		
 		o_cfg_uart_baud_rate    : out std_logic_vector(1 downto 0);
 		o_cfg_capture_width_sel : out std_logic;
-		o_cfg_sample_rate       : out std_logic_vector(1 downto 0);
+		o_cfg_sample_rate_sel   : out std_logic_vector(1 downto 0);
 		o_cfg_capture_depth_sel : out std_logic;
 		o_cfg_trigger_mode      : out std_logic_vector(1 downto 0);
 		o_cfg_edge_trigger_ch   : out std_logic_vector(3 downto 0);
@@ -83,7 +83,7 @@ architecture RTL of config_regs is
 	-- Register signals
 	signal r_uart_baud_rate					: std_logic_vector(1 downto 0) := "00";
 	signal r_capture_width_sel				: std_logic := '0';
-	signal r_sample_rate					: std_logic_vector(1 downto 0) := "00";
+	signal r_sample_rate_sel				: std_logic_vector(1 downto 0) := "00";
 	signal r_capture_depth_sel				: std_logic := '0';
 	signal r_trigger_mode 					: std_logic_vector(1 downto 0) := "00";
 	signal r_edge_trigger_ch				: std_logic_vector(3 downto 0) := "0000";
@@ -99,7 +99,7 @@ begin
 			if i_rst_n = '0' then
 				r_uart_baud_rate        <= "00";     -- 921600
 				r_capture_width_sel     <= '0';      -- 8 channels
-				r_sample_rate           <= "00";     -- 24 MS/s
+				r_sample_rate_sel       <= "00";     -- 24 MS/s
 				r_capture_depth_sel     <= '0';      -- shallow capture (4096 bytes)
 				r_trigger_mode          <= "00";     -- immediate
 				r_edge_trigger_ch       <= "0000";   -- CH0
@@ -139,8 +139,8 @@ begin
 						when CMD_SAMP_RATE =>
 							case i_cfg_value(7 downto 0) is
 								when x"00" | x"01" | x"02" =>
-									r_sample_rate <= i_cfg_value(1 downto 0);
-									o_cfg_ack_pulse  <= '1';
+									r_sample_rate_sel 	<= i_cfg_value(1 downto 0);
+									o_cfg_ack_pulse  	<= '1';
 
 								when others =>
 									o_cfg_error_pulse <= '1';
@@ -217,7 +217,7 @@ begin
 	
 	o_cfg_uart_baud_rate    <= r_uart_baud_rate;
 	o_cfg_capture_width_sel	<= r_capture_width_sel;
-	o_cfg_sample_rate       <= r_sample_rate;
+	o_cfg_sample_rate_sel   <= r_sample_rate_sel;
 	o_cfg_capture_depth_sel <= r_capture_depth_sel;
 	o_cfg_trigger_mode      <= r_trigger_mode;
 	o_cfg_edge_trigger_ch   <= r_edge_trigger_ch;

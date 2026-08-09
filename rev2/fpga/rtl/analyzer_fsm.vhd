@@ -44,7 +44,7 @@
 -- - Mode-aware capture timeout behaviour
 -- - Baud- and payload-dependent SEND limits
 -- --> Do not classify “still waiting for a trigger” as a fault.
--- IMPLEMENT i_cfg_ack_pulse/i_cfg_error_pulse later.
+-- CONSIDER implementing queue for status bytes in case send_engine takes over UART pipeline
 -- ========================================
 
 library IEEE;
@@ -95,9 +95,9 @@ architecture RTL of analyzer_fsm is
 	
 	-- Watchdog limits
 	-- WD LIMIT for CAPTURE: capture takes 8192 clock cycles. Set limit to 100k to have plenty of margin to avoid false WD trip, and stay within 22 bit width
-	constant WD_LIMIT_CAPTURE 	: unsigned(21 downto 0) := to_unsigned(100_000, r_wd_count'length);		-- CAPTURE timeout after 100k clock cycles
+	--constant WD_LIMIT_CAPTURE 	: unsigned(21 downto 0) := to_unsigned(100_000, r_wd_count'length);		-- CAPTURE timeout after 100k clock cycles
 	-- WD LIMIT for SEND: send takes 2_129_920 clock cycles. Set limit to 4M to avoid false WD trip and stay within 2^22 to keep 22 bit counter width
-	constant WD_LIMIT_SEND		: unsigned(21 downto 0) := to_unsigned(4_000_000, r_wd_count'length);  	-- SEND timeout after 4M clock cycles
+	--constant WD_LIMIT_SEND		: unsigned(21 downto 0) := to_unsigned(4_000_000, r_wd_count'length);  	-- SEND timeout after 4M clock cycles
 	
 begin
 	-- Sequential process to update r_state and deal with clocking and reset logic
@@ -144,14 +144,14 @@ begin
 			if i_fsm_tx_ready = '1' then
 				n_fsm_tx_valid <= '0';
 			end if;
+		
 		else
-			
 			case r_state is
 				when IDLE =>
-					if i_cfg_ack_pulse = '1' then		-- TBD: come back to this
+					if i_cfg_ack_pulse = '1' then  		-- valid opcode and config byte
 						n_fsm_tx_status_byte <= x"55";
 						n_fsm_tx_valid       <= '1';
-					elsif i_cfg_error_pulse = '1' then  -- TBD: come back to this
+					elsif i_cfg_error_pulse = '1' then	-- undefined opcode or config byte
 						n_fsm_tx_status_byte <= x"EE";
 						n_fsm_tx_valid       <= '1';
 					elsif i_capture_cmd_pulse = '1' then
@@ -185,10 +185,10 @@ begin
 					end if;
 					
 				when DONE => 
-					if i_cfg_ack_pulse = '1' then		-- TBD: come back to this
+					if i_cfg_ack_pulse = '1' then		-- valid opcode and config byte
 						n_fsm_tx_status_byte <= x"55";
 						n_fsm_tx_valid       <= '1';
-					elsif i_cfg_error_pulse = '1' then  -- TBD: come back to this
+					elsif i_cfg_error_pulse = '1' then  -- undefined opcode or config byte
 						n_fsm_tx_status_byte <= x"EE";
 						n_fsm_tx_valid       <= '1';
 					elsif i_capture_cmd_pulse = '1' then
