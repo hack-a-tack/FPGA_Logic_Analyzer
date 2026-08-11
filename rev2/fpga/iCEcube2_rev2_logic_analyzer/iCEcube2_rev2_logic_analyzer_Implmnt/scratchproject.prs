@@ -1,22 +1,21 @@
 #--  Synopsys, Inc.
 #--  Version L-2016.09L+ice40
-#--  Project file C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\iCEcube2_rev2_logic_analyzer\iCEcube2_rev2_logic_analyzer_syn.prj
-#--  Written on Tue Aug 11 06:27:57 2026
-
+#--  Project file C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\iCEcube2_rev2_logic_analyzer\iCEcube2_rev2_logic_analyzer_Implmnt\scratchproject.prs
 
 #project files
-add_file -vhdl -lib work "../rtl/send_engine.vhd"
+add_file -vhdl -lib work "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/rev2/fpga/rtl/send_engine.vhd"
 
 
 
 #implementation: "iCEcube2_rev2_logic_analyzer_Implmnt"
-impl -add iCEcube2_rev2_logic_analyzer_Implmnt -type fpga
+impl -add C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\iCEcube2_rev2_logic_analyzer\iCEcube2_rev2_logic_analyzer_Implmnt -type fpga
 
 #
 #implementation attributes
 
 set_option -vlog_std v2001
 set_option -project_relative_includes 1
+set_option -include_path {C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/rev2/fpga/iCEcube2_rev2_logic_analyzer/}
 
 #device options
 set_option -technology SBTiCE40UP
@@ -68,5 +67,5 @@ set_option -vhdl2008 1
 set_option -write_apr_constraint 1
 
 #set result format/file last
-project -result_file "iCEcube2_rev2_logic_analyzer_Implmnt/iCEcube2_rev2_logic_analyzer.edf"
+project -result_file "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/rev2/fpga/iCEcube2_rev2_logic_analyzer/iCEcube2_rev2_logic_analyzer_Implmnt/iCEcube2_rev2_logic_analyzer.edf"
 impl -active "iCEcube2_rev2_logic_analyzer_Implmnt"

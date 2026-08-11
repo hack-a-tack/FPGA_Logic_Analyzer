@@ -1,0 +1,155 @@
+# Synopsys Constraint Checker, version maplat, Build 1612R, built Dec  5 2016
+# Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+
+# Written on Tue Aug 11 06:42:09 2026
+
+
+##### DESIGN INFO #######################################################
+
+Top View:                "send_engine"
+Constraint File(s):      (none)
+
+
+
+
+##### SUMMARY ############################################################
+
+Found 0 issues in 0 out of 0 constraints
+
+
+##### DETAILS ############################################################
+
+
+
+Clock Relationships
+*******************
+
+Starting              Ending                |     rise to rise     |     fall to fall     |     rise to fall     |     fall to rise                     
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+send_engine|i_clk     send_engine|i_clk     |     10.021           |     No paths         |     No paths         |     No paths                         
+=======================================================================================================================================================
+ Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
+       'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
+
+
+Unconstrained Start/End Points
+******************************
+
+p:i_capture_sample_count[0]
+p:i_capture_sample_count[1]
+p:i_capture_sample_count[2]
+p:i_capture_sample_count[3]
+p:i_capture_sample_count[4]
+p:i_capture_sample_count[5]
+p:i_capture_sample_count[6]
+p:i_capture_sample_count[7]
+p:i_capture_sample_count[8]
+p:i_capture_sample_count[9]
+p:i_capture_sample_count[10]
+p:i_capture_sample_count[11]
+p:i_capture_sample_count[12]
+p:i_capture_sample_count[13]
+p:i_capture_sample_rate_sel[0]
+p:i_capture_sample_rate_sel[1]
+p:i_capture_start_addr[0]
+p:i_capture_start_addr[1]
+p:i_capture_start_addr[2]
+p:i_capture_start_addr[3]
+p:i_capture_start_addr[4]
+p:i_capture_start_addr[5]
+p:i_capture_start_addr[6]
+p:i_capture_start_addr[7]
+p:i_capture_start_addr[8]
+p:i_capture_start_addr[9]
+p:i_capture_start_addr[10]
+p:i_capture_start_addr[11]
+p:i_capture_start_addr[12]
+p:i_capture_start_addr[13]
+p:i_capture_trigger_index[0]
+p:i_capture_trigger_index[1]
+p:i_capture_trigger_index[2]
+p:i_capture_trigger_index[3]
+p:i_capture_trigger_index[4]
+p:i_capture_trigger_index[5]
+p:i_capture_trigger_index[6]
+p:i_capture_trigger_index[7]
+p:i_capture_trigger_index[8]
+p:i_capture_trigger_index[9]
+p:i_capture_trigger_index[10]
+p:i_capture_trigger_index[11]
+p:i_capture_trigger_index[12]
+p:i_capture_trigger_index[13]
+p:i_capture_trigger_index[14]
+p:i_capture_trigger_index[15]
+p:i_capture_trigger_mode[0]
+p:i_capture_trigger_mode[1]
+p:i_capture_width_sel
+p:i_ram_rd_data[0]
+p:i_ram_rd_data[1]
+p:i_ram_rd_data[2]
+p:i_ram_rd_data[3]
+p:i_ram_rd_data[4]
+p:i_ram_rd_data[5]
+p:i_ram_rd_data[6]
+p:i_ram_rd_data[7]
+p:i_ram_rd_data[8]
+p:i_ram_rd_data[9]
+p:i_ram_rd_data[10]
+p:i_ram_rd_data[11]
+p:i_ram_rd_data[12]
+p:i_ram_rd_data[13]
+p:i_ram_rd_data[14]
+p:i_ram_rd_data[15]
+p:i_rst_n
+p:i_send_start_pulse
+p:i_send_tx_ready
+p:o_ram_rd_addr[0]
+p:o_ram_rd_addr[1]
+p:o_ram_rd_addr[2]
+p:o_ram_rd_addr[3]
+p:o_ram_rd_addr[4]
+p:o_ram_rd_addr[5]
+p:o_ram_rd_addr[6]
+p:o_ram_rd_addr[7]
+p:o_ram_rd_addr[8]
+p:o_ram_rd_addr[9]
+p:o_ram_rd_addr[10]
+p:o_ram_rd_addr[11]
+p:o_ram_rd_addr[12]
+p:o_ram_rd_addr[13]
+p:o_send_active
+p:o_send_done_pulse
+p:o_send_tx_byte[0]
+p:o_send_tx_byte[1]
+p:o_send_tx_byte[2]
+p:o_send_tx_byte[3]
+p:o_send_tx_byte[4]
+p:o_send_tx_byte[5]
+p:o_send_tx_byte[6]
+p:o_send_tx_byte[7]
+p:o_send_tx_valid
+
+
+Inapplicable constraints
+************************
+
+(none)
+
+
+Applicable constraints with issues
+**********************************
+
+(none)
+
+
+Constraints with matching wildcard expressions
+**********************************************
+
+(none)
+
+
+Library Report
+**************
+
+
+# End of Constraint Checker Report

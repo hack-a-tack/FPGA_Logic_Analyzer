@@ -1,0 +1,2 @@
+@W: CL249 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|Initial value is not supported on state machine r_state
+

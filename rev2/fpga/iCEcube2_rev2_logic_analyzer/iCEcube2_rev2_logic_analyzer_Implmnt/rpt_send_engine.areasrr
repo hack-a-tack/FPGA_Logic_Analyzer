@@ -1,0 +1,35 @@
+#### START OF AREA REPORT #####[
+
+Part:			ICE40UP5KSG48 (Lattice)
+
+---------------------------------------------------------------------------
+########   Utilization report for  Top level view:   send_engine   ########
+===========================================================================
+
+SEQUENTIAL ELEMENTS
+Name      Total elements     Utilization     Notes
+--------------------------------------------------
+FLOPS     131                100 %                
+==================================================
+Total SEQUENTIAL ELEMENTS in the block send_engine:	131 (17.40 % Utilization)
+
+
+COMBINATIONAL LOGIC
+Name       Total elements     Utilization     Notes
+---------------------------------------------------
+LUTS       443                100 %                
+CARRYS     81                 100 %                
+===================================================
+Total COMBINATIONAL LOGIC in the block send_engine:	524 (69.59 % Utilization)
+
+
+IO PADS
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+PADS     96                 100 %                
+=================================================
+Total IO PADS in the block send_engine:	96 (12.75 % Utilization)
+
+
+##### END OF AREA REPORT #####]
+

@@ -1,0 +1,20 @@
+
+fsm_encoding {917921791} onehot
+
+fsm_state_encoding {917921791} idle {00000001}
+
+fsm_state_encoding {917921791} send_header {00000010}
+
+fsm_state_encoding {917921791} wait_ram {00000100}
+
+fsm_state_encoding {917921791} send_low_byte {00001000}
+
+fsm_state_encoding {917921791} send_high_byte {00010000}
+
+fsm_state_encoding {917921791} send_crc_low {00100000}
+
+fsm_state_encoding {917921791} send_crc_high {01000000}
+
+fsm_state_encoding {917921791} done {10000000}
+
+fsm_registers {917921791} {r_state[0]}  {r_state[1]}  {r_state[2]}  {r_state[3]}  {r_state[4]}  {r_state[5]}  {r_state[6]}  {r_state[7]} 

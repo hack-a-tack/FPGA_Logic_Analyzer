@@ -14,7 +14,7 @@
 -- OUTPUTS					DATA		TO MODULE
 -- o_cfg_uart_baud_rate    	2 bits		-> ???
 -- o_cfg_capture_width_sel	1 bit		-> capture_engine
--- o_cfg_sample_rate_sel   	2 bits		-> clocking
+-- o_cfg_sample_rate_sel   	2 bits		-> clocking, capture_engine
 -- o_cfg_capture_depth_sel	1 bit		-> capture_engine
 -- o_cfg_trigger_mode		2 bits		-> capture_engine
 -- o_cfg_edge_trigger_ch	4 bits		-> capture_engine
@@ -33,7 +33,7 @@
 --
 -- ITERATIVE PROCESS NOTES:
 -- There is more to updating UART BAUD RATE than updating an internal register... TBC
--- Where do we want to send ACK/ERROR from config_regs? back to host via TX path?
+-- Where do we want to send ACK/ERROR from config_regs? back to host via TX path? currently to host via TX path
 -- Decide where all other outputs go (clocking, capture_engine, trigger logic/etc.)
 -- update VHDL entities in OneNote once module is locked
 -- ========================================

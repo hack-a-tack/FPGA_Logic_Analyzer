@@ -1,0 +1,1068 @@
+#Build: Synplify Pro L-2016.09L+ice40, Build 077R, Dec  2 2016
+#install: C:\lscc\iCEcube2.2020.12\synpbase
+#OS: Windows 8 6.2
+#Hostname: DESKTOP-JTKRLJD
+
+# Tue Aug 11 06:42:06 2026
+
+#Implementation: iCEcube2_rev2_logic_analyzer_Implmnt
+
+Synopsys HDL Compiler, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+
+Synopsys VHDL Compiler, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+
+@N: CD720 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\vhd2008\std.vhd":146:18:146:21|Setting time resolution to ps
+@N:"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":74:7:74:17|Top entity is set to send_engine.
+VHDL syntax check successful!
+@N: CD231 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\vhd2008\std1164.vhd":890:16:890:17|Using onehot encoding for type mvl9plus. For example, enumeration 'U' is mapped to "1000000000".
+@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":74:7:74:17|Synthesizing work.send_engine.rtl.
+@N: CD231 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":105:29:105:30|Using onehot encoding for type send_engine_state_type. For example, enumeration idle is mapped to "10000000".
+Post processing for work.send_engine.rtl
+@N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|Trying to extract state machine for register r_state.
+Extracted state machine for register r_state
+State machine has 8 reachable states with original encodings of:
+   00000001
+   00000010
+   00000100
+   00001000
+   00010000
+   00100000
+   01000000
+   10000000
+@W: CL249 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|Initial value is not supported on state machine r_state
+
+At c_vhdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 76MB peak: 77MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Tue Aug 11 06:42:06 2026
+
+###########################################################]
+Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+@N: NF107 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":74:7:74:17|Selected library: work cell: send_engine view rtl as top level
+@N: NF107 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":74:7:74:17|Selected library: work cell: send_engine view rtl as top level
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Tue Aug 11 06:42:07 2026
+
+###########################################################]
+@END
+
+At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 3MB peak: 4MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Tue Aug 11 06:42:07 2026
+
+###########################################################]
+Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+@N: NF107 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":74:7:74:17|Selected library: work cell: send_engine view rtl as top level
+@N: NF107 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":74:7:74:17|Selected library: work cell: send_engine view rtl as top level
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Tue Aug 11 06:42:08 2026
+
+###########################################################]
+Pre-mapping Report
+
+# Tue Aug 11 06:42:08 2026
+
+Synopsys Lattice Technology Pre-mapping, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+Product Version L-2016.09L+ice40
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 100MB)
+
+@A: MF827 |No constraint file specified.
+@L: C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\iCEcube2_rev2_logic_analyzer\iCEcube2_rev2_logic_analyzer_Implmnt\iCEcube2_rev2_logic_analyzer_scck.rpt 
+Printing clock  summary report in "C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\iCEcube2_rev2_logic_analyzer\iCEcube2_rev2_logic_analyzer_Implmnt\iCEcube2_rev2_logic_analyzer_scck.rpt" file 
+@N: MF248 |Running in 64-bit mode.
+@N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 102MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 104MB)
+
+ICG Latch Removal Summary:
+Number of ICG latches removed:	0
+Number of ICG latches not removed:	0
+syn_allowed_resources : blockrams=30  set on top level netlist send_engine
+
+Finished netlist restructuring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 134MB)
+
+
+
+Clock Summary
+*****************
+
+Start                 Requested     Requested     Clock        Clock                     Clock
+Clock                 Frequency     Period        Type         Group                     Load 
+----------------------------------------------------------------------------------------------
+send_engine|i_clk     99.8 MHz      10.021        inferred     Autoconstr_clkgroup_0     116  
+==============================================================================================
+
+@W: MT529 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|Found inferred clock send_engine|i_clk which controls 116 sequential elements including r_ram_rd_addr[13:0]. This clock has no specified timing constraint which may prevent conversion of gated or generated clocks and may adversely impact design performance. 
+
+Finished Pre Mapping Phase.
+@N: BN225 |Writing default property annotation file C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\iCEcube2_rev2_logic_analyzer\iCEcube2_rev2_logic_analyzer_Implmnt\iCEcube2_rev2_logic_analyzer.sap.
+
+Starting constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 134MB)
+
+Encoding state machine r_state[0:7] (in view: work.send_engine(rtl))
+original code -> new code
+   00000001 -> 00000001
+   00000010 -> 00000010
+   00000100 -> 00000100
+   00001000 -> 00001000
+   00010000 -> 00010000
+   00100000 -> 00100000
+   01000000 -> 01000000
+   10000000 -> 10000000
+None
+None
+
+Finished constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 134MB)
+
+Pre-mapping successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 48MB peak: 134MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Tue Aug 11 06:42:09 2026
+
+###########################################################]
+Map & Optimize Report
+
+# Tue Aug 11 06:42:09 2026
+
+Synopsys Lattice Technology Mapper, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+Product Version L-2016.09L+ice40
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 100MB)
+
+@N: MF248 |Running in 64-bit mode.
+@N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 100MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 100MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 101MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 103MB)
+
+
+
+Starting Optimization and Mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 134MB)
+
+
+Available hyper_sources - for debug and ip models
+	None Found
+
+@N: MT206 |Auto Constrain mode is enabled
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|User-specified initial value defined for instance r_ram_rd_addr[13:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|User-specified initial value defined for instance r_sample_index[13:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|User-specified initial value defined for instance r_crc[15:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|User-specified initial value defined for instance r_send_done_pulse is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|User-specified initial value defined for instance r_header_index[3:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|User-specified initial value defined for instance r_seq_counter[7:0] is being ignored. 
+@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|User-specified initial value defined for instance r_payload_len[15:0] is being ignored. 
+
+Finished RTL optimizations (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 134MB)
+
+Encoding state machine r_state[0:7] (in view: work.send_engine(rtl))
+original code -> new code
+   00000001 -> 00000001
+   00000010 -> 00000010
+   00000100 -> 00000100
+   00001000 -> 00001000
+   00010000 -> 00010000
+   00100000 -> 00100000
+   01000000 -> 01000000
+   10000000 -> 10000000
+@N: MF179 :|Found 14 by 14 bit equality operator ('==') fsm_proc\.un9_r_ram_rd_addr (in view: work.send_engine(rtl))
+@N: MF179 :|Found 14 by 14 bit equality operator ('==') fsm_proc\.un15_i_send_tx_ready (in view: work.send_engine(rtl))
+
+Starting factoring (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 134MB)
+
+
+Finished factoring (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:01s; Memory used current: 148MB peak: 150MB)
+
+
+Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:01s; Memory used current: 137MB peak: 150MB)
+
+
+Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:01s; Memory used current: 139MB peak: 150MB)
+
+
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:01s; Memory used current: 139MB peak: 150MB)
+
+
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 139MB peak: 150MB)
+
+
+Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 139MB peak: 150MB)
+
+
+Finished preparing to map (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 139MB peak: 150MB)
+
+
+Finished technology mapping (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 139MB peak: 150MB)
+
+Pass		 CPU time		Worst Slack		Luts / Registers
+------------------------------------------------------------
+   1		0h:00m:02s		    -3.52ns		 256 /       116
+   2		0h:00m:02s		    -3.52ns		 247 /       116
+@N: FX271 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":260:8:260:32|Replicating instance n_payload_len_0_sqmuxa_1 (in view: work.send_engine(rtl)) with 84 loads 1 time to improve timing.
+@N: FX271 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|Replicating instance r_header_index[0] (in view: work.send_engine(rtl)) with 65 loads 3 times to improve timing.
+@N: FX271 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|Replicating instance r_header_index[3] (in view: work.send_engine(rtl)) with 52 loads 3 times to improve timing.
+@N: FX271 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|Replicating instance r_state[3] (in view: work.send_engine(rtl)) with 16 loads 2 times to improve timing.
+@N: FX271 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|Replicating instance r_state[1] (in view: work.send_engine(rtl)) with 31 loads 2 times to improve timing.
+@N: FX271 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|Replicating instance r_header_index[2] (in view: work.send_engine(rtl)) with 38 loads 3 times to improve timing.
+Timing driven replication report
+Added 13 Registers via timing driven replication
+Added 14 LUTs via timing driven replication
+
+   3		0h:00m:11s		    -2.12ns		 363 /       129
+
+@N: FX271 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|Replicating instance r_state[2] (in view: work.send_engine(rtl)) with 17 loads 2 times to improve timing.
+Timing driven replication report
+Added 2 Registers via timing driven replication
+Added 2 LUTs via timing driven replication
+
+   4		0h:00m:11s		    -1.75ns		 365 /       131
+@N: FX1016 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":79:2:79:6|SB_GB_IO inserted on the port i_clk.
+@N: FX1017 :|SB_GB inserted on the net i_rst_n_c_i.
+@N: FX1017 :|SB_GB inserted on the net N_691.
+
+Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:12s; CPU Time elapsed 0h:00m:11s; Memory used current: 167MB peak: 171MB)
+
+
+Finished restoring hierarchy (Real Time elapsed 0h:00m:12s; CPU Time elapsed 0h:00m:11s; Memory used current: 168MB peak: 171MB)
+
+
+
+@S |Clock Optimization Summary
+
+
+#### START OF CLOCK OPTIMIZATION REPORT #####[
+
+1 non-gated/non-generated clock tree(s) driving 131 clock pin(s) of sequential element(s)
+0 gated/generated clock tree(s) driving 0 clock pin(s) of sequential element(s)
+0 instances converted, 0 sequential instances remain driven by gated/generated clocks
+
+============================= Non-Gated/Non-Generated Clocks ==============================
+Clock Tree ID     Driving Element      Drive Element Type     Fanout     Sample Instance   
+-------------------------------------------------------------------------------------------
+@K:CKID0001       i_clk_ibuf_gb_io     SB_GB_IO               131        r_state_1_rep1_esr
+===========================================================================================
+
+
+##### END OF CLOCK OPTIMIZATION REPORT ######]
+
+
+Start Writing Netlists (Real Time elapsed 0h:00m:12s; CPU Time elapsed 0h:00m:11s; Memory used current: 136MB peak: 171MB)
+
+Writing Analyst data base C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\iCEcube2_rev2_logic_analyzer\iCEcube2_rev2_logic_analyzer_Implmnt\synwork\iCEcube2_rev2_logic_analyzer_m.srm
+
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:12s; CPU Time elapsed 0h:00m:11s; Memory used current: 162MB peak: 171MB)
+
+Writing EDIF Netlist and constraint files
+@N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.
+@N: BW107 |Synopsys Constraint File capacitance units using default value of 1pF 
+@N: FX1056 |Writing EDF file: C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\iCEcube2_rev2_logic_analyzer\iCEcube2_rev2_logic_analyzer_Implmnt\iCEcube2_rev2_logic_analyzer.edf
+L-2016.09L+ice40
+
+Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:13s; CPU Time elapsed 0h:00m:12s; Memory used current: 163MB peak: 171MB)
+
+
+Start final timing analysis (Real Time elapsed 0h:00m:13s; CPU Time elapsed 0h:00m:12s; Memory used current: 163MB peak: 171MB)
+
+@W: MT420 |Found inferred clock send_engine|i_clk with period 15.22ns. Please declare a user-defined clock on object "p:i_clk"
+
+
+##### START OF TIMING REPORT #####[
+# Timing Report written on Tue Aug 11 06:42:23 2026
+#
+
+
+Top view:               send_engine
+Requested Frequency:    65.7 MHz
+Wire load mode:         top
+Paths requested:        5
+Constraint File(s):    
+@N: MT320 |This timing report is an estimate of place and route data. For final timing results, use the FPGA vendor place and route report.
+
+@N: MT322 |Clock constraints include only register-to-register paths associated with each individual clock.
+
+
+
+Performance Summary
+*******************
+
+
+Worst slack in design: -2.686
+
+                      Requested     Estimated     Requested     Estimated                Clock        Clock                
+Starting Clock        Frequency     Frequency     Period        Period        Slack      Type         Group                
+---------------------------------------------------------------------------------------------------------------------------
+send_engine|i_clk     65.7 MHz      55.8 MHz      15.223        17.909        -2.686     inferred     Autoconstr_clkgroup_0
+===========================================================================================================================
+
+
+
+
+
+Clock Relationships
+*******************
+
+Clocks                                |    rise  to  rise    |    fall  to  fall   |    rise  to  fall   |    fall  to  rise 
+-----------------------------------------------------------------------------------------------------------------------------
+Starting           Ending             |  constraint  slack   |  constraint  slack  |  constraint  slack  |  constraint  slack
+-----------------------------------------------------------------------------------------------------------------------------
+send_engine|i_clk  send_engine|i_clk  |  15.223      -2.686  |  No paths    -      |  No paths    -      |  No paths    -    
+=============================================================================================================================
+ Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
+       'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
+
+
+
+Interface Information 
+*********************
+
+No IO constraint found
+
+
+
+====================================
+Detailed Report for Clock: send_engine|i_clk
+====================================
+
+
+
+Starting Points with Worst Slack
+********************************
+
+                           Starting                                                              Arrival           
+Instance                   Reference             Type         Pin     Net                        Time        Slack 
+                           Clock                                                                                   
+-------------------------------------------------------------------------------------------------------------------
+r_sample_index[0]          send_engine|i_clk     SB_DFFSR     Q       r_sample_index[0]          0.796       -2.686
+r_sample_index[1]          send_engine|i_clk     SB_DFFSR     Q       r_sample_index[1]          0.796       -2.486
+r_sample_index[2]          send_engine|i_clk     SB_DFFSR     Q       r_sample_index[2]          0.796       -2.286
+r_sample_index[3]          send_engine|i_clk     SB_DFFSR     Q       r_sample_index[3]          0.796       -2.086
+r_sample_index[4]          send_engine|i_clk     SB_DFFSR     Q       r_sample_index[4]          0.796       -1.886
+r_sample_index[5]          send_engine|i_clk     SB_DFFSR     Q       r_sample_index[5]          0.796       -1.686
+r_sample_index[6]          send_engine|i_clk     SB_DFFSR     Q       r_sample_index[6]          0.796       -1.486
+r_header_index_fast[2]     send_engine|i_clk     SB_DFFSR     Q       r_header_index_fast[2]     0.796       -1.370
+r_header_index_0_rep1      send_engine|i_clk     SB_DFFSR     Q       r_header_index_0_rep1      0.796       -1.329
+r_capture_width_sel        send_engine|i_clk     SB_DFFSR     Q       r_capture_width_sel        0.796       -1.309
+===================================================================================================================
+
+
+Ending Points with Worst Slack
+******************************
+
+                       Starting                                                              Required           
+Instance               Reference             Type         Pin     Net                        Time         Slack 
+                       Clock                                                                                    
+----------------------------------------------------------------------------------------------------------------
+r_ram_rd_addr[13]      send_engine|i_clk     SB_DFFSR     D       N_342                      15.068       -2.686
+r_sample_index[13]     send_engine|i_clk     SB_DFFSR     D       r_sample_index_RNO[13]     15.068       -2.562
+r_ram_rd_addr[12]      send_engine|i_clk     SB_DFFSR     D       N_341                      15.068       -2.362
+r_sample_index[12]     send_engine|i_clk     SB_DFFSR     D       r_sample_index_RNO[12]     15.068       -2.362
+r_ram_rd_addr[11]      send_engine|i_clk     SB_DFFSR     D       N_340                      15.068       -2.162
+r_sample_index[11]     send_engine|i_clk     SB_DFFSR     D       r_sample_index_RNO[11]     15.068       -2.162
+r_ram_rd_addr[10]      send_engine|i_clk     SB_DFFSR     D       N_339                      15.068       -1.962
+r_sample_index[10]     send_engine|i_clk     SB_DFFSR     D       r_sample_index_RNO[10]     15.068       -1.962
+r_ram_rd_addr[9]       send_engine|i_clk     SB_DFFSR     D       N_338                      15.068       -1.762
+r_sample_index[9]      send_engine|i_clk     SB_DFFSR     D       r_sample_index_RNO[9]      15.068       -1.762
+================================================================================================================
+
+
+
+Worst Path Information
+***********************
+
+
+Path information for path number 1: 
+      Requested Period:                      15.223
+    - Setup time:                            0.155
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         15.068
+
+    - Propagation time:                      17.754
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (critical) :                     -2.686
+
+    Number of logic level(s):                32
+    Starting point:                          r_sample_index[0] / Q
+    Ending point:                            r_ram_rd_addr[13] / D
+    The start point is clocked by            send_engine|i_clk [rising] on pin C
+    The end   point is clocked by            send_engine|i_clk [rising] on pin C
+
+Instance / Net                                                       Pin      Pin               Arrival     No. of    
+Name                                                    Type         Name     Dir     Delay     Time        Fan Out(s)
+----------------------------------------------------------------------------------------------------------------------
+r_sample_index[0]                                       SB_DFFSR     Q        Out     0.796     0.796       -         
+r_sample_index[0]                                       Net          -        -       1.599     -           4         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_0_c_inv          SB_LUT4      I0       In      -         2.395       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_0_c_inv          SB_LUT4      O        Out     0.661     3.056       -         
+r_sample_index_i[0]                                     Net          -        -       0.905     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_0_c              SB_CARRY     I0       In      -         3.961       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_0_c              SB_CARRY     CO       Out     0.380     4.341       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_0                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_1_c              SB_CARRY     CI       In      -         4.355       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_1_c              SB_CARRY     CO       Out     0.186     4.541       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_1                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_2_c              SB_CARRY     CI       In      -         4.555       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_2_c              SB_CARRY     CO       Out     0.186     4.741       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_2                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_3_c              SB_CARRY     CI       In      -         4.755       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_3_c              SB_CARRY     CO       Out     0.186     4.941       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_3                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_4_c              SB_CARRY     CI       In      -         4.955       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_4_c              SB_CARRY     CO       Out     0.186     5.141       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_4                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_5_c              SB_CARRY     CI       In      -         5.155       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_5_c              SB_CARRY     CO       Out     0.186     5.341       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_5                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_6_c              SB_CARRY     CI       In      -         5.355       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_6_c              SB_CARRY     CO       Out     0.186     5.541       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_6                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_7_c              SB_CARRY     CI       In      -         5.555       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_7_c              SB_CARRY     CO       Out     0.186     5.741       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_7                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_8_c              SB_CARRY     CI       In      -         5.755       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_8_c              SB_CARRY     CO       Out     0.186     5.941       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_8                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_9_c              SB_CARRY     CI       In      -         5.955       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_9_c              SB_CARRY     CO       Out     0.186     6.141       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_9                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_10_c             SB_CARRY     CI       In      -         6.155       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_10_c             SB_CARRY     CO       Out     0.186     6.341       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_10               Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_11_c             SB_CARRY     CI       In      -         6.355       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_11_c             SB_CARRY     CO       Out     0.186     6.541       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_11               Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_12_c             SB_CARRY     CI       In      -         6.555       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_12_c             SB_CARRY     CO       Out     0.186     6.741       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_12               Net          -        -       0.386     -           1         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_12_c_RNIATE8     SB_LUT4      I3       In      -         7.127       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_12_c_RNIATE8     SB_LUT4      O        Out     0.465     7.592       -         
+fsm_proc\.un15_i_send_tx_ready_a_4[13]                  Net          -        -       1.371     -           1         
+r_sample_count_RNIV1M11[12]                             SB_LUT4      I1       In      -         8.963       -         
+r_sample_count_RNIV1M11[12]                             SB_LUT4      O        Out     0.589     9.552       -         
+r_sample_count_RNIV1M11[12]                             Net          -        -       0.905     -           1         
+r_sample_count_RNIKF2J5[12]                             SB_CARRY     I0       In      -         10.457      -         
+r_sample_count_RNIKF2J5[12]                             SB_CARRY     CO       Out     0.380     10.837      -         
+fsm_proc\.un15_i_send_tx_ready_0_data_tmp[6]            Net          -        -       0.386     -           6         
+i_send_tx_ready_ibuf_RNI6N747                           SB_LUT4      I2       In      -         11.223      -         
+i_send_tx_ready_ibuf_RNI6N747                           SB_LUT4      O        Out     0.558     11.781      -         
+N_257_0_i                                               Net          -        -       0.905     -           4         
+un1_r_ram_rd_addr_cry_0_c                               SB_CARRY     CI       In      -         12.686      -         
+un1_r_ram_rd_addr_cry_0_c                               SB_CARRY     CO       Out     0.186     12.872      -         
+un1_r_ram_rd_addr_cry_0                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_1_c                               SB_CARRY     CI       In      -         12.886      -         
+un1_r_ram_rd_addr_cry_1_c                               SB_CARRY     CO       Out     0.186     13.072      -         
+un1_r_ram_rd_addr_cry_1                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_2_c                               SB_CARRY     CI       In      -         13.086      -         
+un1_r_ram_rd_addr_cry_2_c                               SB_CARRY     CO       Out     0.186     13.272      -         
+un1_r_ram_rd_addr_cry_2                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_3_c                               SB_CARRY     CI       In      -         13.286      -         
+un1_r_ram_rd_addr_cry_3_c                               SB_CARRY     CO       Out     0.186     13.472      -         
+un1_r_ram_rd_addr_cry_3                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_4_c                               SB_CARRY     CI       In      -         13.486      -         
+un1_r_ram_rd_addr_cry_4_c                               SB_CARRY     CO       Out     0.186     13.672      -         
+un1_r_ram_rd_addr_cry_4                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_5_c                               SB_CARRY     CI       In      -         13.686      -         
+un1_r_ram_rd_addr_cry_5_c                               SB_CARRY     CO       Out     0.186     13.872      -         
+un1_r_ram_rd_addr_cry_5                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_6_c                               SB_CARRY     CI       In      -         13.886      -         
+un1_r_ram_rd_addr_cry_6_c                               SB_CARRY     CO       Out     0.186     14.072      -         
+un1_r_ram_rd_addr_cry_6                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_7_c                               SB_CARRY     CI       In      -         14.086      -         
+un1_r_ram_rd_addr_cry_7_c                               SB_CARRY     CO       Out     0.186     14.272      -         
+un1_r_ram_rd_addr_cry_7                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_8_c                               SB_CARRY     CI       In      -         14.286      -         
+un1_r_ram_rd_addr_cry_8_c                               SB_CARRY     CO       Out     0.186     14.472      -         
+un1_r_ram_rd_addr_cry_8                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_9_c                               SB_CARRY     CI       In      -         14.486      -         
+un1_r_ram_rd_addr_cry_9_c                               SB_CARRY     CO       Out     0.186     14.672      -         
+un1_r_ram_rd_addr_cry_9                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_10_c                              SB_CARRY     CI       In      -         14.686      -         
+un1_r_ram_rd_addr_cry_10_c                              SB_CARRY     CO       Out     0.186     14.872      -         
+un1_r_ram_rd_addr_cry_10                                Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_11_c                              SB_CARRY     CI       In      -         14.886      -         
+un1_r_ram_rd_addr_cry_11_c                              SB_CARRY     CO       Out     0.186     15.072      -         
+un1_r_ram_rd_addr_cry_11                                Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_12_c                              SB_CARRY     CI       In      -         15.086      -         
+un1_r_ram_rd_addr_cry_12_c                              SB_CARRY     CO       Out     0.186     15.272      -         
+un1_r_ram_rd_addr_cry_12                                Net          -        -       0.386     -           1         
+r_ram_rd_addr_RNO[13]                                   SB_LUT4      I1       In      -         15.658      -         
+r_ram_rd_addr_RNO[13]                                   SB_LUT4      O        Out     0.589     16.247      -         
+N_342                                                   Net          -        -       1.507     -           1         
+r_ram_rd_addr[13]                                       SB_DFFSR     D        In      -         17.754      -         
+======================================================================================================================
+Total path delay (propagation time + setup) of 17.909 is 9.223(51.5%) logic and 8.686(48.5%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+Path information for path number 2: 
+      Requested Period:                      15.223
+    - Setup time:                            0.155
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         15.068
+
+    - Propagation time:                      17.630
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (non-critical) :                 -2.562
+
+    Number of logic level(s):                32
+    Starting point:                          r_sample_index[0] / Q
+    Ending point:                            r_sample_index[13] / D
+    The start point is clocked by            send_engine|i_clk [rising] on pin C
+    The end   point is clocked by            send_engine|i_clk [rising] on pin C
+
+Instance / Net                                                       Pin      Pin               Arrival     No. of    
+Name                                                    Type         Name     Dir     Delay     Time        Fan Out(s)
+----------------------------------------------------------------------------------------------------------------------
+r_sample_index[0]                                       SB_DFFSR     Q        Out     0.796     0.796       -         
+r_sample_index[0]                                       Net          -        -       1.599     -           4         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_0_c_inv          SB_LUT4      I0       In      -         2.395       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_0_c_inv          SB_LUT4      O        Out     0.661     3.056       -         
+r_sample_index_i[0]                                     Net          -        -       0.905     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_0_c              SB_CARRY     I0       In      -         3.961       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_0_c              SB_CARRY     CO       Out     0.380     4.341       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_0                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_1_c              SB_CARRY     CI       In      -         4.355       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_1_c              SB_CARRY     CO       Out     0.186     4.541       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_1                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_2_c              SB_CARRY     CI       In      -         4.555       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_2_c              SB_CARRY     CO       Out     0.186     4.741       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_2                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_3_c              SB_CARRY     CI       In      -         4.755       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_3_c              SB_CARRY     CO       Out     0.186     4.941       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_3                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_4_c              SB_CARRY     CI       In      -         4.955       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_4_c              SB_CARRY     CO       Out     0.186     5.141       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_4                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_5_c              SB_CARRY     CI       In      -         5.155       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_5_c              SB_CARRY     CO       Out     0.186     5.341       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_5                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_6_c              SB_CARRY     CI       In      -         5.355       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_6_c              SB_CARRY     CO       Out     0.186     5.541       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_6                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_7_c              SB_CARRY     CI       In      -         5.555       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_7_c              SB_CARRY     CO       Out     0.186     5.741       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_7                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_8_c              SB_CARRY     CI       In      -         5.755       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_8_c              SB_CARRY     CO       Out     0.186     5.941       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_8                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_9_c              SB_CARRY     CI       In      -         5.955       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_9_c              SB_CARRY     CO       Out     0.186     6.141       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_9                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_10_c             SB_CARRY     CI       In      -         6.155       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_10_c             SB_CARRY     CO       Out     0.186     6.341       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_10               Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_11_c             SB_CARRY     CI       In      -         6.355       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_11_c             SB_CARRY     CO       Out     0.186     6.541       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_11               Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_12_c             SB_CARRY     CI       In      -         6.555       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_12_c             SB_CARRY     CO       Out     0.186     6.741       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_12               Net          -        -       0.386     -           1         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_12_c_RNIATE8     SB_LUT4      I3       In      -         7.127       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_12_c_RNIATE8     SB_LUT4      O        Out     0.465     7.592       -         
+fsm_proc\.un15_i_send_tx_ready_a_4[13]                  Net          -        -       1.371     -           1         
+r_sample_count_RNIV1M11[12]                             SB_LUT4      I1       In      -         8.963       -         
+r_sample_count_RNIV1M11[12]                             SB_LUT4      O        Out     0.589     9.552       -         
+r_sample_count_RNIV1M11[12]                             Net          -        -       0.905     -           1         
+r_sample_count_RNIKF2J5[12]                             SB_CARRY     I0       In      -         10.457      -         
+r_sample_count_RNIKF2J5[12]                             SB_CARRY     CO       Out     0.380     10.837      -         
+fsm_proc\.un15_i_send_tx_ready_0_data_tmp[6]            Net          -        -       0.386     -           6         
+i_send_tx_ready_ibuf_RNI6N747                           SB_LUT4      I2       In      -         11.223      -         
+i_send_tx_ready_ibuf_RNI6N747                           SB_LUT4      O        Out     0.558     11.781      -         
+N_257_0_i                                               Net          -        -       0.905     -           4         
+un1_r_sample_index_cry_0_c                              SB_CARRY     CI       In      -         12.686      -         
+un1_r_sample_index_cry_0_c                              SB_CARRY     CO       Out     0.186     12.872      -         
+un1_r_sample_index_cry_0                                Net          -        -       0.014     -           2         
+un1_r_sample_index_cry_1_c                              SB_CARRY     CI       In      -         12.886      -         
+un1_r_sample_index_cry_1_c                              SB_CARRY     CO       Out     0.186     13.072      -         
+un1_r_sample_index_cry_1                                Net          -        -       0.014     -           2         
+un1_r_sample_index_cry_2_c                              SB_CARRY     CI       In      -         13.086      -         
+un1_r_sample_index_cry_2_c                              SB_CARRY     CO       Out     0.186     13.272      -         
+un1_r_sample_index_cry_2                                Net          -        -       0.014     -           2         
+un1_r_sample_index_cry_3_c                              SB_CARRY     CI       In      -         13.286      -         
+un1_r_sample_index_cry_3_c                              SB_CARRY     CO       Out     0.186     13.472      -         
+un1_r_sample_index_cry_3                                Net          -        -       0.014     -           2         
+un1_r_sample_index_cry_4_c                              SB_CARRY     CI       In      -         13.486      -         
+un1_r_sample_index_cry_4_c                              SB_CARRY     CO       Out     0.186     13.672      -         
+un1_r_sample_index_cry_4                                Net          -        -       0.014     -           2         
+un1_r_sample_index_cry_5_c                              SB_CARRY     CI       In      -         13.686      -         
+un1_r_sample_index_cry_5_c                              SB_CARRY     CO       Out     0.186     13.872      -         
+un1_r_sample_index_cry_5                                Net          -        -       0.014     -           2         
+un1_r_sample_index_cry_6_c                              SB_CARRY     CI       In      -         13.886      -         
+un1_r_sample_index_cry_6_c                              SB_CARRY     CO       Out     0.186     14.072      -         
+un1_r_sample_index_cry_6                                Net          -        -       0.014     -           2         
+un1_r_sample_index_cry_7_c                              SB_CARRY     CI       In      -         14.086      -         
+un1_r_sample_index_cry_7_c                              SB_CARRY     CO       Out     0.186     14.272      -         
+un1_r_sample_index_cry_7                                Net          -        -       0.014     -           2         
+un1_r_sample_index_cry_8_c                              SB_CARRY     CI       In      -         14.286      -         
+un1_r_sample_index_cry_8_c                              SB_CARRY     CO       Out     0.186     14.472      -         
+un1_r_sample_index_cry_8                                Net          -        -       0.014     -           2         
+un1_r_sample_index_cry_9_c                              SB_CARRY     CI       In      -         14.486      -         
+un1_r_sample_index_cry_9_c                              SB_CARRY     CO       Out     0.186     14.672      -         
+un1_r_sample_index_cry_9                                Net          -        -       0.014     -           2         
+un1_r_sample_index_cry_10_c                             SB_CARRY     CI       In      -         14.686      -         
+un1_r_sample_index_cry_10_c                             SB_CARRY     CO       Out     0.186     14.872      -         
+un1_r_sample_index_cry_10                               Net          -        -       0.014     -           2         
+un1_r_sample_index_cry_11_c                             SB_CARRY     CI       In      -         14.886      -         
+un1_r_sample_index_cry_11_c                             SB_CARRY     CO       Out     0.186     15.072      -         
+un1_r_sample_index_cry_11                               Net          -        -       0.014     -           2         
+un1_r_sample_index_cry_12_c                             SB_CARRY     CI       In      -         15.086      -         
+un1_r_sample_index_cry_12_c                             SB_CARRY     CO       Out     0.186     15.272      -         
+un1_r_sample_index_cry_12                               Net          -        -       0.386     -           1         
+r_sample_index_RNO[13]                                  SB_LUT4      I3       In      -         15.658      -         
+r_sample_index_RNO[13]                                  SB_LUT4      O        Out     0.465     16.123      -         
+r_sample_index_RNO[13]                                  Net          -        -       1.507     -           1         
+r_sample_index[13]                                      SB_DFFSR     D        In      -         17.630      -         
+======================================================================================================================
+Total path delay (propagation time + setup) of 17.785 is 9.099(51.2%) logic and 8.686(48.8%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+Path information for path number 3: 
+      Requested Period:                      15.223
+    - Setup time:                            0.155
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         15.068
+
+    - Propagation time:                      17.626
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (non-critical) :                 -2.559
+
+    Number of logic level(s):                31
+    Starting point:                          r_sample_index[0] / Q
+    Ending point:                            r_ram_rd_addr[13] / D
+    The start point is clocked by            send_engine|i_clk [rising] on pin C
+    The end   point is clocked by            send_engine|i_clk [rising] on pin C
+
+Instance / Net                                                       Pin      Pin               Arrival     No. of    
+Name                                                    Type         Name     Dir     Delay     Time        Fan Out(s)
+----------------------------------------------------------------------------------------------------------------------
+r_sample_index[0]                                       SB_DFFSR     Q        Out     0.796     0.796       -         
+r_sample_index[0]                                       Net          -        -       1.599     -           4         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_0_c_inv          SB_LUT4      I0       In      -         2.395       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_0_c_inv          SB_LUT4      O        Out     0.661     3.056       -         
+r_sample_index_i[0]                                     Net          -        -       0.905     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_0_c              SB_CARRY     I0       In      -         3.961       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_0_c              SB_CARRY     CO       Out     0.380     4.341       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_0                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_1_c              SB_CARRY     CI       In      -         4.355       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_1_c              SB_CARRY     CO       Out     0.186     4.541       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_1                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_2_c              SB_CARRY     CI       In      -         4.555       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_2_c              SB_CARRY     CO       Out     0.186     4.741       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_2                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_3_c              SB_CARRY     CI       In      -         4.755       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_3_c              SB_CARRY     CO       Out     0.186     4.941       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_3                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_4_c              SB_CARRY     CI       In      -         4.955       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_4_c              SB_CARRY     CO       Out     0.186     5.141       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_4                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_5_c              SB_CARRY     CI       In      -         5.155       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_5_c              SB_CARRY     CO       Out     0.186     5.341       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_5                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_6_c              SB_CARRY     CI       In      -         5.355       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_6_c              SB_CARRY     CO       Out     0.186     5.541       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_6                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_7_c              SB_CARRY     CI       In      -         5.555       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_7_c              SB_CARRY     CO       Out     0.186     5.741       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_7                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_8_c              SB_CARRY     CI       In      -         5.755       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_8_c              SB_CARRY     CO       Out     0.186     5.941       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_8                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_9_c              SB_CARRY     CI       In      -         5.955       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_9_c              SB_CARRY     CO       Out     0.186     6.141       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_9                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_10_c             SB_CARRY     CI       In      -         6.155       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_10_c             SB_CARRY     CO       Out     0.186     6.341       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_10               Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_11_c             SB_CARRY     CI       In      -         6.355       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_11_c             SB_CARRY     CO       Out     0.186     6.541       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_11               Net          -        -       0.386     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_11_c_RNI8QD8     SB_LUT4      I3       In      -         6.927       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_11_c_RNI8QD8     SB_LUT4      O        Out     0.465     7.392       -         
+fsm_proc\.un15_i_send_tx_ready_a_4[12]                  Net          -        -       1.371     -           1         
+r_sample_count_RNIV1M11[12]                             SB_LUT4      I0       In      -         8.763       -         
+r_sample_count_RNIV1M11[12]                             SB_LUT4      O        Out     0.661     9.425       -         
+r_sample_count_RNIV1M11[12]                             Net          -        -       0.905     -           1         
+r_sample_count_RNIKF2J5[12]                             SB_CARRY     I0       In      -         10.329      -         
+r_sample_count_RNIKF2J5[12]                             SB_CARRY     CO       Out     0.380     10.709      -         
+fsm_proc\.un15_i_send_tx_ready_0_data_tmp[6]            Net          -        -       0.386     -           6         
+i_send_tx_ready_ibuf_RNI6N747                           SB_LUT4      I2       In      -         11.095      -         
+i_send_tx_ready_ibuf_RNI6N747                           SB_LUT4      O        Out     0.558     11.653      -         
+N_257_0_i                                               Net          -        -       0.905     -           4         
+un1_r_ram_rd_addr_cry_0_c                               SB_CARRY     CI       In      -         12.558      -         
+un1_r_ram_rd_addr_cry_0_c                               SB_CARRY     CO       Out     0.186     12.744      -         
+un1_r_ram_rd_addr_cry_0                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_1_c                               SB_CARRY     CI       In      -         12.758      -         
+un1_r_ram_rd_addr_cry_1_c                               SB_CARRY     CO       Out     0.186     12.944      -         
+un1_r_ram_rd_addr_cry_1                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_2_c                               SB_CARRY     CI       In      -         12.958      -         
+un1_r_ram_rd_addr_cry_2_c                               SB_CARRY     CO       Out     0.186     13.144      -         
+un1_r_ram_rd_addr_cry_2                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_3_c                               SB_CARRY     CI       In      -         13.158      -         
+un1_r_ram_rd_addr_cry_3_c                               SB_CARRY     CO       Out     0.186     13.344      -         
+un1_r_ram_rd_addr_cry_3                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_4_c                               SB_CARRY     CI       In      -         13.358      -         
+un1_r_ram_rd_addr_cry_4_c                               SB_CARRY     CO       Out     0.186     13.544      -         
+un1_r_ram_rd_addr_cry_4                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_5_c                               SB_CARRY     CI       In      -         13.558      -         
+un1_r_ram_rd_addr_cry_5_c                               SB_CARRY     CO       Out     0.186     13.744      -         
+un1_r_ram_rd_addr_cry_5                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_6_c                               SB_CARRY     CI       In      -         13.758      -         
+un1_r_ram_rd_addr_cry_6_c                               SB_CARRY     CO       Out     0.186     13.944      -         
+un1_r_ram_rd_addr_cry_6                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_7_c                               SB_CARRY     CI       In      -         13.958      -         
+un1_r_ram_rd_addr_cry_7_c                               SB_CARRY     CO       Out     0.186     14.144      -         
+un1_r_ram_rd_addr_cry_7                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_8_c                               SB_CARRY     CI       In      -         14.158      -         
+un1_r_ram_rd_addr_cry_8_c                               SB_CARRY     CO       Out     0.186     14.344      -         
+un1_r_ram_rd_addr_cry_8                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_9_c                               SB_CARRY     CI       In      -         14.358      -         
+un1_r_ram_rd_addr_cry_9_c                               SB_CARRY     CO       Out     0.186     14.544      -         
+un1_r_ram_rd_addr_cry_9                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_10_c                              SB_CARRY     CI       In      -         14.558      -         
+un1_r_ram_rd_addr_cry_10_c                              SB_CARRY     CO       Out     0.186     14.744      -         
+un1_r_ram_rd_addr_cry_10                                Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_11_c                              SB_CARRY     CI       In      -         14.758      -         
+un1_r_ram_rd_addr_cry_11_c                              SB_CARRY     CO       Out     0.186     14.944      -         
+un1_r_ram_rd_addr_cry_11                                Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_12_c                              SB_CARRY     CI       In      -         14.958      -         
+un1_r_ram_rd_addr_cry_12_c                              SB_CARRY     CO       Out     0.186     15.144      -         
+un1_r_ram_rd_addr_cry_12                                Net          -        -       0.386     -           1         
+r_ram_rd_addr_RNO[13]                                   SB_LUT4      I1       In      -         15.530      -         
+r_ram_rd_addr_RNO[13]                                   SB_LUT4      O        Out     0.589     16.119      -         
+N_342                                                   Net          -        -       1.507     -           1         
+r_ram_rd_addr[13]                                       SB_DFFSR     D        In      -         17.626      -         
+======================================================================================================================
+Total path delay (propagation time + setup) of 17.781 is 9.109(51.2%) logic and 8.672(48.8%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+Path information for path number 4: 
+      Requested Period:                      15.223
+    - Setup time:                            0.155
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         15.068
+
+    - Propagation time:                      17.554
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (non-critical) :                 -2.486
+
+    Number of logic level(s):                31
+    Starting point:                          r_sample_index[1] / Q
+    Ending point:                            r_ram_rd_addr[13] / D
+    The start point is clocked by            send_engine|i_clk [rising] on pin C
+    The end   point is clocked by            send_engine|i_clk [rising] on pin C
+
+Instance / Net                                                       Pin      Pin               Arrival     No. of    
+Name                                                    Type         Name     Dir     Delay     Time        Fan Out(s)
+----------------------------------------------------------------------------------------------------------------------
+r_sample_index[1]                                       SB_DFFSR     Q        Out     0.796     0.796       -         
+r_sample_index[1]                                       Net          -        -       1.599     -           3         
+r_sample_index_RNIJGC5[1]                               SB_LUT4      I0       In      -         2.395       -         
+r_sample_index_RNIJGC5[1]                               SB_LUT4      O        Out     0.661     3.056       -         
+r_sample_index_RNIJGC5[1]                               Net          -        -       0.905     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_1_c              SB_CARRY     I0       In      -         3.961       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_1_c              SB_CARRY     CO       Out     0.380     4.341       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_1                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_2_c              SB_CARRY     CI       In      -         4.355       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_2_c              SB_CARRY     CO       Out     0.186     4.541       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_2                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_3_c              SB_CARRY     CI       In      -         4.555       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_3_c              SB_CARRY     CO       Out     0.186     4.741       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_3                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_4_c              SB_CARRY     CI       In      -         4.755       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_4_c              SB_CARRY     CO       Out     0.186     4.941       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_4                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_5_c              SB_CARRY     CI       In      -         4.955       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_5_c              SB_CARRY     CO       Out     0.186     5.141       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_5                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_6_c              SB_CARRY     CI       In      -         5.155       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_6_c              SB_CARRY     CO       Out     0.186     5.341       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_6                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_7_c              SB_CARRY     CI       In      -         5.355       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_7_c              SB_CARRY     CO       Out     0.186     5.541       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_7                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_8_c              SB_CARRY     CI       In      -         5.555       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_8_c              SB_CARRY     CO       Out     0.186     5.741       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_8                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_9_c              SB_CARRY     CI       In      -         5.755       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_9_c              SB_CARRY     CO       Out     0.186     5.941       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_9                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_10_c             SB_CARRY     CI       In      -         5.955       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_10_c             SB_CARRY     CO       Out     0.186     6.141       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_10               Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_11_c             SB_CARRY     CI       In      -         6.155       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_11_c             SB_CARRY     CO       Out     0.186     6.341       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_11               Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_12_c             SB_CARRY     CI       In      -         6.355       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_12_c             SB_CARRY     CO       Out     0.186     6.541       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_12               Net          -        -       0.386     -           1         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_12_c_RNIATE8     SB_LUT4      I3       In      -         6.927       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_12_c_RNIATE8     SB_LUT4      O        Out     0.465     7.392       -         
+fsm_proc\.un15_i_send_tx_ready_a_4[13]                  Net          -        -       1.371     -           1         
+r_sample_count_RNIV1M11[12]                             SB_LUT4      I1       In      -         8.763       -         
+r_sample_count_RNIV1M11[12]                             SB_LUT4      O        Out     0.589     9.352       -         
+r_sample_count_RNIV1M11[12]                             Net          -        -       0.905     -           1         
+r_sample_count_RNIKF2J5[12]                             SB_CARRY     I0       In      -         10.257      -         
+r_sample_count_RNIKF2J5[12]                             SB_CARRY     CO       Out     0.380     10.637      -         
+fsm_proc\.un15_i_send_tx_ready_0_data_tmp[6]            Net          -        -       0.386     -           6         
+i_send_tx_ready_ibuf_RNI6N747                           SB_LUT4      I2       In      -         11.023      -         
+i_send_tx_ready_ibuf_RNI6N747                           SB_LUT4      O        Out     0.558     11.581      -         
+N_257_0_i                                               Net          -        -       0.905     -           4         
+un1_r_ram_rd_addr_cry_0_c                               SB_CARRY     CI       In      -         12.486      -         
+un1_r_ram_rd_addr_cry_0_c                               SB_CARRY     CO       Out     0.186     12.672      -         
+un1_r_ram_rd_addr_cry_0                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_1_c                               SB_CARRY     CI       In      -         12.686      -         
+un1_r_ram_rd_addr_cry_1_c                               SB_CARRY     CO       Out     0.186     12.872      -         
+un1_r_ram_rd_addr_cry_1                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_2_c                               SB_CARRY     CI       In      -         12.886      -         
+un1_r_ram_rd_addr_cry_2_c                               SB_CARRY     CO       Out     0.186     13.072      -         
+un1_r_ram_rd_addr_cry_2                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_3_c                               SB_CARRY     CI       In      -         13.086      -         
+un1_r_ram_rd_addr_cry_3_c                               SB_CARRY     CO       Out     0.186     13.272      -         
+un1_r_ram_rd_addr_cry_3                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_4_c                               SB_CARRY     CI       In      -         13.286      -         
+un1_r_ram_rd_addr_cry_4_c                               SB_CARRY     CO       Out     0.186     13.472      -         
+un1_r_ram_rd_addr_cry_4                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_5_c                               SB_CARRY     CI       In      -         13.486      -         
+un1_r_ram_rd_addr_cry_5_c                               SB_CARRY     CO       Out     0.186     13.672      -         
+un1_r_ram_rd_addr_cry_5                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_6_c                               SB_CARRY     CI       In      -         13.686      -         
+un1_r_ram_rd_addr_cry_6_c                               SB_CARRY     CO       Out     0.186     13.872      -         
+un1_r_ram_rd_addr_cry_6                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_7_c                               SB_CARRY     CI       In      -         13.886      -         
+un1_r_ram_rd_addr_cry_7_c                               SB_CARRY     CO       Out     0.186     14.072      -         
+un1_r_ram_rd_addr_cry_7                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_8_c                               SB_CARRY     CI       In      -         14.086      -         
+un1_r_ram_rd_addr_cry_8_c                               SB_CARRY     CO       Out     0.186     14.272      -         
+un1_r_ram_rd_addr_cry_8                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_9_c                               SB_CARRY     CI       In      -         14.286      -         
+un1_r_ram_rd_addr_cry_9_c                               SB_CARRY     CO       Out     0.186     14.472      -         
+un1_r_ram_rd_addr_cry_9                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_10_c                              SB_CARRY     CI       In      -         14.486      -         
+un1_r_ram_rd_addr_cry_10_c                              SB_CARRY     CO       Out     0.186     14.672      -         
+un1_r_ram_rd_addr_cry_10                                Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_11_c                              SB_CARRY     CI       In      -         14.686      -         
+un1_r_ram_rd_addr_cry_11_c                              SB_CARRY     CO       Out     0.186     14.872      -         
+un1_r_ram_rd_addr_cry_11                                Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_12_c                              SB_CARRY     CI       In      -         14.886      -         
+un1_r_ram_rd_addr_cry_12_c                              SB_CARRY     CO       Out     0.186     15.072      -         
+un1_r_ram_rd_addr_cry_12                                Net          -        -       0.386     -           1         
+r_ram_rd_addr_RNO[13]                                   SB_LUT4      I1       In      -         15.458      -         
+r_ram_rd_addr_RNO[13]                                   SB_LUT4      O        Out     0.589     16.047      -         
+N_342                                                   Net          -        -       1.507     -           1         
+r_ram_rd_addr[13]                                       SB_DFFSR     D        In      -         17.554      -         
+======================================================================================================================
+Total path delay (propagation time + setup) of 17.709 is 9.037(51.0%) logic and 8.672(49.0%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+Path information for path number 5: 
+      Requested Period:                      15.223
+    - Setup time:                            0.155
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         15.068
+
+    - Propagation time:                      17.554
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (non-critical) :                 -2.486
+
+    Number of logic level(s):                31
+    Starting point:                          r_sample_index[0] / Q
+    Ending point:                            r_ram_rd_addr[13] / D
+    The start point is clocked by            send_engine|i_clk [rising] on pin C
+    The end   point is clocked by            send_engine|i_clk [rising] on pin C
+
+Instance / Net                                                       Pin      Pin               Arrival     No. of    
+Name                                                    Type         Name     Dir     Delay     Time        Fan Out(s)
+----------------------------------------------------------------------------------------------------------------------
+r_sample_index[0]                                       SB_DFFSR     Q        Out     0.796     0.796       -         
+r_sample_index[0]                                       Net          -        -       1.599     -           4         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_0_c_inv          SB_LUT4      I0       In      -         2.395       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_0_c_inv          SB_LUT4      O        Out     0.661     3.056       -         
+r_sample_index_i[0]                                     Net          -        -       0.905     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_0_c              SB_CARRY     I0       In      -         3.961       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_0_c              SB_CARRY     CO       Out     0.380     4.341       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_0                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_1_c              SB_CARRY     CI       In      -         4.355       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_1_c              SB_CARRY     CO       Out     0.186     4.541       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_1                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_2_c              SB_CARRY     CI       In      -         4.555       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_2_c              SB_CARRY     CO       Out     0.186     4.741       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_2                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_3_c              SB_CARRY     CI       In      -         4.755       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_3_c              SB_CARRY     CO       Out     0.186     4.941       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_3                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_4_c              SB_CARRY     CI       In      -         4.955       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_4_c              SB_CARRY     CO       Out     0.186     5.141       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_4                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_5_c              SB_CARRY     CI       In      -         5.155       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_5_c              SB_CARRY     CO       Out     0.186     5.341       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_5                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_6_c              SB_CARRY     CI       In      -         5.355       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_6_c              SB_CARRY     CO       Out     0.186     5.541       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_6                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_7_c              SB_CARRY     CI       In      -         5.555       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_7_c              SB_CARRY     CO       Out     0.186     5.741       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_7                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_8_c              SB_CARRY     CI       In      -         5.755       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_8_c              SB_CARRY     CO       Out     0.186     5.941       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_8                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_9_c              SB_CARRY     CI       In      -         5.955       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_9_c              SB_CARRY     CO       Out     0.186     6.141       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_9                Net          -        -       0.014     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_10_c             SB_CARRY     CI       In      -         6.155       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_10_c             SB_CARRY     CO       Out     0.186     6.341       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_10               Net          -        -       0.386     -           2         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_10_c_RNI6NC8     SB_LUT4      I3       In      -         6.727       -         
+fsm_proc\.un15_i_send_tx_ready_a_4_cry_10_c_RNI6NC8     SB_LUT4      O        Out     0.465     7.192       -         
+fsm_proc\.un15_i_send_tx_ready_a_4[11]                  Net          -        -       1.371     -           1         
+r_sample_count_RNICI0T[10]                              SB_LUT4      I1       In      -         8.563       -         
+r_sample_count_RNICI0T[10]                              SB_LUT4      O        Out     0.589     9.152       -         
+r_sample_count_RNICI0T[10]                              Net          -        -       0.905     -           1         
+r_sample_count_RNILDCH4[10]                             SB_CARRY     I0       In      -         10.057      -         
+r_sample_count_RNILDCH4[10]                             SB_CARRY     CO       Out     0.380     10.437      -         
+fsm_proc\.un15_i_send_tx_ready_0_data_tmp[5]            Net          -        -       0.014     -           1         
+r_sample_count_RNIKF2J5[12]                             SB_CARRY     CI       In      -         10.451      -         
+r_sample_count_RNIKF2J5[12]                             SB_CARRY     CO       Out     0.186     10.637      -         
+fsm_proc\.un15_i_send_tx_ready_0_data_tmp[6]            Net          -        -       0.386     -           6         
+i_send_tx_ready_ibuf_RNI6N747                           SB_LUT4      I2       In      -         11.023      -         
+i_send_tx_ready_ibuf_RNI6N747                           SB_LUT4      O        Out     0.558     11.581      -         
+N_257_0_i                                               Net          -        -       0.905     -           4         
+un1_r_ram_rd_addr_cry_0_c                               SB_CARRY     CI       In      -         12.486      -         
+un1_r_ram_rd_addr_cry_0_c                               SB_CARRY     CO       Out     0.186     12.672      -         
+un1_r_ram_rd_addr_cry_0                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_1_c                               SB_CARRY     CI       In      -         12.686      -         
+un1_r_ram_rd_addr_cry_1_c                               SB_CARRY     CO       Out     0.186     12.872      -         
+un1_r_ram_rd_addr_cry_1                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_2_c                               SB_CARRY     CI       In      -         12.886      -         
+un1_r_ram_rd_addr_cry_2_c                               SB_CARRY     CO       Out     0.186     13.072      -         
+un1_r_ram_rd_addr_cry_2                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_3_c                               SB_CARRY     CI       In      -         13.086      -         
+un1_r_ram_rd_addr_cry_3_c                               SB_CARRY     CO       Out     0.186     13.272      -         
+un1_r_ram_rd_addr_cry_3                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_4_c                               SB_CARRY     CI       In      -         13.286      -         
+un1_r_ram_rd_addr_cry_4_c                               SB_CARRY     CO       Out     0.186     13.472      -         
+un1_r_ram_rd_addr_cry_4                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_5_c                               SB_CARRY     CI       In      -         13.486      -         
+un1_r_ram_rd_addr_cry_5_c                               SB_CARRY     CO       Out     0.186     13.672      -         
+un1_r_ram_rd_addr_cry_5                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_6_c                               SB_CARRY     CI       In      -         13.686      -         
+un1_r_ram_rd_addr_cry_6_c                               SB_CARRY     CO       Out     0.186     13.872      -         
+un1_r_ram_rd_addr_cry_6                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_7_c                               SB_CARRY     CI       In      -         13.886      -         
+un1_r_ram_rd_addr_cry_7_c                               SB_CARRY     CO       Out     0.186     14.072      -         
+un1_r_ram_rd_addr_cry_7                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_8_c                               SB_CARRY     CI       In      -         14.086      -         
+un1_r_ram_rd_addr_cry_8_c                               SB_CARRY     CO       Out     0.186     14.272      -         
+un1_r_ram_rd_addr_cry_8                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_9_c                               SB_CARRY     CI       In      -         14.286      -         
+un1_r_ram_rd_addr_cry_9_c                               SB_CARRY     CO       Out     0.186     14.472      -         
+un1_r_ram_rd_addr_cry_9                                 Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_10_c                              SB_CARRY     CI       In      -         14.486      -         
+un1_r_ram_rd_addr_cry_10_c                              SB_CARRY     CO       Out     0.186     14.672      -         
+un1_r_ram_rd_addr_cry_10                                Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_11_c                              SB_CARRY     CI       In      -         14.686      -         
+un1_r_ram_rd_addr_cry_11_c                              SB_CARRY     CO       Out     0.186     14.872      -         
+un1_r_ram_rd_addr_cry_11                                Net          -        -       0.014     -           2         
+un1_r_ram_rd_addr_cry_12_c                              SB_CARRY     CI       In      -         14.886      -         
+un1_r_ram_rd_addr_cry_12_c                              SB_CARRY     CO       Out     0.186     15.072      -         
+un1_r_ram_rd_addr_cry_12                                Net          -        -       0.386     -           1         
+r_ram_rd_addr_RNO[13]                                   SB_LUT4      I1       In      -         15.458      -         
+r_ram_rd_addr_RNO[13]                                   SB_LUT4      O        Out     0.589     16.047      -         
+N_342                                                   Net          -        -       1.507     -           1         
+r_ram_rd_addr[13]                                       SB_DFFSR     D        In      -         17.554      -         
+======================================================================================================================
+Total path delay (propagation time + setup) of 17.709 is 9.037(51.0%) logic and 8.672(49.0%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+
+##### END OF TIMING REPORT #####]
+
+Timing exceptions that could not be applied
+None
+
+Finished final timing analysis (Real Time elapsed 0h:00m:13s; CPU Time elapsed 0h:00m:12s; Memory used current: 163MB peak: 171MB)
+
+
+Finished timing report (Real Time elapsed 0h:00m:13s; CPU Time elapsed 0h:00m:12s; Memory used current: 163MB peak: 171MB)
+
+---------------------------------------
+Resource Usage Report for send_engine 
+
+Mapping to part: ice40up5ksg48
+Cell usage:
+SB_CARRY        81 uses
+SB_DFF          1 use
+SB_DFFESR       4 uses
+SB_DFFSR        125 uses
+SB_DFFSS        1 use
+SB_GB           2 uses
+SB_LUT4         443 uses
+
+I/O ports: 94
+I/O primitives: 94
+SB_GB_IO       1 use
+SB_IO          93 uses
+
+I/O Register bits:                  0
+Register bits not including I/Os:   131 (2%)
+Total load per clock:
+   send_engine|i_clk: 1
+
+@S |Mapping Summary:
+Total  LUTs: 443 (8%)
+
+Distribution of All Consumed LUTs = LUT4 
+Distribution of All Consumed Luts 443 = 443 
+
+Mapper successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:13s; CPU Time elapsed 0h:00m:12s; Memory used current: 30MB peak: 171MB)
+
+Process took 0h:00m:13s realtime, 0h:00m:12s cputime
+# Tue Aug 11 06:42:23 2026
+
+###########################################################]

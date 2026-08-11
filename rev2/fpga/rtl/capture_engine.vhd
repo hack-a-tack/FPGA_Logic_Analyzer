@@ -13,6 +13,7 @@
 -- i_capture_start_pulse	1 bit		<- analyzer_fsm
 -- i_inputs					16 bits		<- top
 --- CONFIG REGISTER VALUES
+-- i_cfg_sample_rate_sel	2 bits		<- config_regs
 -- i_cfg_capture_width_sel	1 bit		<- config_regs
 -- i_cfg_capture_depth_sel	1 bit		<- config_regs
 -- i_cfg_trigger_mode		2 bits		<- config_regs
@@ -27,10 +28,12 @@
 -- o_raw_wr_addr			14 bits		-> trace_buffer
 -- o_raw_wr_data			16 bits		-> trace_buffer
 -- o_capture_done_pulse		1 bit		-> analyzer_fsm
+-- o_capture_sample_rate_sel	2 bits	-> send_engine
+-- o_capture_trigger_mode		2 bits	-> send_engine
+-- o_capture_trigger_index		16 bits	-> send_engine
 -- o_capture_start_addr 	14 bits		-> send_engine
 -- o_capture_sample_count	14 bits		-> send_engine
 -- o_capture_width_sel		1 bit		-> send_engine, trace_buffer
--- o_trigger_addr       	14 bits		-> send_engine
 --
 -- NOTES
 --
@@ -66,6 +69,7 @@ entity capture_engine is
 		i_capture_start_pulse	: in  std_logic;
 		i_inputs				: in  std_logic_vector(15 downto 0);  -- 16 bits at compile time. during runtime host can choose first 8 bits
 		
+		i_cfg_sample_rate_sel	: in  std_logic_vector(1 downto 0);
 		i_cfg_capture_width_sel	: in  std_logic; 
 		i_cfg_capture_depth_sel	: in  std_logic;
 		i_cfg_trigger_mode		: in  std_logic_vector(1 downto 0);
@@ -80,10 +84,13 @@ entity capture_engine is
 		o_raw_wr_data			: out std_logic_vector(15 downto 0);
 		o_capture_done_pulse	: out std_logic;
 		
-		o_capture_start_addr 	: out std_logic_vector(ADDR_LENGTH-1 downto 0);  -- needed for chronological readout
+		-- to send_engine
+		o_capture_sample_rate_sel	: out std_logic_vector(1 downto 0);
+		o_capture_trigger_mode		: out std_logic_vector(1 downto 0);
+		o_capture_trigger_index		: out std_logic_vector(15 downto 0);			-- 0xFFFF for immediate capture
+		o_capture_start_addr 	: out std_logic_vector(ADDR_LENGTH-1 downto 0);  	-- needed for chronological readout
 		o_capture_sample_count	: out std_logic_vector(ADDR_LENGTH-1 downto 0);
-		o_capture_width_sel		: out std_logic;
-		o_trigger_addr       	: out std_logic_vector(ADDR_LENGTH-1 downto 0)
+		o_capture_width_sel		: out std_logic
 	);
 end entity capture_engine;
 
@@ -96,6 +103,7 @@ architecture RTL of capture_engine is
 	signal r_capture_done_pulse, n_capture_done_pulse : std_logic := '0';
 	
 	-- Latched config values
+	signal r_sample_rate_sel, n_sample_rate_sel : std_logic_vector(1 downto 0) := "00";		-- default: 24MS/s
 	signal r_capture_width_sel, n_capture_width_sel : std_logic := '0';  	-- default: narrow (8 bits)
 	signal r_capture_depth_sel, n_capture_depth_sel : std_logic := '0';  	-- default: shallow (4096 bytes)
 	signal r_trigger_mode, n_trigger_mode : std_logic_vector(1 downto 0) := "00"; 	-- default: immediate capture
@@ -105,8 +113,8 @@ architecture RTL of capture_engine is
 	signal r_pattern_mask, n_pattern_mask : std_logic_vector(15 downto 0) := x"FFFF";		-- default: 0b1111 1111 1111 1111
 	signal r_trigger_pos, n_trigger_pos : std_logic_vector(1 downto 0) := "00"; 			-- default: 25% pre / 75% post trigger
 	
+	signal r_trigger_index, n_trigger_index : unsigned(15 downto 0) := (others => '0');  -- 0xFFFF for immediate capture
 	signal r_start_addr, n_start_addr : unsigned(ADDR_LENGTH-1 downto 0) := (others => '0');  -- addr sent to send_engine to start reading from RAM
-	signal r_trigger_addr, n_trigger_addr : unsigned(ADDR_LENGTH-1 downto 0) := (others => '0');  -- address where trigger occurs
 	signal r_last_addr, n_last_addr : unsigned(ADDR_LENGTH-1 downto 0) := to_unsigned(12288-1, ADDR_LENGTH);  -- how many addresses to fill in RAM (not actual end address)
 
 	signal r_write_ptr, n_write_ptr : unsigned(ADDR_LENGTH-1 downto 0);
@@ -126,6 +134,7 @@ begin
 				r_state <= IDLE;
 				r_capture_done_pulse <= '0';
 				
+				r_sample_rate_sel <= "00";
 				r_capture_width_sel <= '0';
 				r_capture_depth_sel <= '0';
 				r_trigger_mode <= "00";
@@ -135,8 +144,8 @@ begin
 				r_pattern_mask <= x"FFFF";
 				r_trigger_pos <= "00";
 				
+				r_trigger_index <= (others => '0');
 				r_start_addr <= (others => '0');
-				r_trigger_addr <= (others => '0');
 				r_last_addr <= (others => '0');
 				
 				r_write_ptr <= (others => '0');
@@ -149,6 +158,7 @@ begin
 				r_state <= n_state;
 				r_capture_done_pulse <= n_capture_done_pulse;
 				
+				r_sample_rate_sel <= n_sample_rate_sel;
 				r_capture_width_sel <= n_capture_width_sel;
 				r_capture_depth_sel <= n_capture_depth_sel;
 				r_trigger_mode <= n_trigger_mode;
@@ -158,8 +168,8 @@ begin
 				r_pattern_mask <= n_pattern_mask;
 				r_trigger_pos <= n_trigger_pos;
 				
+				r_trigger_index <= n_trigger_index;
 				r_start_addr <= n_start_addr;
-				r_trigger_addr <= n_trigger_addr;
 				r_last_addr <= n_last_addr;
 				
 				r_write_ptr <= n_write_ptr;
@@ -180,6 +190,7 @@ begin
 		n_state <= r_state;
 		n_capture_done_pulse <= '0';
 		
+		n_sample_rate_sel <= r_sample_rate_sel;
 		n_capture_width_sel <= r_capture_width_sel;
 		n_capture_depth_sel <= r_capture_depth_sel;
 		n_trigger_mode <= r_trigger_mode;
@@ -189,8 +200,8 @@ begin
 		n_pattern_mask <= r_pattern_mask;
 		n_trigger_pos <= r_trigger_pos;
 		
+		n_trigger_index <= r_trigger_index;
 		n_start_addr <= r_start_addr;
-		n_trigger_addr <= r_trigger_addr;
 		n_last_addr <= r_last_addr;
 		
 		n_write_ptr <= r_write_ptr;
@@ -216,10 +227,11 @@ begin
 					n_write_ptr      <= (others => '0');
 					n_prefill_count  <= 0;
 					n_start_addr     <= (others => '0');
-					n_trigger_addr   <= (others => '0');
+					n_trigger_index  <= unsigned(x"FFFF");  -- 0xFFFF as trigger index for linear capture. Gets changed if FSM reaches ARMED state
 					n_prev_sample    <= (others => '0');
 				
 					-- latch all relevant configuration values
+					n_sample_rate_sel 	<= i_cfg_sample_rate_sel;
 					n_capture_width_sel <= i_cfg_capture_width_sel;
 					n_capture_depth_sel <= i_cfg_capture_depth_sel;
 					n_trigger_mode		<= i_cfg_trigger_mode;
@@ -334,7 +346,6 @@ begin
 					if r_write_ptr = r_last_addr then
 						-- Sample nr 4096 (index 4095) (or similar) just captured in last cycle
 						n_start_addr <= (others => '0');  -- send_engine starts at addr 0 for linear captures
-						n_trigger_addr <= (others => '0');  -- trigger_addr doesn't matter for linear captures
 						n_state <= DONE;
 					end if;
 					-- write_ptr is updated outside the FSM so no need to increment manually
@@ -365,26 +376,26 @@ begin
 					if r_trigger_mode = "01" then  -- edge trigger
 						if r_edge_trigger_type = "00" then  -- rising_edge
 							if r_prev_sample(to_integer(unsigned(r_edge_trigger_ch))) = '0' and i_inputs(to_integer(unsigned(r_edge_trigger_ch))) = '1' then
-								n_trigger_addr <= r_write_ptr;  -- record trigger address
-								n_post_remaining <= r_post_remaining - 1;  -- trigger address is first post trigger value
+								n_trigger_index <= to_unsigned(r_pre_samples, 16);  -- trigger occurs at index r_pre_samples
+								n_post_remaining <= r_post_remaining - 1;  -- trigger address (at index r_pre_samples) is first post trigger value
 								n_state <= POST_TRIGGER;
 							end if;
 						elsif r_edge_trigger_type = "01" then  -- falling_edge
 							if r_prev_sample(to_integer(unsigned(r_edge_trigger_ch))) = '1' and i_inputs(to_integer(unsigned(r_edge_trigger_ch))) = '0' then
-								n_trigger_addr <= r_write_ptr;  -- record trigger address
+								n_trigger_index <= to_unsigned(r_pre_samples, 16);
 								n_post_remaining <= r_post_remaining - 1;  -- trigger address is first post trigger value
 								n_state <= POST_TRIGGER;
 							end if;
 						else  -- either
 							if r_prev_sample(to_integer(unsigned(r_edge_trigger_ch))) /= i_inputs(to_integer(unsigned(r_edge_trigger_ch))) then
-								n_trigger_addr <= r_write_ptr;  -- record trigger address
+								n_trigger_index <= to_unsigned(r_pre_samples, 16);
 								n_post_remaining <= r_post_remaining - 1;  -- trigger address is first post trigger value
 								n_state <= POST_TRIGGER;
 							end if;
 						end if;
 					elsif r_trigger_mode = "02" then  -- pattern trigger
 						if (i_inputs and r_pattern_mask) = (r_pattern_value and r_pattern_mask) then
-							n_trigger_addr <= r_write_ptr;  -- record trigger address
+							n_trigger_index <= to_unsigned(r_pre_samples, 16);
 							n_post_remaining <= r_post_remaining - 1;  -- trigger address is first post trigger value
 							n_state <= POST_TRIGGER;
 						end if;
@@ -428,9 +439,11 @@ begin
 	o_raw_wr_data 			<= i_inputs;
 	o_capture_done_pulse	<= r_capture_done_pulse;
 	
+	o_capture_sample_rate_sel <= r_sample_rate_sel;
+	o_capture_trigger_mode 	<= r_trigger_mode;
+	o_capture_trigger_index	<= std_logic_vector(r_trigger_index)
 	o_capture_start_addr 	<= std_logic_vector(r_start_addr);
 	o_capture_sample_count	<= std_logic_vector(r_last_addr+1);
 	o_capture_width_sel		<= r_capture_width_sel;
-	o_trigger_addr       	<= std_logic_vector(r_trigger_addr);
 	
 end architecture RTL;

@@ -1,0 +1,1 @@
+@W: MT529 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|Found inferred clock send_engine|i_clk which controls 116 sequential elements including r_ram_rd_addr[13:0]. This clock has no specified timing constraint which may prevent conversion of gated or generated clocks and may adversely impact design performance. 

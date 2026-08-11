@@ -1,0 +1,60 @@
+Running in Lattice mode
+
+
+Starting:    C:\lscc\iCEcube2.2020.12\synpbase\bin64\mbin\synbatch.exe
+Install:     C:\lscc\iCEcube2.2020.12\synpbase
+Hostname:    DESKTOP-JTKRLJD
+Date:        Tue Aug 11 06:40:44 2026
+Version:     L-2016.09L+ice40
+
+Arguments:   -product synplify_pro -batch iCEcube2_rev2_logic_analyzer_syn.prj
+ProductType: synplify_pro
+
+
+
+
+
+auto_infer_blackbox is not supported in current product.
+
+log file: "C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\iCEcube2_rev2_logic_analyzer\iCEcube2_rev2_logic_analyzer_Implmnt\iCEcube2_rev2_logic_analyzer.srr"
+
+Running: iCEcube2_rev2_logic_analyzer_Implmnt in foreground
+
+
+
+Running iCEcube2_rev2_logic_analyzer_syn|iCEcube2_rev2_logic_analyzer_Implmnt
+
+
+Running: compile (Compile) on iCEcube2_rev2_logic_analyzer_syn|iCEcube2_rev2_logic_analyzer_Implmnt
+# Tue Aug 11 06:40:44 2026
+
+
+Running: compile_flow (Compile Process) on iCEcube2_rev2_logic_analyzer_syn|iCEcube2_rev2_logic_analyzer_Implmnt
+# Tue Aug 11 06:40:44 2026
+
+
+Running: compiler (Compile Input) on iCEcube2_rev2_logic_analyzer_syn|iCEcube2_rev2_logic_analyzer_Implmnt
+# Tue Aug 11 06:40:44 2026
+
+compiler exited with errors
+
+Job failed on: iCEcube2_rev2_logic_analyzer_syn|iCEcube2_rev2_logic_analyzer_Implmnt
+
+
+Job: "compiler" terminated with error status: 2
+See log file: "C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\iCEcube2_rev2_logic_analyzer\iCEcube2_rev2_logic_analyzer_Implmnt\synlog\iCEcube2_rev2_logic_analyzer_compiler.srr"
+# Tue Aug 11 06:40:45 2026
+
+Return Code: 2
+Run Time:00h:00m:01s
+
+Complete: Compile Process on iCEcube2_rev2_logic_analyzer_syn|iCEcube2_rev2_logic_analyzer_Implmnt
+
+Complete: Compile on iCEcube2_rev2_logic_analyzer_syn|iCEcube2_rev2_logic_analyzer_Implmnt
+
+Complete: Logic Synthesis on iCEcube2_rev2_logic_analyzer_syn|iCEcube2_rev2_logic_analyzer_Implmnt
+
+exit status=2
+
+exit status=2
+
