@@ -6,6 +6,7 @@
 -- MODIFIED: 2026-05-14 (reset active low)
 -- LAST MODIFIED: 2026-05-15 (watchdog)
 -- MODIFIED: 2026-08-06 (rev2)
+-- MODIFIED: 2026-08-12 (rev2) (SEND now returns to DATA_READY instead of IDLE, so READ is repeatable)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -28,6 +29,7 @@
 --
 -- NOTES
 -- During a READ transfer, send_engine owns the UART exclusively. An FSM status may remain pending, but it must not be inserted into the data stream.
+-- A completed capture remains readable in DATA_READY; READ may be issued repeatedly so the host can retry after a CRC or sequence failure. The capture is invalidated only by a new CAPTURE command.
 --
 -- PREFIXES
 -- i_ : input
@@ -81,7 +83,7 @@ entity analyzer_fsm is
 end entity analyzer_fsm;
 
 architecture RTL of analyzer_fsm is
-	type runtime_state_type is (IDLE, CAPTURE, DONE, SEND);
+	type runtime_state_type is (IDLE, CAPTURE, DATA_READY, SEND);
 	signal r_state, n_state : runtime_state_type := IDLE;
 	
 	-- Register signals, next-state signals
@@ -170,7 +172,7 @@ begin
 				when CAPTURE =>
 					if i_capture_done_pulse = '1' then
 						n_USER_LED <= not r_USER_LED;  -- toggle the LED once CAPTURE is complete
-						n_state <= DONE;
+						n_state <= DATA_READY;
 						n_fsm_tx_status_byte <= x"77";  -- 0x77 (DONE), 0b01110111
 						n_fsm_tx_valid <= '1';
 					elsif i_capture_cmd_pulse = '1' then
@@ -184,7 +186,7 @@ begin
 						n_fsm_tx_valid <= '1';
 					end if;
 					
-				when DONE => 
+				when DATA_READY => 
 					if i_cfg_ack_pulse = '1' then		-- valid opcode and config byte
 						n_fsm_tx_status_byte <= x"55";
 						n_fsm_tx_valid       <= '1';
@@ -206,7 +208,7 @@ begin
 					
 				when SEND => 
 					if i_send_done_pulse = '1' then 
-						n_state <= IDLE;
+						n_state <= DATA_READY;
 						-- no error handling in state SEND (0xEE won't be sent as data is being streamed)
 					end if;
 			end case;

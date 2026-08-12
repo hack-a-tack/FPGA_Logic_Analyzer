@@ -48,7 +48,7 @@ entity tx_mux is
 		-- Send_engine related signals
 		i_send_tx_byte			: in  std_logic_vector(DATA_LENGTH-1 downto 0);
 		i_send_tx_valid			: in  std_logic;
-		i_send_active			: out std_logic;
+		i_send_active			: in  std_logic;
 		o_send_tx_ready			: out std_logic;	-- i_uart_tx_ready relayed via tx_mux, from uart_tx
 		
 		-- tx_mux <--> uart_tx signals

@@ -137,7 +137,7 @@ begin
                             if (r_pending_cmd = CMD_PATTERN_TRIGGER_PATTERN) or
                                (r_pending_cmd = CMD_PATTERN_TRIGGER_MASK) then
 
-                                -- First byte is the high byte.
+                                -- First byte is the low byte.
                                 r_arg_1 <= i_rx_byte;
                                 r_state <= WAIT_ARG_2;
 
@@ -164,7 +164,7 @@ begin
 
                             -- High byte arrived first, low byte arrives now.
                             o_cfg_opcode      <= r_pending_cmd;
-                            o_cfg_value       <= r_arg_1 & i_rx_byte;
+                            o_cfg_value       <= i_rx_byte & r_arg_1;
                             o_cfg_write_pulse <= '1';
 
                             r_state <= IDLE;

@@ -393,7 +393,7 @@ begin
 								n_state <= POST_TRIGGER;
 							end if;
 						end if;
-					elsif r_trigger_mode = "02" then  -- pattern trigger
+					elsif r_trigger_mode = "10" then  -- pattern trigger
 						if (i_inputs and r_pattern_mask) = (r_pattern_value and r_pattern_mask) then
 							n_trigger_index <= to_unsigned(r_pre_samples, 16);
 							n_post_remaining <= r_post_remaining - 1;  -- trigger address is first post trigger value
@@ -441,7 +441,7 @@ begin
 	
 	o_capture_sample_rate_sel <= r_sample_rate_sel;
 	o_capture_trigger_mode 	<= r_trigger_mode;
-	o_capture_trigger_index	<= std_logic_vector(r_trigger_index)
+	o_capture_trigger_index	<= std_logic_vector(r_trigger_index);
 	o_capture_start_addr 	<= std_logic_vector(r_start_addr);
 	o_capture_sample_count	<= std_logic_vector(r_last_addr+1);
 	o_capture_width_sel		<= r_capture_width_sel;
