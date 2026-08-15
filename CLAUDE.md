@@ -5,6 +5,10 @@ Simulate/synthesis commands:
 VHDL standard: 2008
 
 Coding conventions:
+## General
+- Apart from that which is specifically outlined below, keep general comments relatively simple. Not overly long, and focus on using simple/direct language.
+- Don't add "--" inside comments. Avoid semicolons as well.
+- Let's stick to std_logic_vectors for entity declarations (in/out ports), but unsigned vectors for intra-module logic.
 
 ## File header (every .vhd file)
 Every file opens and closes with a `-- ========================================` rule and includes, in this order:
@@ -14,12 +18,12 @@ Every file opens and closes with a `-- ========================================`
 - `DATE:` creation date, explicitly noted as `(YYYY-MM-DD)`
 - `MODIFIED:` one line per revision, each with a short reason in parentheses (e.g. `MODIFIED: 2026-05-14 (reset active low)`). Keep prior MODIFIED lines; append new ones rather than overwriting. (`LAST MODIFIED:` also appears in a couple of files — prefer `MODIFIED:` for new entries.)
 - Blank line, then an `INPUTS` table and an `OUTPUTS` table: columns are signal name, bit width, and the module it's driven by / driven to (e.g. `i_rx_byte   8 bits   <- uart_rx`).
-- `NOTES`: free-form design notes — timing math, hardware gotchas, encoding schemes, anything a reader needs to trust the RTL without re-deriving it.
+- `NOTES`: free-form design notes — timing math, hardware gotchas, encoding schemes, anything a reader needs to trust the RTL without re-deriving it. KEEP THESE RATHER MINIMAL AND USE SIMPLE WORDS. Should be easy to understand
 - `PREFIXES`: lists which of the signal-name prefixes below are actually used in this file.
 - `ITERATIVE PROCESS NOTES`: a living TODO/scratchpad kept *in* the file — deferred work, rejected approaches and why, reminders (e.g. "update VHDL entities in OneNote once module is locked"). Keep this section instead of deleting stale design discussion; it documents why something is *not* done yet.
 
 ## Libraries
-Every file uses:
+Virtually every file uses:
 ```vhdl
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -27,7 +31,7 @@ use IEEE.NUMERIC_STD.ALL;
 ```
 
 ## Naming
-- Entity name matches the filename. Architecture name is `RTL` for real logic, `STRUCTURE` for the structural top-level, `sim` for simulation-only dummy primitives (e.g. `SB_HFOSC.vhd`).
+- Entity name matches the filename. Architecture name is `RTL` for real logic, `STRUCTURE` for the structural top-level, `sim` for simulation-only dummy primitives (e.g. `SB_HFOSC.vhd`). Group in/out ports in the entity declaration according to what modules they interface (and add a small comment above these groups to make this clear to the reader).
 - Generics: `ALL_CAPS_WITH_UNDERSCORES` (`CLK_FREQ_HZ`, `ADDR_LENGTH`, `DATA_LENGTH`). Large numeric defaults use `_` separators for readability (`48_000_000`).
 - Constants (opcodes, sync bytes): `ALL_CAPS`, hex literals via `x".."` (e.g. `CMD_CAPTURE : std_logic_vector(7 downto 0) := x"A0"`).
 - Ports: `i_`/`o_` prefix required (see below). Signals tied to physical top-level pins keep `ALL_CAPS` after the prefix (`i_LA0`, `o_UART_TX`); internal module-to-module signals are `lower_snake_case` after the prefix (`i_clk`, `o_capture_start_pulse`).

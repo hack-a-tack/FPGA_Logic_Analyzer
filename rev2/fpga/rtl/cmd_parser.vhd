@@ -5,6 +5,7 @@
 -- DATE: 2026-03-12 (YYYY-MM-DD)
 -- MODIFIED: 2026-05-14 (reset active low)
 -- MODIFIED: 2026-07-28 (FSM, config outputs)
+-- MODIFIED: 2026-08-15 (rev2) (add o_cmd_opcode output for resp_gen detail byte; fix stale WAIT_ARG_2 comment for C7/C8 byte order)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -16,11 +17,19 @@
 -- o_capture_cmd_pulse		1 bit		-> analyzer_fsm
 -- o_read_cmd_pulse			1 bit		-> analyzer_fsm
 -- o_cmd_error_pulse		1 bit		-> analyzer_fsm
+-- o_cmd_opcode				8 bits		-> analyzer_fsm
 -- o_cfg_write_pulse		1 bit		-> config_regs
 -- o_cfg_opcode				8 bits		-> config_regs
 -- o_cfg_value				16 bits		-> config_regs
 --
--- PREFIXES					
+-- NOTES
+-- o_cmd_opcode is held, not pulsed: analyzer_fsm samples it one or more cycles after the triggering pulse, so a
+-- self-clearing signal would read back as 0x00. It only updates in IDLE, on i_rx_valid_pulse, so it correctly
+-- holds the pending command's opcode through WAIT_ARG_1/WAIT_ARG_2 for timeout/error reporting.
+-- CMD_PATTERN_TRIGGER_PATTERN/CMD_PATTERN_TRIGGER_MASK (C7/C8) arguments are low byte first, matching every other
+-- multi-byte field in the protocol (LEN, SAMPLE_COUNT, TRIGGER_INDEX, CRC, sample data).
+--
+-- PREFIXES
 -- i_ : input
 -- o_ : output
 -- r_ : register 			(internal signal; current; 		for sequential process)
@@ -49,7 +58,8 @@ entity cmd_parser is
 		o_capture_cmd_pulse		: out std_logic;
 		o_read_cmd_pulse		: out std_logic;
 		o_cmd_error_pulse		: out std_logic;
-		
+		o_cmd_opcode			: out std_logic_vector(DATA_LENGTH-1 downto 0);	-- -> analyzer_fsm
+
 		o_cfg_write_pulse		: out std_logic;
 		o_cfg_opcode			: out std_logic_vector(DATA_LENGTH-1 downto 0);
 		o_cfg_value				: out std_logic_vector(2*DATA_LENGTH-1 downto 0)
@@ -97,6 +107,7 @@ begin
                 r_pending_cmd   <= (others => '0');
                 r_arg_1         <= (others => '0');
                 r_timeout_count <= 0;
+                o_cmd_opcode    <= (others => '0');
                 o_cfg_opcode    <= (others => '0');
                 o_cfg_value     <= (others => '0');
             else
@@ -105,6 +116,8 @@ begin
                         r_timeout_count <= 0;
 
                         if i_rx_valid_pulse = '1' then
+                            o_cmd_opcode <= i_rx_byte;
+
                             case i_rx_byte is
 
                                 when CMD_CAPTURE 	=> o_capture_cmd_pulse <= '1';
@@ -162,7 +175,7 @@ begin
                         if i_rx_valid_pulse = '1' then
                             r_timeout_count <= 0;
 
-                            -- High byte arrived first, low byte arrives now.
+                            -- Low byte arrived first, high byte arrives now.
                             o_cfg_opcode      <= r_pending_cmd;
                             o_cfg_value       <= i_rx_byte & r_arg_1;
                             o_cfg_write_pulse <= '1';

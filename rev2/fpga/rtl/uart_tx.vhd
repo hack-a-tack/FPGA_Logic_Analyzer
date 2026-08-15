@@ -9,11 +9,11 @@
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
 -- i_rst_n					1 bit		<- top
--- i_mux_tx_byte			8 bits 		<- tx_mux
--- i_mux_tx_valid			1 bit		<- tx_mux
+-- i_mux_tx_byte			8 bits 		<- tx_mux /// now: frame_tx
+-- i_mux_tx_valid			1 bit		<- tx_mux /// now: frame_tx
 --
 -- OUTPUTS					DATA		TO MODULE
--- o_uart_tx_ready			1 bit		-> tx_mux
+-- o_uart_tx_ready			1 bit		-> tx_mux /// now: frame_tx
 -- o_UART_TX				1 bit		-> top
 -- o_UART_TX_LED			1 bit		-> top
 --
