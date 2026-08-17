@@ -3,6 +3,7 @@
 -- FUNCTION: queues status/error events from analyzer_fsm and serializes each into a 2-byte (code, detail) payload for frame_tx
 -- AUTHOR: Jakob Kieszek Ottesen
 -- DATE: 2026-08-12 (YYYY-MM-DD)
+-- MODIFIED: 2026-08-17 (rev2) (added o_resp_idle so config_regs can detect the response path fully drained, for the baud changeover commit point)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -22,6 +23,7 @@
 -- o_resp_frame_type		8 bits		-> frame_tx
 -- o_pl_byte				8 bits		-> tx_mux
 -- o_pl_valid				1 bit		-> tx_mux
+-- o_resp_idle				1 bit		-> config_regs
 --
 -- NOTES
 -- resp_gen is the response-side counterpart to send_engine: frame_tx is payload-agnostic (type/len/bytes only), so
@@ -99,7 +101,10 @@ entity resp_gen is
 		-- payload out (to tx_mux)
 		o_pl_byte				: out std_logic_vector(DATA_LENGTH-1 downto 0);
 		o_pl_valid				: out std_logic;
-		i_pl_ready				: in  std_logic
+		i_pl_ready				: in  std_logic;
+
+		-- queue-empty out (to config_regs)
+		o_resp_idle				: out std_logic		-- '1' when the queue is empty AND the FSM is in IDLE
 	);
 end entity resp_gen;
 
@@ -258,5 +263,7 @@ begin
 	o_resp_frame_req	<= '0' when r_state = IDLE else '1';
 	o_resp_frame_len	<= x"0002";
 	o_resp_frame_type	<= r_active_type;
+
+	o_resp_idle			<= '1' when (r_count = 0 and r_state = IDLE) else '0';
 
 end architecture RTL;
