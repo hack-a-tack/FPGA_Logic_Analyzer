@@ -5,13 +5,13 @@
 -- DATE: 2026-03-12 (YYYY-MM-DD)
 -- MODIFIED: 2026-05-14 (reset active low)
 -- MODIFIED: 2026-07-28 (FSM, config outputs)
--- MODIFIED: 2026-08-15 (rev2) (add o_cmd_opcode output for resp_gen detail byte; fix stale WAIT_ARG_2 comment for C7/C8 byte order)
+-- MODIFIED: 2026-08-17 (rev2)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
 -- i_rst_n					1 bit		<- top
--- i_rx_byte				8 bits 		<- uart_rx
--- i_rx_valid_pulse			1 bit		<- uart_rx
+-- i_rx_byte				8 bits 		<- rx_frame_parser
+-- i_rx_valid_pulse			1 bit		<- rx_frame_parser
 --
 -- OUTPUTS					DATA		TO MODULE
 -- o_capture_cmd_pulse		1 bit		-> analyzer_fsm
@@ -26,8 +26,13 @@
 -- o_cmd_opcode is held, not pulsed: analyzer_fsm samples it one or more cycles after the triggering pulse, so a
 -- self-clearing signal would read back as 0x00. It only updates in IDLE, on i_rx_valid_pulse, so it correctly
 -- holds the pending command's opcode through WAIT_ARG_1/WAIT_ARG_2 for timeout/error reporting.
+--
 -- CMD_PATTERN_TRIGGER_PATTERN/CMD_PATTERN_TRIGGER_MASK (C7/C8) arguments are low byte first, matching every other
 -- multi-byte field in the protocol (LEN, SAMPLE_COUNT, TRIGGER_INDEX, CRC, sample data).
+--
+-- With rx_frame_parser active, a partial command can't arrive over UART any more. Frames are released atomically.
+-- The timeout now catches exactly one thing: a well-formed frame carrying an incomplete command, e.g. LEN=1 with
+-- payload C1 and no argument.
 --
 -- PREFIXES
 -- i_ : input
@@ -36,7 +41,6 @@
 
 -- ITERATIVE PROCESS NOTES:
 -- update VHDL entities in OneNote once module is locked
--- For this first implementation, cmd_parser can update configuration whenever it receives a valid configuration command. Later, when integrating with analyzer_fsm, add: /i_config_write_allowed/. Then reject configuration changes during CAPTURE or SEND. Do not try to solve that before the basic parser works.
 -- ========================================
 
 library IEEE;
@@ -58,7 +62,7 @@ entity cmd_parser is
 		o_capture_cmd_pulse		: out std_logic;
 		o_read_cmd_pulse		: out std_logic;
 		o_cmd_error_pulse		: out std_logic;
-		o_cmd_opcode			: out std_logic_vector(DATA_LENGTH-1 downto 0);	-- -> analyzer_fsm
+		o_cmd_opcode			: out std_logic_vector(DATA_LENGTH-1 downto 0);
 
 		o_cfg_write_pulse		: out std_logic;
 		o_cfg_opcode			: out std_logic_vector(DATA_LENGTH-1 downto 0);

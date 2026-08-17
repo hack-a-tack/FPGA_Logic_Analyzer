@@ -26,6 +26,7 @@
 -- i_seq_gap_pulse			1 bit		<- rx_frame_parser
 --
 -- OUTPUTS					DATA		TO MODULE
+-- o_config_write_allowed 	1 bit		-> config_regs
 -- o_capture_start_pulse	1 bit		-> capture_engine
 -- o_send_start_pulse		1 bit		-> send_engine
 -- o_resp_req				1 bit		-> resp_gen
@@ -57,7 +58,6 @@
 -- - Mode-aware capture timeout behaviour
 -- - Baud- and payload-dependent SEND limits
 -- --> Do not classify “still waiting for a trigger” as a fault.
--- Once rx_frame_parser runs with G_BYPASS = false, cmd_parser's 1 ms partial-command timeout becomes near-unreachable: rx_frame_parser only releases a whole validated command, back-to-back, at one byte per clock. Keep the timeout as a safety net anyway, but do not expect it to fire in normal operation.
 -- ========================================
 
 library IEEE;
@@ -81,8 +81,9 @@ entity analyzer_fsm is
 		-- config_regs
 		i_cfg_ack_pulse			: in  std_logic;
 		i_cfg_error_pulse		: in  std_logic;
+		o_config_write_allowed 	: out std_logic;
 
-		i_cmd_opcode			: in  std_logic_vector(DATA_LENGTH-1 downto 0);	-- <- cmd_parser
+		i_cmd_opcode			: in  std_logic_vector(DATA_LENGTH-1 downto 0);
 
 		-- rx_frame_parser
 		i_frame_error_pulse 	: in std_logic; 
@@ -343,6 +344,8 @@ begin
 
 
 	-- Set outputs
+	o_config_write_allowed <= '0' when r_state = CAPTURE or r_state = SEND else '1';
+
 	o_capture_start_pulse	<= r_capture_start_pulse;
 	o_send_start_pulse 		<= r_send_start_pulse;
 

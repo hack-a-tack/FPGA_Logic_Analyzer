@@ -10,6 +10,7 @@
 -- i_cfg_write_pulse		1 bit		<- cmd_parser
 -- i_cfg_opcode				8 bits		<- cmd_parser
 -- i_cfg_value				16 bits		<- cmd_parser
+-- i_config_write_allowed	1 bit		<- analyzer_fsm
 --
 -- OUTPUTS					DATA		TO MODULE
 -- o_cfg_uart_baud_rate    	2 bits		-> ???
@@ -25,6 +26,10 @@
 -- o_cfg_ack_pulse			1 bit		-> analyzer_fsm
 -- o_cfg_error_pulse		1 bit		-> analyzer_fsm
 --
+-- NOTES
+-- state-based rejection precedes value validation so a single command yields a single error, 
+-- and writes remain legal in DATA_READY (analyzer_fsm).
+--
 -- PREFIXES					
 -- i_ : input
 -- o_ : output
@@ -32,10 +37,8 @@
 -- n_ : next <register> 	(internal signal; next state; 	for combinational process)
 --
 -- ITERATIVE PROCESS NOTES:
--- There is more to updating UART BAUD RATE than updating an internal register... TBC
--- Where do we want to send ACK/ERROR from config_regs? back to host via TX path? currently to host via TX path
--- Decide where all other outputs go (clocking, capture_engine, trigger logic/etc.)
 -- update VHDL entities in OneNote once module is locked
+-- There is more to updating UART BAUD RATE than updating an internal register... TBC
 -- ========================================
 
 library IEEE;
@@ -50,6 +53,8 @@ entity config_regs is
 		i_cfg_write_pulse		: in  std_logic;
 		i_cfg_opcode			: in  std_logic_vector(7 downto 0);
 		i_cfg_value				: in  std_logic_vector(15 downto 0);
+
+		i_config_write_allowed 	: in  std_logic;
 		
 		o_cfg_uart_baud_rate    : out std_logic_vector(1 downto 0);
 		o_cfg_capture_width_sel : out std_logic;
@@ -113,8 +118,10 @@ begin
 			else
 				o_cfg_ack_pulse   <= '0';
 				o_cfg_error_pulse <= '0';
-						
-				if i_cfg_write_pulse = '1' then
+
+				if i_config_write_allowed = '0' and i_cfg_write_pulse = '1' then
+					o_cfg_error_pulse <= '1';
+				elsif i_cfg_write_pulse = '1' then
 					case i_cfg_opcode is							
 						when CMD_UART_BAUD =>
 							case i_cfg_value(7 downto 0) is
