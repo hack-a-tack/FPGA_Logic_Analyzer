@@ -10,12 +10,12 @@
 #CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd2008\\arith.vhd":1773506671
 #CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd2008\\unsigned.vhd":1773506671
 #CUR:"C:\\lscc\\iCEcube2.2020.12\\synpbase\\lib\\vhd\\hyperents.vhd":1773506671
-#CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\rev2\\fpga\\rtl\\send_engine.vhd":1786423320
-0			"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\send_engine.vhd" vhdl
+#CUR:"C:\\Users\\Jakob\\Documents\\ee-projects\\FPGA_logic_analyzer\\rev2\\fpga\\rtl\\tx_mux.vhd":1786802231
+0			"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\tx_mux.vhd" vhdl
 #Dependency Lists(Uses List)
 0 -1
 #Dependency Lists(Users Of)
 0 -1
 #Design Unit to File Association
-module work send_engine 0
-arch work send_engine rtl 0
+module work tx_mux 0
+arch work tx_mux rtl 0

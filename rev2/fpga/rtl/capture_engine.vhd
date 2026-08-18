@@ -5,6 +5,7 @@
 -- DATE: 2026-03-31 (YYYY-MM-DD)
 -- MODIFIED: 2026-05-14 (reset active low)
 -- MODIFIED: 2026-08-03 (rev2)
+-- MODIFIED: 2026-08-18 (rev2) (fixed illegal unsigned(x"FFFF") type conversion on n_trigger_index; GHDL rejects a bare bit-string literal as a conversion operand, Synplify silently accepted it)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -227,7 +228,7 @@ begin
 					n_write_ptr      <= (others => '0');
 					n_prefill_count  <= 0;
 					n_start_addr     <= (others => '0');
-					n_trigger_index  <= unsigned(x"FFFF");  -- 0xFFFF as trigger index for linear capture. Gets changed if FSM reaches ARMED state
+					n_trigger_index  <= x"FFFF";  -- 0xFFFF as trigger index for linear capture. Gets changed if FSM reaches ARMED state
 					n_prev_sample    <= (others => '0');
 				
 					-- latch all relevant configuration values

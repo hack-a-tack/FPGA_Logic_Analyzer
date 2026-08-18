@@ -1,11 +1,11 @@
 #--  Synopsys, Inc.
 #--  Version L-2016.09L+ice40
 #--  Project file C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\iCEcube2_rev2_logic_analyzer\iCEcube2_rev2_logic_analyzer_Implmnt\run_options.txt
-#--  Written on Tue Aug 11 06:42:06 2026
+#--  Written on Tue Aug 18 06:55:00 2026
 
 
 #project files
-add_file -vhdl -lib work "../rtl/send_engine.vhd"
+add_file -vhdl -lib work "../rtl/tx_mux.vhd"
 
 
 

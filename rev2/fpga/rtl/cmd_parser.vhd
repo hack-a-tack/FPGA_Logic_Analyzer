@@ -6,6 +6,7 @@
 -- MODIFIED: 2026-05-14 (reset active low)
 -- MODIFIED: 2026-07-28 (FSM, config outputs)
 -- MODIFIED: 2026-08-17 (rev2)
+-- MODIFIED: 2026-08-18 (rev2) (command-byte constants changed from std_logic_vector(DATA_LENGTH-1 downto 0) to a fixed std_logic_vector(7 downto 0); GHDL rejects a generic-dependent subtype as a case choice, Synplify silently accepted it)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -71,20 +72,23 @@ entity cmd_parser is
 end entity cmd_parser;
 
 architecture RTL of cmd_parser is	
-	-- Constants representing command bytes
-	constant CMD_CAPTURE 					: std_logic_vector(DATA_LENGTH-1 downto 0) := x"A0";
-	constant CMD_READ 						: std_logic_vector(DATA_LENGTH-1 downto 0) := x"A1";
-	
-	constant CMD_UART_BAUD 					: std_logic_vector(DATA_LENGTH-1 downto 0) := x"C0";
-	constant CMD_CAPTURE_WIDTH 				: std_logic_vector(DATA_LENGTH-1 downto 0) := x"C1";
-	constant CMD_SAMP_RATE 					: std_logic_vector(DATA_LENGTH-1 downto 0) := x"C2";
-	constant CMD_CAPTURE_DEPTH				: std_logic_vector(DATA_LENGTH-1 downto 0) := x"C3";
-	constant CMD_TRIGGER_MODE 				: std_logic_vector(DATA_LENGTH-1 downto 0) := x"C4";
-	constant CMD_EDGE_TRIGGER_CH 			: std_logic_vector(DATA_LENGTH-1 downto 0) := x"C5";
-	constant CMD_EDGE_TRIGGER_TYPE 			: std_logic_vector(DATA_LENGTH-1 downto 0) := x"C6";
-	constant CMD_PATTERN_TRIGGER_PATTERN	: std_logic_vector(DATA_LENGTH-1 downto 0) := x"C7";
-	constant CMD_PATTERN_TRIGGER_MASK 		: std_logic_vector(DATA_LENGTH-1 downto 0) := x"C8";
-	constant CMD_TRIGGER_POSITION 			: std_logic_vector(DATA_LENGTH-1 downto 0) := x"C9";
+	-- Constants representing command bytes. Fixed 8-bit width, not DATA_LENGTH-1 downto 0: these are used as
+	-- case-statement choices below, and a case choice must be a locally static expression -- a constant whose
+	-- subtype depends on a generic is not locally static even though DATA_LENGTH is always 8. GHDL enforces this;
+	-- Synplify does not.
+	constant CMD_CAPTURE 					: std_logic_vector(7 downto 0) := x"A0";
+	constant CMD_READ 						: std_logic_vector(7 downto 0) := x"A1";
+
+	constant CMD_UART_BAUD 					: std_logic_vector(7 downto 0) := x"C0";
+	constant CMD_CAPTURE_WIDTH 				: std_logic_vector(7 downto 0) := x"C1";
+	constant CMD_SAMP_RATE 					: std_logic_vector(7 downto 0) := x"C2";
+	constant CMD_CAPTURE_DEPTH				: std_logic_vector(7 downto 0) := x"C3";
+	constant CMD_TRIGGER_MODE 				: std_logic_vector(7 downto 0) := x"C4";
+	constant CMD_EDGE_TRIGGER_CH 			: std_logic_vector(7 downto 0) := x"C5";
+	constant CMD_EDGE_TRIGGER_TYPE 			: std_logic_vector(7 downto 0) := x"C6";
+	constant CMD_PATTERN_TRIGGER_PATTERN	: std_logic_vector(7 downto 0) := x"C7";
+	constant CMD_PATTERN_TRIGGER_MASK 		: std_logic_vector(7 downto 0) := x"C8";
+	constant CMD_TRIGGER_POSITION 			: std_logic_vector(7 downto 0) := x"C9";
 	
 	-- FSM type and signals
 	type cmd_parser_state is (IDLE, WAIT_ARG_1, WAIT_ARG_2);

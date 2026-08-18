@@ -1,18 +1,6 @@
 @N: MF248 |Running in 64-bit mode.
 @N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
 @N: MT206 |Auto Constrain mode is enabled
-@N: MF179 :|Found 14 by 14 bit equality operator ('==') fsm_proc\.un9_r_ram_rd_addr (in view: work.send_engine(rtl))
-@N: MF179 :|Found 14 by 14 bit equality operator ('==') fsm_proc\.un15_i_send_tx_ready (in view: work.send_engine(rtl))
-@N: FX271 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":260:8:260:32|Replicating instance n_payload_len_0_sqmuxa_1 (in view: work.send_engine(rtl)) with 84 loads 1 time to improve timing.
-@N: FX271 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|Replicating instance r_header_index[0] (in view: work.send_engine(rtl)) with 65 loads 3 times to improve timing.
-@N: FX271 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|Replicating instance r_header_index[3] (in view: work.send_engine(rtl)) with 52 loads 3 times to improve timing.
-@N: FX271 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|Replicating instance r_state[3] (in view: work.send_engine(rtl)) with 16 loads 2 times to improve timing.
-@N: FX271 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|Replicating instance r_state[1] (in view: work.send_engine(rtl)) with 31 loads 2 times to improve timing.
-@N: FX271 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|Replicating instance r_header_index[2] (in view: work.send_engine(rtl)) with 38 loads 3 times to improve timing.
-@N: FX271 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|Replicating instance r_state[2] (in view: work.send_engine(rtl)) with 17 loads 2 times to improve timing.
-@N: FX1016 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":79:2:79:6|SB_GB_IO inserted on the port i_clk.
-@N: FX1017 :|SB_GB inserted on the net i_rst_n_c_i.
-@N: FX1017 :|SB_GB inserted on the net N_691.
 @N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.
 @N: BW107 |Synopsys Constraint File capacitance units using default value of 1pF 
 @N: FX1056 |Writing EDF file: C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\iCEcube2_rev2_logic_analyzer\iCEcube2_rev2_logic_analyzer_Implmnt\iCEcube2_rev2_logic_analyzer.edf

@@ -1,0 +1,121 @@
+* ******************************************************************************
+
+* iCEcube Report
+
+* Version:            2020.12.27943
+
+* Build Date:         Dec  9 2020 17:31:51
+
+* File Generated:     Aug 18 2026 06:55:18
+
+* Purpose:            General info of design implementation
+
+* Copyright (C) 2006-2010 by Lattice Semiconductor Corp. All rights reserved.
+
+* ******************************************************************************
+
+Synthesis/Placement Summary:
+----------------------------
+    Status:  Successful
+    Runtime: 0 seconds
+
+Device Info:
+------------
+    Device Family: iCE40UP
+    Device:        iCE40UP5K
+    Package:       SG48
+
+Design statistics:
+------------------
+    FFs:                  0
+    LUTs:                 11
+    RAMs:                 0
+    IOBs:                 31
+    GBs:                  0
+    PLLs:                 0
+    Warm Boots:           0
+    SPIs:                 0
+    I2Cs:                 0
+    HFOSCs:               0
+    LFOSCs:               0
+    RGBA_DRVs:            0
+    LEDDA_IPs:            0
+    DSPs:                 0
+    SPRAMs:               0
+    FILTER_50NSs:         0
+
+Logic Resource Utilization:
+---------------------------
+    Total Logic Cells: 11/5280
+        Combinational Logic Cells: 11       out of   5280      0.208333%
+        Sequential Logic Cells:    0        out of   5280      0%
+        Logic Tiles:               3        out of   660       0.454545%
+    Registers: 
+        Logic Registers:           0        out of   5280      0%
+        IO Registers:              0        out of   480       0
+    Block RAMs:                    0        out of   30        0%
+    Warm Boots:                    0        out of   1         0%
+    SPIs:                          0        out of   2         0%
+    I2Cs:                          0        out of   2         0%
+    HFOSCs:                        0        out of   1         0%
+    LFOSCs:                        0        out of   1         0%
+    RGBA_DRVs:                     0        out of   1         0%
+    LEDDA_IPs:                     0        out of   1         0%
+    DSPs:                          0        out of   8         0%
+    SPRAMs:                        0        out of   4         0%
+    FILTER_50NSs:                  0        out of   2         0%
+    Pins:
+        Input Pins:                20       out of   39        51.2821%
+        Output Pins:               11       out of   39        28.2051%
+        InOut Pins:                0        out of   39        0%
+    Global Buffers:                0        out of   8         0%
+    PLLs:                          0        out of   1         0%
+
+IO Bank Utilization:
+--------------------
+    Bank 3: 0        out of   0         0%
+    Bank 1: 0        out of   0         0%
+    Bank 0: 14       out of   17        82.3529%
+    Bank 2: 17       out of   22        77.2727%
+
+Detailed I/O Info:
+------------------
+    Input Pins: 
+    Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function    Signal Name        
+    ----------  ---------  -----------  -------  -------  -----------    -----------        
+    2           Input      SB_LVCMOS    No       2        Simple Input   i_resp_pl_byte[0]  
+    3           Input      SB_LVCMOS    No       2        Simple Input   i_resp_pl_byte[2]  
+    4           Input      SB_LVCMOS    No       2        Simple Input   i_resp_pl_byte[1]  
+    6           Input      SB_LVCMOS    No       2        Simple Input   i_resp_pl_byte[3]  
+    9           Input      SB_LVCMOS    No       2        Simple Input   i_resp_pl_byte[4]  
+    10          Input      SB_LVCMOS    No       2        Simple Input   i_resp_pl_byte[5]  
+    11          Input      SB_LVCMOS    No       2        Simple Input   i_send_pl_byte[0]  
+    12          Input      SB_LVCMOS    No       2        Simple Input   i_send_pl_byte[1]  
+    13          Input      SB_LVCMOS    No       2        Simple Input   i_send_pl_byte[3]  
+    19          Input      SB_LVCMOS    No       2        Simple Input   i_send_pl_byte[5]  
+    20          Input      SB_LVCMOS    No       2        Simple Input   i_send_pl_byte[4]  
+    21          Input      SB_LVCMOS    No       2        Simple Input   i_send_pl_byte[2]  
+    26          Input      SB_LVCMOS    No       0        Simple Input   i_pl_ready         
+    28          Input      SB_LVCMOS    No       0        Simple Input   i_resp_pl_byte[6]  
+    31          Input      SB_LVCMOS    No       0        Simple Input   i_resp_pl_byte[7]  
+    32          Input      SB_LVCMOS    No       0        Simple Input   i_resp_pl_valid    
+    34          Input      SB_LVCMOS    No       0        Simple Input   i_send_pl_byte[6]  
+    35          Input      SB_LVCMOS    No       0        Simple Input   i_send_pl_valid    
+    37          Input      SB_LVCMOS    No       0        Simple Input   i_send_pl_byte[7]  
+    38          Input      SB_LVCMOS    No       0        Simple Input   i_grant_sel        
+
+    Output Pins: 
+    Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function    Signal Name        
+    ----------  ---------  -----------  -------  -------  -----------    -----------        
+    14          Output     SB_LVCMOS    No       2        Simple Output  o_pl_byte[1]       
+    15          Output     SB_LVCMOS    No       2        Simple Output  o_pl_byte[3]       
+    16          Output     SB_LVCMOS    No       2        Simple Output  o_pl_byte[4]       
+    17          Output     SB_LVCMOS    No       2        Simple Output  o_pl_byte[2]       
+    18          Output     SB_LVCMOS    No       2        Simple Output  o_pl_byte[0]       
+    23          Output     SB_LVCMOS    No       0        Simple Output  o_resp_pl_ready    
+    25          Output     SB_LVCMOS    No       0        Simple Output  o_pl_byte[5]       
+    27          Output     SB_LVCMOS    No       0        Simple Output  o_send_pl_ready    
+    36          Output     SB_LVCMOS    No       0        Simple Output  o_pl_byte[6]       
+    42          Output     SB_LVCMOS    No       0        Simple Output  o_pl_valid         
+    43          Output     SB_LVCMOS    No       0        Simple Output  o_pl_byte[7]       
+

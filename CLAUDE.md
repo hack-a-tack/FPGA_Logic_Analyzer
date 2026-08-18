@@ -1,5 +1,6 @@
 Simulate/synthesis commands:
-- Synthesis: Lattice iCEcube2 GUI project at `rev2/fpga/iCEcube2_rev2_logic_analyzer/` (`*_sbt.project` / `*_syn.prj`). No CLI build script found yet.
+- Compile-check (syntax/elaboration only, not synthesis): `rev2\fpga\check.bat` -- see `## Compiling` below for usage, reporting requirements, and how its dependency order was derived. GHDL's work library lives in `rev2/fpga/build/` (gitignored, `work-obj*.cf`), not at the repo root or in `rev2/fpga/rtl/`.
+- Synthesis: Lattice iCEcube2 GUI project at `rev2/fpga/iCEcube2_rev2_logic_analyzer/` (`*_sbt.project` / `*_syn.prj`). `rev2\fpga\build.bat` is documented in `## Compiling` below as the intended CLI entry point but has **not been created yet** -- do not assume it exists until that changes. The underlying command it should wrap has been confirmed working (license already configured): from `rev2/fpga/iCEcube2_rev2_logic_analyzer/`, run `C:\lscc\iCEcube2.2020.12\synpbase\bin64\mbin\synbatch.exe -product synplify_pro -batch iCEcube2_rev2_logic_analyzer_syn.prj` (this only runs the Synplify logic-synthesis step -- compile/premap/map, producing the `.edf` netlist -- not place-and-route/bitstream; P&R is a separate, not-yet-scripted step via the GUI or `sbt_backend`). The `.prj`'s `add_file` list currently only contains `send_engine.vhd`; edit that list to change what gets synthesized. Prefer GHDL for routine per-module compile-checks -- it's much faster and doesn't require a license -- and reserve Synplify runs for when a synthesis-specific concern (inference, timing, resource usage) is actually in question.
 - Simulation: no testbenches exist for rev2 yet. rev1 testbenches (one per module) live under `rev1/fpga/tb/`; rev2 modules changed enough (new ports/generics) that these are not directly reusable.
 
 VHDL standard: 2008
@@ -70,3 +71,52 @@ Submodules are instantiated with sequential labels (`E1`, `E2`, ...) in signal-f
 - No rev2 testbenches exist yet; rev1's (`rev1/fpga/tb/`) don't match the current rev2 port lists.
 
 Off-limit directories: no directories are off-limits per se. But nothing shall be changed in the rev1 folder. All of this material is just for reference now that rev2 (eventually rev3) is the main priority.
+
+
+
+## TOP_TODO.md is mandatory
+top.vhd is deliberately deferred until all module work is complete, so it is
+currently stale and does not elaborate. rev2/fpga/TOP_TODO.md is the only record of what the eventual rewrite must do.
+
+Before finishing ANY task that does one of the following, append a row to the
+relevant table in TOP_TODO.md in the same pass:
+  - adds, removes or renames a port on any module
+  - adds a new module or package
+  - adds or changes a generic that top.vhd must set
+  - defers any behaviour to top level
+  - resolves an item already listed (mark it RESOLVED, don't delete it)
+
+Report at the end of every task either the row you added, or "TOP_TODO.md:
+no change required" — explicitly, so a silent omission is visible.
+
+
+## Compiling
+
+Two tools, two purposes. Do not confuse them. Both scripts live in rev2/fpga/.
+
+**After EVERY module edit — no exceptions:**
+    rev2\fpga\check.bat rev2\fpga\rtl\<module>.vhd
+Report the result explicitly: pass, or the exact error. Never claim a module is
+done without running this.
+
+**Before any commit touching multiple modules:**
+    rev2\fpga\check.bat
+Full dependency-ordered analysis. Catches cross-module port mismatches that
+per-module checks cannot.
+
+**Full synthesis — only when I ask, or before a commit touching top.vhd:**
+    rev2\fpga\build.bat
+Then report:
+  - any undriven or multiply-driven signal warnings — treat these as errors
+  - resource usage: LUTs, EBRs
+  - post-route Fmax and WNS
+Rev1 baseline: ~60.26 MHz Fmax, +4.238 ns WNS. Flag any drop below 48 MHz — that
+is the system clock and there is no margin below it.
+
+Synthesis needs a working top-level entity. top.vhd is stale (see TOP_TODO.md), so
+build.bat will fail until it is rewritten. That is expected; use check.bat instead.
+Do not "fix" top.vhd opportunistically — it is a deliberate single pass at the end.
+
+GHDL is stricter than Synplify about VHDL-2008 legality. When check.bat rejects
+something Synplify accepted, assume GHDL is right and fix the source — do not work
+around it or loosen the standard flag.

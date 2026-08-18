@@ -1,8 +1,0 @@
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|User-specified initial value defined for instance r_ram_rd_addr[13:0] is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|User-specified initial value defined for instance r_sample_index[13:0] is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|User-specified initial value defined for instance r_crc[15:0] is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|User-specified initial value defined for instance r_send_done_pulse is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|User-specified initial value defined for instance r_header_index[3:0] is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|User-specified initial value defined for instance r_seq_counter[7:0] is being ignored. 
-@W: FX1039 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|User-specified initial value defined for instance r_payload_len[15:0] is being ignored. 
-@W: MT420 |Found inferred clock send_engine|i_clk with period 15.22ns. Please declare a user-defined clock on object "p:i_clk"

@@ -1,16 +1,3 @@
 @N: CD231 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\vhd2008\std1164.vhd":890:16:890:17|Using onehot encoding for type mvl9plus. For example, enumeration 'U' is mapped to "1000000000".
-@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":74:7:74:17|Synthesizing work.send_engine.rtl.
-@N: CD231 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":105:29:105:30|Using onehot encoding for type send_engine_state_type. For example, enumeration idle is mapped to "10000000".
-Post processing for work.send_engine.rtl
-@N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|Trying to extract state machine for register r_state.
-Extracted state machine for register r_state
-State machine has 8 reachable states with original encodings of:
-   00000001
-   00000010
-   00000100
-   00001000
-   00010000
-   00100000
-   01000000
-   10000000
-@W: CL249 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|Initial value is not supported on state machine r_state
+@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\tx_mux.vhd":36:7:36:12|Synthesizing work.tx_mux.rtl.
+Post processing for work.tx_mux.rtl

@@ -1,0 +1,26 @@
+#### START OF AREA REPORT #####[
+
+Part:			ICE40UP5KSG48 (Lattice)
+
+----------------------------------------------------------------------
+########   Utilization report for  Top level view:   tx_mux   ########
+======================================================================
+
+COMBINATIONAL LOGIC
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+LUTS     11                 100 %                
+=================================================
+Total COMBINATIONAL LOGIC in the block tx_mux:	11 (25.00 % Utilization)
+
+
+IO PADS
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+PADS     31                 100 %                
+=================================================
+Total IO PADS in the block tx_mux:	31 (70.45 % Utilization)
+
+
+##### END OF AREA REPORT #####]
+

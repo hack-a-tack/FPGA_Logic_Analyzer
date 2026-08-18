@@ -1,0 +1,13 @@
+ble_pack o_pl_byte_obuf_RNO[0]_LC_0 {o_pl_byte_obuf_RNO[0]}
+ble_pack o_resp_pl_ready_obuf_RNO_LC_9 {o_resp_pl_ready_obuf_RNO}
+ble_pack o_send_pl_ready_obuf_RNO_LC_10 {o_send_pl_ready_obuf_RNO}
+ble_pack o_pl_byte_obuf_RNO[1]_LC_1 {o_pl_byte_obuf_RNO[1]}
+ble_pack o_pl_byte_obuf_RNO[2]_LC_2 {o_pl_byte_obuf_RNO[2]}
+ble_pack o_pl_byte_obuf_RNO[3]_LC_3 {o_pl_byte_obuf_RNO[3]}
+ble_pack o_pl_byte_obuf_RNO[4]_LC_4 {o_pl_byte_obuf_RNO[4]}
+ble_pack o_pl_byte_obuf_RNO[5]_LC_5 {o_pl_byte_obuf_RNO[5]}
+clb_pack PLB_0 {o_pl_byte_obuf_RNO[0]_LC_0, o_resp_pl_ready_obuf_RNO_LC_9, o_send_pl_ready_obuf_RNO_LC_10, o_pl_byte_obuf_RNO[1]_LC_1, o_pl_byte_obuf_RNO[2]_LC_2, o_pl_byte_obuf_RNO[3]_LC_3, o_pl_byte_obuf_RNO[4]_LC_4, o_pl_byte_obuf_RNO[5]_LC_5}
+ble_pack o_pl_byte_obuf_RNO[6]_LC_6 {o_pl_byte_obuf_RNO[6]}
+ble_pack o_pl_byte_obuf_RNO[7]_LC_7 {o_pl_byte_obuf_RNO[7]}
+ble_pack o_pl_valid_obuf_RNO_LC_8 {o_pl_valid_obuf_RNO}
+clb_pack PLB_1 {o_pl_byte_obuf_RNO[6]_LC_6, o_pl_byte_obuf_RNO[7]_LC_7, o_pl_valid_obuf_RNO_LC_8}

@@ -1,27 +1,20 @@
 ---------------------------------------
-Resource Usage Report for send_engine 
+Resource Usage Report for tx_mux 
 
 Mapping to part: ice40up5ksg48
 Cell usage:
-SB_CARRY        81 uses
-SB_DFF          1 use
-SB_DFFESR       4 uses
-SB_DFFSR        125 uses
-SB_DFFSS        1 use
-SB_GB           2 uses
-SB_LUT4         443 uses
+SB_LUT4         11 uses
 
-I/O ports: 94
-I/O primitives: 94
-SB_GB_IO       1 use
-SB_IO          93 uses
+I/O ports: 31
+I/O primitives: 31
+SB_IO          31 uses
 
 I/O Register bits:                  0
-Register bits not including I/Os:   131 (2%)
+Register bits not including I/Os:   0 (0%)
 
 @S |Mapping Summary:
-Total  LUTs: 443 (8%)
+Total  LUTs: 11 (0%)
 
 Distribution of All Consumed LUTs = LUT4 
-Distribution of All Consumed Luts 443 = 443 
+Distribution of All Consumed Luts 11 = 11 
 

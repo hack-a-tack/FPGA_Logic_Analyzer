@@ -45,6 +45,7 @@
 
 -- ITERATIVE PROCESS NOTES:
 -- update VHDL entities in OneNote once module is locked
+-- CTS#/RTS# pin mapping and de-inversion: i_usb_can_accept_tx_byte gets inverted from CTS# and o_fpga_can_accept_rx_byte is tied asserted
 -- ========================================
 
 library IEEE;

@@ -3,3 +3,7 @@ rev1/fpga/current_vhdl.txt
 rev1/fpga/debug_log.txt
 rev1/fpga/iCEcube2_rev1_logic_analyzer
 rev1/debug_artifacts
+
+# GHDL analysis library artifacts (rev2/fpga/rtl -- ghdl -a compile checks)
+rev2/fpga/build/
+work-obj*.cf

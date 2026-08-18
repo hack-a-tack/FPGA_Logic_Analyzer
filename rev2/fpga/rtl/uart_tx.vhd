@@ -7,6 +7,7 @@
 -- MODIFIED: 2026-08-06 (rev2)
 -- MODIFIED: 2026-08-12 (rev2) (runtime-selectable baud via i_baud_sel/uart_pkg; added FTDI transmit flow control)
 -- MODIFIED: 2026-08-17 (rev2) (added o_tx_idle, ungated by flow control, as the baud changeover commit-point signal for config_regs)
+-- MODIFIED: 2026-08-18 (rev2) (repointed from uart_pkg to la_pkg; uart_pkg.vhd deleted, was a near-duplicate of la_pkg's f_clks_per_bit)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -25,7 +26,7 @@
 -- NOTES
 -- 8N1 UART --> start bit, data bits 0-7 (starting with LSB), stop bit --> 10 transmitted bits per byte --> "10 baud"
 -- 1 baud = 1 symbol (1 bit for UART)
--- Bit period is no longer a compile-time constant. f_clks_per_bit (uart_pkg) maps i_baud_sel to a clocks-per-bit count; see uart_pkg.vhd NOTES for the rate table and error figures.
+-- Bit period is no longer a compile-time constant. f_clks_per_bit (la_pkg) maps i_baud_sel to a clocks-per-bit count; see la_pkg.vhd NOTES for the rate table and error figures.
 -- --> Each bit is transmitted for the latched clocks-per-bit count.
 -- But UART usually tolerates +- 2-3% error
 --
@@ -51,7 +52,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
-use WORK.uart_pkg.ALL;
+use WORK.la_pkg.ALL;
 
 entity uart_tx is
 	generic (

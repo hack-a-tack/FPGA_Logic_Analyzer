@@ -1,12 +1,10 @@
 @N|Running in 64-bit mode
 @N|Running in 64-bit mode
 @N: CD720 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\vhd2008\std.vhd":146:18:146:21|Setting time resolution to ps
-@N:"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":74:7:74:17|Top entity is set to send_engine.
+@N:"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\tx_mux.vhd":36:7:36:12|Top entity is set to tx_mux.
 @N: CD231 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\vhd2008\std1164.vhd":890:16:890:17|Using onehot encoding for type mvl9plus. For example, enumeration 'U' is mapped to "1000000000".
-@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":74:7:74:17|Synthesizing work.send_engine.rtl.
-@N: CD231 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":105:29:105:30|Using onehot encoding for type send_engine_state_type. For example, enumeration idle is mapped to "10000000".
-@N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":179:2:179:3|Trying to extract state machine for register r_state.
+@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\tx_mux.vhd":36:7:36:12|Synthesizing work.tx_mux.rtl.
 @N|Running in 64-bit mode
-@N: NF107 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":74:7:74:17|Selected library: work cell: send_engine view rtl as top level
-@N: NF107 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":74:7:74:17|Selected library: work cell: send_engine view rtl as top level
+@N: NF107 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\tx_mux.vhd":36:7:36:12|Selected library: work cell: tx_mux view rtl as top level
+@N: NF107 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\tx_mux.vhd":36:7:36:12|Selected library: work cell: tx_mux view rtl as top level
 

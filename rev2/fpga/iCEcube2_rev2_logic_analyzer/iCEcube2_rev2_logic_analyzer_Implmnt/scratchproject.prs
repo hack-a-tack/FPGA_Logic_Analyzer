@@ -3,7 +3,7 @@
 #--  Project file C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\iCEcube2_rev2_logic_analyzer\iCEcube2_rev2_logic_analyzer_Implmnt\scratchproject.prs
 
 #project files
-add_file -vhdl -lib work "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/rev2/fpga/rtl/send_engine.vhd"
+add_file -vhdl -lib work "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/rev2/fpga/rtl/tx_mux.vhd"
 
 
 

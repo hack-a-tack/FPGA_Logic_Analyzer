@@ -1,2 +1,2 @@
 
-: 0 work.send_engine "C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\send_engine.vhd" 74 7 
+: 0 work.tx_mux "C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\tx_mux.vhd" 36 7 
