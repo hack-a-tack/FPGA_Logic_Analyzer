@@ -3,6 +3,7 @@
 -- FUNCTION: validates and unwraps host->FPGA command frames (sync/version/type/seq/len/CRC) before handing raw command bytes to cmd_parser
 -- AUTHOR: Jakob Kieszek Ottesen
 -- DATE: 2026-08-15 (YYYY-MM-DD)
+-- MODIFIED: 2026-08-19 (rev2) (migrated to la_pkg: crc16_next and the SYNC0/SYNC1/VERSION_EXPECTED/FRAME_TYPE_COMMAND/ERR_* constants deleted, replaced with la_pkg's crc16_next/C_SYNC0/C_SYNC1/C_PROTO_VER/C_TYPE_COMMAND/C_CRC_INIT/C_FERR_*)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -55,12 +56,13 @@
 -- (b) the host-side Python must frame its commands before G_BYPASS is set false -- this is a flag day, not a
 --     gradual migration.
 -- (c) framing overhead is 9 bytes per command, ~98us at 921600 baud, negligible against a 133ms capture transfer.
--- (d) crc16_next is now duplicated in frame_tx.vhd and here; both copies should be lifted into a shared package.
+-- (d) RESOLVED 2026-08-19: crc16_next moved into la_pkg.vhd; this file and frame_tx.vhd both use that one copy now.
 -- ========================================
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
+use WORK.la_pkg.ALL;
 
 entity rx_frame_parser is
 	generic (
@@ -141,40 +143,6 @@ begin
 		-- Timeout
 		signal r_timeout_count, n_timeout_count : integer range 0 to G_TIMEOUT_CYCLES - 1 := 0;
 
-		-- Constants used for static frame fields
-		constant SYNC0               : std_logic_vector(DATA_LENGTH-1 downto 0) := x"A5";
-		constant SYNC1               : std_logic_vector(DATA_LENGTH-1 downto 0) := x"5A";
-		constant VERSION_EXPECTED    : std_logic_vector(DATA_LENGTH-1 downto 0) := x"01";
-		constant FRAME_TYPE_COMMAND  : std_logic_vector(DATA_LENGTH-1 downto 0) := x"10";
-
-		-- Rejection codes
-		constant ERR_BAD_VERSION   : std_logic_vector(DATA_LENGTH-1 downto 0) := x"01";
-		constant ERR_BAD_TYPE      : std_logic_vector(DATA_LENGTH-1 downto 0) := x"02";
-		constant ERR_BAD_LENGTH    : std_logic_vector(DATA_LENGTH-1 downto 0) := x"03";
-		constant ERR_CRC_MISMATCH  : std_logic_vector(DATA_LENGTH-1 downto 0) := x"04";
-		constant ERR_TIMEOUT       : std_logic_vector(DATA_LENGTH-1 downto 0) := x"05";
-
-		-- CRC FUNCTION (copied verbatim from frame_tx.vhd -- see ITERATIVE PROCESS NOTES (d))
-		function crc16_next(
-			crc_in  : std_logic_vector(15 downto 0);
-			data_in : std_logic_vector(7 downto 0)
-		) return std_logic_vector is
-			variable v_crc : unsigned(15 downto 0);
-		begin
-			v_crc := unsigned(crc_in) xor
-					 shift_left(resize(unsigned(data_in), 16), 8);
-
-			for i in 0 to 7 loop
-				if v_crc(15) = '1' then
-					v_crc := shift_left(v_crc, 1) xor x"1021";
-				else
-					v_crc := shift_left(v_crc, 1);
-				end if;
-			end loop;
-
-			return std_logic_vector(v_crc);
-		end function;
-
 	begin
 		-- Sequential process for dealing with clocking
 		seq_proc: process(i_clk) is
@@ -246,7 +214,7 @@ begin
 				when HUNT_SYNC0 =>
 					-- No timeout while hunting -- idle is the normal state between commands.
 					if i_rx_valid_pulse = '1' then
-						if i_rx_byte = SYNC0 then
+						if i_rx_byte = C_SYNC0 then
 							n_state <= HUNT_SYNC1;
 						end if;
 					end if;
@@ -254,11 +222,11 @@ begin
 				when HUNT_SYNC1 =>
 					if i_rx_valid_pulse = '1' then
 						n_timeout_count <= 0;
-						if i_rx_byte = SYNC1 then
-							n_crc         <= x"FFFF";
+						if i_rx_byte = C_SYNC1 then
+							n_crc         <= C_CRC_INIT;
 							n_payload_idx <= 0;
 							n_state       <= VERSION;
-						elsif i_rx_byte = SYNC0 then
+						elsif i_rx_byte = C_SYNC0 then
 							null;	-- stay in HUNT_SYNC1: e.g. A5 A5 5A must still resolve to a valid sync pair
 						else
 							n_state <= HUNT_SYNC0;
@@ -267,7 +235,7 @@ begin
 						n_timeout_count      <= 0;
 						n_state              <= HUNT_SYNC0;
 						n_frame_error_pulse  <= '1';
-						n_frame_error_code   <= ERR_TIMEOUT;
+						n_frame_error_code   <= C_FERR_TIMEOUT;
 					else
 						n_timeout_count <= r_timeout_count + 1;
 					end if;
@@ -276,18 +244,18 @@ begin
 					if i_rx_valid_pulse = '1' then
 						n_timeout_count <= 0;
 						n_crc <= crc16_next(r_crc, i_rx_byte);
-						if i_rx_byte = VERSION_EXPECTED then
+						if i_rx_byte = C_PROTO_VER then
 							n_state <= FRAME_TYPE;
 						else
 							n_state              <= HUNT_SYNC0;
 							n_frame_error_pulse  <= '1';
-							n_frame_error_code   <= ERR_BAD_VERSION;
+							n_frame_error_code   <= C_FERR_VERSION;
 						end if;
 					elsif r_timeout_count = G_TIMEOUT_CYCLES - 1 then
 						n_timeout_count      <= 0;
 						n_state              <= HUNT_SYNC0;
 						n_frame_error_pulse  <= '1';
-						n_frame_error_code   <= ERR_TIMEOUT;
+						n_frame_error_code   <= C_FERR_TIMEOUT;
 					else
 						n_timeout_count <= r_timeout_count + 1;
 					end if;
@@ -296,18 +264,18 @@ begin
 					if i_rx_valid_pulse = '1' then
 						n_timeout_count <= 0;
 						n_crc <= crc16_next(r_crc, i_rx_byte);
-						if i_rx_byte = FRAME_TYPE_COMMAND then
+						if i_rx_byte = C_TYPE_COMMAND then
 							n_state <= SEQ;
 						else
 							n_state              <= HUNT_SYNC0;
 							n_frame_error_pulse  <= '1';
-							n_frame_error_code   <= ERR_BAD_TYPE;
+							n_frame_error_code   <= C_FERR_TYPE;
 						end if;
 					elsif r_timeout_count = G_TIMEOUT_CYCLES - 1 then
 						n_timeout_count      <= 0;
 						n_state              <= HUNT_SYNC0;
 						n_frame_error_pulse  <= '1';
-						n_frame_error_code   <= ERR_TIMEOUT;
+						n_frame_error_code   <= C_FERR_TIMEOUT;
 					else
 						n_timeout_count <= r_timeout_count + 1;
 					end if;
@@ -322,7 +290,7 @@ begin
 						n_timeout_count      <= 0;
 						n_state              <= HUNT_SYNC0;
 						n_frame_error_pulse  <= '1';
-						n_frame_error_code   <= ERR_TIMEOUT;
+						n_frame_error_code   <= C_FERR_TIMEOUT;
 					else
 						n_timeout_count <= r_timeout_count + 1;
 					end if;
@@ -337,7 +305,7 @@ begin
 						n_timeout_count      <= 0;
 						n_state              <= HUNT_SYNC0;
 						n_frame_error_pulse  <= '1';
-						n_frame_error_code   <= ERR_TIMEOUT;
+						n_frame_error_code   <= C_FERR_TIMEOUT;
 					else
 						n_timeout_count <= r_timeout_count + 1;
 					end if;
@@ -353,7 +321,7 @@ begin
 						if v_len = 0 or v_len > to_unsigned(G_MAX_PAYLOAD, 16) then
 							n_state              <= HUNT_SYNC0;
 							n_frame_error_pulse  <= '1';
-							n_frame_error_code   <= ERR_BAD_LENGTH;
+							n_frame_error_code   <= C_FERR_LENGTH;
 						else
 							n_payload_total <= to_integer(v_len);
 							n_payload_idx   <= 0;
@@ -363,7 +331,7 @@ begin
 						n_timeout_count      <= 0;
 						n_state              <= HUNT_SYNC0;
 						n_frame_error_pulse  <= '1';
-						n_frame_error_code   <= ERR_TIMEOUT;
+						n_frame_error_code   <= C_FERR_TIMEOUT;
 					else
 						n_timeout_count <= r_timeout_count + 1;
 					end if;
@@ -384,7 +352,7 @@ begin
 						n_timeout_count      <= 0;
 						n_state              <= HUNT_SYNC0;
 						n_frame_error_pulse  <= '1';
-						n_frame_error_code   <= ERR_TIMEOUT;
+						n_frame_error_code   <= C_FERR_TIMEOUT;
 					else
 						n_timeout_count <= r_timeout_count + 1;
 					end if;
@@ -398,7 +366,7 @@ begin
 						n_timeout_count      <= 0;
 						n_state              <= HUNT_SYNC0;
 						n_frame_error_pulse  <= '1';
-						n_frame_error_code   <= ERR_TIMEOUT;
+						n_frame_error_code   <= C_FERR_TIMEOUT;
 					else
 						n_timeout_count <= r_timeout_count + 1;
 					end if;
@@ -429,13 +397,13 @@ begin
 						else
 							n_state              <= HUNT_SYNC0;
 							n_frame_error_pulse  <= '1';
-							n_frame_error_code   <= ERR_CRC_MISMATCH;
+							n_frame_error_code   <= C_FERR_CRC;
 						end if;
 					elsif r_timeout_count = G_TIMEOUT_CYCLES - 1 then
 						n_timeout_count      <= 0;
 						n_state              <= HUNT_SYNC0;
 						n_frame_error_pulse  <= '1';
-						n_frame_error_code   <= ERR_TIMEOUT;
+						n_frame_error_code   <= C_FERR_TIMEOUT;
 					else
 						n_timeout_count <= r_timeout_count + 1;
 					end if;

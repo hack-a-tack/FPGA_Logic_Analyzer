@@ -4,6 +4,7 @@
 -- AUTHOR: Jakob Kieszek Ottesen
 -- DATE: 2026-07-28 (YYYY-MM-DD)
 -- MODIFIED: 2026-08-17 (rev2) (baud changeover sequencing: commit-point gating via uart_tx/resp_gen idle signals, confirm-or-revert timer; uart baud register/output renamed baud_sel to match uart_tx/uart_rx)
+-- MODIFIED: 2026-08-19 (rev2) (migrated to la_pkg: the ten local CMD_* config-opcode constants deleted, replaced with la_pkg's C_CMD_*)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -63,6 +64,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
+use WORK.la_pkg.ALL;
 
 entity config_regs is
 	generic (
@@ -102,18 +104,6 @@ entity config_regs is
 end entity config_regs;
 
 architecture RTL of config_regs is
-	-- Constants representing config opcodes
-	constant CMD_UART_BAUD 					: std_logic_vector(7 downto 0) := x"C0";
-	constant CMD_CAPTURE_WIDTH 				: std_logic_vector(7 downto 0) := x"C1";
-	constant CMD_SAMP_RATE 					: std_logic_vector(7 downto 0) := x"C2";
-	constant CMD_CAPTURE_DEPTH				: std_logic_vector(7 downto 0) := x"C3";
-	constant CMD_TRIGGER_MODE 				: std_logic_vector(7 downto 0) := x"C4";
-	constant CMD_EDGE_TRIGGER_CH 			: std_logic_vector(7 downto 0) := x"C5";
-	constant CMD_EDGE_TRIGGER_TYPE 			: std_logic_vector(7 downto 0) := x"C6";
-	constant CMD_PATTERN_TRIGGER_PATTERN	: std_logic_vector(7 downto 0) := x"C7";
-	constant CMD_PATTERN_TRIGGER_MASK 		: std_logic_vector(7 downto 0) := x"C8";
-	constant CMD_TRIGGER_POSITION 			: std_logic_vector(7 downto 0) := x"C9";
-
 	-- Register signals (non-baud config)
 	signal r_capture_width_sel				: std_logic := '0';
 	signal r_sample_rate_sel				: std_logic_vector(1 downto 0) := "00";
@@ -127,7 +117,7 @@ architecture RTL of config_regs is
 
 	-- Pulse outputs from the non-baud (legacy) opcode handling above, driven directly in seq_proc (no r_/n_ split,
 	-- matching this module's existing single-process style). OR'd with the baud FSM's own pulses at the bottom of
-	-- this file -- the two paths are mutually exclusive per write (CMD_UART_BAUD is a no-op in seq_proc, see below).
+	-- this file -- the two paths are mutually exclusive per write (C_CMD_UART_BAUD is a no-op in seq_proc, see below).
 	signal r_legacy_ack_pulse				: std_logic := '0';
 	signal r_legacy_error_pulse				: std_logic := '0';
 
@@ -168,10 +158,10 @@ begin
 					r_legacy_error_pulse <= '1';
 				elsif i_cfg_write_pulse = '1' then
 					case i_cfg_opcode is
-						when CMD_UART_BAUD =>
+						when C_CMD_UART_BAUD =>
 							null;  -- routed to the baud changeover FSM below, not handled here
 
-						when CMD_CAPTURE_WIDTH =>
+						when C_CMD_CAPTURE_WIDTH =>
 							case i_cfg_value(7 downto 0) is
 								when x"00" | x"01" =>
 									r_capture_width_sel <= i_cfg_value(0);
@@ -181,7 +171,7 @@ begin
 									r_legacy_error_pulse <= '1';
 							end case;
 
-						when CMD_SAMP_RATE =>
+						when C_CMD_SAMP_RATE =>
 							case i_cfg_value(7 downto 0) is
 								when x"00" | x"01" | x"02" =>
 									r_sample_rate_sel 	<= i_cfg_value(1 downto 0);
@@ -191,7 +181,7 @@ begin
 									r_legacy_error_pulse <= '1';
 							end case;
 
-						when CMD_CAPTURE_DEPTH =>
+						when C_CMD_CAPTURE_DEPTH =>
 							case i_cfg_value(7 downto 0) is
 								when x"00" | x"01" =>
 									r_capture_depth_sel <= i_cfg_value(0);
@@ -201,7 +191,7 @@ begin
 									r_legacy_error_pulse <= '1';
 							end case;
 
-						when CMD_TRIGGER_MODE =>
+						when C_CMD_TRIGGER_MODE =>
 							case i_cfg_value(7 downto 0) is
 								when x"00" | x"01" | x"02" =>
 									r_trigger_mode     <= i_cfg_value(1 downto 0);
@@ -211,7 +201,7 @@ begin
 									r_legacy_error_pulse <= '1';
 							end case;
 
-						when CMD_EDGE_TRIGGER_CH =>
+						when C_CMD_EDGE_TRIG_CH =>
 							if i_cfg_value(7 downto 4) = "0000" then
 								r_edge_trigger_ch  <= i_cfg_value(3 downto 0);
 								r_legacy_ack_pulse <= '1';
@@ -219,7 +209,7 @@ begin
 								r_legacy_error_pulse <= '1';
 							end if;
 
-						when CMD_EDGE_TRIGGER_TYPE =>
+						when C_CMD_EDGE_TRIG_TYPE =>
 							case i_cfg_value(7 downto 0) is
 								when x"00" | x"01" | x"02" =>
 									r_edge_trigger_type <= i_cfg_value(1 downto 0);
@@ -229,11 +219,11 @@ begin
 									r_legacy_error_pulse <= '1';
 							end case;
 
-						when CMD_PATTERN_TRIGGER_PATTERN =>
+						when C_CMD_PATTERN_VALUE =>
 							r_pattern_trigger_value <= i_cfg_value;
 							r_legacy_ack_pulse <= '1';
 
-						when CMD_PATTERN_TRIGGER_MASK =>
+						when C_CMD_PATTERN_MASK =>
 							if i_cfg_value /= x"0000" then
 								r_pattern_trigger_mask <= i_cfg_value;
 								r_legacy_ack_pulse <= '1';
@@ -241,7 +231,7 @@ begin
 								r_legacy_error_pulse <= '1';
 							end if;
 
-						when CMD_TRIGGER_POSITION =>
+						when C_CMD_TRIGGER_POSITION =>
 							case i_cfg_value(7 downto 0) is
 								when x"00" | x"01" | x"02" =>
 									r_trigger_pos      <= i_cfg_value(1 downto 0);
@@ -300,7 +290,7 @@ begin
 
 		case r_baud_state is
 			when BAUD_IDLE =>
-				if i_config_write_allowed = '1' and i_cfg_write_pulse = '1' and i_cfg_opcode = CMD_UART_BAUD then
+				if i_config_write_allowed = '1' and i_cfg_write_pulse = '1' and i_cfg_opcode = C_CMD_UART_BAUD then
 					-- analyzer_fsm in IDLE or DATA_READY so config_write allowed; cmd_parser sent valid opcode (and args); opcode concerns change of baud rate
 					case i_cfg_value(7 downto 0) is
 						when x"00" | x"01" | x"02" =>
@@ -315,7 +305,7 @@ begin
 				end if;
 
 			when BAUD_PENDING =>
-				if i_config_write_allowed = '1' and i_cfg_write_pulse = '1' and i_cfg_opcode = CMD_UART_BAUD then
+				if i_config_write_allowed = '1' and i_cfg_write_pulse = '1' and i_cfg_opcode = C_CMD_UART_BAUD then
 					n_baud_error_pulse <= '1';  -- a second changeover on top of an unconfirmed one has no defined meaning
 				end if;
 				if i_resp_idle = '1' and i_tx_idle = '1' then
@@ -326,7 +316,7 @@ begin
 				end if;
 
 			when BAUD_CONFIRM =>
-				if i_config_write_allowed = '1' and i_cfg_write_pulse = '1' and i_cfg_opcode = CMD_UART_BAUD then
+				if i_config_write_allowed = '1' and i_cfg_write_pulse = '1' and i_cfg_opcode = C_CMD_UART_BAUD then
 					n_baud_error_pulse <= '1';
 				end if;
 				if i_rx_byte_valid_pulse = '1' then

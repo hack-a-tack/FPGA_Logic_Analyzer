@@ -7,6 +7,7 @@
 -- MODIFIED: 2026-07-28 (FSM, config outputs)
 -- MODIFIED: 2026-08-17 (rev2)
 -- MODIFIED: 2026-08-18 (rev2) (command-byte constants changed from std_logic_vector(DATA_LENGTH-1 downto 0) to a fixed std_logic_vector(7 downto 0); GHDL rejects a generic-dependent subtype as a case choice, Synplify silently accepted it)
+-- MODIFIED: 2026-08-19 (rev2) (migrated to la_pkg: all twelve local CMD_* constants deleted, replaced with la_pkg's C_CMD_*, which are already fixed 8-bit and stay locally static as case choices)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -28,7 +29,7 @@
 -- self-clearing signal would read back as 0x00. It only updates in IDLE, on i_rx_valid_pulse, so it correctly
 -- holds the pending command's opcode through WAIT_ARG_1/WAIT_ARG_2 for timeout/error reporting.
 --
--- CMD_PATTERN_TRIGGER_PATTERN/CMD_PATTERN_TRIGGER_MASK (C7/C8) arguments are low byte first, matching every other
+-- C_CMD_PATTERN_VALUE/C_CMD_PATTERN_MASK (C7/C8) arguments are low byte first, matching every other
 -- multi-byte field in the protocol (LEN, SAMPLE_COUNT, TRIGGER_INDEX, CRC, sample data).
 --
 -- With rx_frame_parser active, a partial command can't arrive over UART any more. Frames are released atomically.
@@ -47,6 +48,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
+use WORK.la_pkg.ALL;
 
 entity cmd_parser is
 	generic (
@@ -72,24 +74,6 @@ entity cmd_parser is
 end entity cmd_parser;
 
 architecture RTL of cmd_parser is	
-	-- Constants representing command bytes. Fixed 8-bit width, not DATA_LENGTH-1 downto 0: these are used as
-	-- case-statement choices below, and a case choice must be a locally static expression -- a constant whose
-	-- subtype depends on a generic is not locally static even though DATA_LENGTH is always 8. GHDL enforces this;
-	-- Synplify does not.
-	constant CMD_CAPTURE 					: std_logic_vector(7 downto 0) := x"A0";
-	constant CMD_READ 						: std_logic_vector(7 downto 0) := x"A1";
-
-	constant CMD_UART_BAUD 					: std_logic_vector(7 downto 0) := x"C0";
-	constant CMD_CAPTURE_WIDTH 				: std_logic_vector(7 downto 0) := x"C1";
-	constant CMD_SAMP_RATE 					: std_logic_vector(7 downto 0) := x"C2";
-	constant CMD_CAPTURE_DEPTH				: std_logic_vector(7 downto 0) := x"C3";
-	constant CMD_TRIGGER_MODE 				: std_logic_vector(7 downto 0) := x"C4";
-	constant CMD_EDGE_TRIGGER_CH 			: std_logic_vector(7 downto 0) := x"C5";
-	constant CMD_EDGE_TRIGGER_TYPE 			: std_logic_vector(7 downto 0) := x"C6";
-	constant CMD_PATTERN_TRIGGER_PATTERN	: std_logic_vector(7 downto 0) := x"C7";
-	constant CMD_PATTERN_TRIGGER_MASK 		: std_logic_vector(7 downto 0) := x"C8";
-	constant CMD_TRIGGER_POSITION 			: std_logic_vector(7 downto 0) := x"C9";
-	
 	-- FSM type and signals
 	type cmd_parser_state is (IDLE, WAIT_ARG_1, WAIT_ARG_2);
 	signal r_state : cmd_parser_state := IDLE;
@@ -128,20 +112,20 @@ begin
 
                             case i_rx_byte is
 
-                                when CMD_CAPTURE 	=> o_capture_cmd_pulse <= '1';
+                                when C_CMD_CAPTURE	=> o_capture_cmd_pulse <= '1';
 
-                                when CMD_READ 		=> o_read_cmd_pulse <= '1';
+                                when C_CMD_READ		=> o_read_cmd_pulse <= '1';
 
-                                when CMD_UART_BAUD               |
-                                     CMD_CAPTURE_WIDTH           |
-                                     CMD_SAMP_RATE               |
-                                     CMD_CAPTURE_DEPTH           |
-                                     CMD_TRIGGER_MODE            |
-                                     CMD_EDGE_TRIGGER_CH         |
-                                     CMD_EDGE_TRIGGER_TYPE       |
-                                     CMD_PATTERN_TRIGGER_PATTERN |
-                                     CMD_PATTERN_TRIGGER_MASK    |
-                                     CMD_TRIGGER_POSITION =>
+                                when C_CMD_UART_BAUD               |
+                                     C_CMD_CAPTURE_WIDTH           |
+                                     C_CMD_SAMP_RATE               |
+                                     C_CMD_CAPTURE_DEPTH           |
+                                     C_CMD_TRIGGER_MODE            |
+                                     C_CMD_EDGE_TRIG_CH         |
+                                     C_CMD_EDGE_TRIG_TYPE       |
+                                     C_CMD_PATTERN_VALUE |
+                                     C_CMD_PATTERN_MASK    |
+                                     C_CMD_TRIGGER_POSITION =>
 
                                     r_pending_cmd <= i_rx_byte;
                                     r_state       <= WAIT_ARG_1;
@@ -155,8 +139,8 @@ begin
                         if i_rx_valid_pulse = '1' then
                             r_timeout_count <= 0;
 
-                            if (r_pending_cmd = CMD_PATTERN_TRIGGER_PATTERN) or
-                               (r_pending_cmd = CMD_PATTERN_TRIGGER_MASK) then
+                            if (r_pending_cmd = C_CMD_PATTERN_VALUE) or
+                               (r_pending_cmd = C_CMD_PATTERN_MASK) then
 
                                 -- First byte is the low byte.
                                 r_arg_1 <= i_rx_byte;

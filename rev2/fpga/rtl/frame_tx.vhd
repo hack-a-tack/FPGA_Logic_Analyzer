@@ -3,6 +3,7 @@
 -- FUNCTION: wraps payload byte stream from send_engine or resp_gen. (Also owns the CRC engine and sequence counter)
 -- AUTHOR: Jakob Kieszek Ottesen
 -- DATE: 2026-08-13 (YYYY-MM-DD)
+-- MODIFIED: 2026-08-19 (rev2) (migrated to la_pkg: crc16_next and the SYNC0/SYNC1/VERSION/FRAME_TYPE_CAPTURE constants deleted, replaced with la_pkg's crc16_next/C_SYNC0/C_SYNC1/C_PROTO_VER/C_TYPE_CAPTURE/C_CRC_INIT)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -62,6 +63,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
+use WORK.la_pkg.ALL;
 
 entity frame_tx is
 	generic (
@@ -110,34 +112,6 @@ architecture RTL of frame_tx is
 	signal r_seq_counter, n_seq_counter : unsigned(7 downto 0) := (others => '0');		-- persists across frames, wraps 0xFF -> 0x00
 	signal r_crc, n_crc : std_logic_vector(15 downto 0) := (others => '0');
 	signal r_frame_done_pulse, n_frame_done_pulse : std_logic := '0';						-- output
-
-	-- Constants used for static header fields
-	constant SYNC0		: std_logic_vector(DATA_LENGTH-1 downto 0) := x"A5";
-	constant SYNC1		: std_logic_vector(DATA_LENGTH-1 downto 0) := x"5A";
-	constant VERSION	: std_logic_vector(DATA_LENGTH-1 downto 0) := x"01";
-
-	constant FRAME_TYPE_CAPTURE	: std_logic_vector(DATA_LENGTH-1 downto 0) := x"01";
-
-	-- CRC FUNCTION (identical in behaviour to the one in send_engine.vhd)
-	function crc16_next(
-		crc_in  : std_logic_vector(15 downto 0);
-		data_in : std_logic_vector(7 downto 0)
-	) return std_logic_vector is
-		variable v_crc : unsigned(15 downto 0);
-	begin
-		v_crc := unsigned(crc_in) xor
-				 shift_left(resize(unsigned(data_in), 16), 8);
-
-		for i in 0 to 7 loop
-			if v_crc(15) = '1' then
-				v_crc := shift_left(v_crc, 1) xor x"1021";
-			else
-				v_crc := shift_left(v_crc, 1);
-			end if;
-		end loop;
-
-		return std_logic_vector(v_crc);
-	end function;
 
 begin
 	-- Sequential process for dealing with clocking
@@ -200,15 +174,15 @@ begin
 					n_grant_sel    <= '0';
 					n_frame_type   <= i_resp_frame_type;
 					n_frame_len    <= unsigned(i_resp_frame_len);
-					n_crc          <= x"FFFF";
+					n_crc          <= C_CRC_INIT;
 					n_header_index <= 0;
 					n_pl_count     <= (others => '0');
 					n_state        <= HEADER;
 				elsif i_send_frame_req = '1' then
 					n_grant_sel    <= '1';
-					n_frame_type   <= FRAME_TYPE_CAPTURE;
+					n_frame_type   <= C_TYPE_CAPTURE;
 					n_frame_len    <= unsigned(i_send_frame_len);
-					n_crc          <= x"FFFF";
+					n_crc          <= C_CRC_INIT;
 					n_header_index <= 0;
 					n_pl_count     <= (others => '0');
 					n_state        <= HEADER;
@@ -216,9 +190,9 @@ begin
 
 			when HEADER =>
 				case r_header_index is
-					when 0      => v_hdr_byte := SYNC0;
-					when 1      => v_hdr_byte := SYNC1;
-					when 2      => v_hdr_byte := VERSION;
+					when 0      => v_hdr_byte := C_SYNC0;
+					when 1      => v_hdr_byte := C_SYNC1;
+					when 2      => v_hdr_byte := C_PROTO_VER;
 					when 3      => v_hdr_byte := r_frame_type;
 					when 4      => v_hdr_byte := std_logic_vector(r_seq_counter);
 					when 5      => v_hdr_byte := std_logic_vector(r_frame_len(7 downto 0));

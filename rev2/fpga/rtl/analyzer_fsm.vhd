@@ -9,6 +9,7 @@
 -- MODIFIED: 2026-08-12 (rev2) (SEND now returns to DATA_READY instead of IDLE, so READ is repeatable)
 -- MODIFIED: 2026-08-12 (rev2) (response transmission moved to resp_gen; removed TX-busy gate that could drop command pulses)
 -- MODIFIED: 2026-08-15 (rev2) (surface rx_frame_parser frame-error and seq-gap events as resp_gen requests)
+-- MODIFIED: 2026-08-19 (rev2) (migrated to la_pkg: RESP_TYPE_*/CODE_*/OPCODE_* constants deleted, replaced with la_pkg's C_TYPE_*/C_CODE_*/C_CMD_*)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -40,7 +41,7 @@
 -- queued by resp_gen and sent as its own frame afterwards.
 -- A completed capture remains readable in DATA_READY; READ may be issued repeatedly so the host can retry after a CRC or sequence failure. The capture is invalidated only by a new CAPTURE command.
 -- A seq gap is reported as STATUS, not ERROR, because rx_frame_parser still releases the frame that follows the gap. That command runs normally and gets its own ACK; the gap report just says an earlier frame was lost, so the host can expect two responses (gap, then ACK) for it.
--- CODE_FRAME_ERROR (0xEF) is kept separate from CODE_ERROR (0xEE) because the detail byte means something different for each: 0xEE's detail is a command opcode, 0xEF's detail is a frame-reject subcode (bad version, bad type, bad length, CRC mismatch, timeout). Reusing one code for both would make the host guess which meaning applies.
+-- C_CODE_FRAME_ERROR (0xEF) is kept separate from C_CODE_ERROR (0xEE) because the detail byte means something different for each: 0xEE's detail is a command opcode, 0xEF's detail is a frame-reject subcode (bad version, bad type, bad length, CRC mismatch, timeout). Reusing one code for both would make the host guess which meaning applies.
 -- Frame-error and seq-gap responses are handled after the state case, and only fire if the case did not already request a response this cycle. The case wins any same-cycle collision so i_capture_done_pulse can never be dropped for a frame event; losing a DONE would hang the host, while a dropped frame-error/seq-gap just costs an extra host-side ACK timeout and retry.
 --
 -- PREFIXES
@@ -63,6 +64,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
+use WORK.la_pkg.ALL;
 
 entity analyzer_fsm is
 	generic(
@@ -106,18 +108,6 @@ end entity analyzer_fsm;
 architecture RTL of analyzer_fsm is
 	type runtime_state_type is (IDLE, CAPTURE, DATA_READY, SEND);
 	signal r_state, n_state : runtime_state_type := IDLE;
-
-	-- Response codes and opcodes sent to resp_gen
-	constant RESP_TYPE_STATUS : std_logic_vector(DATA_LENGTH-1 downto 0) := x"02";  -- 01 is capture data from send_engine
-	constant RESP_TYPE_ERROR  : std_logic_vector(DATA_LENGTH-1 downto 0) := x"03";
-	constant CODE_ACK         : std_logic_vector(DATA_LENGTH-1 downto 0) := x"55";
-	constant CODE_DONE        : std_logic_vector(DATA_LENGTH-1 downto 0) := x"77";
-	constant CODE_SEQ_GAP     : std_logic_vector(DATA_LENGTH-1 downto 0) := x"66";
-	constant CODE_ERROR       : std_logic_vector(DATA_LENGTH-1 downto 0) := x"EE";
-	constant CODE_FRAME_ERROR : std_logic_vector(DATA_LENGTH-1 downto 0) := x"EF";
-	constant CODE_WATCHDOG    : std_logic_vector(DATA_LENGTH-1 downto 0) := x"DD";
-	constant OPCODE_CAPTURE   : std_logic_vector(DATA_LENGTH-1 downto 0) := x"A0";
-	constant OPCODE_READ      : std_logic_vector(DATA_LENGTH-1 downto 0) := x"A1";
 
 	-- Register signals, next-state signals
 	signal r_resp_req, n_resp_req : std_logic := '0';																	-- output
@@ -190,34 +180,34 @@ begin
 				if i_cfg_ack_pulse = '1' then  		-- valid opcode and config byte
 					v_resp_taken := true;
 					n_resp_req    <= '1';
-					n_resp_type   <= RESP_TYPE_STATUS;
-					n_resp_code   <= CODE_ACK;
+					n_resp_type   <= C_TYPE_STATUS;
+					n_resp_code   <= C_CODE_ACK;
 					n_resp_detail <= i_cmd_opcode;
 				elsif i_cfg_error_pulse = '1' then	-- undefined opcode or config byte
 					v_resp_taken := true;
 					n_resp_req    <= '1';
-					n_resp_type   <= RESP_TYPE_ERROR;
-					n_resp_code   <= CODE_ERROR;
+					n_resp_type   <= C_TYPE_ERROR;
+					n_resp_code   <= C_CODE_ERROR;
 					n_resp_detail <= i_cmd_opcode;
 				elsif i_capture_cmd_pulse = '1' then
 					n_capture_start_pulse <= '1';
 					n_state <= CAPTURE;
 					v_resp_taken := true;
 					n_resp_req    <= '1';
-					n_resp_type   <= RESP_TYPE_STATUS;
-					n_resp_code   <= CODE_ACK;  -- 0x55 (OK), 0b01010101
-					n_resp_detail <= OPCODE_CAPTURE;
+					n_resp_type   <= C_TYPE_STATUS;
+					n_resp_code   <= C_CODE_ACK;  -- 0x55 (OK), 0b01010101
+					n_resp_detail <= C_CMD_CAPTURE;
 				elsif i_read_cmd_pulse = '1' then
 					v_resp_taken := true;
 					n_resp_req    <= '1';
-					n_resp_type   <= RESP_TYPE_ERROR;
-					n_resp_code   <= CODE_ERROR;  -- 0xEE (ERROR), 0b11101110; data not ready
-					n_resp_detail <= OPCODE_READ;
+					n_resp_type   <= C_TYPE_ERROR;
+					n_resp_code   <= C_CODE_ERROR;  -- 0xEE (ERROR), 0b11101110; data not ready
+					n_resp_detail <= C_CMD_READ;
 				elsif i_cmd_error_pulse = '1' then
 					v_resp_taken := true;
 					n_resp_req    <= '1';
-					n_resp_type   <= RESP_TYPE_ERROR;
-					n_resp_code   <= CODE_ERROR;  -- 0xEE (ERROR), 0b11101110; opcode not understood
+					n_resp_type   <= C_TYPE_ERROR;
+					n_resp_code   <= C_CODE_ERROR;  -- 0xEE (ERROR), 0b11101110; opcode not understood
 					n_resp_detail <= i_cmd_opcode;
 				end if;
 
@@ -227,26 +217,26 @@ begin
 					n_state <= DATA_READY;
 					v_resp_taken := true;
 					n_resp_req    <= '1';
-					n_resp_type   <= RESP_TYPE_STATUS;
-					n_resp_code   <= CODE_DONE;  -- 0x77 (DONE), 0b01110111
+					n_resp_type   <= C_TYPE_STATUS;
+					n_resp_code   <= C_CODE_DONE;  -- 0x77 (DONE), 0b01110111
 					n_resp_detail <= x"00";
 				elsif i_capture_cmd_pulse = '1' then
 					v_resp_taken := true;
 					n_resp_req    <= '1';
-					n_resp_type   <= RESP_TYPE_ERROR;
-					n_resp_code   <= CODE_ERROR;  -- 0xEE (ERROR), 0b11101110; already capturing
-					n_resp_detail <= OPCODE_CAPTURE;
+					n_resp_type   <= C_TYPE_ERROR;
+					n_resp_code   <= C_CODE_ERROR;  -- 0xEE (ERROR), 0b11101110; already capturing
+					n_resp_detail <= C_CMD_CAPTURE;
 				elsif i_read_cmd_pulse = '1' then
 					v_resp_taken := true;
 					n_resp_req    <= '1';
-					n_resp_type   <= RESP_TYPE_ERROR;
-					n_resp_code   <= CODE_ERROR;  -- 0xEE (ERROR), 0b11101110; data not ready
-					n_resp_detail <= OPCODE_READ;
+					n_resp_type   <= C_TYPE_ERROR;
+					n_resp_code   <= C_CODE_ERROR;  -- 0xEE (ERROR), 0b11101110; data not ready
+					n_resp_detail <= C_CMD_READ;
 				elsif i_cmd_error_pulse = '1' then
 					v_resp_taken := true;
 					n_resp_req    <= '1';
-					n_resp_type   <= RESP_TYPE_ERROR;
-					n_resp_code   <= CODE_ERROR;  -- 0xEE (ERROR), 0b11101110; opcode not understood
+					n_resp_type   <= C_TYPE_ERROR;
+					n_resp_code   <= C_CODE_ERROR;  -- 0xEE (ERROR), 0b11101110; opcode not understood
 					n_resp_detail <= i_cmd_opcode;
 				end if;
 
@@ -254,31 +244,31 @@ begin
 				if i_cfg_ack_pulse = '1' then		-- valid opcode and config byte
 					v_resp_taken := true;
 					n_resp_req    <= '1';
-					n_resp_type   <= RESP_TYPE_STATUS;
-					n_resp_code   <= CODE_ACK;
+					n_resp_type   <= C_TYPE_STATUS;
+					n_resp_code   <= C_CODE_ACK;
 					n_resp_detail <= i_cmd_opcode;
 				elsif i_cfg_error_pulse = '1' then  -- undefined opcode or config byte
 					v_resp_taken := true;
 					n_resp_req    <= '1';
-					n_resp_type   <= RESP_TYPE_ERROR;
-					n_resp_code   <= CODE_ERROR;
+					n_resp_type   <= C_TYPE_ERROR;
+					n_resp_code   <= C_CODE_ERROR;
 					n_resp_detail <= i_cmd_opcode;
 				elsif i_capture_cmd_pulse = '1' then
 					n_capture_start_pulse <= '1';
 					n_state <= CAPTURE;
 					v_resp_taken := true;
 					n_resp_req    <= '1';
-					n_resp_type   <= RESP_TYPE_STATUS;
-					n_resp_code   <= CODE_ACK;  -- 0x55 (OK), 0b01010101
-					n_resp_detail <= OPCODE_CAPTURE;
+					n_resp_type   <= C_TYPE_STATUS;
+					n_resp_code   <= C_CODE_ACK;  -- 0x55 (OK), 0b01010101
+					n_resp_detail <= C_CMD_CAPTURE;
 				elsif i_read_cmd_pulse = '1' then
 					n_state <= SEND;
 					n_send_start_pulse <= '1';
 				elsif i_cmd_error_pulse = '1' then
 					v_resp_taken := true;
 					n_resp_req    <= '1';
-					n_resp_type   <= RESP_TYPE_ERROR;
-					n_resp_code   <= CODE_ERROR;  -- 0xEE (ERROR), 0b11101110; opcode not understood
+					n_resp_type   <= C_TYPE_ERROR;
+					n_resp_code   <= C_CODE_ERROR;  -- 0xEE (ERROR), 0b11101110; opcode not understood
 					n_resp_detail <= i_cmd_opcode;
 				end if;
 
@@ -293,13 +283,13 @@ begin
 		if not v_resp_taken then
 			if i_frame_error_pulse = '1' then		-- frame rejected by rx_frame_parser (bad sync/version/type/length/CRC)
 				n_resp_req    <= '1';
-				n_resp_type   <= RESP_TYPE_ERROR;
-				n_resp_code   <= CODE_FRAME_ERROR;  -- 0xEF (FRAME ERROR), detail = frame reject subcode
+				n_resp_type   <= C_TYPE_ERROR;
+				n_resp_code   <= C_CODE_FRAME_ERROR;  -- 0xEF (FRAME ERROR), detail = frame reject subcode
 				n_resp_detail <= i_frame_error_code;
 			elsif i_seq_gap_pulse = '1' then		-- a host->FPGA frame was lost, released command still executes
 				n_resp_req    <= '1';
-				n_resp_type   <= RESP_TYPE_STATUS;
-				n_resp_code   <= CODE_SEQ_GAP;  -- 0x66 (SEQ GAP)
+				n_resp_type   <= C_TYPE_STATUS;
+				n_resp_code   <= C_CODE_SEQ_GAP;  -- 0x66 (SEQ GAP)
 				n_resp_detail <= x"00";
 			end if;
 		end if;
@@ -334,8 +324,8 @@ begin
 		if r_wd_timeout = '1' then
 			n_state <= IDLE;
 			n_resp_req    <= '1';
-			n_resp_type   <= RESP_TYPE_ERROR;
-			n_resp_code   <= CODE_WATCHDOG;  -- 0xDD (WATCHDOG ERROR), 0b11011101; watchdog triggered
+			n_resp_type   <= C_TYPE_ERROR;
+			n_resp_code   <= C_CODE_WATCHDOG;  -- 0xDD (WATCHDOG ERROR), 0b11011101; watchdog triggered
 			n_resp_detail <= x"00";
 		end if;
 		*/
