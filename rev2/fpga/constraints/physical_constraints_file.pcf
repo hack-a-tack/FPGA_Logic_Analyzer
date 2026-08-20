@@ -35,13 +35,15 @@ set_io o_UART_RX_LED 11
 set_io o_USER_LED 10
 
 # Config signals
-# Note that i_RESET is used for the i_CRESET_B pin
-set_io i_RESET 8
+# rev1: i_RESET used for i_CRESET_B pin. But CRESET_B is reconfig reset, not logic reset for the design
+# set_io i_RESET 8
 
 # UART signals
 set_io o_UART_TX 4
 set_io i_UART_RX 3
 
 # UART HW Handhsaking signals
-set_io o_CTSn 6
-set_io i_RTSn 2
+# CTSn
+set_io i_FTDI_CTS_N 6
+# RTSn
+set_io o_FTDI_RTS_N 2

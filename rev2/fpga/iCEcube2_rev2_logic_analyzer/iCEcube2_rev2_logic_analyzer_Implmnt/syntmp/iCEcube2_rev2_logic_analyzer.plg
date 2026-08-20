@@ -1,7 +1,0 @@
-@P:  Worst Slack : NA
-@P: tx_mux Part : ice40up5ksg48
-@P: tx_mux I/O primitives : 31
-@P: tx_mux I/O Register bits : 0
-@P: tx_mux Register bits (Non I/O) : 0 (0%)
-@P: tx_mux Total Luts : 11 (0%)
-@P:  CPU Time : 0h:00m:01s

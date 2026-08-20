@@ -4,6 +4,21 @@
 
 #project files
 add_file -vhdl -lib work "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/rev2/fpga/rtl/tx_mux.vhd"
+add_file -vhdl -lib work "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/rev2/fpga/rtl/analyzer_fsm.vhd"
+add_file -vhdl -lib work "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/rev2/fpga/rtl/capture_engine.vhd"
+add_file -vhdl -lib work "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/rev2/fpga/rtl/clocking.vhd"
+add_file -vhdl -lib work "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/rev2/fpga/rtl/cmd_parser.vhd"
+add_file -vhdl -lib work "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/rev2/fpga/rtl/config_regs.vhd"
+add_file -vhdl -lib work "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/rev2/fpga/rtl/frame_tx.vhd"
+add_file -vhdl -lib work "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/rev2/fpga/rtl/la_pkg.vhd"
+add_file -vhdl -lib work "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/rev2/fpga/rtl/resp_gen.vhd"
+add_file -vhdl -lib work "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/rev2/fpga/rtl/rx_frame_parser.vhd"
+add_file -vhdl -lib work "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/rev2/fpga/rtl/send_engine.vhd"
+add_file -vhdl -lib work "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/rev2/fpga/rtl/top.vhd"
+add_file -vhdl -lib work "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/rev2/fpga/rtl/trace_buffer.vhd"
+add_file -vhdl -lib work "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/rev2/fpga/rtl/uart_rx.vhd"
+add_file -vhdl -lib work "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/rev2/fpga/rtl/uart_tx.vhd"
+add_file -constraint "C:/Users/Jakob/Documents/ee-projects/FPGA_logic_analyzer/rev2/fpga/constraints/synopsys_design_constraints.sdc"
 
 
 

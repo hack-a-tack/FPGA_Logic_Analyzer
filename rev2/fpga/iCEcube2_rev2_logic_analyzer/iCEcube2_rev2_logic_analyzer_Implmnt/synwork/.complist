@@ -1,2 +1,2 @@
 
-: 0 work.tx_mux "C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\tx_mux.vhd" 36 7 
+: 0 work.top "C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\top.vhd" 90 7 work.uart_tx work.frame_tx work.tx_mux work.resp_gen work.send_engine work.trace_buffer work.capture_engine work.analyzer_fsm work.config_regs work.cmd_parser work.rx_frame_parser work.uart_rx work.clocking 

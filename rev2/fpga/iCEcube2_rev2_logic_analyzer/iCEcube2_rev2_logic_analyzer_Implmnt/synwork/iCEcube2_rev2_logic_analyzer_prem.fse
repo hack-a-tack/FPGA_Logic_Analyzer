@@ -1,0 +1,122 @@
+
+fsm_encoding {21912911} sequential
+
+fsm_state_encoding {21912911} rx_idle {00}
+
+fsm_state_encoding {21912911} rx_start_bit {01}
+
+fsm_state_encoding {21912911} rx_data_bits {10}
+
+fsm_state_encoding {21912911} rx_stop_bit {11}
+
+fsm_registers {21912911} {r_state[1]}  {r_state[0]} 
+
+fsm_encoding {17908902} sequential
+
+fsm_state_encoding {17908902} idle {00}
+
+fsm_state_encoding {17908902} wait_arg_1 {01}
+
+fsm_state_encoding {17908902} wait_arg_2 {10}
+
+fsm_registers {17908902} {r_state[1]}  {r_state[0]} 
+
+fsm_encoding {1825722573} sequential
+
+fsm_state_encoding {1825722573} baud_idle {00}
+
+fsm_state_encoding {1825722573} baud_pending {01}
+
+fsm_state_encoding {1825722573} baud_confirm {10}
+
+fsm_registers {1825722573} {r_baud_state[1]}  {r_baud_state[0]} 
+
+fsm_encoding {1613321334} sequential
+
+fsm_state_encoding {1613321334} idle {00}
+
+fsm_state_encoding {1613321334} capture {01}
+
+fsm_state_encoding {1613321334} data_ready {10}
+
+fsm_state_encoding {1613321334} send {11}
+
+fsm_registers {1613321334} {r_state[1]}  {r_state[0]} 
+
+fsm_encoding {1014221425} onehot
+
+fsm_state_encoding {1014221425} idle {000001}
+
+fsm_state_encoding {1014221425} linear_capture {000010}
+
+fsm_state_encoding {1014221425} prefill {000100}
+
+fsm_state_encoding {1014221425} armed {001000}
+
+fsm_state_encoding {1014221425} post_trigger {010000}
+
+fsm_state_encoding {1014221425} done {100000}
+
+fsm_registers {1014221425} {r_state[0]}  {r_state[1]}  {r_state[2]}  {r_state[3]}  {r_state[4]}  {r_state[5]} 
+
+fsm_encoding {1415921596} onehot
+
+fsm_state_encoding {1415921596} idle {00000001}
+
+fsm_state_encoding {1415921596} request {00000010}
+
+fsm_state_encoding {1415921596} send_meta {00000100}
+
+fsm_state_encoding {1415921596} wait_ram {00001000}
+
+fsm_state_encoding {1415921596} send_low_byte {00010000}
+
+fsm_state_encoding {1415921596} send_high_byte {00100000}
+
+fsm_state_encoding {1415921596} wait_frame_done {01000000}
+
+fsm_state_encoding {1415921596} done {10000000}
+
+fsm_registers {1415921596} {r_state[0]}  {r_state[1]}  {r_state[2]}  {r_state[3]}  {r_state[4]}  {r_state[5]}  {r_state[6]}  {r_state[7]} 
+
+fsm_encoding {1313521357} onehot
+
+fsm_state_encoding {1313521357} idle {00001}
+
+fsm_state_encoding {1313521357} request {00010}
+
+fsm_state_encoding {1313521357} send_code {00100}
+
+fsm_state_encoding {1313521357} send_detail {01000}
+
+fsm_state_encoding {1313521357} wait_done {10000}
+
+fsm_registers {1313521357} {r_state[0]}  {r_state[1]}  {r_state[2]}  {r_state[3]}  {r_state[4]} 
+
+fsm_encoding {1912021208} onehot
+
+fsm_state_encoding {1912021208} idle {000001}
+
+fsm_state_encoding {1912021208} header {000010}
+
+fsm_state_encoding {1912021208} payload {000100}
+
+fsm_state_encoding {1912021208} crc_l {001000}
+
+fsm_state_encoding {1912021208} crc_h {010000}
+
+fsm_state_encoding {1912021208} complete {100000}
+
+fsm_registers {1912021208} {r_state[0]}  {r_state[1]}  {r_state[2]}  {r_state[3]}  {r_state[4]}  {r_state[5]} 
+
+fsm_encoding {2210721079} sequential
+
+fsm_state_encoding {2210721079} tx_idle {00}
+
+fsm_state_encoding {2210721079} tx_start_bit {01}
+
+fsm_state_encoding {2210721079} tx_data_bits {10}
+
+fsm_state_encoding {2210721079} tx_stop_bit {11}
+
+fsm_registers {2210721079} {r_state[1]}  {r_state[0]} 

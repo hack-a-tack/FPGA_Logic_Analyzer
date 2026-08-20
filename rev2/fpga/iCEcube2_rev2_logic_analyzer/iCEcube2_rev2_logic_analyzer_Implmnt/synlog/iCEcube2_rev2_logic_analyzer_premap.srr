@@ -1,4 +1,4 @@
-# Tue Aug 18 06:55:03 2026
+# Thu Aug 20 06:01:08 2026
 
 Synopsys Lattice Technology Pre-mapping, Version maplat, Build 1612R, Built Dec  5 2016 10:31:39
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
@@ -6,55 +6,121 @@ Product Version L-2016.09L+ice40
 
 Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 100MB)
 
-@A: MF827 |No constraint file specified.
+Reading constraint file: C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\constraints\synopsys_design_constraints.sdc
 @L: C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\iCEcube2_rev2_logic_analyzer\iCEcube2_rev2_logic_analyzer_Implmnt\iCEcube2_rev2_logic_analyzer_scck.rpt 
 Printing clock  summary report in "C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\iCEcube2_rev2_logic_analyzer\iCEcube2_rev2_logic_analyzer_Implmnt\iCEcube2_rev2_logic_analyzer_scck.rpt" file 
 @N: MF248 |Running in 64-bit mode.
 @N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
 
-Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 104MB peak: 106MB)
 
 
-Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 104MB peak: 106MB)
 
 
-Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 102MB)
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 105MB peak: 106MB)
 
 
-Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 104MB)
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 105MB peak: 107MB)
+
 
 ICG Latch Removal Summary:
 Number of ICG latches removed:	0
 Number of ICG latches not removed:	0
-syn_allowed_resources : blockrams=30  set on top level netlist tx_mux
+syn_allowed_resources : blockrams=30  set on top level netlist top
 
-Finished netlist restructuring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 134MB)
+Finished netlist restructuring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 135MB peak: 137MB)
 
 
 
 Clock Summary
 *****************
 
-Start     Requested     Requested     Clock     Clock     Clock
-Clock     Frequency     Period        Type      Group     Load 
----------------------------------------------------------------
-===============================================================
+Start     Requested     Requested     Clock        Clock                Clock
+Clock     Frequency     Period        Type         Group                Load 
+-----------------------------------------------------------------------------
+clk52     52.8 MHz      18.939        declared     default_clkgroup     802  
+=============================================================================
 
 Finished Pre Mapping Phase.
 @N: BN225 |Writing default property annotation file C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\iCEcube2_rev2_logic_analyzer\iCEcube2_rev2_logic_analyzer_Implmnt\iCEcube2_rev2_logic_analyzer.sap.
 
-Starting constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 134MB)
+Starting constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 135MB peak: 137MB)
 
+Encoding state machine r_state[0:3] (in view: work.uart_rx(rtl))
+original code -> new code
+   00 -> 00
+   01 -> 01
+   10 -> 10
+   11 -> 11
+@N: MO225 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\uart_rx.vhd":91:2:91:3|There are no possible illegal states for state machine r_state[0:3] (in view: work.uart_rx(rtl)); safe FSM implementation is not required.
+Encoding state machine r_state[0:2] (in view: work.cmd_parser(rtl))
+original code -> new code
+   00 -> 00
+   01 -> 01
+   10 -> 10
+Encoding state machine r_baud_state[0:2] (in view: work.config_regs(rtl))
+original code -> new code
+   00 -> 00
+   01 -> 01
+   10 -> 10
+Encoding state machine r_state[0:3] (in view: work.analyzer_fsm(rtl))
+original code -> new code
+   00 -> 00
+   01 -> 01
+   10 -> 10
+   11 -> 11
+@N: MO225 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\analyzer_fsm.vhd":133:2:133:3|There are no possible illegal states for state machine r_state[0:3] (in view: work.analyzer_fsm(rtl)); safe FSM implementation is not required.
+Encoding state machine r_state[0:5] (in view: work.capture_engine(rtl))
+original code -> new code
+   000001 -> 000001
+   000010 -> 000010
+   000100 -> 000100
+   001000 -> 001000
+   010000 -> 010000
+   100000 -> 100000
+Encoding state machine r_state[0:7] (in view: work.send_engine(rtl))
+original code -> new code
+   00000001 -> 00000001
+   00000010 -> 00000010
+   00000100 -> 00000100
+   00001000 -> 00001000
+   00010000 -> 00010000
+   00100000 -> 00100000
+   01000000 -> 01000000
+   10000000 -> 10000000
+Encoding state machine r_state[0:4] (in view: work.resp_gen(rtl))
+original code -> new code
+   00001 -> 00001
+   00010 -> 00010
+   00100 -> 00100
+   01000 -> 01000
+   10000 -> 10000
+Encoding state machine r_state[0:5] (in view: work.frame_tx(rtl))
+original code -> new code
+   000001 -> 000001
+   000010 -> 000010
+   000100 -> 000100
+   001000 -> 001000
+   010000 -> 010000
+   100000 -> 100000
+Encoding state machine r_state[0:3] (in view: work.uart_tx(rtl))
+original code -> new code
+   00 -> 00
+   01 -> 01
+   10 -> 10
+   11 -> 11
+@N: MO225 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\uart_tx.vhd":107:2:107:3|There are no possible illegal states for state machine r_state[0:3] (in view: work.uart_tx(rtl)); safe FSM implementation is not required.
 None
 None
 
-Finished constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 134MB)
+Finished constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 138MB)
 
 Pre-mapping successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 47MB peak: 134MB)
+At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 52MB peak: 138MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Tue Aug 18 06:55:04 2026
+# Thu Aug 20 06:01:08 2026
 
 ###########################################################]

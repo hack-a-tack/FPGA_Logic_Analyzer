@@ -9,6 +9,21 @@
 
 
 add_file -vhdl -lib work "../rtl/tx_mux.vhd" 
+add_file -vhdl -lib work "../rtl/analyzer_fsm.vhd" 
+add_file -vhdl -lib work "../rtl/capture_engine.vhd" 
+add_file -vhdl -lib work "../rtl/clocking.vhd" 
+add_file -vhdl -lib work "../rtl/cmd_parser.vhd" 
+add_file -vhdl -lib work "../rtl/config_regs.vhd" 
+add_file -vhdl -lib work "../rtl/frame_tx.vhd" 
+add_file -vhdl -lib work "../rtl/la_pkg.vhd" 
+add_file -vhdl -lib work "../rtl/resp_gen.vhd" 
+add_file -vhdl -lib work "../rtl/rx_frame_parser.vhd" 
+add_file -vhdl -lib work "../rtl/send_engine.vhd" 
+add_file -vhdl -lib work "../rtl/top.vhd" 
+add_file -vhdl -lib work "../rtl/trace_buffer.vhd" 
+add_file -vhdl -lib work "../rtl/uart_rx.vhd" 
+add_file -vhdl -lib work "../rtl/uart_tx.vhd" 
+add_file -constraint -lib work "../constraints/synopsys_design_constraints.sdc"
 #implementation: "iCEcube2_rev2_logic_analyzer_Implmnt"
 impl -add iCEcube2_rev2_logic_analyzer_Implmnt -type fpga
 

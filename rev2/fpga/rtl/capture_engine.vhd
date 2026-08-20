@@ -6,6 +6,7 @@
 -- MODIFIED: 2026-05-14 (reset active low)
 -- MODIFIED: 2026-08-03 (rev2)
 -- MODIFIED: 2026-08-18 (rev2) (fixed illegal unsigned(x"FFFF") type conversion on n_trigger_index; GHDL rejects a bare bit-string literal as a conversion operand, Synplify silently accepted it)
+-- MODIFIED: 2026-08-20 (rev2) (added a 2FF synchroniser on i_inputs; the write data, n_prev_sample, the edge comparison and the pattern compare all now read the synchronised value instead of the raw async port)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -37,7 +38,12 @@
 -- o_capture_width_sel		1 bit		-> send_engine, trace_buffer
 --
 -- NOTES
---
+-- i_inputs is asynchronous to i_clk (16 logic analyzer pins, no relationship to the FPGA clock). sync_proc
+-- synchronises all 16 bits together into r_inputs_sync_2 before any use, so the write data, n_prev_sample, the
+-- edge comparison and the pattern compare all see the same resolved value -- a bit that resolved differently
+-- across those consumers would produce a spurious trigger, indistinguishable from a real event once captured.
+-- This adds 2 clocks of latency uniformly across all 16 channels, so there is no relative skew between channels
+-- and no effect on measured signal periods.
 --
 -- PREFIXES:
 -- i_ : input
@@ -121,10 +127,14 @@ architecture RTL of capture_engine is
 	signal r_write_ptr, n_write_ptr : unsigned(ADDR_LENGTH-1 downto 0);
 	signal r_prev_sample, n_prev_sample : std_logic_vector(15 downto 0) := (others => '0');
 	signal r_pre_samples, n_pre_samples : integer := 0; 		-- samples strictly before trigger
-	signal r_post_samples, n_post_samples : integer := 0;		-- trigger sample + samples after trigger	
+	signal r_post_samples, n_post_samples : integer := 0;		-- trigger sample + samples after trigger
 	signal r_prefill_count, n_prefill_count : integer := 0;
 	signal r_post_remaining, n_post_remaining : integer := 0;
-	
+
+	-- Registered signals for 2FF synchroniser on i_inputs
+	signal r_inputs_sync_1 : std_logic_vector(15 downto 0) := (others => '0');
+	signal r_inputs_sync_2 : std_logic_vector(15 downto 0) := (others => '0');
+
 begin
 	-- Sequential process to deal with clocking
 	seq_proc: process(i_clk) is
@@ -182,6 +192,22 @@ begin
 			end if;
 		end if;
 	end process seq_proc;
+
+	-- 2FF synchroniser on i_inputs. Free-runs every clock, NOT gated by i_samp_tick -- gating it would defeat the
+	-- purpose, since a synchroniser has to resolve metastability on every clock edge, not just the edges the FSM
+	-- happens to be sampling on.
+	sync_proc: process(i_clk) is
+	begin
+		if rising_edge(i_clk) then
+			if i_rst_n = '0' then
+				r_inputs_sync_1 <= (others => '0');
+				r_inputs_sync_2 <= (others => '0');
+			else
+				r_inputs_sync_1 <= i_inputs;
+				r_inputs_sync_2 <= r_inputs_sync_1;
+			end if;
+		end if;
+	end process sync_proc;
 
 	-- Combinational process to deal with capture engine FSM logic
 	fsm_proc: process(all) is
@@ -355,10 +381,10 @@ begin
 			
 			when PREFILL =>
 				-- PREFILL writes exactly n_pre_samples before trigger evaluation is enabled. Guarantees pre-trigger history.
-				if i_samp_tick = '1' then					
+				if i_samp_tick = '1' then
 					n_write_ptr <= v_next_ptr;
-					n_prev_sample <= i_inputs;
-					
+					n_prev_sample <= r_inputs_sync_2;
+
 					-- move to ARMED state once enough samples are gathered
 					if r_prefill_count = r_pre_samples - 1 then
 						n_state <= ARMED;
@@ -371,31 +397,31 @@ begin
 			when ARMED =>
 				if i_samp_tick = '1' then
 					n_write_ptr <= v_next_ptr;
-					n_prev_sample <= i_inputs;
-					
+					n_prev_sample <= r_inputs_sync_2;
+
 					-- evaluate trigger condition
 					if r_trigger_mode = "01" then  -- edge trigger
 						if r_edge_trigger_type = "00" then  -- rising_edge
-							if r_prev_sample(to_integer(unsigned(r_edge_trigger_ch))) = '0' and i_inputs(to_integer(unsigned(r_edge_trigger_ch))) = '1' then
+							if r_prev_sample(to_integer(unsigned(r_edge_trigger_ch))) = '0' and r_inputs_sync_2(to_integer(unsigned(r_edge_trigger_ch))) = '1' then
 								n_trigger_index <= to_unsigned(r_pre_samples, 16);  -- trigger occurs at index r_pre_samples
 								n_post_remaining <= r_post_remaining - 1;  -- trigger address (at index r_pre_samples) is first post trigger value
 								n_state <= POST_TRIGGER;
 							end if;
 						elsif r_edge_trigger_type = "01" then  -- falling_edge
-							if r_prev_sample(to_integer(unsigned(r_edge_trigger_ch))) = '1' and i_inputs(to_integer(unsigned(r_edge_trigger_ch))) = '0' then
+							if r_prev_sample(to_integer(unsigned(r_edge_trigger_ch))) = '1' and r_inputs_sync_2(to_integer(unsigned(r_edge_trigger_ch))) = '0' then
 								n_trigger_index <= to_unsigned(r_pre_samples, 16);
 								n_post_remaining <= r_post_remaining - 1;  -- trigger address is first post trigger value
 								n_state <= POST_TRIGGER;
 							end if;
 						else  -- either
-							if r_prev_sample(to_integer(unsigned(r_edge_trigger_ch))) /= i_inputs(to_integer(unsigned(r_edge_trigger_ch))) then
+							if r_prev_sample(to_integer(unsigned(r_edge_trigger_ch))) /= r_inputs_sync_2(to_integer(unsigned(r_edge_trigger_ch))) then
 								n_trigger_index <= to_unsigned(r_pre_samples, 16);
 								n_post_remaining <= r_post_remaining - 1;  -- trigger address is first post trigger value
 								n_state <= POST_TRIGGER;
 							end if;
 						end if;
 					elsif r_trigger_mode = "10" then  -- pattern trigger
-						if (i_inputs and r_pattern_mask) = (r_pattern_value and r_pattern_mask) then
+						if (r_inputs_sync_2 and r_pattern_mask) = (r_pattern_value and r_pattern_mask) then
 							n_trigger_index <= to_unsigned(r_pre_samples, 16);
 							n_post_remaining <= r_post_remaining - 1;  -- trigger address is first post trigger value
 							n_state <= POST_TRIGGER;
@@ -437,7 +463,7 @@ begin
 		  r_state = POST_TRIGGER)
 		else '0';  			-- store sample to RAM (occurs each wr_en_pulse) every samp_tick when not in IDLE
 	o_raw_wr_addr 			<= std_logic_vector(r_write_ptr);
-	o_raw_wr_data 			<= i_inputs;
+	o_raw_wr_data 			<= r_inputs_sync_2;
 	o_capture_done_pulse	<= r_capture_done_pulse;
 	
 	o_capture_sample_rate_sel <= r_sample_rate_sel;

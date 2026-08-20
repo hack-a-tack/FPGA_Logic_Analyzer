@@ -7,33 +7,227 @@ Synopsys VHDL Compiler, version comp2016q3p1, Build 141R, built Dec  5 2016
 Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
 
 @N: CD720 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\vhd2008\std.vhd":146:18:146:21|Setting time resolution to ps
-@N:"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\tx_mux.vhd":36:7:36:12|Top entity is set to tx_mux.
+@N:"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\top.vhd":90:7:90:9|Top entity is set to top.
+File C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd changed - recompiling
+File C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\clocking.vhd changed - recompiling
+File C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\la_pkg.vhd changed - recompiling
+File C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\resp_gen.vhd changed - recompiling
 File C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\send_engine.vhd changed - recompiling
+File C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\trace_buffer.vhd changed - recompiling
+File C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\analyzer_fsm.vhd changed - recompiling
+File C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\cmd_parser.vhd changed - recompiling
+File C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\config_regs.vhd changed - recompiling
+File C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\frame_tx.vhd changed - recompiling
+File C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\rx_frame_parser.vhd changed - recompiling
+File C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\uart_rx.vhd changed - recompiling
+File C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\uart_tx.vhd changed - recompiling
+File C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\top.vhd changed - recompiling
 VHDL syntax check successful!
-File C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\send_engine.vhd changed - recompiling
+File C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd changed - recompiling
 @N: CD231 :"C:\lscc\iCEcube2.2020.12\synpbase\lib\vhd2008\std1164.vhd":890:16:890:17|Using onehot encoding for type mvl9plus. For example, enumeration 'U' is mapped to "1000000000".
+@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\top.vhd":90:7:90:9|Synthesizing work.top.structure.
+@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\uart_tx.vhd":57:7:57:13|Synthesizing work.uart_tx.rtl.
+@N: CD233 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\uart_tx.vhd":83:25:83:26|Using sequential encoding for type uart_tx_state_type.
+Post processing for work.uart_tx.rtl
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\uart_tx.vhd":107:2:107:3|Register bit r_clks_per_bit(0) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\uart_tx.vhd":107:2:107:3|Register bit r_clks_per_bit(1) is always 0.
+@W: CL279 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\uart_tx.vhd":107:2:107:3|Pruning register bits 1 to 0 of r_clks_per_bit(5 downto 0). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\frame_tx.vhd":68:7:68:14|Synthesizing work.frame_tx.rtl.
+@N: CD231 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\frame_tx.vhd":103:26:103:27|Using onehot encoding for type frame_tx_state_type. For example, enumeration idle is mapped to "100000".
+Post processing for work.frame_tx.rtl
 @N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\tx_mux.vhd":36:7:36:12|Synthesizing work.tx_mux.rtl.
 Post processing for work.tx_mux.rtl
+@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\resp_gen.vhd":78:7:78:14|Synthesizing work.resp_gen.rtl.
+@N: CD231 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\resp_gen.vhd":113:26:113:27|Using onehot encoding for type resp_gen_state_type. For example, enumeration idle is mapped to "10000".
+Post processing for work.resp_gen.rtl
+@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":77:7:77:17|Synthesizing work.send_engine.rtl.
+@N: CD231 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":117:29:117:30|Using onehot encoding for type send_engine_state_type. For example, enumeration idle is mapped to "10000000".
+Post processing for work.send_engine.rtl
+@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\trace_buffer.vhd":53:7:53:18|Synthesizing work.trace_buffer.rtl.
+Post processing for work.trace_buffer.rtl
+@N: CL134 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\trace_buffer.vhd":78:8:78:15|Found RAM r_bank_1, depth=6144, width=8
+@N: CL134 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\trace_buffer.vhd":77:8:77:15|Found RAM r_bank_0, depth=6144, width=8
+@N: CL134 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\trace_buffer.vhd":78:8:78:15|Found RAM r_bank_1, depth=6144, width=8
+@N: CL134 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\trace_buffer.vhd":77:8:77:15|Found RAM r_bank_0, depth=6144, width=8
+@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":68:7:68:20|Synthesizing work.capture_engine.rtl.
+@N: CD231 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":106:32:106:33|Using onehot encoding for type capture_engine_state_type. For example, enumeration idle is mapped to "100000".
+Post processing for work.capture_engine.rtl
+@W: CL169 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Pruning unused register r_post_samples_3(31 downto 0). Make sure that there are no unused intermediate registers.
+@W: CL169 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Pruning unused register r_trigger_pos_3(1 downto 0). Make sure that there are no unused intermediate registers.
+@W: CL169 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Pruning unused register r_capture_depth_sel_3. Make sure that there are no unused intermediate registers.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Register bit r_pre_samples(0) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Register bit r_pre_samples(1) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Register bit r_pre_samples(2) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Register bit r_pre_samples(3) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Register bit r_pre_samples(4) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Register bit r_pre_samples(5) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Register bit r_pre_samples(6) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Register bit r_pre_samples(7) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Register bit r_pre_samples(8) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Register bit r_pre_samples(14) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Register bit r_pre_samples(15) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Register bit r_pre_samples(16) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Register bit r_pre_samples(17) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Register bit r_pre_samples(18) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Register bit r_pre_samples(19) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Register bit r_pre_samples(20) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Register bit r_pre_samples(21) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Register bit r_pre_samples(22) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Register bit r_pre_samples(23) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Register bit r_pre_samples(24) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Register bit r_pre_samples(25) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Register bit r_pre_samples(26) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Register bit r_pre_samples(27) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Register bit r_pre_samples(28) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Register bit r_pre_samples(29) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Register bit r_pre_samples(30) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Register bit r_pre_samples(31) is always 0.
+@W: CL279 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Pruning register bits 31 to 14 of r_pre_samples(31 downto 0). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@W: CL279 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Pruning register bits 8 to 0 of r_pre_samples(31 downto 0). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\analyzer_fsm.vhd":69:7:69:18|Synthesizing work.analyzer_fsm.rtl.
+@N: CD233 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\analyzer_fsm.vhd":109:25:109:26|Using sequential encoding for type runtime_state_type.
+Post processing for work.analyzer_fsm.rtl
+@W: CL169 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\analyzer_fsm.vhd":133:2:133:3|Pruning unused register r_wd_timeout_3. Make sure that there are no unused intermediate registers.
+@W: CL169 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\analyzer_fsm.vhd":133:2:133:3|Pruning unused register r_wd_count_4(21 downto 0). Make sure that there are no unused intermediate registers.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\analyzer_fsm.vhd":133:2:133:3|Register bit r_resp_type(2) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\analyzer_fsm.vhd":133:2:133:3|Register bit r_resp_type(3) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\analyzer_fsm.vhd":133:2:133:3|Register bit r_resp_type(4) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\analyzer_fsm.vhd":133:2:133:3|Register bit r_resp_type(5) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\analyzer_fsm.vhd":133:2:133:3|Register bit r_resp_type(6) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\analyzer_fsm.vhd":133:2:133:3|Register bit r_resp_type(7) is always 0.
+@W: CL279 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\analyzer_fsm.vhd":133:2:133:3|Pruning register bits 7 to 2 of r_resp_type(7 downto 0). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\config_regs.vhd":69:7:69:17|Synthesizing work.config_regs.rtl.
+@N: CD233 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\config_regs.vhd":125:22:125:23|Using sequential encoding for type baud_state_type.
+Post processing for work.config_regs.rtl
+@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\cmd_parser.vhd":53:7:53:16|Synthesizing work.cmd_parser.rtl.
+@N: CD233 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\cmd_parser.vhd":78:23:78:24|Using sequential encoding for type cmd_parser_state.
+Post processing for work.cmd_parser.rtl
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\cmd_parser.vhd":90:8:90:9|Register bit r_pending_cmd(4) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\cmd_parser.vhd":90:8:90:9|Register bit r_pending_cmd(5) is always 0.
+@W: CL279 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\cmd_parser.vhd":90:8:90:9|Pruning register bits 5 to 4 of r_pending_cmd(7 downto 0). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\rx_frame_parser.vhd":67:7:67:21|Synthesizing work.rx_frame_parser.rtl.
+Post processing for work.rx_frame_parser.rtl
+@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\uart_rx.vhd":45:7:45:13|Synthesizing work.uart_rx.rtl.
+@N: CD233 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\uart_rx.vhd":65:25:65:26|Using sequential encoding for type uart_rx_state_type.
+Post processing for work.uart_rx.rtl
+@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\clocking.vhd":29:7:29:14|Synthesizing work.clocking.rtl.
+@W: CD280 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\clocking.vhd":39:11:39:18|Unbound component SB_HFOSC mapped to black box
+@N: CD630 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\clocking.vhd":39:11:39:18|Synthesizing work.sb_hfosc.syn_black_box.
+Post processing for work.sb_hfosc.syn_black_box
+Post processing for work.clocking.rtl
+Post processing for work.top.structure
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\uart_rx.vhd":91:2:91:3|Register bit r_clks_per_bit(0) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\uart_rx.vhd":91:2:91:3|Register bit r_clks_per_bit(1) is always 0.
+@W: CL279 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\uart_rx.vhd":91:2:91:3|Pruning register bits 1 to 0 of r_clks_per_bit(5 downto 0). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\uart_rx.vhd":91:2:91:3|Trying to extract state machine for register r_state.
+Extracted state machine for register r_state
+State machine has 4 reachable states with original encodings of:
+   00
+   01
+   10
+   11
+@W: CL249 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\uart_rx.vhd":91:2:91:3|Initial value is not supported on state machine r_state
+@W: CL260 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\uart_rx.vhd":91:2:91:3|Pruning register bit 5 of r_clks_per_bit(5 downto 2). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
+@N: CL159 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\rx_frame_parser.vhd":75:2:75:6|Input i_clk is unused.
+@N: CL159 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\rx_frame_parser.vhd":76:2:76:8|Input i_rst_n is unused.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\cmd_parser.vhd":90:8:90:9|Register bit o_cfg_opcode(4) is always 0.
+@N: CL189 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\cmd_parser.vhd":90:8:90:9|Register bit o_cfg_opcode(5) is always 0.
+@W: CL279 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\cmd_parser.vhd":90:8:90:9|Pruning register bits 5 to 4 of o_cfg_opcode(7 downto 0). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\cmd_parser.vhd":90:8:90:9|Trying to extract state machine for register r_state.
+Extracted state machine for register r_state
+State machine has 3 reachable states with original encodings of:
+   00
+   01
+   10
+@W: CL249 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\cmd_parser.vhd":90:8:90:9|Initial value is not supported on state machine r_state
+@N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\config_regs.vhd":257:2:257:3|Trying to extract state machine for register r_baud_state.
+Extracted state machine for register r_baud_state
+State machine has 3 reachable states with original encodings of:
+   00
+   01
+   10
+@W: CL249 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\config_regs.vhd":257:2:257:3|Initial value is not supported on state machine r_baud_state
+@N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\analyzer_fsm.vhd":133:2:133:3|Trying to extract state machine for register r_state.
+Extracted state machine for register r_state
+State machine has 4 reachable states with original encodings of:
+   00
+   01
+   10
+   11
+@W: CL249 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\analyzer_fsm.vhd":133:2:133:3|Initial value is not supported on state machine r_state
+@W: CL279 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\analyzer_fsm.vhd":133:2:133:3|Pruning register bits 7 to 6 of r_resp_code(7 downto 0). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@W: CL260 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\analyzer_fsm.vhd":133:2:133:3|Pruning register bit 5 of r_resp_code(5 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
+@N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Trying to extract state machine for register r_state.
+Extracted state machine for register r_state
+State machine has 6 reachable states with original encodings of:
+   000001
+   000010
+   000100
+   001000
+   010000
+   100000
+@W: CL249 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Initial value is not supported on state machine r_state
+@W: CL279 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\capture_engine.vhd":142:2:142:3|Pruning register bits 10 to 1 of r_last_addr(13 downto 0). If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":159:2:159:3|Trying to extract state machine for register r_state.
+Extracted state machine for register r_state
+State machine has 8 reachable states with original encodings of:
+   00000001
+   00000010
+   00000100
+   00001000
+   00010000
+   00100000
+   01000000
+   10000000
+@W: CL249 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\send_engine.vhd":159:2:159:3|Initial value is not supported on state machine r_state
+@N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\resp_gen.vhd":135:2:135:3|Trying to extract state machine for register r_state.
+Extracted state machine for register r_state
+State machine has 5 reachable states with original encodings of:
+   00001
+   00010
+   00100
+   01000
+   10000
+@W: CL249 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\resp_gen.vhd":135:2:135:3|Initial value is not supported on state machine r_state
+@N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\frame_tx.vhd":120:2:120:3|Trying to extract state machine for register r_state.
+Extracted state machine for register r_state
+State machine has 6 reachable states with original encodings of:
+   000001
+   000010
+   000100
+   001000
+   010000
+   100000
+@W: CL249 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\frame_tx.vhd":120:2:120:3|Initial value is not supported on state machine r_state
+@N: CL201 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\uart_tx.vhd":107:2:107:3|Trying to extract state machine for register r_state.
+Extracted state machine for register r_state
+State machine has 4 reachable states with original encodings of:
+   00
+   01
+   10
+   11
+@W: CL249 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\uart_tx.vhd":107:2:107:3|Initial value is not supported on state machine r_state
+@W: CL260 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\uart_tx.vhd":107:2:107:3|Pruning register bit 5 of r_clks_per_bit(5 downto 2). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
 
-At c_vhdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 72MB peak: 72MB)
+At c_vhdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 82MB peak: 85MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Tue Aug 18 06:55:01 2026
+# Thu Aug 20 06:01:06 2026
 
 ###########################################################]
 Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
 @N|Running in 64-bit mode
-@N: NF107 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\tx_mux.vhd":36:7:36:12|Selected library: work cell: tx_mux view rtl as top level
-@N: NF107 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\tx_mux.vhd":36:7:36:12|Selected library: work cell: tx_mux view rtl as top level
+@N: NF107 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\top.vhd":90:7:90:9|Selected library: work cell: top view structure as top level
+@N: NF107 :"C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\rtl\top.vhd":90:7:90:9|Selected library: work cell: top view structure as top level
 
-At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 69MB peak: 70MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Tue Aug 18 06:55:02 2026
+# Thu Aug 20 06:01:06 2026
 
 ###########################################################]
 @END
@@ -43,6 +237,6 @@ At c_hdl Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Tue Aug 18 06:55:02 2026
+# Thu Aug 20 06:01:06 2026
 
 ###########################################################]
