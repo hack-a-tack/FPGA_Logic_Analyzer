@@ -132,3 +132,9 @@ around it or loosen the standard flag.
 - Latch derived bounds once at frame/capture start. Never recompute `X - 1` every cycle
   to compare against it.
 - Don't put wide multiplexers in series with a counter's clock enable.
+- Do not expect registering a signal to keep it off the critical path -- the optimiser
+  decides whether it lands in series or parallel with everything else feeding the same
+  destination, regardless of how the RTL groups it into signals or processes. A register
+  can't be flattened away, but where its read lands relative to other logic is still the
+  tool's call, not something RTL structure can force. See rev2/fpga/timing_notes.md for
+  the case this was learned from.

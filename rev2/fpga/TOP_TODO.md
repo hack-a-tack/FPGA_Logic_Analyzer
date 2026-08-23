@@ -169,25 +169,16 @@ Run in this order. Each catches a class of defect the one before it cannot.
    define the clock via iCEcube2's GUI constraint/SCOPE editor instead of hand-written
    SDC text, or accept the Synplify pre-route estimate until that's tried.
 
-   Timing-closure pass, 2026-08-20 through 08-23 (all against the 48 MHz target above,
-   since the SDC binding issue was never resolved): a sequence of RTL fixes in
-   `capture_engine.vhd`/`frame_tx.vhd`/`send_engine.vhd`/`trace_buffer.vhd`/`config_regs.vhd`
-   took the design from Fmax 30.87 MHz / WNS -11.563 ns to a best-measured checkpoint of
-   Fmax 42.47 MHz / WNS -2.715 ns, by constraining unconstrained-integer counters,
-   replacing live `X-1` subtractions with down-counters tested against a constant, and
-   registering an unregistered combinational chain that ran from `trace_buffer`'s RAM
-   output through 4 modules into `frame_tx`'s CRC register with no pipeline stage. At
-   that checkpoint the worst path was ~67% routing delay on an 18%-full die (measured
-   from the timer's own per-hop table, not assumed) — a placement-distance signature,
-   not a logic-depth one. One further attempt (`capture_engine.vhd`, 2026-08-23) tried
-   to decouple `r_post_remaining`'s clock enable from `r_state`/`r_edge_trigger_type`'s
-   decode via a dedicated `r_in_post_trigger` flag and registered edge-type flags —
-   logically proven equivalent by trace, but it measurably worsened Fmax/WNS, because
-   Synplify's optimizer fused the new registers into the same serial chain rather than
-   placing them in parallel. That attempt was reverted; the 42.47 MHz / -2.715 ns
-   checkpoint stands as where this pass stopped. Further gains from here likely need
-   floorplanning/placement constraints, not RTL restructuring — the cheap, high-leverage
-   fixes (unconstrained widths, live subtractions, chained muxes) are exhausted.
+   **HEADLINE: Rev2 does not currently close timing at 48 MHz.** Timing-closure pass,
+   2026-08-20 through 08-23, took the design from Fmax 30.87 MHz / WNS -11.563 ns
+   through five measured rounds to a final best-measured state of **Fmax 42.47 MHz,
+   WNS -2.715 ns, EBR 24/30, LUT ~963** — still short of 48 MHz. A sixth round was
+   attempted, measured worse (37.71 MHz), and reverted. Full round-by-round detail,
+   the four recurring bug classes found, the routing-vs-logic finding explaining why
+   further RTL restructuring stopped paying, the SDC clock-binding issue affecting
+   what these numbers are even measured against, the Rev1 comparison, and the Rev3
+   remedy are all recorded in **`rev2/fpga/timing_notes.md`** — read that file for
+   the full report; this item is the pointer to it, not a duplicate of it.
 
 ---
 
