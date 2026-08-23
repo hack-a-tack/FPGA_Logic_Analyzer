@@ -4,7 +4,7 @@ Version=Lattice Semiconductor Corporation iCEcube - Release: 2020.12.27943 - Bui
 ProjectName=iCEcube2_rev2_logic_analyzer
 Vendor=SiliconBlue
 Synthesis=synplify
-ProjectVFiles=../rtl/tx_mux.vhd,../rtl/analyzer_fsm.vhd,../rtl/capture_engine.vhd,../rtl/clocking.vhd,../rtl/cmd_parser.vhd,../rtl/config_regs.vhd,../rtl/frame_tx.vhd,../rtl/la_pkg.vhd,../rtl/resp_gen.vhd,../rtl/rx_frame_parser.vhd,../rtl/send_engine.vhd=work,../rtl/top.vhd,../rtl/trace_buffer.vhd,../rtl/uart_rx.vhd,../rtl/uart_tx.vhd
+ProjectVFiles=../rtl/tx_mux.vhd=work,../rtl/analyzer_fsm.vhd=work,../rtl/capture_engine.vhd=work,../rtl/clocking.vhd=work,../rtl/cmd_parser.vhd=work,../rtl/config_regs.vhd=work,../rtl/frame_tx.vhd=work,../rtl/la_pkg.vhd=work,../rtl/resp_gen.vhd=work,../rtl/rx_frame_parser.vhd=work,../rtl/send_engine.vhd=work,../rtl/top.vhd=work,../rtl/trace_buffer.vhd=work,../rtl/uart_rx.vhd=work,../rtl/uart_tx.vhd=work
 ProjectCFiles=../constraints/synopsys_design_constraints.sdc
 CurImplementation=iCEcube2_rev2_logic_analyzer_Implmnt
 Implementations=iCEcube2_rev2_logic_analyzer_Implmnt
@@ -16,13 +16,13 @@ DeviceFamily=iCE40UP
 Device=5K
 DevicePackage=SG48
 DevicePower=
-NetlistFile=
+NetlistFile=iCEcube2_rev2_logic_analyzer_Implmnt/iCEcube2_rev2_logic_analyzer.edf
 AdditionalEDIFFile=
 IPEDIFFile=
-DesignLib=
-DesignView=
-DesignCell=
-SynthesisSDCFile=
+DesignLib=iCEcube2_rev2_logic_analyzer_Implmnt/sbt/netlist/oadb-top
+DesignView=_rt
+DesignCell=top
+SynthesisSDCFile=iCEcube2_rev2_logic_analyzer_Implmnt/iCEcube2_rev2_logic_analyzer.scf
 UserPinConstraintFile=
 UserSDCFile=
 PhysicalConstraintFile=../constraints/physical_constraints_file.pcf

@@ -21,15 +21,15 @@ fsm_state_encoding {17908902} wait_arg_2 {10}
 
 fsm_registers {17908902} {r_state[1]}  {r_state[0]} 
 
-fsm_encoding {1825722573} sequential
+fsm_encoding {1826822683} sequential
 
-fsm_state_encoding {1825722573} baud_idle {00}
+fsm_state_encoding {1826822683} baud_idle {00}
 
-fsm_state_encoding {1825722573} baud_pending {01}
+fsm_state_encoding {1826822683} baud_pending {01}
 
-fsm_state_encoding {1825722573} baud_confirm {10}
+fsm_state_encoding {1826822683} baud_confirm {10}
 
-fsm_registers {1825722573} {r_baud_state[1]}  {r_baud_state[0]} 
+fsm_registers {1826822683} {r_baud_state[1]}  {r_baud_state[0]} 
 
 fsm_encoding {1613321334} sequential
 
@@ -43,41 +43,43 @@ fsm_state_encoding {1613321334} send {11}
 
 fsm_registers {1613321334} {r_state[1]}  {r_state[0]} 
 
-fsm_encoding {1014221425} onehot
+fsm_encoding {1016821685} onehot
 
-fsm_state_encoding {1014221425} idle {000001}
+fsm_state_encoding {1016821685} idle {000001}
 
-fsm_state_encoding {1014221425} linear_capture {000010}
+fsm_state_encoding {1016821685} linear_capture {000010}
 
-fsm_state_encoding {1014221425} prefill {000100}
+fsm_state_encoding {1016821685} prefill {000100}
 
-fsm_state_encoding {1014221425} armed {001000}
+fsm_state_encoding {1016821685} armed {001000}
 
-fsm_state_encoding {1014221425} post_trigger {010000}
+fsm_state_encoding {1016821685} post_trigger {010000}
 
-fsm_state_encoding {1014221425} done {100000}
+fsm_state_encoding {1016821685} done {100000}
 
-fsm_registers {1014221425} {r_state[0]}  {r_state[1]}  {r_state[2]}  {r_state[3]}  {r_state[4]}  {r_state[5]} 
+fsm_registers {1016821685} {r_state[0]}  {r_state[1]}  {r_state[2]}  {r_state[3]}  {r_state[4]}  {r_state[5]} 
 
-fsm_encoding {1415921596} onehot
+fsm_encoding {1416421646} onehot
 
-fsm_state_encoding {1415921596} idle {00000001}
+fsm_state_encoding {1416421646} idle {000000001}
 
-fsm_state_encoding {1415921596} request {00000010}
+fsm_state_encoding {1416421646} request {000000010}
 
-fsm_state_encoding {1415921596} send_meta {00000100}
+fsm_state_encoding {1416421646} send_meta {000000100}
 
-fsm_state_encoding {1415921596} wait_ram {00001000}
+fsm_state_encoding {1416421646} wait_ram {000001000}
 
-fsm_state_encoding {1415921596} send_low_byte {00010000}
+fsm_state_encoding {1416421646} wait_ram_2 {000010000}
 
-fsm_state_encoding {1415921596} send_high_byte {00100000}
+fsm_state_encoding {1416421646} send_low_byte {000100000}
 
-fsm_state_encoding {1415921596} wait_frame_done {01000000}
+fsm_state_encoding {1416421646} send_high_byte {001000000}
 
-fsm_state_encoding {1415921596} done {10000000}
+fsm_state_encoding {1416421646} wait_frame_done {010000000}
 
-fsm_registers {1415921596} {r_state[0]}  {r_state[1]}  {r_state[2]}  {r_state[3]}  {r_state[4]}  {r_state[5]}  {r_state[6]}  {r_state[7]} 
+fsm_state_encoding {1416421646} done {100000000}
+
+fsm_registers {1416421646} {r_state[0]}  {r_state[1]}  {r_state[2]}  {r_state[3]}  {r_state[4]}  {r_state[5]}  {r_state[6]}  {r_state[7]}  {r_state[8]} 
 
 fsm_encoding {1313521357} onehot
 
@@ -93,21 +95,21 @@ fsm_state_encoding {1313521357} wait_done {10000}
 
 fsm_registers {1313521357} {r_state[0]}  {r_state[1]}  {r_state[2]}  {r_state[3]}  {r_state[4]} 
 
-fsm_encoding {1912021208} onehot
+fsm_encoding {1912121218} onehot
 
-fsm_state_encoding {1912021208} idle {000001}
+fsm_state_encoding {1912121218} idle {000001}
 
-fsm_state_encoding {1912021208} header {000010}
+fsm_state_encoding {1912121218} header {000010}
 
-fsm_state_encoding {1912021208} payload {000100}
+fsm_state_encoding {1912121218} payload {000100}
 
-fsm_state_encoding {1912021208} crc_l {001000}
+fsm_state_encoding {1912121218} crc_l {001000}
 
-fsm_state_encoding {1912021208} crc_h {010000}
+fsm_state_encoding {1912121218} crc_h {010000}
 
-fsm_state_encoding {1912021208} complete {100000}
+fsm_state_encoding {1912121218} complete {100000}
 
-fsm_registers {1912021208} {r_state[0]}  {r_state[1]}  {r_state[2]}  {r_state[3]}  {r_state[4]}  {r_state[5]} 
+fsm_registers {1912121218} {r_state[0]}  {r_state[1]}  {r_state[2]}  {r_state[3]}  {r_state[4]}  {r_state[5]} 
 
 fsm_encoding {2210721079} sequential
 

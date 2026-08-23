@@ -7,6 +7,8 @@
 -- LAST MODIFIED: 2026-05-15
 -- MODIFIED: 2026-08-05 (rev2)
 -- MODIFIED: 2026-08-12 (rev2) (packet framing: send_engine now supplies payload only via frame_tx; framing/CRC/SEQ moved to frame_tx.vhd)
+-- MODIFIED: 2026-08-21 (rev2) (r_sample_index replaced with a down-counter r_samples_remaining, and r_last_addr latched once per send instead of recomputing r_sample_count-1 every cycle; both the SEND_LOW_BYTE/SEND_HIGH_BYTE termination test and the circular-buffer wraparound compare were live subtractions on the hot per-byte path, and owned the worst P&R critical path once capture_engine's and frame_tx's were fixed)
+-- MODIFIED: 2026-08-21 (rev2) (added WAIT_RAM_2 -- trace_buffer's RAM read is now 2 clocks, not 1, after registering its output past rd_mux_proc to break an unregistered combinational chain that ran through send_engine/tx_mux into frame_tx's CRC register)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -38,10 +40,11 @@
 --   2) streams the sample bytes from trace_buffer
 --   3) pulses o_send_done_pulse once frame_tx confirms the frame is done
 --
--- trace_buffer is treated as synchronous-read RAM. o_ram_rd_addr is registered and driven
--- to trace_buffer before the corresponding i_ram_rd_data sample is launched to tx_mux.
--- WAIT_RAM provides the required latency stage so the selected RAM byte is valid
--- before SEND_LOW_BYTE/SEND_HIGH_BYTE transmits it.
+-- trace_buffer is treated as synchronous-read RAM with a 2-clock read latency (RAM read register,
+-- then a mode-mux register). o_ram_rd_addr is registered and driven to trace_buffer before the
+-- corresponding i_ram_rd_data sample is launched to tx_mux. WAIT_RAM and WAIT_RAM_2 provide the
+-- two required latency stages so the selected RAM byte is valid before SEND_LOW_BYTE/SEND_HIGH_BYTE
+-- transmits it.
 --
 -- The RAM address is incremented only after the current byte has completed transmission.
 -- When r_sample_count logical samples have been sent, send_engine waits for frame_tx to
@@ -119,6 +122,7 @@ architecture RTL of send_engine is
 		REQUEST,
 		SEND_META,
 		WAIT_RAM,
+		WAIT_RAM_2,
 		SEND_LOW_BYTE,
 		SEND_HIGH_BYTE,
 		WAIT_FRAME_DONE,
@@ -128,8 +132,9 @@ architecture RTL of send_engine is
 	-- Register signals, next-state signals
 	signal r_state, n_state : send_engine_state_type := IDLE;
 
-	signal r_sample_index, n_sample_index : unsigned(ADDR_LENGTH-1 downto 0) := (others => '0');  -- index of sample currently being transmitted
+	signal r_samples_remaining, n_samples_remaining : unsigned(ADDR_LENGTH-1 downto 0) := (others => '0');  -- samples left to send, including the one in flight
 	signal r_ram_rd_addr, n_ram_rd_addr : unsigned(ADDR_LENGTH-1 downto 0) := (others => '0');
+	signal r_last_addr, n_last_addr : unsigned(ADDR_LENGTH-1 downto 0) := (others => '0');  -- i_capture_sample_count-1, latched once per send; last valid circular-buffer address before wraparound
 	signal r_send_done_pulse, n_send_done_pulse : std_logic := '0';
 
 	-- s_ signals for output process
@@ -160,8 +165,9 @@ begin
 			if i_rst_n = '0' then
 				-- reset logic
 				r_state <= IDLE;
-				r_sample_index <= (others => '0');
+				r_samples_remaining <= (others => '0');
 				r_ram_rd_addr <= (others => '0');
+				r_last_addr <= (others => '0');
 				r_send_done_pulse <= '0';
 
 				r_payload_len <= (others => '0');
@@ -173,8 +179,9 @@ begin
 				r_meta_index <= 0;
 			else
 				r_state <= n_state;
-				r_sample_index <= n_sample_index;
+				r_samples_remaining <= n_samples_remaining;
 				r_ram_rd_addr <= n_ram_rd_addr;
+				r_last_addr <= n_last_addr;
 				r_send_done_pulse <= n_send_done_pulse;
 
 				r_payload_len <= n_payload_len;
@@ -195,8 +202,9 @@ begin
 	begin
 		-- Defaults
 		n_state <= r_state;
-		n_sample_index <= r_sample_index;
+		n_samples_remaining <= r_samples_remaining;
 		n_ram_rd_addr <= r_ram_rd_addr;
+		n_last_addr <= r_last_addr;
 		n_send_done_pulse <= '0';
 
 		n_payload_len <= r_payload_len;
@@ -207,8 +215,10 @@ begin
 		n_trigger_index <= r_trigger_index;
 		n_meta_index <= r_meta_index;
 
-		-- Calculate the next circular-buffer address
-        if r_sample_count /= to_unsigned(0, ADDR_LENGTH) and r_ram_rd_addr = r_sample_count - 1 then
+		-- Calculate the next circular-buffer address. r_last_addr is latched once per send (in IDLE)
+		-- instead of recomputing r_sample_count-1 here every cycle -- this compare is now two
+		-- registers against each other (cheap) rather than a live subtraction feeding a compare.
+        if r_sample_count /= to_unsigned(0, ADDR_LENGTH) and r_ram_rd_addr = r_last_addr then
             v_next_addr := (others => '0');
         else
             v_next_addr := r_ram_rd_addr + 1;
@@ -218,8 +228,9 @@ begin
 			when IDLE =>
 				if i_send_start_pulse = '1' then
 					-- latch metadata at the start of the send proceure (host READ cmd)
-					n_sample_index <= (others => '0');
+					n_samples_remaining <= unsigned(i_capture_sample_count);
 					n_ram_rd_addr <= unsigned(i_capture_start_addr);  -- important for wraparound read. start reading from RAM at correct start_addr
+					n_last_addr <= unsigned(i_capture_sample_count) - 1;  -- computed once here, not every cycle -- see wraparound compare above
 					n_sample_rate_sel <= i_capture_sample_rate_sel;
 					n_sample_count <= unsigned(i_capture_sample_count);
 					n_capture_width_sel <= i_capture_width_sel;
@@ -255,17 +266,22 @@ begin
 				end if;
 
 			when WAIT_RAM =>
-				-- One-cycle synchronous RAM read latency (1 clock to produce valid i_ram_rd_data after o_ram_rd_addr changes)
+				-- First of two cycles of synchronous RAM read latency (trace_buffer registers both the RAM
+				-- read and the mode mux afterward, so o_ram_rd_addr -> valid i_ram_rd_data takes 2 clocks)
+				n_state <= WAIT_RAM_2;
+
+			when WAIT_RAM_2 =>
+				-- Second cycle of RAM read latency; i_ram_rd_data is valid now
 				n_state <= SEND_LOW_BYTE;
 
 			when SEND_LOW_BYTE =>
 				if i_pl_ready = '1' then
 					if r_capture_width_sel = '1' then  -- 16bit sample: low-byte accepted, send high byte
 						n_state 		<= SEND_HIGH_BYTE;
-					elsif r_sample_index = r_sample_count - 1 then  -- final 8bit sample accepted
+					elsif r_samples_remaining = 1 then  -- final 8bit sample accepted
 						n_state 		<= WAIT_FRAME_DONE;
 					else  -- move to next 8bit sample
-						n_sample_index 	<= r_sample_index + 1;
+						n_samples_remaining <= r_samples_remaining - 1;
 						n_ram_rd_addr 	<= v_next_addr;
 						n_state 		<= WAIT_RAM;
 					end if;
@@ -273,10 +289,10 @@ begin
 
 			when SEND_HIGH_BYTE =>
 				if i_pl_ready = '1' then
-					if r_sample_index = r_sample_count - 1 then  -- final 16bit sample accepted
+					if r_samples_remaining = 1 then  -- final 16bit sample accepted
 						n_state 		<= WAIT_FRAME_DONE;
 					else  -- current 16bit sample is complete
-						n_sample_index 	<= r_sample_index + 1;
+						n_samples_remaining <= r_samples_remaining - 1;
 						n_ram_rd_addr 	<= v_next_addr;
 						n_state 		<= WAIT_RAM;
 					end if;

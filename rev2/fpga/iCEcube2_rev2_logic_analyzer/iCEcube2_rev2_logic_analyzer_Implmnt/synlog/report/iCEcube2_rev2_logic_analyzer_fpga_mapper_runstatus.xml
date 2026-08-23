@@ -9,38 +9,38 @@ The file contains the job information from mapper to be displayed as part of the
 <title>Synopsys Lattice Technology Mapper</title>
 </report_link>
 <job_status>
-<data>Failed</data>
+<data>Completed</data>
 </job_status>
 <job_info>
 <info name="Notes">
-<data>33</data>
+<data>149</data>
 <report_link name="more">
 <data>C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\iCEcube2_rev2_logic_analyzer\iCEcube2_rev2_logic_analyzer_Implmnt\synlog\report\iCEcube2_rev2_logic_analyzer_fpga_mapper_notes.txt</data>
 </report_link>
 </info>
 <info name="Warnings">
-<data>131</data>
+<data>159</data>
 <report_link name="more">
 <data>C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\iCEcube2_rev2_logic_analyzer\iCEcube2_rev2_logic_analyzer_Implmnt\synlog\report\iCEcube2_rev2_logic_analyzer_fpga_mapper_warnings.txt</data>
 </report_link>
 </info>
 <info name="Errors">
-<data>1</data>
+<data>0</data>
 <report_link name="more">
 <data>C:\Users\Jakob\Documents\ee-projects\FPGA_logic_analyzer\rev2\fpga\iCEcube2_rev2_logic_analyzer\iCEcube2_rev2_logic_analyzer_Implmnt\synlog\report\iCEcube2_rev2_logic_analyzer_fpga_mapper_errors.txt</data>
 </report_link>
 </info>
 <info name="CPU Time">
-<data>0h:00m:34s</data>
+<data>0h:00m:08s</data>
 </info>
 <info name="Real Time">
-<data>0h:00m:35s</data>
+<data>0h:00m:09s</data>
 </info>
 <info name="Peak Memory">
-<data>981MB</data>
+<data>173MB</data>
 </info>
 <info name="Date &amp; Time">
-<data type="timestamp">1787198504</data>
+<data type="timestamp">1787471841</data>
 </info>
 </job_info>
 </job_run_status>

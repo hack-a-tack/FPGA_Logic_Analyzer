@@ -4,6 +4,7 @@
 -- AUTHOR: Jakob Kieszek Ottesen
 -- DATE: 2026-08-13 (YYYY-MM-DD)
 -- MODIFIED: 2026-08-19 (rev2) (migrated to la_pkg: crc16_next and the SYNC0/SYNC1/VERSION/FRAME_TYPE_CAPTURE constants deleted, replaced with la_pkg's crc16_next/C_SYNC0/C_SYNC1/C_PROTO_VER/C_TYPE_CAPTURE/C_CRC_INIT)
+-- MODIFIED: 2026-08-20 (rev2) (r_pl_count replaced with a down-counter r_bytes_remaining; the old PAYLOAD exit test compared r_pl_count against a live r_frame_len-1 subtraction every cycle, which owned the worst P&R critical path once capture_engine's was fixed. r_bytes_remaining tests against the constant 1 instead -- same exit cycle, same byte count, no live subtraction on the hot path)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -105,7 +106,7 @@ architecture RTL of frame_tx is
 
 	-- Register signals, next-state signals
 	signal r_header_index, n_header_index : integer range 0 to 6 := 0;					-- byte index within the 7-byte header (SYNC0..LEN_H)
-	signal r_pl_count, n_pl_count : unsigned(15 downto 0) := (others => '0');			-- payload bytes accepted so far
+	signal r_bytes_remaining, n_bytes_remaining : unsigned(15 downto 0) := (others => '0');	-- payload bytes left to send, including the one in flight this cycle
 	signal r_frame_len, n_frame_len : unsigned(15 downto 0) := (others => '0');			-- latched LEN for this frame
 	signal r_frame_type, n_frame_type : std_logic_vector(DATA_LENGTH-1 downto 0) := (others => '0');	-- latched TYPE for this frame
 	signal r_grant_sel, n_grant_sel : std_logic := '0';									-- '0' resp, '1' send; latched for whole frame
@@ -121,7 +122,7 @@ begin
 			if i_rst_n = '0' then
 				r_state 			<= IDLE;
 				r_header_index 		<= 0;
-				r_pl_count 			<= (others => '0');
+				r_bytes_remaining 	<= (others => '0');
 				r_frame_len 		<= (others => '0');
 				r_frame_type 		<= (others => '0');
 				r_grant_sel 		<= '0';
@@ -131,7 +132,7 @@ begin
 			else
 				r_state 			<= n_state;
 				r_header_index 		<= n_header_index;
-				r_pl_count 			<= n_pl_count;
+				r_bytes_remaining 	<= n_bytes_remaining;
 				r_frame_len 		<= n_frame_len;
 				r_frame_type 		<= n_frame_type;
 				r_grant_sel 		<= n_grant_sel;
@@ -152,7 +153,7 @@ begin
 		-- Defaults
 		n_state 			<= r_state;
 		n_header_index 		<= r_header_index;
-		n_pl_count 			<= r_pl_count;
+		n_bytes_remaining 	<= r_bytes_remaining;
 		n_frame_len 		<= r_frame_len;
 		n_frame_type 		<= r_frame_type;
 		n_grant_sel 		<= r_grant_sel;
@@ -176,7 +177,7 @@ begin
 					n_frame_len    <= unsigned(i_resp_frame_len);
 					n_crc          <= C_CRC_INIT;
 					n_header_index <= 0;
-					n_pl_count     <= (others => '0');
+					n_bytes_remaining <= unsigned(i_resp_frame_len);
 					n_state        <= HEADER;
 				elsif i_send_frame_req = '1' then
 					n_grant_sel    <= '1';
@@ -184,7 +185,7 @@ begin
 					n_frame_len    <= unsigned(i_send_frame_len);
 					n_crc          <= C_CRC_INIT;
 					n_header_index <= 0;
-					n_pl_count     <= (others => '0');
+					n_bytes_remaining <= unsigned(i_send_frame_len);
 					n_state        <= HEADER;
 				end if;
 
@@ -230,10 +231,10 @@ begin
 				if i_pl_valid = '1' and i_tx_ready = '1' then	-- payload byte accepted
 					n_crc <= crc16_next(r_crc, i_pl_byte);
 
-					if r_pl_count = r_frame_len - 1 then
+					if r_bytes_remaining = 1 then
 						n_state <= CRC_L;
 					else
-						n_pl_count <= r_pl_count + 1;
+						n_bytes_remaining <= r_bytes_remaining - 1;
 					end if;
 				end if;
 				-- else: i_pl_valid dropped (e.g. producer's WAIT_RAM cycle) -- hold. o_tx_valid follows

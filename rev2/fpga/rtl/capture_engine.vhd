@@ -7,6 +7,10 @@
 -- MODIFIED: 2026-08-03 (rev2)
 -- MODIFIED: 2026-08-18 (rev2) (fixed illegal unsigned(x"FFFF") type conversion on n_trigger_index; GHDL rejects a bare bit-string literal as a conversion operand, Synplify silently accepted it)
 -- MODIFIED: 2026-08-20 (rev2) (added a 2FF synchroniser on i_inputs; the write data, n_prev_sample, the edge comparison and the pattern compare all now read the synchronised value instead of the raw async port)
+-- MODIFIED: 2026-08-20 (rev2) (r_pre_samples/r_post_samples/r_prefill_count/r_post_remaining were bare unconstrained integers, which Synplify synthesized as full 32-bit counters/comparators; constrained to their real maximum, 9216. r_prefill_count owned the worst critical path in P&R timing)
+-- MODIFIED: 2026-08-21 (rev2) (r_prefill_count replaced with a down-counter r_prefill_remaining, latched from r_pre_samples per branch in IDLE and tested against 1, mirroring r_post_remaining's existing pattern -- PREFILL was comparing r_prefill_count against a live r_pre_samples-1 subtraction every cycle, which owned the residual critical path once the counter width itself was fixed)
+-- MODIFIED: 2026-08-21 (rev2) (ARMED's edge-trigger detection reworked: r_prev_sample (16-bit, muxed by r_edge_trigger_ch inline in each of 3 edge-type branches) replaced with r_trig_ch_prev (1-bit register, exact same value/timing) and s_trig_ch_cur (1-bit, computed once instead of 3x inline). This removed a whole second 16-way mux that sat in series with r_edge_trigger_type/r_state and fed r_post_remaining's clock enable -- values and timing are unchanged, only how the same bits are obtained)
+-- MODIFIED: 2026-08-23 (rev2) (reverted a same-day attempt to also decouple r_state/r_edge_trigger_type from r_post_remaining's enable via a dedicated r_in_post_trigger flag and registered edge-type flags -- both were provably equivalent in value/timing, but Synplify's optimizer fused the new registers into the SAME serial chain rather than parallelising them, measurably worsening Fmax/WNS. Back to the r_trig_ch_prev/s_trig_ch_cur-only state, which measured better. See TOP_TODO.md.)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -39,9 +43,10 @@
 --
 -- NOTES
 -- i_inputs is asynchronous to i_clk (16 logic analyzer pins, no relationship to the FPGA clock). sync_proc
--- synchronises all 16 bits together into r_inputs_sync_2 before any use, so the write data, n_prev_sample, the
--- edge comparison and the pattern compare all see the same resolved value -- a bit that resolved differently
--- across those consumers would produce a spurious trigger, indistinguishable from a real event once captured.
+-- synchronises all 16 bits together into r_inputs_sync_2 before any use, so the write data, s_trig_ch_cur/
+-- r_trig_ch_prev, the edge comparison and the pattern compare all see the same resolved value -- a bit that
+-- resolved differently across those consumers would produce a spurious trigger, indistinguishable from a
+-- real event once captured.
 -- This adds 2 clocks of latency uniformly across all 16 channels, so there is no relative skew between channels
 -- and no effect on measured signal periods.
 --
@@ -59,6 +64,15 @@
 -- Export more captured metadata
 -- Verify every mode with a dedicated testbench
 -- Implement actual 8/16-bit RAM-bank mapping in trace_buffer
+-- 2026-08-23: tried decoupling r_post_remaining's clock enable from r_state/r_edge_trigger_type via a
+--   dedicated r_in_post_trigger flag and registered edge-type flags (rising/falling/either). Logically
+--   proven equivalent (traced), but measured WORSE on P&R (Fmax dropped, WNS roughly doubled) because
+--   Synplify's optimizer fused the new registers into the same serial chain instead of parallelising them
+--   away from r_state's decode. Reverted. Lesson: "a register can't be flattened away" is true of the
+--   register's existence, but says nothing about whether the tool will place its read in series or
+--   parallel with everything else feeding the same destination -- that's still entirely up to the
+--   optimizer, and isn't something the RTL's structure can force. Don't retry this exact approach without
+--   a different lever (e.g. actual floorplanning/placement constraints, not just RTL restructuring).
 -- ========================================
 
 library IEEE;
@@ -75,9 +89,9 @@ entity capture_engine is
 		i_rst_n					: in  std_logic;
 		i_capture_start_pulse	: in  std_logic;
 		i_inputs				: in  std_logic_vector(15 downto 0);  -- 16 bits at compile time. during runtime host can choose first 8 bits
-		
+
 		i_cfg_sample_rate_sel	: in  std_logic_vector(1 downto 0);
-		i_cfg_capture_width_sel	: in  std_logic; 
+		i_cfg_capture_width_sel	: in  std_logic;
 		i_cfg_capture_depth_sel	: in  std_logic;
 		i_cfg_trigger_mode		: in  std_logic_vector(1 downto 0);
 		i_cfg_edge_trigger_ch	: in  std_logic_vector(3 downto 0);
@@ -85,12 +99,12 @@ entity capture_engine is
 		i_cfg_pattern_value		: in  std_logic_vector(15 downto 0);
 		i_cfg_pattern_mask		: in  std_logic_vector(15 downto 0);
 		i_cfg_trigger_pos		: in  std_logic_vector(1 downto 0);
-		
+
 		o_raw_wr_en_pulse		: out std_logic;
 		o_raw_wr_addr			: out std_logic_vector(ADDR_LENGTH-1 downto 0);
 		o_raw_wr_data			: out std_logic_vector(15 downto 0);
 		o_capture_done_pulse	: out std_logic;
-		
+
 		-- to send_engine
 		o_capture_sample_rate_sel	: out std_logic_vector(1 downto 0);
 		o_capture_trigger_mode		: out std_logic_vector(1 downto 0);
@@ -104,11 +118,11 @@ end entity capture_engine;
 architecture RTL of capture_engine is
 	-- Internal capture_engine state machine
 	type capture_engine_state_type is (IDLE, LINEAR_CAPTURE, PREFILL, ARMED, POST_TRIGGER, DONE);
-	
+
 	-- Register signals, next-state signals
 	signal r_state, n_state : capture_engine_state_type := IDLE;
 	signal r_capture_done_pulse, n_capture_done_pulse : std_logic := '0';
-	
+
 	-- Latched config values
 	signal r_sample_rate_sel, n_sample_rate_sel : std_logic_vector(1 downto 0) := "00";		-- default: 24MS/s
 	signal r_capture_width_sel, n_capture_width_sel : std_logic := '0';  	-- default: narrow (8 bits)
@@ -119,17 +133,29 @@ architecture RTL of capture_engine is
 	signal r_pattern_value, n_pattern_value : std_logic_vector(15 downto 0) := x"0000";		-- default: 0b0000 0000 0000 0000
 	signal r_pattern_mask, n_pattern_mask : std_logic_vector(15 downto 0) := x"FFFF";		-- default: 0b1111 1111 1111 1111
 	signal r_trigger_pos, n_trigger_pos : std_logic_vector(1 downto 0) := "00"; 			-- default: 25% pre / 75% post trigger
-	
+
 	signal r_trigger_index, n_trigger_index : unsigned(15 downto 0) := (others => '0');  -- 0xFFFF for immediate capture
 	signal r_start_addr, n_start_addr : unsigned(ADDR_LENGTH-1 downto 0) := (others => '0');  -- addr sent to send_engine to start reading from RAM
 	signal r_last_addr, n_last_addr : unsigned(ADDR_LENGTH-1 downto 0) := to_unsigned(12288-1, ADDR_LENGTH);  -- how many addresses to fill in RAM (not actual end address)
 
 	signal r_write_ptr, n_write_ptr : unsigned(ADDR_LENGTH-1 downto 0);
-	signal r_prev_sample, n_prev_sample : std_logic_vector(15 downto 0) := (others => '0');
-	signal r_pre_samples, n_pre_samples : integer := 0; 		-- samples strictly before trigger
-	signal r_post_samples, n_post_samples : integer := 0;		-- trigger sample + samples after trigger
-	signal r_prefill_count, n_prefill_count : integer := 0;
-	signal r_post_remaining, n_post_remaining : integer := 0;
+	-- Edge trigger detection reads only the one channel r_edge_trigger_ch selects. r_trig_ch_prev is that
+	-- bit, registered once per sample tick (replaces muxing a full-width r_prev_sample by r_edge_trigger_ch
+	-- at compare time); s_trig_ch_cur is the same channel's live bit, computed once as its own signal
+	-- instead of being re-muxed inline in each of the three edge-type branches below. Together these removed
+	-- a whole second 16-way mux (r_prev_sample's) from ARMED's trigger logic, which previously sat in series
+	-- with r_edge_trigger_type/r_state and fed straight into r_post_remaining's clock enable -- the worst
+	-- residual P&R critical path once the counters themselves were fixed. Values and timing are unchanged
+	-- from the old r_prev_sample(ch)/r_inputs_sync_2(ch) reads -- same source, same gating, same cycle.
+	signal r_trig_ch_prev, n_trig_ch_prev : std_logic := '0';
+	signal s_trig_ch_cur : std_logic;
+	-- 9216 is the true maximum across all depth/width/trigger_pos combinations (deep capture, 8-bit width,
+	-- 75%/25% trigger pos: 12288 samples * 0.75 = 9216). All four counters below share that same bound
+	-- since prefill_remaining mirrors pre_samples and post_remaining mirrors post_samples.
+	signal r_pre_samples, n_pre_samples : integer range 0 to 9216 := 0; 		-- samples strictly before trigger
+	signal r_post_samples, n_post_samples : integer range 0 to 9216 := 0;		-- trigger sample + samples after trigger
+	signal r_prefill_remaining, n_prefill_remaining : integer range 0 to 9216 := 0;	-- samples left to prefill, including the one in flight; counts down from r_pre_samples, mirrors r_post_remaining's pattern
+	signal r_post_remaining, n_post_remaining : integer range 0 to 9216 := 0;
 
 	-- Registered signals for 2FF synchroniser on i_inputs
 	signal r_inputs_sync_1 : std_logic_vector(15 downto 0) := (others => '0');
@@ -144,7 +170,7 @@ begin
 				-- reset logic
 				r_state <= IDLE;
 				r_capture_done_pulse <= '0';
-				
+
 				r_sample_rate_sel <= "00";
 				r_capture_width_sel <= '0';
 				r_capture_depth_sel <= '0';
@@ -154,21 +180,21 @@ begin
 				r_pattern_value <= x"0000";
 				r_pattern_mask <= x"FFFF";
 				r_trigger_pos <= "00";
-				
+
 				r_trigger_index <= (others => '0');
 				r_start_addr <= (others => '0');
 				r_last_addr <= (others => '0');
-				
+
 				r_write_ptr <= (others => '0');
-				r_prev_sample <= (others => '0');
+				r_trig_ch_prev <= '0';
 				r_pre_samples <= 0;
 				r_post_samples <= 0;
-				r_prefill_count <= 0;
+				r_prefill_remaining <= 0;
 				r_post_remaining <= 0;
 			else
 				r_state <= n_state;
 				r_capture_done_pulse <= n_capture_done_pulse;
-				
+
 				r_sample_rate_sel <= n_sample_rate_sel;
 				r_capture_width_sel <= n_capture_width_sel;
 				r_capture_depth_sel <= n_capture_depth_sel;
@@ -178,16 +204,16 @@ begin
 				r_pattern_value <= n_pattern_value;
 				r_pattern_mask <= n_pattern_mask;
 				r_trigger_pos <= n_trigger_pos;
-				
+
 				r_trigger_index <= n_trigger_index;
 				r_start_addr <= n_start_addr;
 				r_last_addr <= n_last_addr;
-				
+
 				r_write_ptr <= n_write_ptr;
-				r_prev_sample <= n_prev_sample;
+				r_trig_ch_prev <= n_trig_ch_prev;
 				r_pre_samples <= n_pre_samples;
 				r_post_samples <= n_post_samples;
-				r_prefill_count <= n_prefill_count;
+				r_prefill_remaining <= n_prefill_remaining;
 				r_post_remaining <= n_post_remaining;
 			end if;
 		end if;
@@ -216,7 +242,7 @@ begin
 		-- Defaults
 		n_state <= r_state;
 		n_capture_done_pulse <= '0';
-		
+
 		n_sample_rate_sel <= r_sample_rate_sel;
 		n_capture_width_sel <= r_capture_width_sel;
 		n_capture_depth_sel <= r_capture_depth_sel;
@@ -226,37 +252,36 @@ begin
 		n_pattern_value <= r_pattern_value;
 		n_pattern_mask <= r_pattern_mask;
 		n_trigger_pos <= r_trigger_pos;
-		
+
 		n_trigger_index <= r_trigger_index;
 		n_start_addr <= r_start_addr;
 		n_last_addr <= r_last_addr;
-		
+
 		n_write_ptr <= r_write_ptr;
-		n_prev_sample <= r_prev_sample;
+		n_trig_ch_prev <= r_trig_ch_prev;
 		n_pre_samples <= r_pre_samples;
 		n_post_samples <= r_post_samples;
-		n_prefill_count <= r_prefill_count;
+		n_prefill_remaining <= r_prefill_remaining;
 		n_post_remaining <= r_post_remaining;
-		
-		
+
+
 		-- wraparound logic for write_ptr
 		if r_write_ptr = r_last_addr then
 			v_next_ptr := (others => '0');
 		else
 			v_next_ptr := r_write_ptr + 1;
 		end if;
-		
-		
+
+
 		case r_state is   -- IDLE, LINEAR_CAPTURE, ARMED, POST_TRIGGER, DONE
 			when IDLE =>
 				if i_capture_start_pulse = '1' then
 					-- reset per-capture runtime state
 					n_write_ptr      <= (others => '0');
-					n_prefill_count  <= 0;
 					n_start_addr     <= (others => '0');
 					n_trigger_index  <= x"FFFF";  -- 0xFFFF as trigger index for linear capture. Gets changed if FSM reaches ARMED state
-					n_prev_sample    <= (others => '0');
-				
+					n_trig_ch_prev   <= '0';
+
 					-- latch all relevant configuration values
 					n_sample_rate_sel 	<= i_cfg_sample_rate_sel;
 					n_capture_width_sel <= i_cfg_capture_width_sel;
@@ -282,7 +307,7 @@ begin
 						n_pattern_mask	<= i_cfg_pattern_mask;
 					end if;
 					n_trigger_pos		<= i_cfg_trigger_pos;
-					
+
 					-- set last addr (how many addresses to fill up in RAM), and pre/post samples given trigger pos
 					if i_cfg_capture_depth_sel = '0' then		-- shallow capture (4096 bytes)
 						if i_cfg_capture_width_sel = '0' then  	-- 1 byte (8 bits) per sample, i.e. 4096 samples
@@ -290,14 +315,17 @@ begin
 							case i_cfg_trigger_pos is
 								when "00" =>  	-- 25% trigger pos
 									n_pre_samples <= 1024;
+									n_prefill_remaining <= 1024;
 									n_post_samples <= 3072;
 									n_post_remaining <= 3072;
 								when "01" =>	-- 50% trigger pos
 									n_pre_samples <= 2048;
+									n_prefill_remaining <= 2048;
 									n_post_samples <= 2048;
 									n_post_remaining <= 2048;
 								when others =>	-- 75% trigger pos
 									n_pre_samples <= 3072;
+									n_prefill_remaining <= 3072;
 									n_post_samples <= 1024;
 									n_post_remaining <= 1024;
 							end case;
@@ -306,14 +334,17 @@ begin
 							case i_cfg_trigger_pos is
 								when "00" =>  	-- 25% trigger pos
 									n_pre_samples <= 512;
+									n_prefill_remaining <= 512;
 									n_post_samples <= 1536;
 									n_post_remaining <= 1536;
 								when "01" =>	-- 50% trigger pos
 									n_pre_samples <= 1024;
+									n_prefill_remaining <= 1024;
 									n_post_samples <= 1024;
 									n_post_remaining <= 1024;
 								when others =>	-- 75% trigger pos
 									n_pre_samples <= 1536;
+									n_prefill_remaining <= 1536;
 									n_post_samples <= 512;
 									n_post_remaining <= 512;
 							end case;
@@ -324,14 +355,17 @@ begin
 							case i_cfg_trigger_pos is
 								when "00" =>  	-- 25% trigger pos
 									n_pre_samples <= 3072;
+									n_prefill_remaining <= 3072;
 									n_post_samples <= 9216;
 									n_post_remaining <= 9216;
 								when "01" =>	-- 50% trigger pos
 									n_pre_samples <= 6144;
+									n_prefill_remaining <= 6144;
 									n_post_samples <= 6144;
 									n_post_remaining <= 6144;
 								when others =>	-- 75% trigger pos
 									n_pre_samples <= 9216;
+									n_prefill_remaining <= 9216;
 									n_post_samples <= 3072;
 									n_post_remaining <= 3072;
 							end case;
@@ -340,36 +374,39 @@ begin
 							case i_cfg_trigger_pos is
 								when "00" =>  	-- 25% trigger pos
 									n_pre_samples <= 1536;
+									n_prefill_remaining <= 1536;
 									n_post_samples <= 4608;
 									n_post_remaining <= 4608;
 								when "01" =>	-- 50% trigger pos
 									n_pre_samples <= 3072;
+									n_prefill_remaining <= 3072;
 									n_post_samples <= 3072;
 									n_post_remaining <= 3072;
 								when others =>	-- 75% trigger pos
 									n_pre_samples <= 4608;
+									n_prefill_remaining <= 4608;
 									n_post_samples <= 1536;
 									n_post_remaining <= 1536;
 							end case;
 						end if;
 					end if;
-					
+
 					-- set write "pointer" to zero
 					n_write_ptr <= (others => '0');
-					
+
 					-- trigger mode determines next state
 					if i_cfg_trigger_mode = "00" then
 						n_state <= LINEAR_CAPTURE;
 					else
 						n_state <= PREFILL;
-					end if;			
+					end if;
 				end if;
-				
-			
+
+
 			when LINEAR_CAPTURE =>
 				if i_samp_tick = '1' then
 					n_write_ptr <= v_next_ptr;
-					
+
 					if r_write_ptr = r_last_addr then
 						-- Sample nr 4096 (index 4095) (or similar) just captured in last cycle
 						n_start_addr <= (others => '0');  -- send_engine starts at addr 0 for linear captures
@@ -377,44 +414,44 @@ begin
 					end if;
 					-- write_ptr is updated outside the FSM so no need to increment manually
 				end if;
-				
-			
+
+
 			when PREFILL =>
 				-- PREFILL writes exactly n_pre_samples before trigger evaluation is enabled. Guarantees pre-trigger history.
 				if i_samp_tick = '1' then
 					n_write_ptr <= v_next_ptr;
-					n_prev_sample <= r_inputs_sync_2;
+					n_trig_ch_prev <= s_trig_ch_cur;
 
 					-- move to ARMED state once enough samples are gathered
-					if r_prefill_count = r_pre_samples - 1 then
+					if r_prefill_remaining = 1 then
 						n_state <= ARMED;
 					else
-						n_prefill_count <= r_prefill_count + 1;
+						n_prefill_remaining <= r_prefill_remaining - 1;
 					end if;
 				end if;
-			
-			
+
+
 			when ARMED =>
 				if i_samp_tick = '1' then
 					n_write_ptr <= v_next_ptr;
-					n_prev_sample <= r_inputs_sync_2;
+					n_trig_ch_prev <= s_trig_ch_cur;
 
 					-- evaluate trigger condition
 					if r_trigger_mode = "01" then  -- edge trigger
 						if r_edge_trigger_type = "00" then  -- rising_edge
-							if r_prev_sample(to_integer(unsigned(r_edge_trigger_ch))) = '0' and r_inputs_sync_2(to_integer(unsigned(r_edge_trigger_ch))) = '1' then
+							if r_trig_ch_prev = '0' and s_trig_ch_cur = '1' then
 								n_trigger_index <= to_unsigned(r_pre_samples, 16);  -- trigger occurs at index r_pre_samples
 								n_post_remaining <= r_post_remaining - 1;  -- trigger address (at index r_pre_samples) is first post trigger value
 								n_state <= POST_TRIGGER;
 							end if;
 						elsif r_edge_trigger_type = "01" then  -- falling_edge
-							if r_prev_sample(to_integer(unsigned(r_edge_trigger_ch))) = '1' and r_inputs_sync_2(to_integer(unsigned(r_edge_trigger_ch))) = '0' then
+							if r_trig_ch_prev = '1' and s_trig_ch_cur = '0' then
 								n_trigger_index <= to_unsigned(r_pre_samples, 16);
 								n_post_remaining <= r_post_remaining - 1;  -- trigger address is first post trigger value
 								n_state <= POST_TRIGGER;
 							end if;
 						else  -- either
-							if r_prev_sample(to_integer(unsigned(r_edge_trigger_ch))) /= r_inputs_sync_2(to_integer(unsigned(r_edge_trigger_ch))) then
+							if r_trig_ch_prev /= s_trig_ch_cur then
 								n_trigger_index <= to_unsigned(r_pre_samples, 16);
 								n_post_remaining <= r_post_remaining - 1;  -- trigger address is first post trigger value
 								n_state <= POST_TRIGGER;
@@ -430,12 +467,12 @@ begin
 						-- error
 					end if;
 				end if;
-				
-			
+
+
 			when POST_TRIGGER =>
 				if i_samp_tick = '1' then
 					n_write_ptr <= v_next_ptr;
-					
+
 					-- increment address pointer
 					if r_post_remaining = 1 then
 						n_post_remaining <= 0;
@@ -445,15 +482,18 @@ begin
 						n_post_remaining <= r_post_remaining - 1;
 					end if;
 				end if;
-			
-			
+
+
 			when DONE =>
 				n_capture_done_pulse <= '1';
 				n_state <= IDLE;
-			
+
 		end case;
 	end process fsm_proc;
-	
+
+	-- Live value of the channel r_edge_trigger_ch selects, computed once so it isn't re-muxed inline in
+	-- each of the three edge-type branches in ARMED (see the r_trig_ch_prev/s_trig_ch_cur comment above).
+	s_trig_ch_cur <= r_inputs_sync_2(to_integer(unsigned(r_edge_trigger_ch)));
 
 	-- Set outputs
 	o_raw_wr_en_pulse 		<= '1' when i_samp_tick = '1' and
@@ -465,12 +505,12 @@ begin
 	o_raw_wr_addr 			<= std_logic_vector(r_write_ptr);
 	o_raw_wr_data 			<= r_inputs_sync_2;
 	o_capture_done_pulse	<= r_capture_done_pulse;
-	
+
 	o_capture_sample_rate_sel <= r_sample_rate_sel;
 	o_capture_trigger_mode 	<= r_trigger_mode;
 	o_capture_trigger_index	<= std_logic_vector(r_trigger_index);
 	o_capture_start_addr 	<= std_logic_vector(r_start_addr);
 	o_capture_sample_count	<= std_logic_vector(r_last_addr+1);
 	o_capture_width_sel		<= r_capture_width_sel;
-	
+
 end architecture RTL;

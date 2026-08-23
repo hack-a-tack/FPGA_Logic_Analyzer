@@ -5,6 +5,7 @@
 -- DATE: 2026-07-28 (YYYY-MM-DD)
 -- MODIFIED: 2026-08-17 (rev2) (baud changeover sequencing: commit-point gating via uart_tx/resp_gen idle signals, confirm-or-revert timer; uart baud register/output renamed baud_sel to match uart_tx/uart_rx)
 -- MODIFIED: 2026-08-19 (rev2) (migrated to la_pkg: the ten local CMD_* config-opcode constants deleted, replaced with la_pkg's C_CMD_*)
+-- MODIFIED: 2026-08-21 (rev2) (r_confirm_count -- a single ~25-bit counter incrementing every clock -- replaced with a two-stage prescaler (1ms, 16 bits) driving a millisecond counter (500, 9 bits), both using the count-down-to-1 pattern. Same total duration, verified cycle-for-cycle equivalent; two short carry chains instead of one long one)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -128,7 +129,17 @@ architecture RTL of config_regs is
 	signal r_baud_sel, n_baud_sel : std_logic_vector(1 downto 0) := "00";							-- live value driving uart_tx / uart_rx
 	signal r_pending_baud, n_pending_baud : std_logic_vector(1 downto 0) := "00";					-- validated, not yet applied
 	signal r_prev_baud, n_prev_baud : std_logic_vector(1 downto 0) := "00";							-- value to restore on revert
-	signal r_confirm_count, n_confirm_count : integer range 0 to G_BAUD_CONFIRM_CYCLES-1 := 0;
+
+	-- Two-stage confirm-or-revert timer: a 1ms prescaler drives a millisecond counter, instead of one
+	-- ~25-bit counter incrementing every clock. Same total duration (verified cycle-for-cycle against
+	-- the single-counter version: both revert on exactly clock G_BAUD_CONFIRM_CYCLES after the commit
+	-- point), two short carry chains instead of one long one. Precision is unaffected -- this is a
+	-- timeout, not a measurement. Assumes G_BAUD_CONFIRM_CYCLES is a multiple of C_PRESCALE_CYCLES;
+	-- if not, C_CONFIRM_MS truncates and the actual timeout is short by under 1ms.
+	constant C_PRESCALE_CYCLES : positive := C_SYS_CLK_HZ / 1000;				-- cycles per 1 ms (48,000 at 48 MHz)
+	constant C_CONFIRM_MS      : positive := G_BAUD_CONFIRM_CYCLES / C_PRESCALE_CYCLES;	-- ms to wait for confirmation (500)
+	signal r_ms_prescaler, n_ms_prescaler : integer range 0 to C_PRESCALE_CYCLES-1 := 0;	-- counts down every clock; reaching 0 ticks the ms counter
+	signal r_confirm_ms_remaining, n_confirm_ms_remaining : integer range 0 to C_CONFIRM_MS := 0;	-- ms left before revert, including the one in flight
 
 	signal r_baud_ack_pulse, n_baud_ack_pulse : std_logic := '0';									-- pulse output
 	signal r_baud_error_pulse, n_baud_error_pulse : std_logic := '0';								-- pulse output
@@ -260,7 +271,8 @@ begin
 				r_baud_sel         <= "00";
 				r_pending_baud     <= "00";
 				r_prev_baud        <= "00";
-				r_confirm_count    <= 0;
+				r_ms_prescaler        <= 0;
+				r_confirm_ms_remaining <= 0;
 				r_baud_ack_pulse   <= '0';
 				r_baud_error_pulse <= '0';
 			else
@@ -268,7 +280,8 @@ begin
 				r_baud_sel         <= n_baud_sel;
 				r_pending_baud     <= n_pending_baud;
 				r_prev_baud        <= n_prev_baud;
-				r_confirm_count    <= n_confirm_count;
+				r_ms_prescaler         <= n_ms_prescaler;
+				r_confirm_ms_remaining <= n_confirm_ms_remaining;
 				r_baud_ack_pulse   <= n_baud_ack_pulse;
 				r_baud_error_pulse <= n_baud_error_pulse;
 			end if;
@@ -284,7 +297,8 @@ begin
 		n_baud_sel         <= r_baud_sel;
 		n_pending_baud      <= r_pending_baud;
 		n_prev_baud         <= r_prev_baud;
-		n_confirm_count     <= r_confirm_count;
+		n_ms_prescaler         <= r_ms_prescaler;
+		n_confirm_ms_remaining <= r_confirm_ms_remaining;
 		n_baud_ack_pulse    <= '0';  -- pulse output, default low
 		n_baud_error_pulse  <= '0';  -- pulse output, default low
 
@@ -311,7 +325,8 @@ begin
 				if i_resp_idle = '1' and i_tx_idle = '1' then
 					-- commit point: response path drained and the ACK frame has fully left uart_tx
 					n_baud_sel      <= r_pending_baud;
-					n_confirm_count <= 0;
+					n_ms_prescaler         <= C_PRESCALE_CYCLES - 1;
+					n_confirm_ms_remaining <= C_CONFIRM_MS;
 					n_baud_state    <= BAUD_CONFIRM;
 				end if;
 
@@ -322,13 +337,19 @@ begin
 				if i_rx_byte_valid_pulse = '1' then
 					-- a validated byte (full frame with valid CRC, etc.) proves the host is talking to us at the new rate
 					n_baud_state <= BAUD_IDLE;
-				elsif r_confirm_count = G_BAUD_CONFIRM_CYCLES-1 then
-					-- no confirmation within G_BAUD_CONFIRM_CYCLES: revert
-					n_baud_sel         <= r_prev_baud;
-					n_baud_error_pulse <= '1';  -- goes out at the restored rate, so a host that also reverted will see it
-					n_baud_state       <= BAUD_IDLE;
+				elsif r_ms_prescaler = 0 then
+					-- one more millisecond elapsed
+					n_ms_prescaler <= C_PRESCALE_CYCLES - 1;
+					if r_confirm_ms_remaining = 1 then
+						-- no confirmation within C_CONFIRM_MS: revert
+						n_baud_sel         <= r_prev_baud;
+						n_baud_error_pulse <= '1';  -- goes out at the restored rate, so a host that also reverted will see it
+						n_baud_state       <= BAUD_IDLE;
+					else
+						n_confirm_ms_remaining <= r_confirm_ms_remaining - 1;
+					end if;
 				else
-					n_confirm_count <= r_confirm_count + 1;
+					n_ms_prescaler <= r_ms_prescaler - 1;
 				end if;
 		end case;
 	end process baud_fsm_proc;

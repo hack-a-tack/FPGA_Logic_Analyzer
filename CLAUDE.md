@@ -10,6 +10,7 @@ Coding conventions:
 - Apart from that which is specifically outlined below, keep general comments relatively simple. Not overly long, and focus on using simple/direct language.
 - Don't add "--" inside comments. Avoid semicolons as well.
 - Let's stick to std_logic_vectors for entity declarations (in/out ports), but unsigned vectors for intra-module logic.
+- whatever sits between two flip-flops has to finish in one tick, so keep it short. (wherever possible:) Compare against constants, not variables. Compute bounds once, not every cycle.
 
 ## File header (every .vhd file)
 Every file opens and closes with a `-- ========================================` rule and includes, in this order:
@@ -120,3 +121,14 @@ Do not "fix" top.vhd opportunistically — it is a deliberate single pass at the
 GHDL is stricter than Synplify about VHDL-2008 legality. When check.bat rejects
 something Synplify accepted, assume GHDL is right and fix the source — do not work
 around it or loosen the standard flag.
+
+## Timing patterns (learned the hard way)
+
+- Declare every integer signal with an explicit `range`. A bare `integer` is 32 bits
+  and infers a 32-bit carry chain.
+- Prefer counting DOWN to a constant over counting UP to a variable. Comparing against
+  a literal is a shallow tree; comparing against a signal costs a compare plus whatever
+  computed that signal.
+- Latch derived bounds once at frame/capture start. Never recompute `X - 1` every cycle
+  to compare against it.
+- Don't put wide multiplexers in series with a counter's clock enable.

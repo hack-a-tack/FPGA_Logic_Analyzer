@@ -1,1 +1,2 @@
-CKID0001:@|S:i_clk_ibuf_gb_io@|E:r_state_1_rep1_esr@|F:@syn_sample_clock_path==CKID0001@|M:ClockId0001 
+CKID0001:@|S:E1@|E:E13.r_UART_TX_LED@|F:@syn_sample_clock_path==CKID0001@|M:ClockId0001 
+CKID0002:@|S:E1.o_clk_keep@|E:E1.r_div_counter[2]@|F:@syn_sample_clock_path==CKID0002@|M:ClockId0002 

@@ -1,0 +1,125 @@
+* ******************************************************************************
+
+* iCEcube Report
+
+* Version:            2020.12.27943
+
+* Build Date:         Dec  9 2020 17:31:51
+
+* File Generated:     Aug 23 2026 09:59:20
+
+* Purpose:            General info of design implementation
+
+* Copyright (C) 2006-2010 by Lattice Semiconductor Corp. All rights reserved.
+
+* ******************************************************************************
+
+Synthesis/Placement Summary:
+----------------------------
+    Status:  Successful
+    Runtime: 2 seconds
+
+Device Info:
+------------
+    Device Family: iCE40UP
+    Device:        iCE40UP5K
+    Package:       SG48
+
+Design statistics:
+------------------
+    FFs:                  615
+    LUTs:                 1229
+    RAMs:                 24
+    IOBs:                 27
+    GBs:                  4
+    PLLs:                 0
+    Warm Boots:           0
+    SPIs:                 0
+    I2Cs:                 0
+    HFOSCs:               1
+    LFOSCs:               0
+    RGBA_DRVs:            0
+    LEDDA_IPs:            0
+    DSPs:                 0
+    SPRAMs:               0
+    FILTER_50NSs:         0
+
+Logic Resource Utilization:
+---------------------------
+    Total Logic Cells: 1260/5280
+        Combinational Logic Cells: 645      out of   5280      12.2159%
+        Sequential Logic Cells:    615      out of   5280      11.6477%
+        Logic Tiles:               220      out of   660       33.3333%
+    Registers: 
+        Logic Registers:           615      out of   5280      11.6477%
+        IO Registers:              0        out of   480       0
+    Block RAMs:                    24       out of   30        80%
+    Warm Boots:                    0        out of   1         0%
+    SPIs:                          0        out of   2         0%
+    I2Cs:                          0        out of   2         0%
+    HFOSCs:                        1        out of   1         100%
+    LFOSCs:                        0        out of   1         0%
+    RGBA_DRVs:                     0        out of   1         0%
+    LEDDA_IPs:                     0        out of   1         0%
+    DSPs:                          0        out of   8         0%
+    SPRAMs:                        0        out of   4         0%
+    FILTER_50NSs:                  0        out of   2         0%
+    Pins:
+        Input Pins:                18       out of   39        46.1538%
+        Output Pins:               9        out of   39        23.0769%
+        InOut Pins:                0        out of   39        0%
+    Global Buffers:                4        out of   8         50%
+    PLLs:                          0        out of   1         0%
+
+IO Bank Utilization:
+--------------------
+    Bank 3: 0        out of   0         0%
+    Bank 1: 0        out of   0         0%
+    Bank 0: 11       out of   17        64.7059%
+    Bank 2: 16       out of   22        72.7273%
+
+Detailed I/O Info:
+------------------
+    Input Pins: 
+    Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function    Signal Name    
+    ----------  ---------  -----------  -------  -------  -----------    -----------    
+    3           Input      SB_LVCMOS    No       2        Simple Input   i_UART_RX      
+    6           Input      SB_LVCMOS    No       2        Simple Input   i_FTDI_CTS_N   
+    25          Input      SB_LVCMOS    No       0        Simple Input   i_LA15         
+    26          Input      SB_LVCMOS    No       0        Simple Input   i_LA14         
+    27          Input      SB_LVCMOS    No       0        Simple Input   i_LA13         
+    28          Input      SB_LVCMOS    No       0        Simple Input   i_LA12         
+    34          Input      SB_LVCMOS    No       0        Simple Input   i_LA11         
+    35          Input      SB_LVCMOS    No       0        Simple Input   i_LA10         
+    36          Input      SB_LVCMOS    No       0        Simple Input   i_LA9          
+    37          Input      SB_LVCMOS    No       0        Simple Input   i_LA8          
+    38          Input      SB_LVCMOS    No       0        Simple Input   i_LA7          
+    42          Input      SB_LVCMOS    No       0        Simple Input   i_LA6          
+    43          Input      SB_LVCMOS    No       0        Simple Input   i_LA5          
+    44          Input      SB_LVCMOS    No       2        Simple Input   i_LA4          
+    45          Input      SB_LVCMOS    No       2        Simple Input   i_LA3          
+    46          Input      SB_LVCMOS    No       2        Simple Input   i_LA2          
+    47          Input      SB_LVCMOS    No       2        Simple Input   i_LA1          
+    48          Input      SB_LVCMOS    No       2        Simple Input   i_LA0          
+
+    Output Pins: 
+    Pin Number  Direction  IO Standard  Pull Up  IO Bank  IO Function    Signal Name    
+    ----------  ---------  -----------  -------  -------  -----------    -----------    
+    2           Output     SB_LVCMOS    No       2        Simple Output  o_FTDI_RTS_N   
+    4           Output     SB_LVCMOS    No       2        Simple Output  o_UART_TX      
+    10          Output     SB_LVCMOS    No       2        Simple Output  o_USER_LED     
+    11          Output     SB_LVCMOS    No       2        Simple Output  o_UART_RX_LED  
+    12          Output     SB_LVCMOS    No       2        Simple Output  o_UART_TX_LED  
+    18          Output     SB_LVCMOS    No       2        Simple Output  o_DBG0         
+    19          Output     SB_LVCMOS    No       2        Simple Output  o_DBG1         
+    20          Output     SB_LVCMOS    No       2        Simple Output  o_DBG2         
+    21          Output     SB_LVCMOS    No       2        Simple Output  o_DBG3         
+
+Detailed Global Buffer Info:
+----------------------------
+    Buffer Number  IO Bank  Driven By  Fanout  Signal Name                    
+    -------------  -------  ---------  ------  -----------                    
+    7              2                   32      E12.n_header_index_0_sqmuxa_g  
+    3              0                   70      E7.un1_r_state_8_0_0_g         
+    5              2                   28      E9.N_191_i_g                   
+    1              0                   22      E4.N_352_g                     

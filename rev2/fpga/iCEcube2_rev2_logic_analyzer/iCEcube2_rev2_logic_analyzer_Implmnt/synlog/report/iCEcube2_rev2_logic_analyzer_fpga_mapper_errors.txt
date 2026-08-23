@@ -1,1 +1,0 @@
-@E: MF274 :"c:\users\jakob\documents\ee-projects\fpga_logic_analyzer\rev2\fpga\rtl\top.vhd":90:7:90:9|The number of registers used to synthesize RAMs in 'view:work.top(structure)' (98327) is larger than the total number of registers available on the chip ice40up5ksg48 (5280).
