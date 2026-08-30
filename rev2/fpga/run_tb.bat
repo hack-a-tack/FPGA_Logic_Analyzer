@@ -44,6 +44,19 @@ if errorlevel 1 (
 	exit /b 1
 )
 
+rem clocking.vhd instantiates SB_HFOSC as a component with no explicit configuration;
+rem it resolves via default binding to rtl\SB_HFOSC.vhd's "architecture sim" stub, but
+rem only if that file has actually been compiled into the work library first. Mirrors
+rem check.bat's own dependency order (la_pkg.vhd, SB_HFOSC.vhd, clocking.vhd, ...).
+if /I "%MODULE%"=="clocking" (
+	echo Compiling SB_HFOSC.vhd ...
+	vcom -2008 -quiet ..\rtl\SB_HFOSC.vhd
+	if errorlevel 1 (
+		echo FAILED: rtl\SB_HFOSC.vhd did not compile
+		exit /b 1
+	)
+)
+
 if /I not "%MODULE%"=="la_pkg" (
 	if not exist "..\rtl\%MODULE%.vhd" (
 		echo FAILED: rtl\%MODULE%.vhd not found
