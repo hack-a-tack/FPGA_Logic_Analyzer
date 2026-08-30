@@ -2,37 +2,29 @@
 -- MODULE: la_pkg.vhd
 -- FUNCTION: single source of truth for protocol/framing constants and functions shared across modules (baud timing, CRC, frame layout, opcodes, response codes)
 -- AUTHOR: Jakob Kieszek Ottesen
--- DATE: 2026-08-18 (YYYY-MM-DD)
+-- DATE: 2026-08-26 (YYYY-MM-DD)
 --
 -- NOTES
+-- This package is a single source of truth for protocol framing and shared functions. 
+-- Adding a frame type, opcode, or response code means editing this file and nothing else.
 --
 -- t_byte is fixed at 8 bits deliberately. Modules carry a DATA_LENGTH generic, but a UART byte is 8 bits by
--- definition and every constant in this package is a wire-format value, not a module-parameterised one. Do not
--- make these constants track DATA_LENGTH.
+-- definition and every constant in this package is a wire-format value, not a module-parameterised one.
 --
--- crc16_next is copied verbatim from the validated frame_tx.vhd implementation (bit-for-bit identical to the copy
--- that was also in rx_frame_parser.vhd). Do not re-derive or "improve" it -- the only requirement is that both
--- directions keep agreeing, and this is the one copy both must now use.
 -- CRC-16/CCITT-FALSE: poly 0x1021, init 0xFFFF, no reflection, xorout 0x0000.
 --
--- Frame types (C_TYPE_*) are the TYPE header byte frame_tx/rx_frame_parser put on the wire. Response codes
--- (C_CODE_*) are resp_gen/analyzer_fsm's CODE byte within a STATUS/ERROR response payload -- a different field,
+-- Frame types (C_TYPE_*) are the TYPE header byte frame_tx/rx_frame_parser put on the wire.
+-- Response codes (C_CODE_*) are resp_gen/analyzer_fsm's CODE byte within a STATUS/ERROR response payload. A different field,
 -- carried inside the payload of a C_TYPE_STATUS/C_TYPE_ERROR frame, not the frame TYPE itself.
 --
--- Adding a frame type, opcode, or response code means editing this file and nothing else, once the migration pass
--- (moving frame_tx/rx_frame_parser/analyzer_fsm/resp_gen/cmd_parser/config_regs over to reference these
--- definitions instead of their own local copies) is done. That migration is not part of this pass.
+-- All status/error codes are accompanied by a detail byte, which is the opcode being acknowledged or rejected. 
+-- The detail byte of error code 0xEF is the frame-error subcode (see 6. FRAME ERROR SUBCODES).
+-- Wherever no detail byte is relevant, 0x00 is used.
 --
 -- PREFIXES
 -- t_ : type/subtype
 -- f_ : function
 -- C_ : constant
---
--- ITERATIVE PROCESS NOTES:
--- update VHDL entities in OneNote once module is locked
--- This pass only creates the package. frame_tx.vhd, rx_frame_parser.vhd, analyzer_fsm.vhd, resp_gen.vhd,
--- cmd_parser.vhd and config_regs.vhd still carry their own local copies of everything defined here; migrating them
--- to reference la_pkg instead is the next pass.
 -- ========================================
 
 library IEEE;
@@ -54,24 +46,24 @@ package la_pkg is
 
 	function crc16_next(crc : std_logic_vector(15 downto 0); data : t_byte) return std_logic_vector;
 
-	-- 4. FRAME CONSTANTS
+	-- 4. FRAME CONSTANTS (SYNC0, SYNC1 and VER are same across all frames)
 	constant C_SYNC0     : t_byte := x"A5";
 	constant C_SYNC1     : t_byte := x"5A";
 	constant C_PROTO_VER : t_byte := x"01";
 
 	-- Frame types (the wire TYPE header byte)
-	constant C_TYPE_CAPTURE : t_byte := x"01";  -- FPGA -> host, capture data
-	constant C_TYPE_STATUS  : t_byte := x"02";  -- FPGA -> host
-	constant C_TYPE_ERROR   : t_byte := x"03";  -- FPGA -> host
-	constant C_TYPE_COMMAND : t_byte := x"10";  -- host -> FPGA
+	constant C_TYPE_CAPTURE : t_byte := x"01";  -- FPGA -> host, capture-data frame
+	constant C_TYPE_STATUS  : t_byte := x"02";  -- FPGA -> host, status frame
+	constant C_TYPE_ERROR   : t_byte := x"03";  -- FPGA -> host, error frame
+	constant C_TYPE_COMMAND : t_byte := x"10";  -- host -> FPGA, command frame
 
 	-- 5. RESPONSE CODES (the CODE byte within a STATUS/ERROR response payload)
-	constant C_CODE_ACK         : t_byte := x"55";
-	constant C_CODE_SEQ_GAP     : t_byte := x"66";
-	constant C_CODE_DONE        : t_byte := x"77";
-	constant C_CODE_WATCHDOG    : t_byte := x"DD";
-	constant C_CODE_ERROR       : t_byte := x"EE";
-	constant C_CODE_FRAME_ERROR : t_byte := x"EF";
+	constant C_CODE_ACK         : t_byte := x"55";  -- status | ACK : accepted, not completed
+	constant C_CODE_SEQ_GAP     : t_byte := x"66";  -- status | sequence gap on host -> FPGA frame
+	constant C_CODE_DONE        : t_byte := x"77";  -- status | DONE : capture completed
+	constant C_CODE_WATCHDOG    : t_byte := x"DD";  -- error | watchdog timeout
+	constant C_CODE_ERROR       : t_byte := x"EE";  -- error | general error
+	constant C_CODE_FRAME_ERROR : t_byte := x"EF";  -- error | frame rejected (detail byte carries the subcode)
 
 	-- 6. FRAME ERROR SUBCODES (detail byte accompanying C_CODE_FRAME_ERROR)
 	constant C_FERR_VERSION : t_byte := x"01";

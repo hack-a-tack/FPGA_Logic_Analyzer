@@ -7,3 +7,8 @@ rev1/debug_artifacts
 # GHDL analysis library artifacts (rev2/fpga/rtl -- ghdl -a compile checks)
 rev2/fpga/build/
 work-obj*.cf
+
+# ModelSim artifacts (rev2/fpga/run_tb.bat) -- tb/ holds only testbench .vhd sources;
+# everything ModelSim generates lands in simulations/ instead, mirroring rev1's split
+# between rev1/fpga/tb/ and rev1/fpga/simulations/.
+rev2/fpga/simulations/
