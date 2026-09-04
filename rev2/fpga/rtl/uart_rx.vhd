@@ -4,8 +4,7 @@
 -- AUTHOR: Jakob Kieszek Ottesen
 -- DATE: 2026-03-22 (YYYY-MM-DD)
 -- MODIFIED: 2026-05-14 (reset active low)
--- MODIFIED: 2026-08-12 (rev2) (runtime-selectable baud via i_baud_sel/uart_pkg; renamed i_rst to i_rst_n to match house standard)
--- MODIFIED: 2026-08-18 (rev2) (repointed from uart_pkg to la_pkg; uart_pkg.vhd deleted, was a near-duplicate of la_pkg's f_clks_per_bit)
+-- MODIFIED: 2026-08-18 (rev2) (runtime-selectable baud via i_baud_sel/la_pkg)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
@@ -14,8 +13,8 @@
 -- i_baud_sel				2 bits		<- config_regs
 --
 -- OUTPUTS					DATA		TO MODULE
--- o_rx_byte				8 bits		-> cmd_parser
--- o_rx_valid_pulse			1 bit		-> cmd_parser
+-- o_rx_byte				8 bits		-> rx_frame_parser
+-- o_rx_valid_pulse			1 bit		-> rx_frame_parser
 -- o_UART_RX_LED			1 bit		-> top
 --
 -- NOTES
@@ -89,7 +88,7 @@ begin
 	seq_proc: process(i_clk) is
 	begin
 		if rising_edge(i_clk) then
-			if i_rst_n = '0' then  -- rst is active low (DIP switch)
+			if i_rst_n = '0' then
 				r_state 	  	 <= RX_IDLE;
 				r_rx_byte 		 <= (others => '0');
 				r_rx_valid_pulse <= '0';
@@ -195,7 +194,7 @@ begin
 						-- stop bit detected, toggle flag so state can be properly updated at the end of bit period
 						n_valid_stop <= '1';
 					else
-						n_valid_stop <= '0';  -- remainas unchanged
+						n_valid_stop <= '0';  -- remains unchanged
 					end if;
 					n_clk_counter <= r_clk_counter + 1;
 				elsif r_clk_counter = r_clks_per_bit-1 then
