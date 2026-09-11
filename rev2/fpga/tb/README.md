@@ -127,12 +127,12 @@ it. Delete it freely; `run_tb.bat` recreates it from scratch on the next run.
 
 # Asking claude code for the next tb
 
-Alrighty. Now write rev2/fpga/tb/uart_tx_tb.vhd (testbench for the associated uart_tx.vhd module). One testbench only.
+Alrighty. Now write rev2/fpga/tb/<module_tb>.vhd (testbench for the associated <module>.vhd module). One testbench only.
 
-Base it on rev1/fpga/tb/uart_tx_tb.vhd for structure. Apply the tb/README.md conventions: self-checking, pass/fail
+Base it on rev1/fpga/tb/<module_tb>.vhd (if it exists) for structure. Apply the tb/README.md conventions: self-checking, pass/fail
 counter, TEST PASSED / TEST FAILED summary, std.env.stop, direct entity instantiation.
 
-Read the associated module first (uart_tx.vhd), and make sure it has the correct in/out signals in the table in the file header comments.
+Read the associated module first (<module>.vhd), and make sure it has the correct in/out signals in the table in the file header comments.
 
 For test cases: write cases for the Rev2-specific behaviour, stop on failure. 
 

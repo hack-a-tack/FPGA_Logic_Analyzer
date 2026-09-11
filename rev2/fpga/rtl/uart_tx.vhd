@@ -5,27 +5,25 @@
 -- DATE: 2026-04-19 (YYYY-MM-DD)
 -- MODIFIED: 2026-05-14 (reset active low)
 -- MODIFIED: 2026-08-06 (rev2)
--- MODIFIED: 2026-08-12 (rev2) (runtime-selectable baud via i_baud_sel/uart_pkg; added FTDI transmit flow control)
--- MODIFIED: 2026-08-17 (rev2) (added o_tx_idle, ungated by flow control, as the baud changeover commit-point signal for config_regs)
--- MODIFIED: 2026-08-18 (rev2) (repointed from uart_pkg to la_pkg; uart_pkg.vhd deleted, was a near-duplicate of la_pkg's f_clks_per_bit)
+-- MODIFIED: 2026-08-18 (rev2) (runtime-selectable baud via i_baud_sel/la_pkg; HW flow control)
 --
 -- INPUTS					DATA		FROM MODULE
 -- i_clk					1 bit		<- clocking
 -- i_rst_n					1 bit		<- top
--- i_mux_tx_byte			8 bits 		<- tx_mux /// now: frame_tx
--- i_mux_tx_valid			1 bit		<- tx_mux /// now: frame_tx
+-- i_mux_tx_byte			8 bits 		<- frame_tx
+-- i_mux_tx_valid			1 bit		<- frame_tx
 -- i_baud_sel				2 bits		<- config_regs
 -- i_usb_can_accept_tx_byte	1 bit		<- top (de-inverted from CTS#)
 --
 -- OUTPUTS					DATA		TO MODULE
--- o_uart_tx_ready			1 bit		-> tx_mux /// now: frame_tx
+-- o_uart_tx_ready			1 bit		-> frame_tx
 -- o_tx_idle				1 bit		-> config_regs
 -- o_UART_TX				1 bit		-> top
 -- o_UART_TX_LED			1 bit		-> top
 --
 -- NOTES
 -- 8N1 UART --> start bit, data bits 0-7 (starting with LSB), stop bit --> 10 transmitted bits per byte --> "10 baud"
--- 1 baud = 1 symbol (1 bit for UART)
+-- 1 baud = 1 symbol (for UART, symbol = 1 bit)
 -- Bit period is no longer a compile-time constant. f_clks_per_bit (la_pkg) maps i_baud_sel to a clocks-per-bit count; see la_pkg.vhd NOTES for the rate table and error figures.
 -- --> Each bit is transmitted for the latched clocks-per-bit count.
 -- But UART usually tolerates +- 2-3% error
@@ -33,7 +31,7 @@
 -- By the time i_tx_mux_valid reaches uart_tx, so has the data from send_engine or analyzer_fsm on the i_mux_tx_byte lines.
 -- So by latching input byte/payload when in IDLE (uart_ready is high) and we see i_tx_mux_valid, we uphold the handshake agreement.
 --
--- i_usb_can_accept_tx_byte only gates the transition out of TX_IDLE. Once a byte has started, it always runs to completion regardless of the flow-control line -- stopping mid-byte would put a malformed character on the wire. frame_tx, tx_mux, send_engine and resp_gen already hold valid/data across stalls and advance only on accept, so backpressure propagates up the existing ready/valid chain without any other module needing changes.
+-- i_usb_can_accept_tx_byte only gates the transition out of TX_IDLE. Once a byte has started, it always runs to completion regardless of the flow-control line. Stopping mid-byte would put a malformed character on the wire. frame_tx, tx_mux, send_engine and resp_gen already hold valid/data across stalls and advance only on accept, so backpressure propagates up the existing ready/valid chain without any other module needing changes.
 --
 -- o_tx_idle is r_state = TX_IDLE only, with no dependence on i_usb_can_accept_tx_byte. o_uart_tx_ready cannot serve this purpose since it is gated by flow control: ready = '0' means either "sending a byte" or "FTDI is not accepting", and config_regs needs to tell those two cases apart to know when it is actually safe to change the baud divider.
 --
@@ -43,10 +41,6 @@
 -- r_ : register 			(internal signal; current; 		for sequential process)
 -- n_ : next <register> 	(internal signal; next state; 	for combinational process)
 -- s_ : output-only signal 	(driven by a dedicated combinational/sync process)
-
--- ITERATIVE PROCESS NOTES:
--- update VHDL entities in OneNote once module is locked
--- Baud changeover sequencing (switching i_baud_sel safely) is config_regs' job, next pass -- not handled here.
 -- ========================================
 
 library IEEE;
